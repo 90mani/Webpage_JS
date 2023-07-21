@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>LOGIN FORM</title>
+<link rel="stylesheet" href="sign.css">
+
+        <script>
+            function validateForm() {
+                let fname = document.forms["myForm"]["fname"].value;
+                if (fname == "") {
+                    alert("please enter first name");
+                    return false;
+                }
+                if(!isNaN(fname)){
+                    alert("Enter Alphabets only");
+                    return false;
+                }
+                if(fname.length>20){
+                    alert(" first name must be within 20 characters");
+                   return false;
+                    }
+                
+                let lname1 = document.myForm.lname1.value;
+                    if (lname1 == ""){
+                    alert("please enter last name");
+                    return false;
+                }
+                if(!isNaN(lname1)){
+                    alert("Enter Alphabets only");
+                    return false;
+                }
+               if(lname1.length>20){
+                    alert("Last name must be within 20 characters");
+                   return false;
+                    }
+                                
+                let phone=document.forms["myForm"]["phone"].value;
+                if(isNaN(phone)||phone.length!=10){
+                    alert("enter a valid mobile number");
+                    return false;
+                }
+                
+            }
+        </script>
+        </head>
+   <body>
+    
+<center>
+<h1>FILL THE FORM AND SUBMIT</h1></center>
+       <div class="container">
+     <form name="myForm" onsubmit="return validateForm()">
+
+    <div class="use">
+        <label for="fname">FIRST NAME</label>
+        <input id="fname" type="text">
+    </div>
+    <div class="use">
+        <label for="lname1">LAST NAME</label>
+        <input id="lname1" type="text">
+    </div>
+    <div class="use">
+        <label for="phone">PHONE NUMBER</label>
+        <input id="phone" type="tel">
+    </div>
+    <div class="use">
+        <label for="address" > PERMANENT ADDRESS</label>
+        <textarea id="use" name="address"></textarea>
+    </div>
+    <div class="use">
+       <label for="address" > PRESENT ADDRESS</label>
+      <textarea id="use" name="address"></textarea>
+    </div>
+    <center>
+    <div class="use"> 
+        <input type="checkbox" id="use" name="same">
+        <label for="same">SAME AS PERMANENT ADDRESS</label>
+       </div><br>
+    </center>
+    <div class="use"> 
+        <label for="date of birth">DATE OF BIRTH</label>
+        <input style="margin-left:60px" id="date" type="date">
+       </div><br>
+    <div class="use"> 
+        <label for="GENDER" >GENDER</label>
+        
+        <input style="margin-left:120px" id="gender" type="radio" >
+        <label for="GENDER" >MALE</label>
+        
+        <input id="gender" type="radio" >
+        <label for="GENDER">FEMALE</label>
+        
+        <input id="gender" type="radio" >
+        <label for="GENDER">OTHERS</label>
+       
+       </div><br>
+    <div class="use"> 
+        <label for="qualification">QUALIFICATION</label>
+        <select id="course"  style="margin-left:60px" name="course" size="1">
+            
+        <option value="B.SC CS">B.SC CS</option>
+        <option value="M.SC CS">M.SC CS</option>
+        <option value="BSC. IT">B.SC IT</option>
+        <option value="MSC. IT">M.SC IT</option>
+        <option value="MCA">MCA</option>
+        <option value="MBA">MBA</option>  
+        </select><br>
+    </div>
+    <center>
+    <div class="button">
+<input type="submit" class="submit-btn" value="submit">
+<input type="reset" class="reset-btn" value="reset">
+</div> </center>
+           </form>
+       </div>
+    </body>
+</html>
