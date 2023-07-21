@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <form>
+      <h1>Login</h1>
+      <div class="form-group">
+          
+        <label for="username">Username or email id:</label>
+            <img src="image/user.png">
+        <input type="text" id="username" name="username" maxlength="20" required>
+        <span class="char-limit">(Maximum 20 characters)</span>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+           <img src="image/lock.png">
+        <input type="password" id="password" name="password" maxlength="10">
+          
+        <span class="char-limit">(Maximum 10 characters)</span>
+      </div>
+      <div class="form-group">
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
+
+body {
+    background-image:url(image/image1.jpg);
+  background-color: lightgoldenrodyellow;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+  background-color:gainsboro;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form-group {
+    position: relative;
+  margin-bottom: 20px;
+    margin: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+. img
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+. img src{
+    margin: top;
+}
+.char-limit {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #999;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color:lightskyblue;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: lightskyblue;
+}
+
