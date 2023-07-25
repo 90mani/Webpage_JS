@@ -1,0 +1,59 @@
+ body {
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-color: white;
+ }
+
+ header {
+     text-align: center;
+     font-size: 24px;
+     margin-bottom: 20px;
+ }
+
+ .container {
+     padding: 50px;
+     margin: 0 15px;
+     margin-top: 5px;
+     width: 400px-9;
+     background-color: whitesmoke;
+}
+
+
+     .container form {
+         min-height: 500px;
+         background-color: white;
+         padding: 30px;
+     }
+
+     .input-field input,
+     .input-field select {
+         outline: none;
+         font-size: 14px;
+         font-weight: 200;
+         color: #333;
+         border-radius: 5px;
+         border: 1px solid #aaa;
+         padding: 0 40px;
+         height: 40px;
+         margin: 8px 0;
+         width: 100%;
+         box-sizing: border-box;
+     }
+
+     .input-field {
+         position: relative;
+     }
+
+     .input-field i {
+         position: absolute;
+         left: 14px;
+         top: 35px;
+         color: gray;
+     }
+
+
+     .input[type="submit"] {
+         margin-top: 20px
+     }
