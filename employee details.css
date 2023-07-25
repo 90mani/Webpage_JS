@@ -1,0 +1,115 @@
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  
+justify-content: center;
+background-color:white;
+}
+.header{
+    font-size: 100px;
+}
+.container{
+    position: relative;
+    column-count: 3;
+    column-gap: 1px;
+   padding: 50px;
+    margin:0 15px;
+ margin-top: 5px;
+    width:1000px;
+    background-color:whitesmoke;
+ 
+    
+   
+}
+
+
+.container form{
+    position: relative;
+   padding: 10px;
+    min-height: 574px;
+   background-color:white;
+  
+}
+.input-field input{
+    outline:none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border:1px solid #aaa;
+    padding: 0 40px;
+    height: 40px;
+    margin: 8px 0;
+   
+}
+.input-field select{
+    outline:none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border:1px solid #aaa;
+    padding: 0 15px;
+    height: 35px;
+    margin: 8px 0;
+   
+}
+
+
+
+input [type=text]
+{
+  width: 100%;
+  padding: 10px;
+  display:inline-block;
+  margin: 8px 0;
+  box-sizing:border-box 
+  
+
+
+}
+.input-field{
+    position: relative;
+}
+.input-field i 
+{
+    position: absolute;
+    left:14px;
+    top: 35px;
+    color: gray;
+}
+.input-field small{
+    color: red;
+    position: absolute;
+    left:0;
+    bottom:0;
+    visibility: hidden;
+}
+.input-field.success.input{
+    border-color: #2ecc71;
+}
+
+.input-field.error input{
+    border-color: red;
+    
+}  
+    
+.input-field.error-field small {
+      visibility: visible;
+    }
+
+    
+    .input-field.success-field small {
+      color: green;
+      visibility: visible;
+    }
+
+    .input-field.error input {
+      border-color: red;
+    }
+
+    .input-field.success input {
+      border-color: #2ecc71;
+    }
