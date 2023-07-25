@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+ <head>
+     <link rel="stylesheet" href="project.css">
+     <script>
+ function validateForm() 
+            {
+                  let fname = document.forms["myForm"]["fname"].value;
+                  if (fname == "") {
+                     alert("please enter first name");
+                document.myForm.fname.focus();
+                      return false;
+                  }
+                  if(!isNaN(fname)){
+                      alert("First name must be Alphabets only");
+                document.myForm.fname.focus();
+                      return false;
+                  }
+                  if(fname.length>20){
+                      alert(" First name must be within 20 characters");
+                document.myForm.fname.focus();
+                      return false;
+                      }
+                let phone=document.forms["myForm"]["phone"].value;
+                  if(phone==""){                                                 
+                      alert("enter a mobile number");
+                      document.myForm.phone.focus();
+                      return false;
+                  }
+                  if(isNaN(phone)){                                               
+                    alert("Mobile Number Must Be In Numbers Only");
+                    document.myForm.phone.focus();
+                    return false;
+                  }
+
+                  let email=document.forms["myForm"]["email"].value;
+                  if(email==""){
+                    alert("please enter an email");
+                    document.myForm.email.focus();
+                    return false;
+                  }
+                  
+                  let username = document.forms["myForm"]["username"].value;
+                  if (username == "") {
+                     alert("please enter Username");
+                document.myForm.username.focus();
+                      return false;
+                  }
+                  if(!isNaN(username)){
+                      alert("Username must be Alphabets only");
+                document.myForm.username.focus();
+                      return false;
+                  }
+                  if(username.length>20){
+                      alert(" Username must be within 20 characters");
+                document.myForm.username.focus();
+                      return false;
+                      }
+
+                 let password=document.forms["myForm"]["password"].value;
+                      if(password==""){
+                        alert("please enter an password");
+                        document.myForm.password.focus();
+                        return false;        
+                      }
+                       if(password.length>8){
+                        alert("Password Must Be Within 8 characters");
+                        document.myForm.password.focus();
+                        return false;
+                       }
+                      
+
+
+                let select = document.forms["myForm"]["selection"]
+                 var selection1=document.getElementById("selection").value;
+                 if(selection1=="0"){
+                 alert("Please select any one of the user category");
+                 document.myForm.selection.focus();
+                 return false;
+                 }
+                }
+     </script>
+     </head>
+ <title>  ADD USER PAGE </title>
+ <body>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+     <div class="container">
+     <header> Add  User Page </header>
+     <form name="myForm" onsubmit="return validateForm()">
+    <div class="content">
+    <div class="fontuser">
+        <label><b>FULL NAME</b></label><br>
+        <input type="text" id="fname" placeholder="full name">
+        <i class="fa fa-user"></i></div><br><br>
+          
+       <div class="field">     
+       <div class="input-field"> 
+         <label><b>CONTACT</b></label>
+         <input type="tel" id="phone" placeholder="contact" maxlength="10">
+         <i class="fa fa-phone"></i></div>
+        
+        <div class="input-field"> 
+            <label><b>EMAIL</b></label>
+            <input type="email" id="email" placeholder="email">
+            <i class="fa fa-envelope"></i></div></div><br>
+          
+        <div class="use">
+        <div class="input-use">
+            <label><b>USERNAME</b></label>
+            <input type="text" id="username" placeholder="username">
+             <i class="fa fa-user"></i></div>
+          
+        
+        <div class="input-use">
+            <label><b>PASSWORD</b></label>
+            <input type="password" id="password" placeholder="password">
+            <i class="fa fa-key"></i></div>
+          
+      
+        <div class="input-use">
+            <label><b>USER CATEGORY</b></label>
+        <select id="selection" name="selection" size="1">
+            <option value="0">--select--</option>
+        <option value="1">ADMIN</option>
+        <option value="2">STAFF</option>
+        
+        </select></div></div>
+        
+        <div class="button">
+        <input type="submit" class="submit-btn" value="submit">
+        </div>
+        </div>
+        </form>
+        </div>
+        
+      
+     </body>
+</html>
+   
+      

@@ -1,0 +1,155 @@
+Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+*{
+    margin:0;
+    padding:0; 
+    
+}
+body{
+    min-height:96vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:lightgrey;
+}
+.container{
+    position:relative;
+    max-width:1200px;
+    width:100%;
+    border-radius: 5px;
+    padding:30px;
+    margin:0 15px;
+    background-color: white;
+}
+.container header{
+    font-size: 30px;
+    font-weight:600;
+    color:black;
+    font-family: serif;
+}
+.container form{
+    position: relative;
+    margin-top: 10px;
+    min-height:400px;
+    background-color:ghostwhite;
+}
+.content{
+    margin-top:45px;
+}
+
+ .fontuser label{
+    font-size: 15px;
+    color: gray;
+     margin-left: 10px;
+     font-family: sans-serif;
+     
+}
+.fontuser input{
+    width:96%;
+    margin-left: 10px;
+    height: 40px;
+    border-radius: 3px;
+    border:.5px solid;
+    font-family: sans-serif;
+    padding-left: 30px;
+    font-size: 15px;
+    
+}
+.fontuser i{
+    position: absolute;
+    left:18px;
+    top:28px;
+    color:gray;
+}
+.field{
+   display:flex;
+    align-items: center;
+    justify-content:flex-start;
+      
+}
+.field .input-field{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    justify-content: space-between;
+}
+.input-field label{
+    font-size: 15px;
+     color: gray;
+     margin-left: 15px;
+     font-family: sans-serif; 
+}
+.input-field input{
+    width:90%;
+    margin-left:11px;
+    height: 40px;
+    border-radius: 3px;
+    border:.5px solid;
+    font-family: sans-serif;
+    padding-left: 40px; 
+    font-size: 15px;
+}
+.input-field i{
+    position: absolute;
+    color:gray;
+    margin-top:29px;
+    margin-left:25px;
+}
+.use{
+  display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.use .input-use{
+    display: flex;
+    flex-flow: column;
+     width:28%;
+}
+ .input-use label{
+     font-size: 15px;
+     color: gray;
+     margin-left: 16px;
+      margin-top: 25px;
+     font-family: sans-serif; 
+     
+}
+.input-use input,select{
+    
+    height: 40px;
+    margin-left:10px;
+    border-radius: 3px;
+    border:.5px solid;
+    font-family: sans-serif;
+    padding-left: 40px; 
+    font-size: 15px;
+  
+}
+.input-use select{
+    margin-bottom:10px;
+    width:90%;
+  
+}
+.input-use i{
+    position: absolute;
+    color:gray;
+    margin-top:52px;
+    margin-left:25px;
+}
+
+.button .submit-btn{
+    background-color:cornflowerblue;
+    float:right;
+    border:1px solid;
+    margin-right: 50px;
+    font-family: sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor:pointer;
+    padding:10px;
+    
+}
+.button .submit-btn:hover{
+    background-color: bisque;
+}
