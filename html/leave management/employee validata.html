@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet"href="jb.css">
+    
+ <script src="https://kit.fontawesome.com/bbc6705e1e.js" crossorigin="anonymous"></script>
+
+<head>
+    <title>Employee</title>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <header>ADD EMPLOYEE</header>
+        <form class="form" id="form" onsubmit="return checkInput()" action="#" method="post">
+            <div class="input-field">
+                <label>ID NUMBER</label><br>
+                <input type="text" placeholder="id number" id="idnumber">
+                <i class="fa-solid fa-id-card"></i>
+
+            </div>
+            <div class="input-field">
+                <label>FIRST NAME</label><br>
+                <input type="text" placeholder="first name" id="first name">
+                <i class="fa-solid fa-user"></i>
+
+
+            </div>
+
+            <div class="input-field">
+                <label>LAST NAME</label><br>
+                <input type="text" placeholder="last name" id="last name">
+
+                <i class="fa-solid fa-user"></i>
+
+
+            </div>
+            <div class="input-field">
+                <label>AGE</label><br>
+                <input type="text" placeholder="age" id="age">
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+            <div class="input-field">
+                <label>EMAIL</label><br>
+                <input type="text" placeholder="email" id="email">
+
+                <i class="fa-solid fa-envelope"></i>
+
+            </div>
+            <div class="input-field">
+                <label>CONTACT</label><br>
+                <input type="text" placeholder="contact" id="contact">
+                <i class="fa-solid fa-phone"></i>
+
+
+            </div>
+            <div class="fileInput">
+                <label>PROFILE</label><br>
+                <input type="file" name="uploadedFile" accept=".pdf, .doc, .docx" id="profile">
+
+            </div>
+            <div class="input-field">
+                <label>DEPARTMENT</label><br>
+                <select for="text" name="DEPARTMENT" id="DEPARTMENT">
+                    <option value="select">---select---</option>
+                    <option value="IT">IT</option>
+                    <option value="HR">HR</option>
+
+                </select><br>
+            </div>
+            <div class="input-field">
+                <label>DESGINATION</label><br>
+                <select for="text" name="DESGINATION" id='"desgination'>
+                    <option value="select">---select---</option>
+                    <option value="data analyst">DATA ANALYST</option>
+                    <option value="web developer">WEB DEVELOPER</option>
+                    <option value="andriod developer">ANDRIOD DEVELOPER</option>
+                    <option value="network engineer">NETWORK ENGINEER</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <label>USER NAME</label><br>
+                <input type="text" placeholder="user name" id="username">
+                <i class="fa-solid fa-user"></i>
+
+
+            </div>
+            <div class="input-field">
+                <label>PASSWORD</label><br>
+                <input type="text" placeholder="password" id="password">
+                <i class="fa-solid fa-lock"></i>
+
+
+            </div>
+
+
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        function checkInput() {
+
+
+            var idNumber = document.getElementById('idnumber').value;
+            if (idNumber === '') {
+                alert('Please enter ID NUMBER');
+                return false;
+            }
+
+
+            var firstName = document.getElementById('first name').value;
+            if (firstName === '') {
+                alert('Please enter FIRST NAME');
+                return false;
+            }
+
+
+            var lastName = document.getElementById('last name').value;
+            if (lastName === '') {
+                alert('Please enter LAST NAME');
+                return false;
+            }
+            var age = document.getElementById('age').value;
+            if (age === '') {
+                alert('Please enter the AGE');
+                return false;
+            }
+            var email = document.getElementById('email').value;
+            if (email === '') {
+                alert('Please enter the EMAIL');
+                return false;
+            }
+            var contact = document.getElementById('contact').value;
+            if (contact === '') {
+                alert('Please enter the CONTACT');
+                return false;
+            }
+
+
+
+            var profile = document.getElementById('profile').value;
+            if (profile === '') {
+                alert('Please enter the PROFILE');
+                return false;
+            }
+
+
+
+            var department = document.getElementById('department').value;
+            if (department === '') {
+                alert('Please enter the DEPARTMENT');
+                return false;
+            }
+            var desgination = document.getElementById('desgination').value;
+            if (desgination === '') {
+                alert('Please enter the DESGINATION');
+                return false;
+            }
+
+
+
+            var username = document.getElementById('username').value;
+            if (username === '') {
+                alert('Please enter the USER NAME');
+                return false;
+            }
+            var password = document.getElementById('password').value;
+            if (password === '') {
+                alert('Please enter the PASSWORD');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body></html>
