@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fruits Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .tab {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color:salmon;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background-color: #ccc;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 0 0 5px 5px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs-container">
+        <div class="tab" onclick="openTab('apple')">Apple</div>
+        <div class="tab" onclick="openTab('banana')">Banana</div>
+        <div class="tab" onclick="openTab('orange')">Orange</div>
+    </div>
+
+    <div class="tab-content" id="apple-content">
+        <h2>Apple</h2>
+        <p>Apples are juicy and sweet fruits that come in various colors, such as red, green, and yellow.</p>
+        <p>They are a rich source of dietary fiber, vitamin C, and various antioxidants.</p>
+    </div>
+
+    <div class="tab-content" id="banana-content">
+        <h2>Banana</h2>
+        <p>Bananas are elongated, curved fruits with a yellow skin when ripe.</p>
+        <p>They are an excellent source of potassium, vitamin B6, and dietary fiber.</p>
+    </div>
+
+    <div class="tab-content" id="orange-content">
+        <h2>Orange</h2>
+        <p>Oranges are round citrus fruits with a bright orange color.</p>
+        <p>They are rich in vitamin C, a powerful antioxidant that boosts the immune system.</p>
+    </div>
+
+    <script>
+        function openTab(fruitName) {
+            var i;
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = 'none';
+            }
+
+            var tabs = document.getElementsByClassName('tab');
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            document.getElementById(fruitName + '-content').style.display = 'block';
+            document.querySelector('[onclick="openTab(\'' + fruitName + '\')"]').classList.add('active');
+        }
+
+        // Show the first tab by default
+        openTab('apple');
+    </script>
+</body>
+</html>
