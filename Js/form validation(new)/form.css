@@ -1,0 +1,70 @@
+Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+*{
+    margin:0;
+    padding:0;   
+}
+.container{
+
+    background-color:white;
+    border:solid 2px black;
+    display:grid;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    height:630px;
+    max-width:600px;
+    margin-bottom: 20px;
+}
+.use{
+    display:table-row;
+}
+
+.use label{
+    display:table-cell;
+    padding:10px;
+    
+     
+}
+.use input{
+    
+    padding:4px;
+    border:1px solid;
+    border-radius:4px;
+    margin-left:50px;
+}
+
+.use textarea{
+    width:100%;
+    height: 60px;
+    border:1px solid;
+    border-radius:4px;
+   
+ }
+
+ 
+.use select{
+    border:1px solid;
+    border-radius:4px;
+   
+}
+.use input[type=radio] {
+margin-right:7px;
+}
+
+.button input{ 
+    font-family: fantasy;
+    color:black;
+    font-size: 16px;
+    font-weight: 400;
+    
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 40px;
+}
+
+
+
+
+ 

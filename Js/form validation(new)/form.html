@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<head>
+<title>LOGIN FORM</title>
+<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+        <script>
+            function validateForm() 
+            {
+                  let fname = document.forms["myForm"]["fname"].value;
+                  if (fname == "") {
+                     alert("please enter first name");
+                document.myForm.fname.focus();
+                      return false;
+                  }
+                  if(!isNaN(fname)){
+                      alert("First name must be Alphabets only");
+                document.myForm.fname.focus();
+                      return false;
+                  }
+                  if(fname.length>20){
+                      alert(" First name must be within 20 characters");
+                document.myForm.fname.focus();
+                      return false;
+                      }
+                
+                  let lname = document.myForm.lname.value;
+                      if (lname == ""){
+                      alert("please enter last name");
+                document.myForm.lname.focus();
+                      return false;
+                  }
+                 if(!isNaN(lname)){
+                     alert("Last Name Must Be Alphabets only");
+                document.myForm.lname.focus();
+                      return false;
+                  }
+                 if(lname.length>20){
+                      alert("Last name must be within 20 characters");
+                document.myForm.lname.focus();
+                      return false;
+                      }
+                                
+                  let phone=document.forms["myForm"]["phone"].value;
+                  if(phone==""){                                                 
+                      alert("enter a mobile number");
+                      document.myForm.phone.focus();
+                      return false;
+                  }
+                  if(isNaN(phone)){                                               
+                    alert("Mobile Number Must Be In Numbers Only");
+                    document.myForm.phone.focus();
+                    return false;
+                  }
+                  
+                  let date = document.forms["myForm"]["date"].value;
+                  if(date==""){
+                    alert("Please Enter Your D.O.B");
+                    document.myForm.date.focus();
+                    return false;
+                }
+
+                let gender = document.forms["myForm"]["gender"]
+                 if(gender[0].checked==false&&gender[1].checked==false)
+                 {
+                  alert("please enter your gender");
+                return false;
+                 }
+                
+                 let select = document.forms["myForm"]["course"]
+                 var course1=document.getElementById("course").value;
+                 if(course1=="0"){
+                 alert("Please select any one of the course");
+                 return false;
+                 }
+                
+                 var address=document.forms["myForm"]["address"].value;
+                 if (address ==""){
+                      alert("please enter address");
+                document.myForm.address.focus();
+                      return false;
+                     }  
+                
+                 let cb=document.forms["myForm"]["mycheck"]
+                 var checkbox=document.getElementById("mycheck");
+
+                 if(mycheck.checked==true){
+                 var address=document.getElementById("address").value;    
+                 document.getElementById("address1").value=address;
+                 return false;
+                     }
+                    
+                    }
+                
+
+                 
+        </script>
+        </head>
+   <body>
+    
+<center>
+<h1>FILL THE FORM AND SUBMIT</h1></center>
+       <div class="container">
+     <form name="myForm" onsubmit="return validateForm()">
+
+    <div class="use">
+        <label for="fname">FIRST NAME</label>
+        <input id="fname"  type="text">
+    </div>
+    <div class="use">
+        <label for="lname">LAST NAME</label>
+        <input id="lname" type="text">
+    </div>
+    <div class="use">
+        <label for="phone">PHONE NUMBER</label>
+        <input id="phone" type="tel" maxlength="10">
+    </div>
+    
+    
+    <div class="use"> 
+        <label for="date of birth">DATE OF BIRTH</label>
+        <input  id="date" type="date">
+       </div><br>
+
+    <div class="use"> 
+        <label for="GENDER">GENDER</label>
+       <input style="margin-left:100px" type="radio" name="gender" id="gender" >male
+       <input type="radio" name="gender" id="gender" >female
+       <input type="radio" name="gender" id="gender" >others
+      </div><br>
+
+    <div class="use"> 
+        <label for="qualification">QUALIFICATION</label>
+        <select id="course"   name="course" size="1" >
+            
+        <option value="0">--select category--</option>
+        <option value="1">B.SC CS</option>
+        <option value="2">M.SC IT</option>
+        <option value="3">B.SC IT</option>
+        <option value="4">MCA</option>
+        <option value="5">MBA</option>  
+        </select><br>
+    </div>
+    <div class="use">
+        <label for="address"> PERMANENT ADDRESS</label>
+        <textarea id="address" name="address"></textarea>
+    </div><br>
+    <center>
+        <p>* If Your Permanent address and present address are same then click the checkbox<br> 
+            otherwise enter your present address</p>
+        <div class="use"> 
+            
+            <input type="checkbox" style="margin-left:110px" id="mycheck" name="checkbox" onclick="validateForm()">
+            <label for="checkbox">SAME AS PERMANENT ADDRESS</label>
+           </div><br>
+        </center>
+    <div class="use">
+       <label for="address1"> PRESENT ADDRESS</label>
+      <textarea style="margin-left:25px" id="address1" name="address1"></textarea>
+    </div>
+    <center>
+    <div class="button">
+<input type="submit" class="btn btn-primary" value="submit">
+<input type="reset" class="btn btn-primary" value="reset">
+</div> </center>
+           </form>
+       </div>
+    </body>
+</html>
