@@ -1,0 +1,61 @@
+body {
+	background: beige;
+}
+.wrapper {
+	min-height: 100vh;
+	box-sizing: border-box;
+	padding-top: 5%;
+	font-family: 'Montserrat', sans-serif;
+	line-height: 1.5;
+	max-width: 960px;
+	margin: 0 auto;
+}
+.box {
+                                               
+	display: flex;
+	flex-wrap: wrap;
+}
+.box label {
+	background: #ec6633;
+	font-weight: 700;
+	text-align: center;
+	
+	order: 1;
+	display: block;
+	padding: 16px 86px;
+	margin-right: 4px;
+	cursor: pointer;
+}
+.box .content {
+	display: none;
+	padding: 30px;
+	background: #fff;
+	order:3;
+	width: 100%;
+}
+.box input[type="radio"] {
+	display: none;
+}
+.box input[type="radio"]:checked+label {
+	background: #fff;
+}
+.box input[type="radio"]:checked+label+.content {
+	display: block;
+}
+@media (max-width: 600px) {
+	.box .content, .box label {
+		order: initial;
+	}
+	.box label {
+		width: 100%;
+		margin-right: 0;
+		margin-top: 4px;
+	}
+}
+
+
+
+
+
+
+
