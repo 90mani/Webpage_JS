@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login Page with Sidebar</title>
     <style>
@@ -22,12 +23,12 @@
             margin-top: 0;
         }
 
-        .sidebar ul li{
-           color: #fff;
+        .sidebar ul li {
+            color: #fff;
             list-style: none;
             padding: 20px 20px;
             border-bottom: 2px solid:white;
-        
+
         }
 
         .main-content {
@@ -79,18 +80,29 @@
             background-color: #555;
         }
     </style>
+    <script>
+        function openTab(tabName) {
+            var i;
+            var x = document.getElementsByClassName("tab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+    </script>
 </head>
+
 <body>
     <div class="sidebar">
         <h2>Sidebar</h2>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a onclick="openTab('home')">Home</a></li>
+            <li><a onclick="openTab('about')">About</a></li>
+            <li><a onclick="openTab('services')">Services</a></li>
+            <li><a onclick="openTab('contact')">Contact</a></li>
         </ul>
     </div>
-    <div class="main-content">
+    <div class="tab" id="home">
         <div class="login-container">
             <h2>Login</h2>
             <form action="#" method="post">
@@ -107,6 +119,16 @@
                 </div>
             </form>
         </div>
+        <div class="tab login-container" id="about" style="display:none">
+            <h2> about</h1>
+        </div>
+        <div class="tab" id="services" style="display:none">
+            <h1>Services</h1>
+        </div>
+        <div class="tab" id="contact" style="display:none">
+            <h1>Contact</h1>
+        </div>
     </div>
 </body>
+
 </html>
