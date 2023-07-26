@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <title>MODAL USING HTML CSS JS</title>
+    <link rel="stylesheet" href="modal.css">
+</head>
+
+<body>
+    <script>
+        function togglepopup(){
+            document.getElementById("popup1").classList.toggle("active");
+        }
+    </script>
+    <div class="title">
+    <h1>MODAL</h1></div><br>
+    <div class="popup" id="popup1">
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="close-btn" onclick="togglepopup()">&times;</div>
+            <h1>COMPLETED!</h1><br>
+            <p>You have successfully completed <br> the modal popup box</p>
+        </div>
+        </div>
+    </div>
+    <button onclick="togglepopup()">show </button>
+</body>
