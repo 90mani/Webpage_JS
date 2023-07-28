@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MODAL</title>
+<link rel="stylesheet" href="modal2.css">
+
+</head>
+<body>
+    <button id="modal-open">CONTACT</button>
+    <div id="contact-modal" class="modal">
+        <div id="modal-content">
+            <div id="modal-header">
+                <span class="close-modal">&times;</span>
+                <h2>VJ GROUP OF SCHOOL</h2>
+            </div>
+            <div id="modal-body">
+                <h3>Send Us A Message</h3>
+                <form name="myForm" onsubmit="return validateForm()">
+                    <div class="form-group">
+                        <label for="Firstname">Firstname</label>
+                        <input type="text" placeholder="Enter your Firstname">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Laststname</label>
+                        <input type="text" placeholder="Enter your Lastname">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input type="email" placeholder="Enter your Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                    <textarea placeholder="Enter message"></textarea>
+                    </div>
+                    
+                    <input type="submit" value="Send Mesage">
+                   
+                
+                </form>
+            </div>
+            <div id="modal-footer">
+                <h3>VJ GROUP OF SCHOOL &copy;2023</h3>
+            </div>
+        </div>
+    </div>
+    <script src="modal2.js"></script>
+</body>
+
+</html>
