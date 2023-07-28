@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<title>MODAL WITH W3CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+<div class="w3-container">
+  <h2>Modal</h2>
+  <p>Modal with header and footer</p>
+  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green">show</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-left">
+     
+      <header class="w3-container w3-blue"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>MESSAGE</h2>
+      </header>
+      <div class="w3-container">
+        <p>Modal is a dialog box window</p>
+          <p>The modal is easy for u?</p>
+        
+      </div>
+      <footer class="w3-container w3-blue">
+       <input type="submit" class="w3-button w3-green" value="yes">
+       <input type="submit"  class="w3-button w3-red" value="no">
+      </footer>
+    </div>
+    
+  </div>
+</div>
+            
+</body>
+</html>
