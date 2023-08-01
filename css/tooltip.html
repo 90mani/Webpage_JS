@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-input {
+  margin: 10px 0;
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-btn {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+</style>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <div class="tooltip">
+      <input type="text" placeholder="Username" class="login-input" data-tooltip="Enter your username">
+      <span class="tooltiptext">Enter your username</span>
+    </div><br>
+    <div class="tooltip">
+      <input type="password" placeholder="Password" class="login-input" data-tooltip="Enter your password">
+      <span class="tooltiptext">Enter your password</span>
+    </div><br><br>
+    <button class="login-btn">Login</button>
+  </div>
+</body>
+</html>
