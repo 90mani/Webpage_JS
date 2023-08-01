@@ -1,0 +1,46 @@
+body {
+	background: beige;
+}
+.wrapper {
+	min-height: 100vh;
+	box-sizing: border-box;
+	padding-top: 5%;
+	font-family: 'Montserrat', sans-serif;
+	line-height: 1.5;
+	max-width: 960px;
+	margin: 0 auto;
+}
+.box {  
+    width:100%;                                         
+	display: grid;
+	grid-template-columns: repeat(auto auto auto);
+    grid-gap: 20px 30px;
+    margin-bottom: 20px;
+}
+.box label {
+	background: #ec6633;
+	font-weight: 700;
+	text-align: center;
+	order: initial;
+	display: block;
+	padding: 16px 86px;
+	margin-right: 4px;
+	cursor: pointer;
+}
+.box .content {
+	display: none;
+	padding: 30px;
+	background: #fff;
+	order:initial;
+
+	
+}
+.box input[type="radio"] {
+	display: none;
+}
+.box input[type="radio"]:checked+label {
+	background: #fff;
+}
+.box input[type="radio"]:checked+label+.content {
+	display: block;
+}
