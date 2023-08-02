@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJAX Example</title>
+</head>
+<body>
+
+<h2>Fetch Data Using AJAX</h2>
+<p id="demo"></p>
+
+<script>
+const xhttp = new XMLHttpRequest();
+
+
+xhttp.open("GET", "http://demo9504879.mockable.io/BANK%20DETAILS", true);
+
+
+xhttp.onreadystatechange = function() {
+ 
+    
+    const data = JSON.parse(this.responseText);
+    
+    
+    document.getElementById("demo").innerHTML = "Received Data: " + JSON.stringify(data);
+  } else {
+    
+  }
+};
+
+
+xhttp.send();
+</script>
+
+</body>
+</html>
