@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+ <head>
+     <link rel="stylesheet" href="project.css">
+     </head>
+    
+        <script>
+            var myObj = {};
+        
+              const xhttp = new XMLHttpRequest();
+              xhttp.onload = function() {
+                myObj = JSON.parse(this.responseText);
+            
+                document.getElementById('fname').value = myObj.fname;
+                document.getElementById('phone').value = myObj.phone;
+                document.getElementById("email").value = myObj.email;
+                document.getElementById("username").value = myObj.username;
+                document.getElementById("password").value = myObj.password;
+                document.getElementById('selection').value = myObj.selection;
+            
+              }
+              xhttp.open("GET", "http://demo2006041.mockable.io/html/text");
+              xhttp.send();
+            
+            </script>
+            
+ <title>  ADD USER PAGE USING JSON AND AJAX</title>
+ <body>
+     
+     <div class="container">
+     <header> Add  User Page </header>
+     <form >
+   
+    <div class="content">
+        <div class="row">
+    <div class="fontuser">
+        <label><b>FULL NAME</b></label><br>
+        <input type="text" id="fname" placeholder="full name">
+        <i class="fa fa-user"></i></div></div><br><br>
+
+        <div class="row">   
+       <div class="field">     
+       <div class="input-field"> 
+         <label><b>CONTACT</b></label>
+         <input type="tel" id="phone" placeholder="contact" maxlength="10">
+         <i class="fa fa-phone"></i></div>
+        
+        <div class="input-field"> 
+            <label><b>EMAIL</b></label>
+            <input type="email" id="email" placeholder="email">
+            <i class="fa fa-envelope"></i></div></div></div><br>
+
+        <div class="row">   
+        <div class="use">
+        <div class="input-use">
+            <label><b>USERNAME</b></label>
+            <input type="text" id="username" placeholder="username">
+             <i class="fa fa-user"></i></div>
+          
+        
+        <div class="input-use">
+            <label><b>PASSWORD</b></label>
+            <input type="password" id="password" placeholder="password">
+            <i class="fa fa-key"></i></div>
+          
+      
+        <div class="input-use">
+            <label><b>USER CATEGORY</b></label>
+        <select id="selection" name="selection" size="1">
+        <option value="0">--select--</option>
+        <option value="1">ADMIN</option>
+        <option value="2">STAFF</option>
+        
+        </select></div></div></div>
+        
+        <div class="button">
+        <input type="submit" class="submit-btn" value="submit">
+        </div>
+        </div>
+        </form>
+        </div>
+        
+      
+     </body>
+</html>
+   
+      
