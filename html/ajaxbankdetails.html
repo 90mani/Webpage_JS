@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Object Method with Ajax XMLHttpRequest</title>
+</head>
+<body>
+
+<h2>JSON Object Method with Ajax XMLHttpRequest</h2>
+<p id="demo"></p>
+
+<script>function getFormattedAccountInfo() {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', 'http://demo9504879.mockable.io/BANK%20DETAILS', true);
+    
+
+    xhr.onreadystatechange = function () {
+        {
+            const bankDetailsObject = JSON.parse(xhr.responseText);
+            const formattedInfo = "Account Holder: " + bankDetailsObject.accountHolder + "<br>" +
+                                 "Account Number: " + bankDetailsObject.accountNumber + "<br>" +
+                                 "Bank Name: " + bankDetailsObject.bankName + "<br>" +
+                                 "Balance: " + bankDetailsObject.balance;
+
+            document.getElementById("demo").innerHTML = formattedInfo;
+        }
+    };
+
+    xhr.send();
+}
+
+
+getFormattedAccountInfo();
+</script>
+</body>
+</html>
