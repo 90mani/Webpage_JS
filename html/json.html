@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2> JSON Object Method </h2>
+<p id="demo"></p>
+
+<script>
+
+const bankDetails = '{"accountNumber": "1234567890", "accountHolder": "John Doe", "balance": 5000, "bankName": "SBI Bank"}';
+
+
+const bankDetailsObject = JSON.parse(bankDetails);
+
+
+bankDetailsObject.getFormattedAccountInfo = function() {
+  return "Account Holder: " + this.accountHolder + "<br>" +
+         "Account Number: " + this.accountNumber + "<br>" +
+         "Bank Name: " + this.bankName + "<br>" +
+         "Balance: " + this.balance;
+};
+
+
+document.getElementById("demo").innerHTML = bankDetailsObject.getFormattedAccountInfo();
+</script>
+
+</body>
+</html>
