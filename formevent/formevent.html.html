@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <title>FORMEVENT</title>
+</head>
+<body></body>
+    <h1>onfocus , oninput , onselect , onsubmit , oninvalid</h1>
+    <form name="myForm" onsubmit="myFunction()">
+    <label>FIRSTNAME:</label>
+    <input type="name" onfocus="onfocusevent()" oninput="oninputevent()"  onselect="onselectevent()" id="text"><br><br>
+    <label>LASTNAME:</label>
+    <input type="name"  id="lname" oninvalid="oninvalidevent()" required><br><br>
+    <input type="submit" value="submit">
+    <p id="use"></p>
+</form>
+    <script>
+        function onfocusevent()
+        {
+            document.getElementById("text").style.color="blue";
+        }
+        function oninputevent()
+        {
+          var x =document.getElementById("text").value;
+           document.getElementById("use").innerHTML="YOUR FIRSTNAME IS: " + x;
+        }
+        function onselectevent()
+        {
+           alert("you selected your fname");
+        }
+    function myFunction()
+       {
+        alert("your form was submitted");
+       }
+       function oninvalidevent()
+      {  
+        alert("PLEASE ENTER YOUR LASTNAME.IT WILL BE CONSIDERED AS INVALID FORM");
+      }
+    </script>
+</body>
