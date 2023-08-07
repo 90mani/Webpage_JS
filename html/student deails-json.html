@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<title>Json string</title>
+<h2>Student Deatils</h2>
+<p>Student personal details</p>
+<p id="demo"></p>
+
+<script>
+const text = '[ "Studentid number:012564587","Name:Ravi", "Age:22","E-mail:ravi.in@gmail.com","Course:Bca", "City:Namakkal","state:tamil nadu"]';
+
+const myArr = JSON.parse(text);
+document.getElementById("demo").innerHTML = myArr[1];
+</script>
+</body>
+</html>
