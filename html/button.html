@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        button
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h3>Create multiple buttons dynamically</h3>
+   <h3> YOU CAN DYNAMICALLY CREATE BUTTON WITHIN ONE CLICK</h3><br><br>
+   <button onclick="myFunction()" class="btn btn-primary" id="mybtn">TOUCH ME!</button>
+<script>
+    function myFunction()
+    {
+        
+        var x=document.createElement("input");
+        x.setAttribute("type", "button");
+        x.setAttribute("value","HTML");
+        document.body.appendChild(x); 
+          
+    }    
+   </script>
+</body>
