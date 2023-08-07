@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>click&dbclick</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <h2>MOUSE ONCLICK AND ONDBLCLICK EVENT</h2>
+        <button onclick="onclickevent()" class="btn btn-primary">TOUCH ME ONCE</button><br><br>
+        <button ondblclick="ondblclickevent()" class="btn btn-primary">CLICK ME TWICE</button><br><br>
+        <p id="use"></p>
+        <script>
+            function onclickevent()
+            {
+                document.getElementById("use").innerHTML="Welcome to Html mouse event";
+            }
+            function ondblclickevent()
+            {
+                document.getElementById("use").innerHTML="Mouse event is easy to learn";
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <title>mouse over and out</title>
+</head>
+<body>
+    <script>
+        function overImg()
+        {
+            this.setAttribute("src","D:/mouse event/flower1.jpg");
+        }
+        function outImg()
+        {
+            this.setAttribute("src","D:/mouse event/Flower2.jpg");
+        }
+    </script>
+<center>
+    <h1>How to change image on mouseover</h1>
+    <h2>Using HTML & Javascript</h2>
+    <br>
+    
+        <img src="D:/mouse event/flower1.jpg" height="100px" width="150px" onmouseover="overImg.call(this)" onmouseout="outImg.call(this)"/>
+    </button>
+</center>
+</body>
