@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>onchange Event Example</title>
+</head>
+
+<body>
+
+    <label for="fruitSelect">Select a fruit:</label>
+    <select id="fruitSelect" onchange="displayMessage()">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="orange">Orange</option>
+        <option value="grape">Grape</option>
+    </select>
+
+    <p id="selectedFruit">Selected fruit will be displayed here.</p>
+
+    <script>
+        function displayMessage() {
+
+            var selectElement = document.getElementById("fruitSelect");
+
+            var selectedValue = selectElement.value;
+
+
+            var selectedFruit = document.getElementById("selectedFruit");
+
+
+            selectedFruit.textContent = "You selected: " + selectedValue;
+        }
+    </script>
+
+</body></html>

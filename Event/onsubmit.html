@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Submission Example</title>
+</head>
+<body>
+
+<h2>Submit a Form</h2>
+
+<form id="myForm" onsubmit="return validateForm()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" ><br><br>
+  
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email"><br><br>
+  
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+function validateForm() {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  
+  if (name === "" || email === "") {
+    alert("Both fields must be filled out");
+    return false; 
+  }
+  
+ 
+  
+  return true; 
+}
+</script>
+
+</body>
+</html>

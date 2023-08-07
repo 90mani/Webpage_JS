@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Example</title>
+</head>
+
+<body>
+    <label>
+        <input type="checkbox" id="my-checkbox"> Check me
+    </label>
+
+    <p id="status">Checkbox is unchecked</p>
+
+    <script>
+        const checkbox = document.getElementById('my-checkbox');
+        const status = document.getElementById('status');
+
+
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                status.textContent = 'Checkbox is checked';
+            } else {
+                status.textContent = 'Checkbox is unchecked';
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .clickable {
+    padding: 10px;
+    background-color: lightgray;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<p class="clickable" onmouseup="changeText(this)">Click and release me</p>
+
+<script>
+function changeText(element) {
+  element.innerHTML = "Mouse button released!";
+}
+</script>
+
+</body>
+</html>
