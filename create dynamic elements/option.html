@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Get text of option tag by value using pure JavaScript</title>
+</head>
+
+<body style="text-align:center;">
+
+	<h1 style="color:rgb(48, 5, 150);">
+		Simple Webpage Using Option
+	</h1>
+
+	<p>
+		Click on the button to get the colors
+	</p>
+
+	<select id="color_list">
+		<option value="Red">Red</option>
+		<option value="Green">Green</option>
+		<option value="Yellow">Yellow</option>
+		<option value="Orange">Orange</option>
+		<option value="Blue">Blue</option>
+	</select>
+	<br><br>
+
+	<button id="color_Button" onclick="getText()">
+		Get Text
+	</button>
+
+	<script>
+		function getText() {
+			const colorList = document.getElementById('color_list');
+			const selectedOption = colorList.options[colorList.selectedIndex];
+			
+			alert("color - " + selectedOption.value );
+		}
+	</script>
+</body>
+
+</html>
