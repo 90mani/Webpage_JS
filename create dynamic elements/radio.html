@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Radio Button Example</title>
+</head>
+<body>
+  <label>
+    <input type="radio" name="color" value="red" id="red-radio"> Red
+  </label>
+  <label>
+    <input type="radio" name="color" value="blue" id="blue-radio"> Blue
+  </label>
+  <label>
+    <input type="radio" name="color" value="green" id="green-radio"> Green
+  </label>
+  
+  <p id="status">No color selected</p>
+
+  <script>
+    const redRadio = document.getElementById('red-radio');
+    const blueRadio = document.getElementById('blue-radio');
+    const greenRadio = document.getElementById('green-radio');
+    const status = document.getElementById('status');
+
+   
+    redRadio.addEventListener('change', () => {
+      if (redRadio.checked) {
+        status.textContent = 'Selected color: Red';
+      }
+    });
+
+    blueRadio.addEventListener('change', () => {
+      if (blueRadio.checked) {
+        status.textContent = 'Selected color: Blue';
+      }
+    });
+
+    greenRadio.addEventListener('change', () => {
+      if (greenRadio.checked) {
+        status.textContent = 'Selected color: Green';
+      }
+    });
+  </script>
+</body>
+</html>
