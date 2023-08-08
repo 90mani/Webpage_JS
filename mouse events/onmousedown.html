@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mouse Down Event onmousedown Example</title>
+</head>
+<body>
+
+<button id="myButton" onmousedown="handleMouseDown()">Click and hold me!</button>
+
+<p id="output">Mouse button not pressed.</p>
+
+<script>
+function handleMouseDown() {
+    document.getElementById("output").textContent = "Mouse button pressed!";
+}
+</script>
+
+</body>
+</html>

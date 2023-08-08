@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ondblclick Example</title>
+</head>
+
+<body>
+
+    <h2>Double-click the button:</h2>
+    <button id="myButton">Double-click Me</button>
+
+    <script>
+        document.getElementById("myButton").ondblclick = function() {
+
+            this.textContent = "Double-clicked!";
+        };
+    </script>
+
+</body></html>
