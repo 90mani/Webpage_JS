@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UL</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+<body>
+<center><h1>UL OBJECT</h1>
+<h3>Create ul and li element dynamically</h3>
+
+<button onclick="myfun()" class="btn btn-info">CLICK</button>
+</center>
+<script>
+function myfun() {
+  var x = document.createElement("UL");
+  x.setAttribute("id", "myUL");
+  document.body.appendChild(x);
+
+  var y = document.createElement("LI");
+  var t = document.createTextNode("BOOTSTRAP");
+  y.appendChild(t);
+  document.getElementById("myUL").appendChild(y);
+}
+</script>
+
+</body>
+</html>

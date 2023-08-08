@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UL</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+<body>
+    <center><h1>OL OBJECT</h1>
+<h1>Create ol and li element dynamically</h1>
+
+<button onclick="myFun()" class="btn btn-primary">click to create</button>
+</center>
+<script>
+function myFun() {
+  var x = document.createElement("OL");
+  x.setAttribute("id", "myOl");
+  document.body.appendChild(x);
+
+  var y = document.createElement("LI");
+  var t = document.createTextNode("courses");
+  y.appendChild(t);
+  document.getElementById("myOl").appendChild(y);
+  document.getElementById("myOl").start="10"; 
+}
+</script>
+
+</body>
+</html>
