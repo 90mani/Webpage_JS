@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sortable Table Example</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      cursor: pointer; 
+    }
+  </style>
+</head>
+<body>
+  <h1>Employee Information</h1>
+  <table id="employeeTable">
+    <tr>
+      <th onclick="sortTable(0)">Name</th>
+      <th onclick="sortTable(1)">Position</th>
+      <th onclick="sortTable(2)">Salary</th>
+    </tr>
+    <tr>
+      <td>John Doe</td>
+      <td>Software Engineer</td>
+      <td>80,000</td>
+    </tr>
+    <tr>
+      <td>Jane Smith</td>
+      <td>Graphic Designer</td>
+      <td>65,000</td>
+    </tr>
+    <tr>
+      <td>Michael Johnson</td>
+      <td>Project Manager</td>
+      <td>90,000</td>
+    </tr>
+  </table>
+
+  <script>
+    function sortTable(columnIndex) {
+      const table = document.getElementById('employeeTable');
+      const rows = Array.from(table.rows).slice(1); 
+
+      rows.sort((a, b) => {
+        const cellA = a.cells[columnIndex].textContent;
+        const cellB = b.cells[columnIndex].textContent;
+
+        return cellA.localeCompare(cellB);
+      });
+
+      while (table.rows.length > 1) {
+        table.deleteRow(1);
+      }
+
+    
+   
+  </script>
+</body>
+</html>

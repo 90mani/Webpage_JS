@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Example</title>
+</head>
+
+<body>
+
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <button type="button" id="submitButton">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('myForm');
+        const submitButton = document.getElementById('submitButton');
+
+       
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+
+            if (name && email) {
+                alert(`Name: ${name}\nEmail: ${email}`);
+            } else {
+                alert('Please fill out all fields.');
+            }
+        });
+    </script>
+
+</body></html>

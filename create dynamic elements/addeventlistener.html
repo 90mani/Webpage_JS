@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  
+  var myList = document.getElementById("myList");
+
+ 
+  var listItems = myList.getElementsByTagName("li");
+
+  
+  for (var i = 0; i < listItems.length; i++) {
+    listItems[i].addEventListener("click", function() {
+      alert("You clicked: " + this.textContent);
+    });
+  }
+});
+</script>
+</head>
+<body>
+
+<h1>The ul element</h1>
+
+<ul id="myList">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ordered List Example</title>
+</head>
+
+<body>
+
+    <h2>Favorite Fruits</h2>
+
+    <ol id="fruitsList">
+        <li>Apples</li>
+        <li>Oranges</li>
+        <li>Bananas</li>
+        <li>Grapes</li>
+    </ol>
+
+    <input type="text" id="newFruit" placeholder="Enter a new fruit">
+    <button id="addFruitButton">Add Fruit</button>
+
+    <script>
+        const fruitsList = document.getElementById('fruitsList');
+        const newFruitInput = document.getElementById('newFruit');
+        const addFruitButton = document.getElementById('addFruitButton');
+
+        addFruitButton('click', () => {
+            const newFruitName = newFruitInput.value.trim();
+            if (newFruitName !== '') {
+                addFruitToList(newFruitName);
+                newFruitInput.value = '';
+            }
+        });
+
+        function addFruitToList(fruitName) {
+            const newFruitItem = document.createElement('li');
+            newFruitItem.textContent = fruitName;
+
+        }
+    </script>
+
+</body></html>

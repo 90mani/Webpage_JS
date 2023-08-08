@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dropdown Example</title>
+</head>
+<body>
+  <h1>Choose a Fruit</h1>
+  <select id="fruitSelect" onchange="handleFruitSelection()">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="orange">Orange</option>
+    <option value="grape">Grape</option>
+    <option value="watermelon">Watermelon</option>
+  </select>
+  <p id="selectedFruit">Selected fruit will appear here.</p>
+
+  <script>
+    function handleFruitSelection() {
+      const selectElement = document.getElementById('fruitSelect');
+      const selectedFruit = selectElement.value;
+
+      const outputElement = document.getElementById('selectedFruit');
+      outputElement.textContent = `You selected: ${selectedFruit}`;
+    }
+  </script>
+</body>
+</html>
