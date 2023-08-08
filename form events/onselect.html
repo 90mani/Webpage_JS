@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>onselect Event Example</title>
+  <script>
+    function handleSelect() {
+      var selectedText = window.getSelection().toString();
+      alert('Selected text: ' + selectedText);
+    }
+  </script>
+</head>
+<body>
+  <input type="text" onselect="handleSelect()" placeholder="Select text here">
+</body>
+</html>
