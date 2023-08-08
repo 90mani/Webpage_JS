@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>
+      display the selected value  
+    </title>
+    
+</head>
+<body>
+    <h2>DISPLAY THE CHECKBOX VALUES</h2>
+   
+   SKILLS:  <input type="checkbox" onclick="myFunction()" id="mycheck" value="HTML">
+   <input type="checkbox" onclick="myFunction1()" id="mycheck1" value="CSS">
+   <input type="checkbox" onclick="myFunction2()" id="mycheck2" value="JS">
+
+
+<p id="use"></p>
+<script>
+function myFunction()
+{
+ 
+var x=document.getElementById("mycheck").value;
+document.getElementById("use").innerHTML=x;
+}
+function myFunction1()
+{
+var x= document.getElementById("mycheck1").value;
+document.getElementById("use").innerHTML=x;
+}
+function myFunction2()
+{
+var x= document.getElementById("mycheck2").value;
+document.getElementById("use").innerHTML=x;
+}
+   </script>
+</body>

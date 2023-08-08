@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>CREATE AN OPTION DYNAMICALLY</h2>
+<select id="mySelect">
+</select>
+
+<p>Click the button to create an OPTION element.</p>
+
+<button onclick="myFunction()">CREATE</button>
+<script>
+function myFunction() {
+  var x = document.createElement("OPTION");
+  x.setAttribute("value", "HTML");
+  var t = document.createTextNode("HTML");
+  x.appendChild(t);
+  document.getElementById("mySelect").appendChild(x);
+
+  var y = document.createElement("OPTION");
+  y.setAttribute("value", "CSS");
+  var t = document.createTextNode("CSS");
+  y.appendChild(t);
+  document.getElementById("mySelect").appendChild(y);
+}
+</script>
+
+</body>
+</html>

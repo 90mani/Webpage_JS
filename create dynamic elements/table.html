@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <title>table</title>
+</head>
+<body>
+    <h2>CREATE DYNAMIC TABLE</h2>
+    ENTER THE NUMBER OF ROWS:<br><br>
+    <input type="text" id="rows">
+    <br><br>
+    ENTER THE NUMBER OF COLUMNS:<br><br>
+    <input type="text" id="cols">
+    <br><br>
+    <button id="make">CREATE TABLE</button>
+    <br><br>
+    <table border = "1" id="tab"></table>
+    <script>
+        function makeTable()
+        {
+            var table = document.getElementById('tab');
+            var row = document.getElementById('rows').value;
+            var col = document.getElementById('cols').value;
+
+            for(var rowIndex=0; rowIndex<row; rowIndex++)
+            {
+            var tr = document.createElement('tr');
+
+            for(var colIndex=0; colIndex<col; colIndex++)
+            {
+            var td = document.createElement('td');
+            var text = document.createTextNode("name "+colIndex);
+
+            td.appendChild(text);
+            tr.appendChild(td);
+
+        }
+        table.appendChild(tr);
+    }
+}
+document.getElementById('make').addEventListener("click",makeTable);
+    </script>
+</body>

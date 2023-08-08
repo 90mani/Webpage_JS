@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        textbox
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+</head>
+<body>
+    <h3>Create multiple Textboxes dynamically</h3>
+   
+   <button onclick="myFunction()" class="btn btn-info" id="mybtn">ADD TEXT FIELDS</button>
+<label>FIELDS:</label>
+  
+<script>
+    function myFunction()
+    {
+        
+        var x=document.createElement("input");
+        x.setAttribute("type", "text");
+        x.setAttribute("value","enter name");
+        document.body.appendChild(x);
+        var y=document.createElement("input");
+        y.setAttribute("type", "text");
+        y.setAttribute("value","enter d.o.b");
+        document.body.appendChild(y); 
+        var z=document.createElement("input");
+        z.setAttribute("type", "text");
+        z.setAttribute("value","enter email");
+        document.body.appendChild(z); 
+      
+    } 
+    
+   </script>
+</body>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>ADD CHECKBOXES</title>
+</head>
+<body>
+    <h2>CREATE CHECKBOXES DYNAMICALLY</h2>
+    <button onclick="myfun()">create</button><br>
+    <p id="demo"></p>
+    <script>
+function myfun()
+{
+    
+    var x=document.createElement("input");
+    x.setAttribute("type","checkbox");
+    document.body.appendChild(x);
+    
+}
+</script>
+</body> 

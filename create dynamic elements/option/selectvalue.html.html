@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        select value
+    </title>
+    
+<body>
+<center>
+<h2>Select any one coures:</h2><br><br>
+<select id="mySelect" style="font-weight: 600;">
+  <option value="html">html</option>
+  <option value="css">css</option>
+  <option value="js">js</option>
+  <option value="reactjs">reactjs</option>
+</select>
+<button type="button" onclick="myFun()" style="font-weight: 600;">SELECT</button>
+
+<script>
+function myFun() {
+  var x = document.getElementById("mySelect").selectedIndex;
+  alert(document.getElementsByTagName("option")[x].value);
+}
+</script>
+</center>
+</body>
+</html>

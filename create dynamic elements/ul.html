@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UNORDERED LIST</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+<body>
+<center><h1>UNORDERED LIST OBJECT</h1>
+<h3>Create ul element dynamically</h3>
+
+<button onclick="myfun()" class="btn btn-info">CLICK</button>
+</center>
+<script>
+function myfun() {
+  var x = document.createElement("UL");
+  x.setAttribute("id", "myUL");
+  document.body.appendChild(x);
+
+  var y = document.createElement("LI");
+  var t = document.createTextNode("BOOTSTRAP");
+  y.appendChild(t);
+  document.getElementById("myUL").appendChild(y);
+}
+</script>
+
+</body>
+</html>
