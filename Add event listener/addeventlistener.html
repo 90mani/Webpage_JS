@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <title>addeventlistener</title>
+</head>
+<body>
+    <h1>ADD EVENTLISTENER</h1>
+    USERNAME:<input type="text" id="uname"><br><br>
+    ADDRESS:<input type="text" id="address"><br><br>
+    <button onclick="myfunction()" id="btnsubmit">SUBMIT</button>
+    <button onclick="myfunction1()" id="btnclr">RESET</button>
+
+      <script>
+function myfunction()
+{
+    var btnsubmit = document.querySelector("#btnsubmit");
+    var btnclr = document.querySelector("#btnclr");
+    btnsubmit.addEventListener("click", ()=>{
+        var uname = document.querySelector("#uname").value;
+        var address = document.querySelector("#address").value;
+       
+        var body = document.body;
+        var runame = document.createElement("h3");
+        var raddress = document.createElement("h3");
+
+        runame.innerHTML="username : "+uname;
+        raddress.innerHTML="address : "+address;
+        
+        body.append(runame,raddress);
+    });
+}
+function myfunction1()
+{
+btnclr.addEventListener("click" ,()=>{
+document.querySelector("#uname").value="";
+document.querySelector("#address").value="";
+document.querySelectorAll("h3").forEach((elements)=>{
+    elements.remove();   
+    });
+    });
+} 
+
+    </script>
+</body>

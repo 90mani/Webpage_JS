@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <title>HANDLING EVENT LISTENER USING ADDEVENTLISTENER</title>
+</head>
+<body>
+    <h3>ADD AND REMOVE ELEMENT USING ADDEVENTLISTENER</h3>
+    <button onclick="list()" id="btn">CLICK HERE</button>
+    <script>
+        function list()
+        {
+            var btn = document.querySelector('button');
+           btn.addEventListener('click', listener1);
+            btn.addEventListener('click', listener2);
+
+            // setTimeout(function() {
+            //     btn.removeEventListener('click' ,listener1)
+            // },1000);
+            
+            function listener1()
+            {
+                console.log("listener1 clicked");
+            }
+            function listener2()
+            {
+                console.log("listener2 clicked");
+            }
+        }
+    </script>
+</body>

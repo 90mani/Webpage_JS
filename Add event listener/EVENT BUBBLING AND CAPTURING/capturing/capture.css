@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    margin: 10px 30px;
+    background-color: blanchedalmond;
+}
+div{
+    padding: 20px;
+    background-color: lightblue;
+}
+span{
+    display: block;
+    padding: 20px;
+    background-color: lightcoral;
+}
+

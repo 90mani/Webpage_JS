@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <title>PASSING PARAMETER VALUES</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <h3>PASS PARAMETER VALUE WHEN USING THE ADDEVENTLISTENER() METHOD</h3>
+    <button id="mybtn" class="btn btn-default">EVALUATE</button><br><br> 
+    <p id="use"></p>
+    <script>
+        const a = 10;
+        const b = 20;
+        document.getElementById("mybtn").addEventListener("click", function(){
+            myfunction(a,b);
+        });
+        function myfunction(a,b){
+            document.getElementById("use").innerHTML = a + b;
+        }
+    </script>
+</body>

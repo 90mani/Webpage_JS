@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    margin: 10px 30px;
+    background-color: pink;
+}
+div{
+    padding: 20px;
+    background-color: green;
+}
+span{
+    display: block;
+    padding: 20px;
+    background-color: blueviolet;
+}
+
