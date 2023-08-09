@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <title>KEYDOWN AND KEYUP AND KEYPRESS</title>
+</head>
+<body>
+    
+    <h3>WORKING WITH KEYBOARD EVENTS</h3>
+    <br>
+    <h4>KEYDOWN() AND KEYUP() AND KEYPRESS()</h4>
+    <br><br>
+    KEYDOWN AND UP: <input type="text" id ="check" onkeydown="kd()" onkeyup="ku()">
+    <br><br>
+    KEYPRESS: <input type="text" style="margin-left:60px" id="check1" onkeypress="keypress()">
+    <script>
+        function kd()
+        {
+            document.getElementById("check").style.background="pink";
+        }
+        function ku()
+        {
+            document.getElementById("check").style.background="yellow";
+        }
+        function keypress()
+        {
+            document.getElementById("check1").style.background="skyblue";
+        }
+    </script>  
+</body>
