@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <title>RADIO BUTTON</title>
+</head>
+<body>
+    <h2>CREATE RADIO BUTTONS DYNAMICALLY</h2>
+
+<button onclick="myfun()">CREATE RADIO BUTTONS</button>
+<br>
+<br>
+<script>
+    function myfun()
+    {
+    var x=document.createElement("input");
+    x.setAttribute("type","radio"); 
+    document.body.appendChild(x);
+      
+    let y = document.createElement('label');
+    y.textContent = "MALE";
+    document.body.appendChild(y);
+   
+    }
+</script>
+</body>
