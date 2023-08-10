@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Example</title>
+    <h2>Simple Button Example</h2>
+</head>
+<body>
+    <div id="buttonContainer">
+        
+    </div>
+
+    <script>
+        
+        function handleClick() {
+            alert("Have a Nice Day");
+        }
+
+     
+        var button = document.createElement("button")
+       
+        button.innerHTML = "Click me";
+        button.onclick = handleClick;
+        var container = document.getElementById("buttonContainer");
+        container.appendChild(button);
+    </script>
+</body>
+</html>

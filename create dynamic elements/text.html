@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FORM VALIDATION</title>
+</head>
+<body>
+    <script>
+        function validateForm() {
+            let phone = document.forms["myForm"]["phone"].value;
+            
+            if (phone == "") {
+                alert("Enter a mobile number");
+                document.forms["myForm"]["phone"].focus();
+                return false;
+            }
+            
+            if (isNaN(phone) || phone.length !== 10) {
+                alert("Phone number must be a 10-digit number");
+                document.forms["myForm"]["phone"].focus();
+                return false;
+            }
+        }
+    </script>
+    
+    <form name="myForm" onsubmit="return validateForm()">
+        <div class="use">
+            <label for="phone">Phone number:</label>
+            <input id="phone" type="text" maxlength="10" name="phone"><br><br>
+        </div>
+        <div class="button">
+            <input type="submit" name="submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>

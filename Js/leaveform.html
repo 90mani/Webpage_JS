@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="leave.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <title>ADD LEAVE TYPE</title>
+</head>
+<body>
+    <div class="container">
+        <header>Add Leave Type</header>
+        <form class="form" id="form" onsubmit="return validate()" action="#" method="post">
+            <div class="fontuser">
+                <label><b>LEAVE NAME</b></label><br>
+                <input type="text" placeholder="Leave name" id="leave_name">
+                <i class="fa fa-user"></i>
+            </div><br><br>
+
+            <div class="fontuser">
+                <label><b>DESCRIPTION</b></label><br>
+                <input type="text" placeholder="Description" id="input_description">
+                <i class="fa fa-user"></i>
+            </div><br><br>
+
+            <div class="fontuser">
+                <label><b>NUMBER OF LEAVE DAYS ALLOWED</b></label><br>
+                <input type="text" placeholder="Number of leave days allowed" id="input_allowed_days">
+                <i class="fa fa-calendar"></i>
+            </div><br><br>
+
+            <center>
+                <input type="submit" value="Submit">
+            </center>
+        </form>
+    </div>
+
+    <script>
+        function validate() {
+            var leavename = document.getElementById('leave_name').value;
+            if (leavename === '') {
+                alert('Please enter leave name');
+                return false;
+            }
+
+            var desc = document.getElementById('input_description').value;
+            if (desc === '') {
+                alert('Please enter description of leave');
+                return false;
+            }
+
+            var alloweddays = document.getElementById('input_allowed_days').value;
+            if (alloweddays === '') {
+                alert('Please enter number of leave days allowed');
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

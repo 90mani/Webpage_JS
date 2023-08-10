@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <h2> Ul Object element<h2>
+<body>
+<button onclick="myFunction()">Try it</button>
+<script>
+function myFunction() {
+    var x = document.createElement("UL");
+    x.setAttribute("id", "myUL");
+    document.body.appendChild(x);
+
+    var y = document.createElement("LI");
+    var t = document.createTextNode("tea");
+    y.appendChild(t);
+    document.getElementById("myUL").appendChild(y);
+}
+</script>
+
+</body>
+</html>

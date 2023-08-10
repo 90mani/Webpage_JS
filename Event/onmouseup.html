@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+   
+<head>
+    <title>
+        HTML onmouseup Event
+    </title>
+</head>
+ 
+<body>
+    <h1 style="color:rgb(134, 9, 16)">
+        The simple Webpage
+    </h1>
+    <h2 id="try">
+        HTML OnmouseUp Event
+    </h2>
+    <script>
+        document.getElementById(
+            "try").addEventListener(
+                "mousedown", btnpressed);
+        document.getElementById(
+            "try").addEventListener(
+                "mouseup", btnup);
+        function btnpressed() {
+            document.getElementById(
+                "try").innerHTML = "Hello World.";
+        }
+        function btnup() {
+            document.getElementById(
+                "try").innerHTML = "Hello World.";
+        }
+    </script>
+</body>
+ 
+</html>

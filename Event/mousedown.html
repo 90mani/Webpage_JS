@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function WhichButton (event) {
+               
+            if ('which' in event) {
+                switch (event.which) {
+                case 1:
+                    alert ("Left button is pressed");
+                    break;
+                case 2:
+                    alert ("Middle button is pressed");
+                    break;
+                case 3:
+                    alert ("Right button is pressed");
+                    break;
+                }
+            }
+            else {
+                   
+                if ('button' in event) {
+                    var buttons = "";
+                    if (event.button & 1) {
+                        buttons += "left";
+                    }
+                    if (event.button & 2) {
+                        if (buttons == "") {
+                            buttons += "right";
+                        }
+                        else {
+                            buttons += " + right";
+                        }
+                    }
+                    if (event.button & 4) {
+                        if (buttons == "") {
+                            buttons += "middle";
+                        }
+                        else {
+                            buttons += " + middle";
+                        }
+                    }
+                    alert ("The following buttons are pressed: " + buttons);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div onmousedown="WhichButton (event);">Press a mouse button over this text!</div>
+</body>
+</html>

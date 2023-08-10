@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>create an OL element and a LI element.</p>
+
+<button onclick="myFunction()">Click me</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x = document.createElement("OL");
+  x.setAttribute("id", "myOl");
+  document.body.appendChild(x);
+
+  var y = document.createElement("LI");
+  var t = document.createTextNode("Apple");
+  y.appendChild(t);
+  document.getElementById("myOl").appendChild(y);
+}
+</script>
+
+</body>
+</html>

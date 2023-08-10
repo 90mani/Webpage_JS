@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Select a ice cream from the list.</p>
+
+<select id="mySelect" onchange="myFunction()">
+  <option value="chocolate">chocolate</option>
+  <option value="vanilla">vanilla</option>
+  <option value="strawberry">Strawberry</option>
+  <option value="blueberry">blueberry</option>
+  <option value="Rainbow">rainbow</option>
+</select>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+</script>
+
+</body>
+</html>
+
