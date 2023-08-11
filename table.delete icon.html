@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="tab.css">
+</head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  background-color: rgb(212, 226, 245);
+}
+</style>
+<body>
+
+<h2>Table</h2>
+
+<table id="dynamicTable" style="width:40%">
+  <tr>
+    <th>Company</th>
+    <th>Product</th>
+    <th>City</th>
+    <th>Remove</th>
+  </tr>
+</table>
+
+<script>
+
+var data = [
+  { company: "Has Tag", product: "Mario", city: "Erode" },
+  { company: "Mode software", product: "Angry birds", city: "Chennai" },
+  { company: "SSA infotech", product: "Rainway", city: "Erode"},
+  { company: "Skantha solutions", product: "Temple Run", city: "coimbatore"},
+  { company: "Amirtha consultancy", product: "Traffic Rider", city: "salem"},
+  { company: "Creative Software", product: "clash of clans", city: "karur"}
+];
+
+var table = document.getElementById("dynamicTable");
+for (var i = 0; i < data.length; i++) {
+  var row = table.insertRow(i + 1);  
+  var cell1 = row.insertCell(0); 
+  cell1.innerHTML = data[i].company;
+
+  var cell2 = row.insertCell(1); 
+  cell2.innerHTML = data[i].product;
+
+  var cell3 = row.insertCell(2); 
+  cell3.innerHTML = data[i].city;
+
+  var cell4 = row.insertCell(3);
+  cell4.innerHTML = '<span class="fa fa-trash delete-icon"></span>';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const deleteIcons = document.querySelectorAll('.delete-icon');
+
+  deleteIcons.forEach(function (icon) {
+    icon.addEventListener('click', function () {
+      const row = icon.parentNode.parentNode; 
+      row.remove(); 
+    });
+  });
+});
+
+</script>
+
+</body>
+</html>
