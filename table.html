@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <script src="https://kit.fontawesome.com/bbc6705e1e.js" crossorigin="anonymous"></script>
     <title>Dynamic Company Table</title>
     <style>
-body {
+        body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -66,8 +67,9 @@ body {
             padding: 5px 10px;
             cursor: pointer;
         }
-         .save-button{
-            background-color:deepskyblue;
+
+        .save-button {
+            background-color: deepskyblue;
             color: white;
             border: none;
             padding: 5px 10px;
@@ -81,51 +83,18 @@ body {
     <div>
         <input type="text" id="searchInput" placeholder="Search by Company Name" oninput="searchCompanies()">
     </div>
-   
+
     <table id="company-table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Location</th>
-                <th>Industry</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
+
         <tbody>
-            <tr>
-                <td>Apple Inc</td>
-                <td>Cupertino, California, USA</td>
-                <td>Consumer Electronics, Software, and service</td>
-                <td>
-                    <button class="delete-button" onclick="deleteCompany(this)"><i class="fas fa-trash"></i></button>
-                    <button class="edit-button" onclick="editCompany(this)"><i class="fas fa-edit"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>Amazon.com Inc</td>
-                <td>Seattle, Washington, USA</td>
-                <td>Technology (E-commerce, Cloud Computing, Artificial Intelligence)</td>
-                <td>
-                    <button class="delete-button" onclick="deleteCompany(this)"><i class="fas fa-trash"></i></button>
-                    <button class="edit-button" onclick="editCompany(this)"><i class="fas fa-edit"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>Microsoft Corporation</td>
-                <td>Redmond, Washington, USA</td>
-                <td>Technology (Technology Software, Hardware, Cloud Services)</td>
-                <td>
-                    <button class="delete-button" onclick="deleteCompany(this)"><i class="fas fa-trash"></i></button>
-                    <button class="edit-button" onclick="editCompany(this)"><i class="fas fa-edit"></i></button>
-                </td>
-            </tr>
+
         </tbody>
     </table>
 
     <script>
         function loadData() {
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "your_backend_api_url_here", true);
+            xhr.open("GET", "http://demo3322452.mockable.io", true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
@@ -152,7 +121,7 @@ body {
         }
 
         function addCompany() {
-             var table = document.getElementById("company-table").getElementsByTagName('tbody')[0];
+            var table = document.getElementById("company-table").getElementsByTagName('tbody')[0];
             var newRow = table.insertRow(table.rows.length);
 
             var cell1 = newRow.insertCell(0);
@@ -167,31 +136,33 @@ body {
                 '<button class="edit-button" onclick="editCompany(this)"><i class="fas fa-edit"></i></button>';
         }
 
-        
+
 
         function deleteCompany(button, companyId) {
-             var row = button.parentNode.parentNode;
+            var row = button.parentNode.parentNode;
             row.parentNode.removeChild(row);
         }
 
         function editCompany(button, companyId) {
-    
+
         }
 
         function saveCompany(button, companyId) {
-            
-            
-        
+
+
+
         }
 
         function searchCompanies() {
-            
+
         }
 
-        
+
         window.addEventListener("load", function () {
+
             loadData();
         });
     </script>
 </body>
+
 </html>
