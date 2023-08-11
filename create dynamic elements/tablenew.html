@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+</head>
+<style>
+    th{ 
+        color:#fff;
+            }
+          h3{
+            margin-top: 20px;
+            font-size: 30px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+          }  
+          
+</style>
+
+<body>
+    <h3>CREATE TABLE FROM AN ARRAY</h3>
+    <br>
+<table class="table table-striped">
+    <tr  class="bg-info">
+        <th>NAME</th>
+        <th>AGE</th>
+        <th>BIRTHDAY</th>
+        <th>ACTION</th>
+    </tr>
+
+    <tbody id="myTable">
+        
+    </tbody>
+</table>
+
+<script>
+	var myArray = [
+	    {'name':'Jeevitha', 'age':'26', 'birthdate':'26/05/1997'},
+	    {'name':'sathya', 'age':'29', 'birthdate':'14/05/1994'},
+	    {'name':'Kanithra', 'age':'2', 'birthdate':'21/08/2021'},
+	    {'name':'Kirthika', 'age':'27', 'birthdate':'14/08/1996'},
+	    {'name':'Devi', 'age':'26', 'birthdate':'3/12/1997'},
+	    {'name':'Sowmiya', 'age':'25', 'birthdate':'10/03/1998'},  
+	]
+	
+	buildTable(myArray)
+	function buildTable(data){
+        
+		var table = document.getElementById('myTable');
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i].name}</td>
+							<td>${data[i].age}</td>
+							<td>${data[i].birthdate}</td>
+                            <td><button class="btn btn-danger" onclick="">DELETE</button></td>    
+					  </tr>`
+			table.innerHTML += row
+        }
+            for (let i =0; i <table.rows.length; i++)
+            {
+                table.rows[i].cells[3].onclick=function()
+                {
+                    index=this.parentNode.rowIndex;
+                    table.deleteRow(index-1);
+                    console.log(index);
+                    
+                }
+            }
+        }  
+</script>
+</body>
