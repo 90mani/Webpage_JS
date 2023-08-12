@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+</head>
+<style>
+    table, th, td {
+  border: 2px solid black;
+}  
+h3{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+th,td{
+    text-align: center;
+}  
+th{
+    background-color: turquoise;
+}
+      
+</style>
+
+<body>
+    <h3>CREATE TABLE FROM AN ARRAY</h3>
+    <br>
+
+  EMPLOYEE NAME:  <input type="text" id="fname">
+  AGE:   <input type="number" id="fage">
+  SALARY: <input type="number" id="famt">
+  <button type="button" id="btn-add" class="btn btn-success" onclick="addOnClick()">ADDDATA</button>
+  <br>
+  <br>
+<table class="table table-striped" id="myTable">
+   
+</table>
+
+<script>
+	var data = [
+	  {employeename:"Jeevitha", age:"26", salary:"200000"},
+      {employeename:"Kirthiga", age:"27", salary:"10000"},
+      {employeename:"Devi", age:"26", salary:"80000"},
+      {employeename:"Sowmiya", age:"25", salary:"40000"},
+      {employeename:"Kamithra", age:"24", salary:"200000"},    
+	];
+	
+	function record() {
+  var table = document.getElementById("myTable");
+  table.innerHTML = '<tr><th>EMPLOYEE NAME</th><th>AGE</th><th>SALARY</th><th>ACTION</th></tr>';
+  
+  
+  for (var i = 0; i < data.length; i++) {
+    var row = table.insertRow(i + 1);  
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+
+    cell1.innerHTML = data[i].employeename;
+    cell2.innerHTML = data[i].age;
+    cell3.innerHTML = data[i].salary;
+    cell4.innerHTML = '<button type="button" class="btn btn-info" onclick="editdata(this)">EDIT</button>' +
+                      '<button type="button" class="btn btn-danger" id="del" onclick="deletedata(this)">DELETE</button>';
+  }
+}
+function addOnClick()
+            {
+                
+                var newRow = myTable.insertRow(myTable.length),
+                    cell1 = newRow.insertCell(0),
+                    cell2 = newRow.insertCell(1),
+                    cell3 = newRow.insertCell(2),
+                    cell4 = newRow.insertCell(3),
+                    fname = document.getElementById("fname").value,
+                    fage = document.getElementById("fage").value,
+                    famt = document.getElementById("famt").value;
+            
+                cell1.innerHTML = fname;
+                cell2.innerHTML = fage;
+                cell3.innerHTML = famt;
+                cell4.innerHTML = '<button type="button" class="btn btn-info" onclick="editdata(this)">EDIT</button>' +
+                      '<button type="button" class="btn btn-danger" id="del" onclick="deletedata(this)">DELETE</button>';
+                      clearItems();
+            }
+
+function clearItems(){
+  document.getElementById('fname').value=""
+  document.getElementById('fage').value=""
+  document.getElementById('famt').value=""
+}
+function editdata(button) {
+  var row = button.parentNode.parentNode;
+  var cells = row.getElementsByTagName("td");
+
+  for (var i = 0; i < cells.length - 1; i++) {
+    var value = cells[i].innerText;
+    cells[i].innerHTML = '<input type="text" value="' + value + '">';
+  }
+
+var actionsCell = cells[cells.length - 1];
+  actionsCell.innerHTML = '<button type="button" class="btn btn-success" onclick="savedata(this)">SAVE</button>';
+}
+
+function savedata(button) {
+  var row = button.parentNode.parentNode;
+  var cells = row.getElementsByTagName("td");
+
+  for (var i = 0; i < cells.length - 1; i++) {
+    var input = cells[i].getElementsByTagName("input")[0];
+    var value = input.value;
+    cells[i].innerHTML = value;
+  }
+
+  var actionsCell = cells[cells.length - 1];
+  actionsCell.innerHTML = '<button type="button" class="btn btn-info" onclick="editdata(this)">EDIT</button>' +
+                      '<button type="button" class="btn btn-danger" onclick="deletedata(this)">DELETE</button>';
+}
+function deletedata(button) {
+  var row = button.parentNode.parentNode;
+  var index = row.rowIndex - 1;
+  data.splice(index, 1);
+  record();
+}
+
+  record();
+</script>
+</body>
