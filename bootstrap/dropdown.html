@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+    <div class="container">
+        <header>ADD EMPLOYEE</header>
+        <form class="form" id="form" onsubmit="return checkInput()" action="#" method="post">
+            <div class="input-field">
+                <label>ID NUMBER</label><br>
+                <input type="text" placeholder="id number" id="id-number">
+               
+            </div>
+            <div class="input-field">
+                <label>FIRST NAME</label><br>
+                <input type="text" placeholder="first name" id="first-name">
+                
+            </div>
+            <div class="input-field">
+                <label>LAST NAME</label><br>
+                <input type="text" placeholder="last name" id="last-name">
+                
+            </div>
+            <div class="input-field">
+                <label>AGE</label><br>
+                <input type="text" placeholder="age" id="age">
+            
+            </div>
+            <div class="input-field">
+                <label>EMAIL</label><br>
+                <input type="text" placeholder="email" id="email">
+                
+            </div>
+            <div class="input-field">
+                <label>CONTACT</label><br>
+                <input type="text" placeholder="contact" id="contact">
+                
+            </div>
+            <div class="fileInput">
+                <label>PROFILE</label><br>
+                <input type="file" name="uploadedFile" accept=".pdf, .doc, .docx" id="profile">
+            </div>
+            <div class="input-field">
+                <label>DEPARTMENT</label><br>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Department
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">IT</a>
+                        <a class="dropdown-item" href="#">HR</a>
+                    </div>
+                </div>
+            </div>
+            <div class="input-field">
+                <label>DESIGNATION</label><br>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Designation
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Data Analyst</a>
+                        <a class="dropdown-item" href="#">Web Developer</a>
+                        <a class="dropdown-item" href="#">Android Developer</a>
+                        <a class="dropdown-item" href="#">Network Engineer</a>
+                    </div>
+                </div>
+            </div>
+            <div class="input-field">
+                <label>USER NAME</label><br>
+                <input type="text" placeholder="user name" id="username">
+        
+            </div>
+            <div class="input-field">
+                <label>PASSWORD</label><br>
+                <input type="text" placeholder="password" id="password">
+                
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+   
+</body>
+</html>
