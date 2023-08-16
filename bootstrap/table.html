@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<style>
+   
+    .table thead th{
+        border-bottom-color: black;
+    }
+    .icon{
+float: right;
+margin-right: 30px;
+
+    }
+    .icon i,span{
+        font-weight: 600;
+       cursor: pointer;
+    }
+    .badge-light{
+        background-color:skyblue;
+        border-radius: 6px;
+        height: 30px;
+        width:40px;
+        font-size: 15px;
+        text-align: center;
+    }
+   .edit-button{
+    color: green;
+   }
+   .delete-button{
+    color:red;
+   }
+   
+</style>
+<body>
+    <div class="container">
+        <div class="main-content container-fluid">
+    <div class="icon">
+        <i class="fa fa-bell-o">
+          <span class="badge badge-light">2</span>
+        </i></div>
+        <br>
+        <br>
+        <br>
+    <h3>CREATE TABLE USING BOOTSTRAP METHODS</h3>
+    <br>
+
+<table class="table table-hover"  id="myTable">  
+    
+    <thead class="table table-bordered">
+        <tr>
+        <th>EMPLOYEE NAME</th>
+        <th>AGE</th>
+        <th>STATUS</th>
+        <th>SALARY</th>
+        <th>ACTION</th>
+        </tr>
+    </thead>
+
+    <tr>
+    <td>jeevitha</td>
+    <td>26</td>
+    <td><span class="badge badge-pill badge-success">ACTIVE</span></td>
+    <td>200000</td>
+    <td><i class="fa fa-pencil text-success"></i>
+                    <i class="fa fa-trash text-danger"></i></td>
+    </tr>
+
+    <tr>
+    <td>kanithra</td>
+    <td>24</td>
+    <td><span class="badge badge-pill badge-danger">DEACTIVE</span></td>
+    <td>20000000</td>
+    <td><i class="fa fa-pencil text-success"></i>
+        <i class="fa fa-trash text-danger"></i></td>
+    </tr>
+
+    <tr>
+     <td>kavinila</td>
+    <td>28</td>
+    <td><span class="badge badge-pill badge-success">ACTIVE</span></td>
+    <td>600000</td>
+    <td><i class="fa fa-pencil text-success"></i>
+        <i class="fa fa-trash text-danger"></i></td>
+    </tr>
+
+    <tr>
+        <td>pavithra</td>
+       <td>28</td>
+       <td><span class="badge badge-pill badge-danger">DEACTIVE</span></td>
+       <td>800000</td>
+       <td><i class="fa fa-pencil text-success"></i>
+        <i class="fa fa-trash text-danger"></i></td>
+       </tr>
+    
+</table>
+</div>
+</div>
+
