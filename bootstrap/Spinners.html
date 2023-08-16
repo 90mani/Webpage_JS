@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Table</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-qxCgPpew7s7tNvzoJ5aOP5S1VHdiW3Vz2h7MWLPHm9V7RUTqZGrdFbIv3I89JUpa" crossorigin="anonymous">
+
+    <style>
+        table, th, td {
+            border: 1px solid rgb(8, 8, 8);
+            
+          }
+          
+          body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            color:#0f0e0e;
+            background-color:#fdfbfb;
+          }
+          
+          
+                  h1 {
+                      text-align: center;
+                      margin: 20px 0;
+                  }
+          
+                  button {
+                      background-color: rgb(44, 196, 61);
+                      color: white;
+                      padding: 10px 15px;
+                      border: none;
+                      cursor: pointer;
+                  }
+          
+                  table {
+                      width: 80%;
+                      margin: 0 auto;
+                      border-collapse: collapse;
+                      background-color: white;
+                  }
+        
+                  td {
+                      padding: 2px;
+                      text-align: left;
+                      border-bottom: 1px solid #ffffff;
+                  }
+                 
+                  th {
+                      background-color: rgb(226, 234, 238);
+                      color: rgb(8, 8, 8);
+                      border-bottom: 4px solid #2f2f2f;
+                  }
+                  input[type="text"] {
+                width: 60%;
+                padding: 5px;
+                box-sizing: border-box;
+            }
+    
+                input[type="text"] {
+                       width: 10%;
+                          padding: 4px;
+                        box-sizing: border-box;
+                }
+                  .delete-button {
+                      background-color: #f44336;
+                      color: white;
+                      border: none;
+                      padding: 5px 10px;
+                      cursor: pointer;
+                  }
+                  .envelope-button {
+                    max-height: 1000px;
+                      background-color: #1d0fe3;
+                      color: white;
+                      border: none;
+                      padding: 5px 10px;
+                      cursor: pointer;
+                  }
+          
+                  .edit-button {
+                      background-color: rgb(101, 171, 240);
+                      color: white;
+                      border: none;
+                      padding: 5px 10px;
+                      cursor: pointer;
+                  }
+                   .save-button{
+                      background-color:rgb(6, 164, 43);
+                      color: white;
+                      border: none;
+                      padding: 5px 10px;
+                      cursor: pointer;
+                  }
+          </style>
+</head>
+
+    <body>
+        <div style="text-align: right;">
+            <button class="envelope-button" onclick="envelope(this)"><i class="fas fa-envelope"></i></button>
+        </div>
+       
+    <h2>Dynamic Table</h2><br>
+    
+    <label>Enter the company Name</label>
+    <input type="text" id="CompanyName">
+    <label>Enter the Product Name</label>
+    <input type="text" id="Product">
+    <label>Enter the City</label>
+    <input type="text" id="City"><span>
+    <button onclick="addCompany()">Add Company</button>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary">Company Details</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Login in</a></li>
+          <li><a href="#">Department</a></li>
+        </ul>
+      </div>
+    
+      <h2>Sign In</h2>
+      <label>User Name</label>
+      <input type="text" id="UserName">
+      <label>Password</label>
+      <input type="text" id="Password">
+      <label>Enter the Department</label>
+      <input type="text" id="Department"><span>
+      <button onclick="signin>Sign In</button>
+      
+          
+          <button class="btn btn-primary" type="button" disabled id="load">
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Loading..
+              </div>
+            </button>
+
+   
+    <table class="table table-hover" id="dynamicTable">
+        <tr>
+            <th>Company</th>
+            <th>Product</th>
+            <th>City</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        
+    </tabl>
+
+<script>
+        var data = [
+            { company: "Hash Tag", product: "Mario", city: "Erode" },
+            { company: "Mode Software", product: "Angry birds", city: "Chennai" },
+            { company: "SSA infotech", product: "Rainway", city: "Erode" },
+            { company: "Skandha Solutions", product: "Temple Run", city: "Coimbatore" },
+            { company: "Amirtha Consultancy", product: "Traffic Rider", city: "Salem" },
+            { company: "Creative Software", product: "Clash of Clans", city: "Karur" }
+        ];
+
+        function displayCompanies() {
+            var table = document.getElementById("dynamicTable");
+            table.innerHTML = '<tr><th>Company</th><th>Product</th><th>City</th><th>Status</th><th>Action</th></tr>';
+
+            for (var i = 0; i < data.length; i++) {
+                var row = table.insertRow(i + 1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+
+                cell1.innerHTML = data[i].company;
+                cell2.innerHTML = data[i].product;
+                cell3.innerHTML = data[i].city;
+                cell4.innerHTML = '<span class="badge badge-pill badge-success">Active</span>'+'<span class="badge badge-pill badge-danger">Deactive</span>';  
+                cell5.innerHTML = '<button class="edit-button" onclick="editCompany(this)"><i class="fas fa-edit"></i></button>' +
+                    '<button class="delete-button" onclick="deleteCompany(this)"><i class="fas fa-trash"></i></button>';
+            }
+        }
+
+        function editCompany(button) {
+            var row = button.parentNode.parentNode;
+            var cells = row.getElementsByTagName("td");
+
+            for (var i = 0; i < cells.length - 1; i++) {
+                var value = cells[i].innerText;
+                cells[i].innerHTML = '<input type="text" value="' + value + '" class="form-control">';
+            }
+
+            var actionsCell = cells[cells.length - 1];
+            actionsCell.innerHTML = '<button class="save-button" onclick="saveCompany(this)"><i class="fas fa-save"></i></button>' +
+                '<button class="delete-button" onclick="deleteCompany(this)"><i class="fas fa-trash"></i></button>';
+        }
+
+        function saveCompany(button) {
+            var row = button.parentNode.parentNode;
+            var cells = row.getElementsByTagName("td");
+
+            for (var i = 0; i < cells.length - 1; i++) {
+                var input = cells[i].getElementsByTagName("input")[0];
+                var value = input.value;
+                cells[i].innerHTML = value;
+                data[row.rowIndex - 1][Object.keys(data[row.rowIndex - 1])[i]] = value;
+            }
+           
+
+             
+            var actionsCell = cells[cells.length - 1];
+            actionsCell.innerHTML = '<button class="edit-button" onclick="editCompany(this)"><i class="fas fa-edit"></i></button>' +
+                '<button class="delete-button" onclick="deleteCompany(this)"><i class="fas fa-trash"></i></button>';
+        }
+
+        function deleteCompany(button) {
+            var row = button.parentNode.parentNode;
+            var index = row.rowIndex - 1;
+            data.splice(index, 1);
+            displayCompanies();
+        }
+
+        function addCompany() {
+            var companyName = document.getElementById("CompanyName").value;
+            var product = document.getElementById("Product").value;
+            var city = document.getElementById("City").value;
+
+            if (companyName && product && city) {
+                data.push({ company: companyName, product: product, city: city });
+                displayCompanies();
+                document.getElementById("CompanyName").value = "";
+                document.getElementById("Product").value = "";
+                document.getElementById("City").value = "";
+            }
+        }
+        function addCompany() {
+            var companyName = document.getElementById("CompanyName").value;
+            var productName = document.getElementById("Product").value;
+            var city = document.getElementById("City").value;
+
+            var table = document.getElementById("companyTable");
+            var newRow = table.insertRow(table.rows.length);
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+
+            cell1.innerHTML = companyName;
+            cell2.innerHTML = productName;
+            cell3.innerHTML = city;
+        }
+        displayCompanies();
+        
+             
+      
+    </script>
+</body>
+</html>
