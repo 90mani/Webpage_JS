@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+    <title>bootstrap dependency</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<style>
+   
+    .table thead th{
+        border-bottom-color: black;
+    }
+    .icon{
+float: right;
+margin-right: 30px;
+
+    }
+    .icon i,span{
+        font-weight: 600;
+       cursor: pointer;
+    }
+    .badge-light{
+        background-color:skyblue;
+        border-radius: 6px;
+        height: 30px;
+        width:40px;
+        font-size: 15px;
+        text-align: center;
+    }
+   .edit-button{
+    color: green;
+   }
+   .delete-button{
+    color:red;
+   }
+   
+</style>
+<body><nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+   <a class="navbar-brand" href="#">TABLE CREATION USING BOOTSTRAP 4</a>
+       <ul class="navbar-nav ml-auto" style="margin-right: 70px;">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">HOME</a>
+                </li>
+                <div class="dropdown">
+                    <button class="btn btn-basic dropdown-toggle" style="color: white;" type="button" data-toggle="dropdown">ABOUT
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li><a href="#">CONTACT</a></li>
+                      <li><a href="#">GALLERY</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">SERVICES</a></li>
+                    </ul>
+                  </div>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">LOGIN</a>
+                </li>
+                </div>
+            </ul>
+        </div>
+       
+        </div>
+
+    </div>
+    <div class="icon">
+        <i class="fa fa-bell-o" style="color: aliceblue;">
+          <span class="badge badge-light">2</span>
+        </i></div>
+</nav>
+    <div class="container">
+        <div class="main-content container-fluid">
+   
+        <br>
+        <br>
+        <br>
+
+<table class="table table-hover"  id="myTable">  
+    
+    <thead class="table table-bordered">
+        <tr>
+        <th>EMPLOYEE NAME</th>
+        <th>AGE</th>
+        <th>STATUS</th>
+        <th>SALARY</th>
+        <th>ACTION</th>
+        </tr>
+    </thead>
+
+    <tr>
+    <td>jeevitha</td>
+    <td>26</td>
+    <td><span class="badge badge-pill badge-success">ACTIVE</span></td>
+    <td>200000</td>
+    <td><i class="fa fa-pencil text-success"></i>
+                    <i class="fa fa-trash text-danger"></i></td>
+    </tr>
+
+    <tr>
+    <td>kanithra</td>
+    <td>24</td>
+    <td><span class="badge badge-pill badge-danger">DEACTIVE</span></td>
+    <td>20000000</td>
+    <td><i class="fa fa-pencil text-success"></i>
+        <i class="fa fa-trash text-danger"></i></td>
+    </tr>
+
+    <tr>
+     <td>kavinila</td>
+    <td>28</td>
+    <td><span class="badge badge-pill badge-success">ACTIVE</span></td>
+    <td>600000</td>
+    <td><i class="fa fa-pencil text-success"></i>
+        <i class="fa fa-trash text-danger"></i></td>
+    </tr>
+
+    <tr>
+        <td>pavithra</td>
+       <td>28</td>
+       <td><span class="badge badge-pill badge-danger">DEACTIVE</span></td>
+       <td>800000</td>
+       <td><i class="fa fa-pencil text-success"></i>
+        <i class="fa fa-trash text-danger"></i></td>
+       </tr>
+    
+</table>
+</div>
+</div>
+
