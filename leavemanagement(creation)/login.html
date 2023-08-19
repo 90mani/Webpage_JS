@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+
+      <script defer src="assets/fontawesome/js/all.min.js"></script>
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<style>
+   .img{
+    width: 150px;
+    height: 150px;
+    margin-left: 180px;
+   } 
+   .card{
+    border-radius: 5px;
+   }
+  
+</style>
+<body>
+    <div id="auth">
+
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-md-5 col-sm-12 mx-auto">
+                    <div class="card pt-4">
+                       <img src="D:\Leave Management\assets\images\login.png" class="img">
+                        <div class="card-body">
+                            <div class="text-center mb-5">
+                                <h3>Sign In</h3>
+                            </div>
+                            <form name="myForm" onsubmit="return validateForm()"  action="employee.html">
+                                <div class="form-group position-relative has-icon-left">
+                                    <label for="username">Username</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" id="username">
+                                        <div class="form-control-icon">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group position-relative has-icon-left">
+                                    <div class="clearfix">
+                                        <label for="password">Password</label>
+                                        <a href="#" class='float-end'>
+                                            <small>Forgot password?</small>
+                                        </a>
+                                    </div>
+                                    <div class="position-relative">
+                                        <input type="password" class="form-control" id="password">
+                                        <div class="form-control-icon">
+                                            <i class="fa fa-key"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class='form-check clearfix my-4'>
+                                    <div class="checkbox float-start">
+                                        <a href="index.html"   class='float-end' >
+                                          
+                                            <small>admin</small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <button class="btn btn-primary float-end"  >Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+function validateForm() 
+            {
+                  let fname = document.forms["myForm"]["username"].value;
+                 let password = document.forms["myForm"]["password"].value;
+
+                 if (username=="user"|| password=="user"){
+               alert("your username and password is correct now you can access next page");
+                 }  
+                 else{
+                    alert("enter correct name and password");
+                    document.myForm.username.focus();
+                    return false;
+                
+                 }              
+            }
+          
+   
+
+             
+    </script>
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
+
+
+<div id="spinner-container" style="display: none;">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
