@@ -1,1 +1,109 @@
-1
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css"> <!-- Corrected the fontawesome stylesheet link -->
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body>
+    <div id="auth">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-sm-12 mx-auto">
+                    <div class="card pt-4">
+                        <div class="card-body">
+                            <div class="text-center mb-5">
+                                <h3>Sign In</h3>
+                            </div>
+                            <form onsubmit="return validate();" action="employee.html">
+                                <div class="imgcontainer" style="text-align: center;">
+                                    <img src="assets/images/user.jpg" alt="User Image" class="img" width="100" height="100">
+                                </div>
+
+                                <div class="form-group position-relative has-icon-left">
+                                    <label for="username">Username</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" id="username" >
+                                        <div class="form-control-icon">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group position-relative has-icon-left">
+                                    <div class="clearfix">
+                                        <label for="password">Password</label>
+                                        <a href="#" class="float-end">
+                                            <small>Forgot password?</small>
+                                        </a>
+                                    </div>
+                                    <div class="position-relative">
+                                        <input type="password" class="form-control" id="password">
+                                        <div class="form-control-icon">
+                                            <i class="fas fa-key"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-check clearfix my-4">
+                                    <div class="checkbox float-start">
+                                        <a href="index.html" class="float-end">
+                                            <small>admin</small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <button id="startSpinner" class="btn btn-primary">Login</button>
+                                </div>
+
+                                <div id="spinnerContainer" class="mt-4" style="display: none;">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <p class="mt-2">Loading, please wait...</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <script>
+    function validate() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var spinnerContainer = document.getElementById("spinnerContainer");
+
+        if (username === '' || password === '') {
+            spinnerContainer.style.display = "block";
+            setTimeout(function () {
+                spinnerContainer.style.display = "none";
+                alert("Please fill in both the username and password fields. Please try again.");
+            }, 2000);
+            return false;
+        } else if (username === password) {
+            spinnerContainer.style.display = "block";
+            setTimeout(function () {
+                spinnerContainer.style.display = "none";
+                alert("Login Successful!");
+            }, 2000);
+            return false;
+        } else {
+            spinnerContainer.style.display = "block";
+            setTimeout(function () { 
+                spinnerContainer.style.display = "none";
+                alert("Username and password do not match. Please try again.");
+            }, 2000);
+            return false;
+        }
+    }
+</script>
+
+</body>
+
+</html>
