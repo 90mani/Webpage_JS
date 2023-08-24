@@ -17,6 +17,26 @@
         .notif:hover{
           background-color: rgba(0,0,0,0.1);
                   }
+                  .sidebar-link:hover{
+background-color:grey;
+                  } 
+                  .tr {
+    border-bottom-color:black;
+} 
+.fa-pen,.fa-trash{
+   cursor: pointer;
+}
+.active{
+   background-color:aliceblue;
+}
+body{
+   background-color:aliceblue ;
+}
+.avatar:hover,.d-none:hover,.breadcrumb-item:hover{
+background-color:gainsboro;
+border-radius: 5px;
+}
+
       </style>
 </head>
 
@@ -25,20 +45,20 @@
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
 <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                      <i class="fa fa-users text-success me-4"></i>
+                      <i class="fa fa-users text-info me-4"></i>
                         <span>SANKIT</span>
                 </div>
                <div class="sidebar-menu">
                   <ul class="menu">
                      <li class="sidebar-item ">
                         <a href="index.html" class='sidebar-link'>
-                        <i class="fa fa-home text-success"></i>
+                        <i class="fa fa-home text-info"></i>
                         <span>Dashboard</span>
                         </a>
                      </li>
                      <li class="sidebar-item active has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-building text-success"></i>
+                        <i class="fa fa-building text-info"></i>
                         <span>Department</span>
                         </a>
                         <ul class="submenu ">
@@ -52,7 +72,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
+                        <i class="fa fa-table text-info"></i>
                         <span>Designation</span>
                         </a>
                         <ul class="submenu ">
@@ -66,7 +86,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-users text-success"></i>
+                        <i class="fa fa-users text-info"></i>
                         <span>Employees</span>
                         </a>
                         <ul class="submenu ">
@@ -80,7 +100,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
+                        <i class="fa fa-table text-info"></i>
                         <span>Leave Type</span>
                         </a>
                         <ul class="submenu ">
@@ -94,7 +114,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
+                        <i class="fa fa-table text-info"></i>
                         <span>Leave Management</span>
                         </a>
                         <ul class="submenu ">
@@ -114,7 +134,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-user text-success"></i>
+                        <i class="fa fa-user text-info"></i>
                         <span>Users</span>
                         </a>
                         <ul class="submenu ">
@@ -128,7 +148,7 @@
                      </li>
                      <li class="sidebar-item ">
                         <a href="reports.html" class='sidebar-link'>
-                        <i class="fa fa-chart-bar text-success"></i>
+                        <i class="fa fa-chart-bar text-info"></i>
                         <span>Reports</span>
                         </a>
                      </li>
@@ -180,7 +200,7 @@
                         <a href="#" data-bs-toggle="dropdown"
                            class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                            <div class="avatar me-1">
-                              <img src="assets/images/admin.png" alt="" srcset="">
+                              <img src="D:\leavemanagement(creation)\assets\images\icon.png" alt="" srcset="">
                            </div>
                            <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
                         </a>
@@ -211,46 +231,99 @@
                         </div>
                     </div>
                 </div>
+                
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <table class='table' id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Department Name</th>
-                                        <th>Department Short Name</th>
-                                        <th>Creation Date</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Human Resource</td>
-                                        <td>HR</td>
-                                        <td>2021-11-01</td>
-                                        <td><a href="editdepartment.php"><i class="fa fa-pen text-success"></i></a>   <a href="editdepartment.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Information technology</td>
-                                        <td>IT</td>
-                                        <td>2021-11-01</td>
-                                        <td><a href="editdepartment.php"><i class="fa fa-pen text-success"></i></a>   <a href="editdepartment.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Engineering</td>
-                                        <td>ENG'G</td>
-                                        <td>2017-11-01</td>
-                                        <td><a href="editdepartment.php"><i class="fa fa-pen text-success"></i></a>   <a href="editdepartment.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                           <div class="dataTable-dropdown">
+                              <select class="dataTable-selector form-select">
+                                 <option value="5">5</option>
+                                 <option value="10" selected="">10</option>
+                                 <option value="15">15</option>
+                                 <option value="20">20</option>
+                                 <option value="25">25</option>
+                              </select>
+                              <label>entries per page</label>
+                           </div>
+                           <div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"  id="searchInput" style="float: right;" onclick="searchrecord()"></div>
+                           
+                            <table class='table table-hover' id="myTable">
+                             
+                              <script>
+                                 var data = [
+                                   {departmentname:"HUMAN RESOURCES", departmentshortname:"HR", creationdate:"2021-11-01"},
+                                   {departmentname:"INFORMATION TECHNOLOGIES", departmentshortname:"IT",creationdate:"2021-11-01"},
+                                   {departmentname:"SOCIAL WORK", departmentshortname:"SW",creationdate:"2021-11-01"},
+                                   {departmentname:"COMPUTER SCIENCE", departmentshortname:"CS",creationdate:"2021-11-01"},   
+                                 ];
+                                 function record() {
+                                var table = document.getElementById("myTable");
+                                table.innerHTML = '<tr><th>EMPLOYEE NAME</th><th>AGE</th><th>SALARY</th><th>ACTION</th></tr>';
+                                for (var i = 0; i < data.length; i++){
+                                var newRow = table.insertRow(table.rows.length)
+                                  var row = table.insertRow(i + 1);  
+                                  var cell1 = row.insertCell(0);
+                                  var cell2 = row.insertCell(1);
+                                  var cell3 = row.insertCell(2);
+                                  var cell4 = row.insertCell(3);
+                                  
+
+                                  cell1.innerHTML = data[i].departmentname;
+                                  cell2.innerHTML = data[i].departmentshortname
+                                  cell3.innerHTML = data[i].creationdate
+                                  cell4.innerHTML = '<i class="fa fa-pen text-success" onclick="editdata(this)"></i>' +
+                                                  '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
+                                }
+                              }
+                             
+
+
+
+                              function editdata(button) {
+                                var row = button.parentNode.parentNode;
+                                var cells = row.getElementsByTagName("td");
+                              
+                                for (var i = 0; i < cells.length - 1; i++) {
+                                  var value = cells[i].innerText;
+                                  cells[i].innerHTML = '<input type="text" value="' + value + '">';
+                                }
+                              
+                              var actionsCell = cells[cells.length - 1];
+                                actionsCell.innerHTML = '<button type="button" class=btn btn-success onclick="savedata(this)" >SAVE</button>';
+                              }
+                              
+                              function savedata(button) {
+                                var row = button.parentNode.parentNode;
+                                var cells = row.getElementsByTagName("td");
+                              
+                                for (var i = 0; i < cells.length - 1; i++) {
+                                  var input = cells[i].getElementsByTagName("input")[0];
+                                  var value = input.value;
+                                  cells[i].innerHTML = value;
+                                }
+                              
+                                var actionsCell = cells[cells.length - 1];
+                                actionsCell.innerHTML = '<i class="fa fa-pen text-success" onclick="editdata(this)"></i>' +
+                                                  '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
+                              }
+                              function deletedata(button) {
+                                var row = button.parentNode.parentNode;
+                                var index = row.rowIndex - 1;
+                                data.splice(index, 1);
+                                record();
+                              }
+                                record();
+   
+
+                              </script>
 
                 </section>
             </div>
         </div>
     </div>
+    <script>
+      
+    </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
