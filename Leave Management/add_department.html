@@ -14,6 +14,22 @@
         .notif:hover{
           background-color: rgba(0,0,0,0.1);
                   }
+        .sidebar-link:hover{
+background-color:grey;
+                  }
+                  
+.active{
+   background-color:aliceblue;
+}
+body{
+   background-color:aliceblue ;
+}
+.avatar:hover,.d-none:hover,.breadcrumb-item:hover{
+background-color:gainsboro;
+border-radius: 5px;
+}
+            
+           
       </style>
 </head>
 <body>
@@ -21,23 +37,23 @@
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
     <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                      <i class="fa fa-users text-success me-4"></i>
+                      <i class="fa fa-users text-info me-4"></i>
                         <span>SANKIT</span>
                 </div>
                <div class="sidebar-menu">
                   <ul class="menu">
                      <li class="sidebar-item ">
                         <a href="index.html" class='sidebar-link'>
-                        <i class="fa fa-home text-success"></i>
+                        <i class="fa fa-home text-info"></i>
                         <span>Dashboard</span>
                         </a>
                      </li>
                      <li class="sidebar-item active has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-building text-success"></i>
+                        <i class="fa fa-building text-info"></i>
                         <span>Department</span>
                         </a>
-                        <ul class="submenu ">
+                        <ul class="submenu">
                            <li>
                               <a href="add_department.html">Add Department</a>
                            </li>
@@ -48,24 +64,24 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
+                        <i class="fa fa-table text-info"></i>
                         <span>Designation</span>
                         </a>
-                        <ul class="submenu ">
-                           <li>
+                        <ul class="submenu">
+                           <li class="li">
                               <a href="add_designation.html">Add Designation</a>
                            </li>
                            <li>
                               <a href="manage_designation.html">Manage Designation</a>
-                           </li>
+                           </li class="li1">
                         </ul>
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-users text-success"></i>
+                        <i class="fa fa-users text-info"></i>
                         <span>Employees</span>
                         </a>
-                        <ul class="submenu ">
+                        <ul class="submenu">
                            <li>
                               <a href="add_employee.html">Add Employee</a>
                            </li>
@@ -76,7 +92,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
+                        <i class="fa fa-table text-info"></i>
                         <span>Leave Type</span>
                         </a>
                         <ul class="submenu ">
@@ -90,10 +106,10 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
+                        <i class="fa fa-table text-info"></i>
                         <span>Leave Management</span>
                         </a>
-                        <ul class="submenu ">
+                        <ul class="submenu">
                            <li>
                               <a href="all_leave.html">All Leaves</a>
                            </li>
@@ -110,10 +126,10 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-user text-success"></i>
+                        <i class="fa fa-user text-info"></i>
                         <span>Users</span>
                         </a>
-                        <ul class="submenu ">
+                        <ul class="submenu">
                            <li>
                               <a href="add_user.html">Add User</a>
                            </li>
@@ -122,9 +138,9 @@
                            </li>
                         </ul>
                      </li>
-                     <li class="sidebar-item ">
+                     <li class="sidebar-item">
                         <a href="reports.html" class='sidebar-link'>
-                        <i class="fa fa-chart-bar text-success"></i>
+                        <i class="fa fa-chart-bar text-info"></i>
                         <span>Reports</span>
                         </a>
                      </li>
@@ -175,7 +191,7 @@
                         <a href="#" data-bs-toggle="dropdown"
                            class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                            <div class="avatar me-1">
-                              <img src="assets/images/admin.png" alt="" srcset="">
+                              <img src="E:\NEW WEBPAGE\Webpage_JS\Leave Management\assets\images\icon.png" alt="" srcset="">
                            </div>
                            <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
                         </a>
@@ -210,20 +226,22 @@
 
 
     <!-- Basic Vertical form layout section start -->
+
     <section id="basic-vertical-layouts">
     <div class="row match-height">
         <div class="col-md-8 col-12">
         <div class="card">
             <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical">
+                <form name="myform"  class="form form-vertical" onsubmit="return validateform()" action="manage_department.html" >
                 <div class="form-body">
                     <div class="row">
                     <div class="col-12">
+                        <!-- <table class='table table-hover' id="myTable"> -->
                         <div class="form-group has-icon-left">
                             <label for="first-name-icon">Department Short Name</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Department" id="first-name-icon">
+                                <input type="text" class="form-control" placeholder="Input Department" id="fdm">
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
@@ -234,7 +252,7 @@
                         <div class="form-group has-icon-left">
                             <label for="email-id-icon">Department Name</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Department Name" id="email-id-icon">
+                                <input type="text" class="form-control" placeholder="Input Department Name" id="fdms">
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
@@ -254,10 +272,26 @@
         </div>
     </div>
     </section>
+    </form>
+
+  
     <!-- // Basic Vertical form layout section end -->
 </div>
         </div>
     </div>
+    <script>
+        function validateform(){
+         
+                  let fdm = document.forms["myform"]["fdm"].value;
+                  let fdms= document.forms["myform"]["fdms"].value;
+                  if (fdm == ""||fdms=="") {
+                     alert("please fill the fields!");
+                     document.myform.fdm.focus();
+                      return false;
+                  }
+                }
+             
+    </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>

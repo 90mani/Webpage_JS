@@ -13,7 +13,21 @@
   <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
 
 </head>
-
+<style>
+   .sidebar-link:hover{
+background-color:grey;
+                  }
+.active{
+   background-color:aliceblue;
+}
+body{
+   background-color:aliceblue ;
+}
+.avatar:hover,.d-none:hover{
+background-color:gainsboro;
+border-radius: 5px;
+}
+</style>
 <body>
   <script>
     var myObj = {};
@@ -30,7 +44,7 @@
       document.getElementById("pending").innerHTML = myObj.pending;
       document.getElementById("cancelled").innerHTML = myObj.cancelled;
     }
-    xhttp.open("GET", "http://demo3322452.mockable.io/employee/dashboard");
+    xhttp.open("GET", "http://demo2006041.mockable.io/employee/values");
     xhttp.send();
 
 
@@ -39,26 +53,26 @@
     <div id="sidebar" class='active'>
       <div class="sidebar-wrapper active">
         <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-          <i class="fa fa-users text-success me-4"></i>
+          <i class="fa fa-users text-info me-4"></i>
           <span>SANKIT</span>
         </div>
         <div class="sidebar-menu">
           <ul class="menu">
             <li class="sidebar-item active ">
               <a href="employee.html" class='sidebar-link'>
-                <i class="fa fa-home text-success"></i>
+                <i class="fa fa-home text-info"></i>
                 <span>Dashboard</span>
               </a>
             </li>
             <li class="sidebar-item ">
               <a href="apply_leave.html" class='sidebar-link'>
-                <i class="fa fa-plane text-success"></i>
+                <i class="fa fa-plane text-info"></i>
                 <span>Apply Leave</span>
               </a>
             </li>
             <li class="sidebar-item ">
               <a href="leave_status.html" class='sidebar-link'>
-                <i class="fa fa-plane text-success"></i>
+                <i class="fa fa-plane text-info"></i>
                 <span>Leave Status</span>
               </a>
             </li>
@@ -81,7 +95,7 @@
             <li class="dropdown">
               <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <div class="avatar me-1">
-                  <img src="assets/images/admin.png" alt="" srcset="">
+                  <img src="E:\NEW WEBPAGE\Webpage_JS\Leave Management\assets\images\icon.png" alt="" srcset="">
                 </div>
                 <div class="d-none d-md-block d-lg-inline-block">Hi, Employee</div>
               </a>
@@ -89,7 +103,7 @@
                 <a class="dropdown-item" href="update.html"><i data-feather="user"></i> Account</a>
                 <a class="dropdown-item" href="update_password.html"><i data-feather="settings"></i> Settings</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login.html"><i data-feather="log-out"></i> Logout</a>
+                <a class="dropdown-item" href="log.html"><i data-feather="log-out"></i> Logout</a>
               </div>
             </li>
           </ul>
