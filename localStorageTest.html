@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/bbc6705e1e.js" crossorigin="anonymous"></script>
+    <title>Dynamic Company Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: skyblue;
+            color: white;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 5px;
+            box-sizing: border-box;
+
+
+        }
+
+        .delete-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .edit-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .save-button {
+            background-color: deepskyblue;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dynamic Company Table</h1>
+    <div>
+        <input type="text" id="searchInput" placeholder="Search by Company Name" oninput="searchCompanies()">
+    </div>
+
+    <table id="company-table">
+
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        function loadData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://demo3322452.mockable.io", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    var table = document.getElementById("company-table").getElementsByTagName('tbody')[0];
+                    table.innerHTML = "";
+
+                    data.forEach(company => {
+                        var newRow = table.insertRow(table.rows.length);
+
+                        var cell1 = newRow.insertCell(0);
+                        var cell2 = newRow.insertCell(1);
+                        var cell3 = newRow.insertCell(2);
+                        var cell4 = newRow.insertCell(3);
+
+                        cell1.innerHTML = company.name;
+                        cell2.innerHTML = company.location;
+                        cell3.innerHTML = company.industry;
+                        cell4.innerHTML = '<button class="delete-button" onclick="deleteCompany(this, ' + company.id + ')"><i class="fas fa-trash"></i></button>' +
+                            '<button class="edit-button" onclick="editCompany(this, ' + company.id + ')"><i class="fas fa-edit"></i></button>';
+                    });
+                }
+            };
+            xhr.send();
+        }
+
+        function addCompany() {
+            var table = document.getElementById("company-table").getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+
+            cell1.innerHTML = '<input type="text" placeholder="Company Name">';
+            cell2.innerHTML = '<input type="text" placeholder="Location">';
+            cell3.innerHTML = '<input type="text" placeholder="Industry">';
+            cell4.innerHTML = '<button class="delete-button" onclick="deleteCompany(this)"><i class="fas fa-trash"></i></button>' +
+                '<button class="edit-button" onclick="editCompany(this)"><i class="fas fa-edit"></i></button>';
+        }
+
+
+
+        function deleteCompany(button, companyId) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        function editCompany(button, companyId) {
+
+        }
+
+        function saveCompany(button, companyId) {
+
+
+
+        }
+
+        function searchCompanies() {
+
+        }
+
+
+        window.addEventListener("load", function () {
+
+            loadData();
+        });
+    </script>
+</body>
+
+</html>
