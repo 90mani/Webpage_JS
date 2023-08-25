@@ -230,14 +230,14 @@ border-radius: 5px;
         <div class="card">
             <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical">
+                <form name="myform" onsubmit="return validateform()" action="manage_designation.html"  class="form form-vertical">
                 <div class="form-body">
                     <div class="row">
                     <div class="col-12">
                         <div class="form-group has-icon-left">
                             <label for="first-name-icon">Designation Name</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Designation" id="first-name-icon">
+                                <input type="text" class="form-control" placeholder="Input Designation" id="designation">
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
@@ -248,7 +248,7 @@ border-radius: 5px;
                         <div class="form-group has-icon-left">
                             <label for="email-id-icon">Description</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Description" id="email-id-icon">
+                                <input type="text" class="form-control" placeholder="Input Description" id="description">
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
@@ -272,6 +272,19 @@ border-radius: 5px;
 </div>
         </div>
     </div>
+    <script>
+      function validateform(){
+       
+                let designation = document.forms["myform"]["designation"].value;
+                let description= document.forms["myform"]["description"].value;
+                if (designation == ""||description=="") {
+                   alert("please fill the fields!");
+                   document.myform.designation.focus();
+                    return false;
+                }
+              }
+           
+  </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>

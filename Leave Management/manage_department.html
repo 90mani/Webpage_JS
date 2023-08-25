@@ -263,11 +263,10 @@
 
                         <script>
                            var data = JSON.parse(localStorage.getItem("manage_dept"));
-                           console.log(typeof data);
-                           console.log(data);
+                     
                            function record() {
                               var table = document.getElementById("myTable");
-                              table.innerHTML = '<tr><th>EMPLOYEE NAME</th><th>AGE</th><th>SALARY</th><th>ACTION</th></tr>';
+                              table.innerHTML = '<tr><th>DEPARTMENT NAME</th><th>DEPARTMENT SHORT NAME</th><th>CREATION DATE</th><th>ACTION</th></tr>';
                               for (var i = 0; i < data.length; i++) {
                                  var newRow = table.insertRow(table.rows.length)
                                  var row = table.insertRow(i + 1);

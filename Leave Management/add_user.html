@@ -230,13 +230,13 @@ border-radius: 5px;
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form">
+                            <form name="myform" onsubmit="return validateform()" action="manage_user.html" class="form">
                                 <div class="row">
                                     <div class="col-md-12 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Full Name</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="full name" id="first-name-icon">
+                                                <input type="text" class="form-control" placeholder="full name" id="fname">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
@@ -247,7 +247,7 @@ border-radius: 5px;
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Contact</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="contact" id="first-name-icon">
+                                                <input type="text" class="form-control" placeholder="contact" id="phone" maxlength="10">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
@@ -257,7 +257,7 @@ border-radius: 5px;
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Email</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="email" id="first-name-icon">
+                                                <input type="text" class="form-control" placeholder="email" id="email">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-envelope"></i>
                                                 </div>
@@ -268,7 +268,7 @@ border-radius: 5px;
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Username</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="username" id="first-name-icon">
+                                                <input type="text" class="form-control" placeholder="username" id="username">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
@@ -279,7 +279,7 @@ border-radius: 5px;
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Password</label>
                                             <div class="position-relative">
-                                                <input type="password" class="form-control" placeholder="password" id="first-name-icon">
+                                                <input type="password" class="form-control" placeholder="password" id="password">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-key"></i>
                                                 </div>
@@ -291,9 +291,10 @@ border-radius: 5px;
                                             <label for="first-name-icon">User Category</label>
                                             <div class="position-relative">
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" id="basicSelect">
-                                                        <option>Admin</option>
-                                                        <option>Staff</option>
+                                                    <select class="form-select" id="selection">
+                                                        <option value="0">--select--</option>
+                                                        <option value="1">Admin</option>
+                                                        <option value="2">Staff</option>
                                                     </select>
                                                 </fieldset>
                                             </div>
@@ -315,6 +316,87 @@ border-radius: 5px;
 
         </div>
     </div>
+    <script>
+         function validateform() 
+            {
+                  let fname = document.forms["myform"]["fname"].value;
+                            if (fname == "") {
+                     alert("please enter first name");
+                     document.myform.fname.focus();
+                      return false;
+                  }
+                  if(!isNaN(fname)){
+                      alert("First name must be Alphabets only");
+                      document.myform.fname.focus();
+                      return false;
+                  }
+                  if(fname.length>20){
+                      alert(" First name must be within 20 characters");
+                      document.myform.fname.focus();
+                      return false;
+
+                      }
+                     
+
+                let phone=document.forms["myform"]["phone"].value;
+                  if(phone==""){                                                 
+                      alert("enter a mobile number");
+                      document.myform.phone.focus();
+                      return false;
+                  }
+                  if(isNaN(phone)){                                               
+                    alert("Mobile Number Must Be In Numbers Only");
+                    document.myform.phone.focus();
+                    return false;
+                  }
+
+                  var email=document.forms["myform"]["email"].value;
+                  if(email==""){
+                    alert("please enter an email");
+                    document.myform.email.focus();
+                    return false;
+                  }
+
+                  let username = document.forms["myform"]["username"].value;
+                  if (username == "") {
+                     alert("please enter Username");
+                     document.myform.username.focus();
+                      return false;
+                  }
+                  if(!isNaN(username)){
+                      alert("Username must be Alphabets only");
+                     document.myform.username.focus();
+                      return false;
+                  }
+                  if(username.length>20){
+                      alert(" Username must be within 20 characters");
+                      document.myform.username.focus();
+                      return false;
+                      }
+
+                 let password=document.forms["myform"]["password"].value;
+                      if(password==""){
+                        alert("please enter an password");
+                        document.myform.password.focus();
+                        return false;        
+                      }
+                       if(password.length>8){
+                        alert("Password Must Be Within 8 characters");
+                        document.myform.password.focus();
+                        return false;
+                       }
+                      
+
+                let select = document.forms["myform"]["selection"]
+                 var selection1=document.getElementById("selection").value;
+                 if(selection1=="0"){
+                 alert("Please select any one of the user category");
+                 document.myform.selection.focus();
+                 return false;
+                 }
+                }
+     </script>
+    </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>

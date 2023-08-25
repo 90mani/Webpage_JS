@@ -230,14 +230,14 @@ border-radius: 5px;
         <div class="card">
             <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical">
+                <form name="myform" onsubmit="return validateform()" action="manage_leave_type.html" class="form form-vertical">
                 <div class="form-body">
                     <div class="row">
                     <div class="col-12">
                         <div class="form-group has-icon-left">
                             <label for="first-name-icon">Leave Name</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input leave type" id="first-name-icon">
+                                <input type="text" class="form-control" placeholder="Input leave type" id="lvname">
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
@@ -248,7 +248,7 @@ border-radius: 5px;
                         <div class="form-group has-icon-left">
                             <label for="email-id-icon">Description</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Description" id="email-id-icon">
+                                <input type="text" class="form-control" placeholder="Input Description" id="desc">
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
@@ -259,7 +259,7 @@ border-radius: 5px;
                         <div class="form-group has-icon-left">
                             <label for="email-id-icon">Number of days Allowed</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input days allowed" id="email-id-icon">
+                                <input type="text" class="form-control" placeholder="Input days allowed" id="days">
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
@@ -283,6 +283,20 @@ border-radius: 5px;
 </div>
         </div>
     </div>
+    <script>
+        function validateform(){
+         
+                  let leavename = document.forms["myform"]["lvname"].value;
+                  let description= document.forms["myform"]["desc"].value;
+                  let days= document.forms["myform"]["days"].value;
+                  if (lvname == ""||desc==""||days=="") {
+                     alert("please fill the fields!");
+                     document.myform.lvname.focus();
+                      return false;
+                  }
+                }
+             
+    </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
