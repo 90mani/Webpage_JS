@@ -177,7 +177,7 @@
                            <div class="avatar me-1">
                               <img src="assets/images/admin.png" alt="" srcset="">
                            </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
+                           <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika kumar</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                            <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -211,57 +211,73 @@
 
     <!-- Basic Vertical form layout section start -->
     <section id="basic-vertical-layouts">
-    <div class="row match-height">
-        <div class="col-md-8 col-12">
-        <div class="card">
-            <div class="card-content">
-            <div class="card-body">
-                <form class="form form-vertical">
-                <div class="form-body">
-                    <div class="row">
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="first-name-icon">Designation Name</label>
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Designation" id="first-name-icon">
-                                <div class="form-control-icon">
-                                    <i class="fa fa-table"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="email-id-icon">Description</label>
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Description" id="email-id-icon">
-                                <div class="form-control-icon">
-                                    <i class="fa fa-table"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="row match-height">
+            <div class="col-md-8 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form form-vertical" onsubmit="return validate();">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="first-name-icon">Designation Name</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Input Designation" id="first-name-icon">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-table"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="email-id-icon">Description</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Input Description" id="email-id-icon">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-table"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                    <div class="col-12 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                    </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                </form>
-            </div>
             </div>
         </div>
-        </div>
-    </div>
     </section>
     <!-- // Basic Vertical form layout section end -->
 </div>
-        </div>
-    </div>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
     
     <script src="assets/js/main.js"></script>
+    <script>
+        function validate() {
+            var designname = document.getElementById('first-name-icon').value;
+            if (designname.trim() === '') {
+                alert('Please enter designation name');
+                return false;
+            }
+
+            var desc = document.getElementById('email-id-icon').value;
+            if (desc.trim() === '') {
+                alert('Please enter description');
+                return false;
+            }
+
+            return true; // Return true if validation passes
+        }
+    </script>
 </body>
 </html>
+

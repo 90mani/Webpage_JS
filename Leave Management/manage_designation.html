@@ -17,6 +17,28 @@
         .notif:hover{
           background-color: rgba(0,0,0,0.1);
                   }
+                  .delete-button {
+            background-color: white;
+            color: red;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .edit-button {
+            background-color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .save-button {
+            background-color: rgb(101, 171, 240);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
       </style>
 </head>
 
@@ -182,7 +204,7 @@
                            <div class="avatar me-1">
                               <img src="assets/images/admin.png" alt="" srcset="">
                            </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
+                           <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika kumar</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                            <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -211,18 +233,21 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            
                 <section class="section">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class='table' id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Designation Name</th>
-                                        <th>Description</th>
-                                        <th>Creation Date</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
+                  <div class="card">
+                      <div class="card-body">
+                          <table class='table' id="table1">
+                              <thead>
+                                  <tr>
+                                      <th>Designation Name</th>
+                                      <th>Description</th>
+                                      <th>Creation Date</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
                                 <tbody>
                                     <tr>
                                         <td>HR</td>
@@ -251,6 +276,9 @@
             </div>
         </div>
     </div>
+    <button onclick="myFunction()">Replace document</button>
+
+   
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
@@ -259,6 +287,110 @@
     <script src="assets/js/vendors.js"></script>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        var data = [
+            { DesignationName: "HR", Description: "Human Resource", CreationDate: "2021-11-01" },
+            { DesignationName: "IT", Description: "Information technology", CreationDate: "2021-11-01" },
+            { DesignationName: "Eng'G", Description: "Engineering", CreationDate: "2017-11-01" }
+        ];
+    
+        function displayCompanies() {
+            var table = document.getElementById("table1");
+            table.innerHTML = '<tr><th>Designation Name</th><th>Description</th><th>Creation Date</th><th>Action</th></tr>';
+    
+            for (var i = 0; i < data.length; i++) {
+                var row = table.insertRow(i + 1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+    
+                cell1.innerHTML = data[i].DesignationName;
+                cell2.innerHTML = data[i].Description;
+                cell3.innerHTML = data[i].CreationDate;
+                cell4.innerHTML = '<button class="edit-button" onclick="editCompany(this)"><i class="fa fa-pen text-success"></i></button>' +
+                    '<button class="delete-button" onclick="deleteCompany(this)"><i class="fa fa-trash text-danger"></i></button>';
+            }
+        }
+    
+       function editCompany(button) {
+   var row = button.parentNode.parentNode;
+   var cells = row.getElementsByTagName("td");
+
+   for (var i = 0; i < cells.length - 1; i++) {
+       var value = cells[i].innerText;
+       cells[i].innerHTML = '<input type="text" value="' + value + '">';
+   }
+
+   var actionsCell = cells[cells.length - 1];
+   actionsCell.innerHTML = '<button class="save-button" onclick="saveCompany(this)"><i class="fas fa-save"></i></button>' +
+       '<button class="delete-button" onclick="deleteCompany(this)"><i class="fas fa-trash"></i></button>';
+}
+
+function saveCompany(button) {
+   var row = button.parentNode.parentNode;
+   var cells = row.getElementsByTagName("td");
+
+   for (var i = 0; i < cells.length - 1; i++) {
+       var input = cells[i].getElementsByTagName("input")[0];
+       var value = input.value;
+       cells[i].innerHTML = value;
+       data[row.rowIndex - 1][Object.keys(data[row.rowIndex - 1])[i]] = value;
+   }
+
+   var actionsCell = cells[cells.length - 1];
+   actionsCell.innerHTML = '<button class="edit-button" onclick="editCompany(this)"><i class="fas fa-edit"></i></button>' +
+       '<button class="delete-button" onclick="deleteCompany(this)"><i class="fas fa-trash"></i></button>';
+}
+
+function deleteCompany(button) {
+   var row = button.parentNode.parentNode;
+   var index = row.rowIndex - 1;
+   data.splice(index, 1);
+   displayCompanies();
+}
+
+function addCompany() {
+   var DepartmentName = document.getElementById("DesignationName").value;
+   var DepartmentShortName = document.getElementById("Description").value;
+   var CreationDate = document.getElementById("CreationDate").value;
+
+   if (DesignationName && Description && CreationDate) {
+       data.push({ DesignationName: DesignationName, Description:Description, CreationDate: CreationDate });
+       displayCompanies();
+       document.getElementById("DesignationName").value = "";
+       document.getElementById("Description").value = "";
+       document.getElementById("CreationDate").value = "";
+   }
+}
+function searchCompanies() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("company-table");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+displayCompanies();
+function myFunction() {
+  location.replace("https://www.w3schools.com")
+}
+</script>
+
 </body>
+</html>
+
+</body>  
 
 </html>

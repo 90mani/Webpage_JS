@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5;URL=C:/Users/Admin/Desktop/Webpage_JS-kiruthika_js/Leave%20Management/manage_department.html">
     <title>Add Department</title>
     
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     
-      <script defer src="assets/fontawesome/js/all.min.js"></script>
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
-      <style type="text/css">
-        .notif:hover{
-          background-color: rgba(0,0,0,0.1);
-                  }
+    <style type="text/css">
+            .notif:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+       
       </style>
 </head>
 <body>
@@ -177,7 +180,7 @@
                            <div class="avatar me-1">
                               <img src="assets/images/admin.png" alt="" srcset="">
                            </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
+                           <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika kumar</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                            <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -211,57 +214,99 @@
 
     <!-- Basic Vertical form layout section start -->
     <section id="basic-vertical-layouts">
-    <div class="row match-height">
-        <div class="col-md-8 col-12">
-        <div class="card">
-            <div class="card-content">
-            <div class="card-body">
-                <form class="form form-vertical">
-                <div class="form-body">
-                    <div class="row">
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="first-name-icon">Department Short Name</label>
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Department" id="first-name-icon">
-                                <div class="form-control-icon">
-                                    <i class="fa fa-table"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="email-id-icon">Department Name</label>
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Department Name" id="email-id-icon">
-                                <div class="form-control-icon">
-                                    <i class="fa fa-table"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="row match-height">
+            <div class="col-md-8 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                           
+                            <form class="form form-vertical" onsubmit="return validate();">
+                                
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="department-short-name">Department Short Name</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Input Department" id="department-short-name">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-table"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="department-name">Department Name</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Input Department Name" id="department-name">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-table"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                    <div class="col-12 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                    </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1" >Submit</button>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                </form>
-            </div>
             </div>
         </div>
-        </div>
-    </div>
     </section>
-    <!-- // Basic Vertical form layout section end -->
+   
 </div>
-        </div>
-    </div>
-    <script src="assets/js/feather-icons/feather.min.js"></script>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/app.js"></script>
+</div>
+
+
+<p id="demo"></p>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var form = document.querySelector('.form-vertical');
+        var submitButton = form.querySelector('.btn-primary');
+        var shortNameInput = form.querySelector('#first-name-icon');
+        var departmentNameInput = form.querySelector('#email-id-icon');
+        var spinner = form.querySelector('.spinner');
+         
+        submitButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            if (validateForm()) {
+                spinner.style.display = 'inline-block';
+                submitButton.disabled = true; 
+                submitButton.innerHTML = 'Submitting...';
     
-    <script src="assets/js/main.js"></script>
-</body>
-</html>
+                setTimeout(function() {
+                    window.location.href = 'manage_department.html'; 
+                }, 2000); 
+            }
+        });
+    
+        function validateForm() {
+            var shortName = shortNameInput.value.trim();
+            var departmentName = departmentNameInput.value.trim();
+            var isValid = true;
+    
+            if (shortName === '') {
+                isValid = false;
+                alert('Please enter department short name.');
+                shortNameInput.focus();
+            }
+    
+            if (departmentName === '') {
+                isValid = false;
+                alert('Please enter department name.');
+                departmentNameInput.focus();
+            }
+    
+            return isValid;
+        }
+    });
+    </script>

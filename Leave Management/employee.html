@@ -1,40 +1,46 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employee Leave Management System</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.css">
-  <script defer src="assets/fontawesome/js/all.min.js"></script>
-  <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
-  <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-  <link rel="stylesheet" href="assets/css/app.css">
-  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
-
-</head>
-
-<body>
-  <script>
-    var myObj = {};
-
-
-    console.log('entered here');
-
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {
-      myObj = JSON.parse(this.responseText);
-      console.log(myObj.approved);
-      document.getElementById("leaveCount").innerHTML = myObj.lvcount
-      document.getElementById("approved").innerHTML = myObj.approved;
-      document.getElementById("pending").innerHTML = myObj.pending;
-      document.getElementById("cancelled").innerHTML = myObj.cancelled;
-    }
-    xhttp.open("GET", "http://demo3322452.mockable.io/employee/dashboard");
-    xhttp.send();
-
-
-  </script>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Employee Leave Management System</title>
+      <link rel="stylesheet" href="assets/css/bootstrap.css">
+      <script defer src="assets/fontawesome/js/all.min.js"></script>
+      <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
+      <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+      <link rel="stylesheet" href="assets/css/app.css">
+      <script src="assets/js/feather-icons/feather.min.js"></script>
+<script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="assets/js/app.js" defer></script>
+<script src="assets/vendors/chartjs/Chart.min.js" defer></script>
+<script src="assets/vendors/apexcharts/apexcharts.min.js" defer></script>
+<script src="assets/js/pages/dashboard.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+      <style type="text/css">
+        .notif:hover{
+          background-color: rgba(0,0,0,0.1);
+                  }
+      </style>
+   </head>
+   <body>
+      <script>
+         var myObj = {};
+     
+         console.log('entered here');
+     
+         const xhttp = new XMLHttpRequest();
+         xhttp.onload = function () {
+             myObj = JSON.parse(this.responseText);
+             console.log(myObj.approved);
+             document.getElementById("leaveCount").innerHTML = myObj.Leave
+             document.getElementById("approved").innerHTML = myObj.Approved;
+             document.getElementById("pending").innerHTML = myObj.Pending;
+             document.getElementById("cancelled").innerHTML = myObj.Canceled;
+         }
+         xhttp.open("GET", "http://demo2864179.mockable.io/employee%20leave");
+         xhttp.send();
+     
+        </script>
   <div id="app">
     <div id="sidebar" class='active'>
       <div class="sidebar-wrapper active">
@@ -83,7 +89,7 @@
                 <div class="avatar me-1">
                   <img src="assets/images/admin.png" alt="" srcset="">
                 </div>
-                <div class="d-none d-md-block d-lg-inline-block">Hi, Employee</div>
+                <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika Kumar</div>
               </a>
               <div class="dropdown-menu dropdown-menu-end">
                 <a class="dropdown-item" href="update.html"><i data-feather="user"></i> Account</a>
