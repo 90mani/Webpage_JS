@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    
+<link rel="stylesheet" href="./logincss.css">
     <style>
         .reset-button {
             background-color: #5a8dee;
@@ -30,44 +32,34 @@
         #message {
   display:none;
   background: #f1f1f1;
-  color: #000;
+  color: #da1e1e;
   position: relative;
   padding: 20px;
   margin-top: 10px;
 }
 
+.field .error {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  color: #d93025;
+  font-size: 13px;
+  display: none;
+}
 #message p {
   padding: 10px 30px;
   font-size: 14px;
 }
-
-
-.valid {
-  color: green;
+#message u {
+  padding: 10px 30px;
+  font-size: 12px;
 }
-
-.valid:before {
-  position: relative;
-  left: -35px;
-  content: "✔";
-}
-
-
-.invalid {
-  color: red;
-}
-
-.invalid:before {
-  position: relative;
-  left: -35px;
-  content: "✖";
-}
-    </style>
 
     </style>
 </head>
 
 <body>
+  <body>
     <div id="auth">
         <div class="container">
             <div class="row">
@@ -77,128 +69,154 @@
                             <div class="text-center mb-5">
                                 <h3>Sign In</h3>
                             </div>
-                            <form onsubmit="return validate();" action="employee.html">
-                                <div class="imgcontainer" style="text-align: center;">
-                                    <img src="C:\Users\Admin\Pictures\sign1.png" alt="Avatar" class="avatar" width="100" height="100">
+                            
+                            <form action="employee.html" method="post">
+                              <div class="imgcontainer text-center">
+                                <img src="C:\Users\Admin\Pictures\sign.png" alt="Avatar" class="avatar" width="120" height="120">
+                              </div>
+                              <div class="form-group position-relative has-icon-left">
+                                <label for="username">Username</label>
+                                <div class="position-relative">
+                                  <input type="text" class="form-control" id="username" name="username">
+                                  <div class="form-control-icon">
+                                    <i class="fa fa-user"></i>
+                                  </div>
+                                  <div class="alert alert-danger error-message" id="usernameError" style="display: none;"></div>
                                 </div>
-
-                                <div class="form-group position-relative has-icon-left">
-                                    <label for="username">Username</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" id="username" required>
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-user"></i>
-                                        </div>
-                                    </div>
+                              </div>
+                              <div class="form-group position-relative has-icon-left">
+                                <label for="password">Password</label>
+                                <div class="position-relative">
+                                  <input type="password" class="form-control" id="password" name="password">
+                                  <div class="form-control-icon">
+                                    <i class="fa fa-key"></i>
+                                  </div>
+                                  <div class="alert alert-danger error-message" id="passwordError" style="display: none;"></div>
                                 </div>
-                                <div class="form-group position-relative has-icon-left">
-                                    <div class="clearfix">
-                                        <label for="password">Password</label>
-                                        <a href="#" class="float-end">
-                                            <small>Forgot password?</small>
-                                        </a>
-                                    </div>
-                                    <div class="position-relative">
-                                        <input type="password" class="form-control" id="password" required>
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-key"></i>
-                                        </div>
-                                    </div>
+                              </div>
+                              <div class="clearfix">
+                             
+                                <a href="#" class="float-end">
+                                  <small>Forgot password?</small>
+                                </a>
+                              </div>
+                              <div class="form-check clearfix my-4">
+                                <div class="checkbox float-start">
+                                  <a href="index.html" class="float-end">
+                                    <small>admin</small>
+                                  </a>
                                 </div>
-
-                                <div class="form-check clearfix my-4">
-                                    <div class="checkbox float-start">
-                                        <a href="index.html" class="float-end">
-                                            <small>admin</small>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div style="text-align: right;">
-                                    <button id="startSpinner" class="btn btn-primary">Login</button>
-                                    <input type="reset" class="reset-button" value="Reset">
-                                
-                                    <div id="message">
-                                        <h4>Password must contain the following:</h4>
-                                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                                        <p id="number" class="invalid">A <b>number</b></p>
-                                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-                                      </div>
-        
-                                </div>
-                            </div>
+                              </div>
+                              <div class="clearfix">
+                               
+                                <button type="reset" class="btn btn-primary float-end">Reset</button>
+                                <button type="submit" class="btn btn-primary float-end">Login</button>
+                              </div>
+                            </form>
+                          </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                      </div>
+                
+                  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                  <script src="assets/js/feather-icons/feather.min.js"></script>
+                  <script src="assets/js/app.js"></script>
+                  <script src="assets/js/main.js"></script>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                      var form = document.querySelector("form");
+                      var usernameInput = document.getElementById("username");
+                      var passwordInput = document.getElementById("password");
+                      var usernameError = document.getElementById("usernameError");
+                      var passwordError = document.getElementById("passwordError");
+                
+                      form.onsubmit = function () {
+                        var isUsernameValid = validateUsername(usernameInput, usernameError);
+                        var isPasswordValid = validatePassword(passwordInput, passwordError);
+                
+                        return isUsernameValid && isPasswordValid;
+                      };
+                
+                      usernameInput.addEventListener("input", function () {
+                        hideUsernameError(usernameError);
+                        usernameInput.style.borderColor = "initial";
+                      });
+                
+                      passwordInput.addEventListener("input", function () {
+                        hidePasswordError(passwordError);
+                        passwordInput.style.borderColor = "initial";
+                      });
+                
+                      function validatePassword(passwordInput, passwordError) {
+                        var passwordValue = passwordInput.value;
+                        var lowercasePattern = /[a-z]/;
+                        var uppercasePattern = /[A-Z]/;
+                        var digitPattern = /\d/;
+                        var symbolPattern = /[@$!%*?&]/;
+                
+                        if (
+                          !lowercasePattern.test(passwordValue) ||
+                          !uppercasePattern.test(passwordValue) ||
+                          !digitPattern.test(passwordValue) ||
+                          !symbolPattern.test(passwordValue) ||
+                          passwordValue.length < 8 ||
+                          passwordValue.length > 12
+                        ) {
+                          showPasswordError(
+                            passwordError,
+                            "Password must be 8-12 characters and contain at least one lowercase, one uppercase, one digit, and one symbol."
+                          );
+                          passwordInput.style.borderColor = "red";
+                          return false;
+                        }
+                
+                        hidePasswordError(passwordError);
+                        passwordInput.style.borderColor = "green";
+                        return true;
+                      }
+                
+                      function validateUsername(usernameInput, usernameError) {
+                      var usernameValue = usernameInput.value;
+                      var alphanumericPattern = /^[a-zA-Z]+$/;
 
-            <script>
+                             if (usernameValue.length < 6 || usernameValue.length > 10) {
+                         showUsernameError( usernameError, "Username must be between 6 and 10 characters."
+        );
+        usernameInput.style.borderColor = "red";
+        return false;
+    }
+
+    if (!alphanumericPattern.test(usernameValue)) {
+        showUsernameError(
+            usernameError,
+            "Username must only contain letters and numbers."
+        );
+        usernameInput.style.borderColor = "red";
+        return false;
+    }
+
+    hideUsernameError(usernameError);
+    usernameInput.style.borderColor = "green";
+    return true;
+}
+                      function showPasswordError(passwordError, message) {
+                        passwordError.textContent = message;
+                        passwordError.style.display = "block";
+                      }
                 
-        var myInput = document.getElementById("password");
-        var letter = document.getElementById("letter");
-        var capital = document.getElementById("capital");
-        var number = document.getElementById("number");
-        var length = document.getElementById("length");
-        
-       
-        myInput.onfocus = function() {
-          document.getElementById("message").style.display = "block";
-        }
-        
-       
-        myInput.onblur = function() {
-          document.getElementById("message").style.display = "none";
-        }
-        
-      
-        myInput.onkeyup = function() {
-          
-          var lowerCaseLetters = /[a-z]/g;
-          if(myInput.value.match(lowerCaseLetters)) {  
-            letter.classList.remove("invalid");
-            letter.classList.add("valid");
-          } else {
-            letter.classList.remove("valid");
-            letter.classList.add("invalid");
-          }
-          
-          
-          var upperCaseLetters = /[A-Z]/g;
-          if(myInput.value.match(upperCaseLetters)) {  
-            capital.classList.remove("invalid");
-            capital.classList.add("valid");
-          } else {
-            capital.classList.remove("valid");
-            capital.classList.add("invalid");
-          }
-        
-          
-          var numbers = /[0-9]/g;
-          if(myInput.value.match(numbers)) {  
-            number.classList.remove("invalid");
-            number.classList.add("valid");
-          } else {
-            number.classList.remove("valid");
-            number.classList.add("invalid");
-          }
-          
-         
-          if(myInput.value.length >= 8) {
-            length.classList.remove("invalid");
-            length.classList.add("valid");
-          } else {
-            length.classList.remove("valid");
-            length.classList.add("invalid");
-    
-        }
-       
-        }
-        
-                </script>
+                      function hidePasswordError(passwordError) {
+                        passwordError.style.display = "none";
+                      }
                 
+                      function showUsernameError(usernameError, message) {
+                        usernameError.textContent = message;
+                        usernameError.style.display = "block";
+                      }
+                
+                      function hideUsernameError(usernameError) {
+                        usernameError.style.display = "none";
+                      }
+                    });
+                  </script>
                 </body>
                 </html>
                 
-        
-        
-        

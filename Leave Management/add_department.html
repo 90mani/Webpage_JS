@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="5;URL=C:/Users/Admin/Desktop/Webpage_JS-kiruthika_js/Leave%20Management/manage_department.html">
     <title>Add Department</title>
     
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     
-    <script defer src="assets/fontawesome/js/all.min.js"></script>
+      <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <style type="text/css">
-            .notif:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-
-       
+      <style type="text/css">
+        .notif:hover{
+          background-color: rgba(0,0,0,0.1);
+                  }
       </style>
 </head>
 <body>
@@ -24,20 +21,20 @@
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
     <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                      <i class="fa fa-users text-success me-4"></i>
+                      <i class="fa fa-users text-primary me-4"></i>
                         <span>SANKIT</span>
                 </div>
                <div class="sidebar-menu">
                   <ul class="menu">
                      <li class="sidebar-item ">
                         <a href="index.html" class='sidebar-link'>
-                        <i class="fa fa-home text-success"></i>
+                        <i class="fa fa-home text-primary"></i>
                         <span>Dashboard</span>
                         </a>
                      </li>
                      <li class="sidebar-item active has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-building text-success"></i>
+                        <i class="fa fa-building text-primary"></i>
                         <span>Department</span>
                         </a>
                         <ul class="submenu ">
@@ -51,7 +48,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
+                        <i class="fa fa-table text-primary"></i>
                         <span>Designation</span>
                         </a>
                         <ul class="submenu ">
@@ -65,7 +62,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-users text-success"></i>
+                        <i class="fa fa-users text-primary"></i>
                         <span>Employees</span>
                         </a>
                         <ul class="submenu ">
@@ -79,7 +76,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
+                        <i class="fa fa-table text-primary"></i>
                         <span>Leave Type</span>
                         </a>
                         <ul class="submenu ">
@@ -93,7 +90,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
+                        <i class="fa fa-table text-primary"></i>
                         <span>Leave Management</span>
                         </a>
                         <ul class="submenu ">
@@ -113,7 +110,7 @@
                      </li>
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                        <i class="fa fa-user text-success"></i>
+                        <i class="fa fa-user text-primary"></i>
                         <span>Users</span>
                         </a>
                         <ul class="submenu ">
@@ -127,7 +124,7 @@
                      </li>
                      <li class="sidebar-item ">
                         <a href="reports.html" class='sidebar-link'>
-                        <i class="fa fa-chart-bar text-success"></i>
+                        <i class="fa fa-chart-bar text-primary"></i>
                         <span>Reports</span>
                         </a>
                      </li>
@@ -180,7 +177,7 @@
                            <div class="avatar me-1">
                               <img src="assets/images/admin.png" alt="" srcset="">
                            </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika kumar</div>
+                           <div class="d-none d-md-block d-lg-inline-block">Hi,Kiruthikakumar</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                            <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -192,6 +189,8 @@
                   </ul>
                 </div>
             </nav>
+
+
             
 <div class="main-content container-fluid">
     <div class="page-title">
@@ -214,99 +213,156 @@
 
     <!-- Basic Vertical form layout section start -->
     <section id="basic-vertical-layouts">
-        <div class="row match-height">
-            <div class="col-md-8 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                           
-                            <form class="form form-vertical" onsubmit="return validate();">
-                                
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group has-icon-left">
-                                                <label for="department-short-name">Department Short Name</label>
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="Input Department" id="department-short-name">
-                                                    <div class="form-control-icon">
-                                                        <i class="fa fa-table"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group has-icon-left">
-                                                <label for="department-name">Department Name</label>
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="Input Department Name" id="department-name">
-                                                    <div class="form-control-icon">
-                                                        <i class="fa fa-table"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1" >Submit</button>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+    <div class="row match-height">
+        <div class="col-md-8 col-12">
+        <div class="card">
+            <div class="card-content">
+            <div class="card-body">
+                <form class="form form-vertical" onsubmit="return validateForm();">
+                <div class="form-body">
+                    <div class="row">
+                    <div class="col-12">
+                        <div class="form-group has-icon-left">
+                            <label for="first-name-icon">Department Short Name</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" placeholder="Input Department" id="first-name-icon">
+                                <div class="form-control-icon">
+                                    <i class="fa fa-table"></i>
+                                </div>  <div class="alert alert-danger error-message" id="shortname-error"style="display: none;"></div>
+ 
+                            </div>
                         </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group has-icon-left">
+                            <label for="email-id-icon">Department Name</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" placeholder="Input Department Name" id="email-id-icon">
+                                <div class="form-control-icon">
+                                    <i class="fa fa-table"></i>
+                                </div>
+                                <div class="alert alert-danger error-message" id="department-name-error" style="display: none;"></div>
+                                <div class="alert alert-success" id="department-name-success" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                       <div class="spinner" style="display: none;"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-   
+        </form>
+    </div>
 </div>
 </div>
+</div>
+</div>
+</section>
+</div>
 
-
-<p id="demo"></p>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var form = document.querySelector('.form-vertical');
-        var submitButton = form.querySelector('.btn-primary');
-        var shortNameInput = form.querySelector('#first-name-icon');
-        var departmentNameInput = form.querySelector('#email-id-icon');
-        var spinner = form.querySelector('.spinner');
-         
-        submitButton.addEventListener('click', function(event) {
-            event.preventDefault();
-            
-            if (validateForm()) {
-                spinner.style.display = 'inline-block';
-                submitButton.disabled = true; 
-                submitButton.innerHTML = 'Submitting...';
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/app.js"></script>
     
-                setTimeout(function() {
-                    window.location.href = 'manage_department.html'; 
-                }, 2000); 
-            }
+    <script src="assets/js/main.js"></script>
+    
+ <script>
+       
+       document.addEventListener("DOMContentLoaded", function () {
+            var form = document.querySelector(".form-vertical");
+            var submitButton = form.querySelector('.btn-primary');
+            var shortNameInput = document.getElementById("first-name-icon");
+            var departmentNameInput = document.getElementById("email-id-icon");
+            var shortNameError = document.getElementById("shortname-error");
+            var departmentNameError = document.getElementById("department-name-error");
+           
+            var spinner = form.querySelector('.spinner');
+
+            form.onsubmit = function (event) {
+                event.preventDefault(); 
+
+                var isShortNameValid = validateShortName(shortNameInput, shortNameError);
+                var isDepartmentNameValid = validateDepartmentName(departmentNameInput, departmentNameError);
+
+                if (isShortNameValid && isDepartmentNameValid) {
+                    spinner.style.display = 'inline-block';
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = 'Submitting...';
+
+                    var deptShortName = shortNameInput.value.trim();
+                    var deptName = departmentNameInput.value.trim();
+
+                    var newDepartment = {
+                        departmentName: deptName,
+                        shortName: deptShortName,
+                        creationDate: new Date().toLocaleDateString() 
+                    };
+
+                    var departments = JSON.parse(localStorage.getItem('manage_department')) || [];
+                    departments.push(newDepartment);
+                    localStorage.setItem('manage_department', JSON.stringify(departments));
+
+                    
+
+                    setTimeout(function () {
+                        window.location.href = 'manage_department.html';
+                    }, 1000); 
+                }
+            };
+
+            shortNameInput.addEventListener("input", function () {
+                hideShortNameError(shortNameError);
+                shortNameInput.style.borderColor = "green";
+            });
+
+            departmentNameInput.addEventListener("input", function () {
+                hideDepartmentNameError(departmentNameError);
+                departmentNameInput.style.borderColor = "green";
+            });
         });
-    
-        function validateForm() {
-            var shortName = shortNameInput.value.trim();
-            var departmentName = departmentNameInput.value.trim();
-            var isValid = true;
-    
-            if (shortName === '') {
-                isValid = false;
-                alert('Please enter department short name.');
-                shortNameInput.focus();
+
+        function validateShortName(shortNameInput, shortNameError) {
+            var shortNameValue = shortNameInput.value.trim();
+            if (shortNameValue === "") {
+                showErrorMessage(shortNameError, "Please enter department short name.");
+                shortNameInput.style.borderColor = "red";
+                return false;
             }
-    
-            if (departmentName === '') {
-                isValid = false;
-                alert('Please enter department name.');
-                departmentNameInput.focus();
-            }
-    
-            return isValid;
+            hideErrorMessage(shortNameError);
+            shortNameInput.style.borderColor = "green";
+            return true;
         }
-    });
-    </script>
+        function hideShortNameError(shortNameError) {
+        shortNameError.style.display = "none";
+    }
+        function validateDepartmentName(departmentNameInput, departmentNameError) {
+            var departmentNameValue = departmentNameInput.value.trim();
+            if (departmentNameValue === "") {
+                showErrorMessage(departmentNameError, "Please enter department name.");
+                departmentNameInput.style.borderColor = "red";
+                return false;
+            }
+            hideErrorMessage(departmentNameError);
+            departmentNameInput.style.borderColor = "green";
+            return true;
+        }
+
+        function showErrorMessage(errorElement, message) {
+            errorElement.textContent = message;
+            errorElement.style.display = "block";
+        }
+
+        function hideDepartmentNameError(departmentNameError) {
+        departmentNameError.style.display = "none";
+    }
+    function hideErrorMessage(errorElement) {
+            errorElement.textContent = "none";
+            errorElement.style.display = "none";
+        }
+</script>
+
+    
+</body>
+</html>

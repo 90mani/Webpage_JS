@@ -177,7 +177,7 @@
                            <div class="avatar me-1">
                               <img src="assets/images/admin.png" alt="" srcset="">
                            </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
+                           <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika Kumar</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                            <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -207,72 +207,144 @@
         </div>
 
     </div>
-
-
-    <!-- Basic Vertical form layout section start -->
     <section id="basic-vertical-layouts">
-    <div class="row match-height">
-        <div class="col-md-8 col-12">
-        <div class="card">
-            <div class="card-content">
-            <div class="card-body">
-                <form class="form form-vertical">
-                <div class="form-body">
-                    <div class="row">
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="first-name-icon">Leave Name</label>
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input leave type" id="first-name-icon">
-                                <div class="form-control-icon">
-                                    <i class="fa fa-table"></i>
+        <div class="row match-height">
+            <div class="col-md-8 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form form-vertical" id="leave-form">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="leave-name-icon">Leave Name</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Input leave type" id="leave-name-icon">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-table"></i>
+                                                        <div class="alert alert-danger error-message" id="leave-name-error" style="display: none;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="description-icon">Description</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Input Description" id="description-icon">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-table"></i>
+                                                        <div class="alert alert-danger error-message" id="description-error" style="display: none;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="days-allowed-icon">Number of days Allowed</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Input days allowed" id="days-allowed-icon">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-table"></i>
+                                                        <div class="alert alert-danger error-message" id="days-allowed-error" style="display: none;"></div>
+                                                        <div class="alert alert-success" id="days-allowed-success" style="display: none;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                            <div class="spinner" style="display: none;"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="email-id-icon">Description</label>
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Description" id="email-id-icon">
-                                <div class="form-control-icon">
-                                    <i class="fa fa-table"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="email-id-icon">Number of days Allowed</label>
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input days allowed" id="email-id-icon">
-                                <div class="form-control-icon">
-                                    <i class="fa fa-table"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                    </div>
                     </div>
                 </div>
-                </form>
-            </div>
             </div>
         </div>
-        </div>
-    </div>
     </section>
-    <!-- // Basic Vertical form layout section end -->
 </div>
-        </div>
-    </div>
-    <script src="assets/js/feather-icons/feather.min.js"></script>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/app.js"></script>
-    
-    <script src="assets/js/main.js"></script>
+
+
+<script src="assets/js/feather-icons/feather.min.js"></script>
+<script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var form = document.getElementById("leave-form");
+        var submitButton = form.querySelector('.btn-primary');
+        var leaveNameInput = document.getElementById("leave-name-icon");
+        var descriptionInput = document.getElementById("description-icon");
+        var daysAllowedInput = document.getElementById("days-allowed-icon");
+        var leaveNameError = document.getElementById("leave-name-error");
+        var descriptionError = document.getElementById("description-error");
+        var daysAllowedError = document.getElementById("days-allowed-error");
+        var spinner = form.querySelector('.spinner');
+
+        form.onsubmit = function (event) {
+            event.preventDefault();
+
+            var isLeaveNameValid = validateInput(leaveNameInput, leaveNameError);
+            var isDescriptionValid = validateInput(descriptionInput, descriptionError);
+            var isDaysAllowedValid = validateInput(daysAllowedInput, daysAllowedError);
+
+            if (isLeaveNameValid && isDescriptionValid && isDaysAllowedValid) {
+                spinner.style.display = 'inline-block';
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Submitting...';
+
+                var leaveName = leaveNameInput.value.trim();
+                var description = descriptionInput.value.trim();
+                var daysAllowed = daysAllowedInput.value.trim();
+
+                setTimeout(function () {
+                    window.location.href = 'manage_leave_type.html';
+                }, 1000);
+            }
+        };
+
+        leaveNameInput.addEventListener("input", function () {
+            hideError(leaveNameError);
+            leaveNameInput.style.borderColor = "green";
+        });
+
+        descriptionInput.addEventListener("input", function () {
+            hideError(descriptionError);
+            descriptionInput.style.borderColor = "green";
+        });
+
+        daysAllowedInput.addEventListener("input", function () {
+            hideError(daysAllowedError);
+            daysAllowedInput.style.borderColor = "green";
+        });
+    });
+
+    function validateInput(inputElement, errorElement) {
+        var inputValue = inputElement.value.trim();
+        if (inputValue === "") {
+            showError(errorElement, "Please enter a value.");
+            inputElement.style.borderColor = "red";
+            return false;
+        }
+        hideError(errorElement);
+        inputElement.style.borderColor = "green";
+        return true;
+    }
+
+    function showError(errorElement, message) {
+        errorElement.textContent = message;
+        errorElement.style.display = "block";
+    }
+
+    function hideError(errorElement) {
+        errorElement.style.display = "none";
+    }
+</script>
 </body>
 </html>
+
+   
