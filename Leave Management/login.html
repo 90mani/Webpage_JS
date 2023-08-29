@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body>
+    <div id="auth">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-sm-12 mx-auto">
+                    <div class="card pt-4">
+                        <div class="card-body">
+                            <div class="text-center mb-5">
+                                <img src="assets/images/user.jpg" alt="User Image" class="img" width="100" height="100">
+                                <h3>Sign In</h3>
+                            </div>
+                            <form action="employee.html" method="post">
+                                <div class="form-group position-relative has-icon-left">
+                                    <label for="username">Username</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" id="username" name="username">
+                                        <div class="form-control-icon">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                        <div class="alert alert-danger error-message" id="username-error" style="display: none;"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group position-relative has-icon-left">
+                                    <div class="clearfix">
+                                        <label for="password">Password</label>
+                                        <a href="#" class='float-end'>
+                                            <small>Forgot password?</small>
+                                        </a>
+                                        
+                                    </div>
+                                    <div class="position-relative">
+                                        <input type="password" class="form-control" id="password" name="password">
+                                        <div class="form-control-icon">
+                                            <i class="fa fa-key"></i>
+                                        </div>
+                                        <div class="alert alert-danger error-message" id="password-error" style="display: none;"></div>
+                                    </div>
+                                </div>
+                                <div class='form-check clearfix my-4'>
+                                    <div class="checkbox float-start">
+                                        <a href="index.html" class='float-end'>
+                                            <small>admin</small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <button type="submit" class="btn btn-primary float-end">Login</button>
+                                </div><br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var form = document.querySelector("form");
+        var usernameInput = document.getElementById("username");
+        var passwordInput = document.getElementById("password");
+        var usernameError = document.getElementById("username-error");
+        var passwordError = document.getElementById("password-error");
+
+        form.onsubmit = function (event) {
+            var isUsernameValid = validateUsername(usernameInput, usernameError);
+            var isPasswordValid = validatePassword(passwordInput, passwordError);
+
+            if (!isUsernameValid || !isPasswordValid) {
+                event.preventDefault();
+            }
+        };
+
+        usernameInput.addEventListener("input", function () {
+            hideUsernameError(usernameError);
+            usernameInput.style.borderColor = "green";
+        });
+
+        passwordInput.addEventListener("input", function () {
+            hidePasswordError(passwordError);
+            passwordInput.style.borderColor = "green";
+        });
+    });
+
+    function validatePassword(passwordInput, passwordError) {
+        var passwordValue = passwordInput.value.trim();
+        if (passwordValue === "") {
+            showPasswordError(passwordError, "Please enter password.");
+            passwordInput.style.borderColor = "red";
+            return false;
+        }
+
+        hidePasswordError(passwordError);
+        passwordInput.style.borderColor = "green";
+        return true;
+    }
+
+    function validateUsername(usernameInput, usernameError) {
+        var usernameValue = usernameInput.value.trim();
+        if (usernameValue === "") {
+            showUsernameError(usernameError, "Please enter a username.");
+            usernameInput.style.borderColor = "red";
+            return false;
+        }
+
+        hideUsernameError(usernameError);
+        usernameInput.style.borderColor = "green";
+        return true;
+    }
+
+    function showPasswordError(passwordError, message) {
+        passwordError.textContent = message;
+        passwordError.style.display = "block";
+    }
+
+    function hidePasswordError(passwordError) {
+        passwordError.textContent = "";
+        passwordError.style.display = "none";
+    }
+
+    function showUsernameError(usernameError, message) {
+        usernameError.textContent = message;
+        usernameError.style.display = "block";
+    }
+
+    function hideUsernameError(usernameError) {
+        usernameError.textContent = "";
+        usernameError.style.display = "none";
+    }
+</script>
+
+    </body>
+</html>
