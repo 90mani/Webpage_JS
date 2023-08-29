@@ -14,6 +14,21 @@
         .notif:hover{
           background-color: rgba(0,0,0,0.1);
                   }
+  .error-message {
+    color: #d93025;
+    font-size: 14px;
+    margin-top: 5px; 
+    display: none; 
+}
+.form-group.has-icon-left .form-control-icon {
+    position: absolute;
+    top: 45%;
+    bottom:15%;
+    transform: translateY(-50%);
+    right: 0.60rem;
+    pointer-events: none;
+    left:25px;
+}
       </style>
 </head>
 <body>
@@ -228,7 +243,7 @@
                                                                 <div class="form-control-icon">
                                                                     <i class="fa fa-table"></i>
                                                                 </div>
-                                                                <div class="alert alert-danger error-message" id="shortname-error" style="display: none;"></div>
+                                                                <div class=" error-message" id="shortname-error" style="display: none;"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -240,8 +255,8 @@
                                                                 <div class="form-control-icon">
                                                                     <i class="fa fa-table"></i>
                                                                 </div>
-                                                                <div class="alert alert-danger error-message" id="description-name-error" style="display: none;"></div>
-                                                                <div class="alert alert-success" id="designation-name-success" style="display: none;"></div>
+                                                                <div class=" error-message" id="description-name-error" style="display: none;"></div>
+                                                                <div class="error-success" id="designation-name-success" style="display: none;"></div>
                                                             </div>
                                                         </div>
                                                     </div>

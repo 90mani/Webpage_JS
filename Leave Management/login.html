@@ -25,34 +25,20 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .reset-button:hover {
-            background-color: #5a8dee;
-            color: rgb(253, 246, 246);
-        }
-        #message {
-  display:none;
-  background: #f1f1f1;
-  color: #da1e1e;
-  position: relative;
-  padding: 20px;
-  margin-top: 10px;
+   .error-message {
+    color: #d93025;
+    font-size: 14px;
+    margin-top: 5px; 
+    display: none; 
 }
-
-.field .error {
-  display: flex;
-  align-items: center;
-  margin-top: 6px;
-  color: #d93025;
-  font-size: 13px;
-  display: none;
-}
-#message p {
-  padding: 10px 30px;
-  font-size: 14px;
-}
-#message u {
-  padding: 10px 30px;
-  font-size: 12px;
+.form-group.has-icon-left .form-control-icon {
+    position: absolute;
+    top: 40%;
+    bottom:15%;
+    transform: translateY(-50%);
+    right: 0.60rem;
+    pointer-events: none;
+    left:25px;
 }
 
     </style>
@@ -81,7 +67,7 @@
                                   <div class="form-control-icon">
                                     <i class="fa fa-user"></i>
                                   </div>
-                                  <div class="alert alert-danger error-message" id="usernameError" style="display: none;"></div>
+                                  <div class="error-message" id="usernameError" style="display: none;"></div>
                                 </div>
                               </div>
                               <div class="form-group position-relative has-icon-left">
@@ -91,7 +77,7 @@
                                   <div class="form-control-icon">
                                     <i class="fa fa-key"></i>
                                   </div>
-                                  <div class="alert alert-danger error-message" id="passwordError" style="display: none;"></div>
+                                  <div class=" error-message" id="passwordError" style="display: none;"></div>
                                 </div>
                               </div>
                               <div class="clearfix">
@@ -158,14 +144,15 @@
                           !uppercasePattern.test(passwordValue) ||
                           !digitPattern.test(passwordValue) ||
                           !symbolPattern.test(passwordValue) ||
-                          passwordValue.length < 8 ||
-                          passwordValue.length > 12
+                          passwordValue.length < 6 ||
+                          passwordValue.length > 10
                         ) {
                           showPasswordError(
                             passwordError,
-                            "Password must be 8-12 characters and contain at least one lowercase, one uppercase, one digit, and one symbol."
+                            "Password must be 6-10 characters and contain at least one lowercase, one uppercase, one digit, and one symbol."
                           );
                           passwordInput.style.borderColor = "red";
+                        
                           return false;
                         }
                 
@@ -175,29 +162,25 @@
                       }
                 
                       function validateUsername(usernameInput, usernameError) {
-                      var usernameValue = usernameInput.value;
-                      var alphanumericPattern = /^[a-zA-Z]+$/;
+                         var usernameValue = usernameInput.value;
+                         var alphanumericPattern = /^[a-zA-Z]+$/;
 
-                             if (usernameValue.length < 6 || usernameValue.length > 10) {
-                         showUsernameError( usernameError, "Username must be between 6 and 10 characters."
-        );
-        usernameInput.style.borderColor = "red";
-        return false;
-    }
+                                  if (usernameValue.length === 0) {
+                                  showUsernameError(usernameError, "Please enter a username.");
+                                  usernameInput.style.borderColor = "red";
+                                 return false;
+                     }
 
-    if (!alphanumericPattern.test(usernameValue)) {
-        showUsernameError(
-            usernameError,
-            "Username must only contain letters and numbers."
-        );
-        usernameInput.style.borderColor = "red";
-        return false;
-    }
+                                 if (!alphanumericPattern.test(usernameValue)) {
+                                  showUsernameError(usernameError, "Please enter a valid username containing only letters.");
+                               usernameInput.style.borderColor = "red";
+                             return false;
+                               }
 
-    hideUsernameError(usernameError);
-    usernameInput.style.borderColor = "green";
-    return true;
-}
+                               hideUsernameError(usernameError); 
+                             usernameInput.style.borderColor = "green";
+                              return true;
+                              }
                       function showPasswordError(passwordError, message) {
                         passwordError.textContent = message;
                         passwordError.style.display = "block";

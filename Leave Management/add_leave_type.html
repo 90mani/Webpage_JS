@@ -14,6 +14,21 @@
         .notif:hover{
           background-color: rgba(0,0,0,0.1);
                   }
+    .error-message {
+    color: #d93025;
+    font-size: 14px;
+    margin-top: 5px; 
+    display: none; 
+}
+.form-group.has-icon-left .form-control-icon {
+    position: absolute;
+    top: 40%;
+    bottom:15%;
+    transform: translateY(-50%);
+    right: 0.60rem;
+    pointer-events: none;
+    left:25px;
+}
       </style>
 </head>
 <body>
@@ -223,8 +238,8 @@
                                                     <input type="text" class="form-control" placeholder="Input leave type" id="leave-name-icon">
                                                     <div class="form-control-icon">
                                                         <i class="fa fa-table"></i>
-                                                        <div class="alert alert-danger error-message" id="leave-name-error" style="display: none;"></div>
                                                     </div>
+                                                    <div class="error-message" id="leave-name-error" style="display: none;"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -235,28 +250,28 @@
                                                     <input type="text" class="form-control" placeholder="Input Description" id="description-icon">
                                                     <div class="form-control-icon">
                                                         <i class="fa fa-table"></i>
-                                                        <div class="alert alert-danger error-message" id="description-error" style="display: none;"></div>
                                                     </div>
+                                                    <div class="error-message" id="description-error" style="display: none;"></div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="form-group has-icon-left">
-                                                <label for="days-allowed-icon">Number of days Allowed</label>
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="Input days allowed" id="days-allowed-icon">
-                                                    <div class="form-control-icon">
-                                                        <i class="fa fa-table"></i>
-                                                        <div class="alert alert-danger error-message" id="days-allowed-error" style="display: none;"></div>
-                                                        <div class="alert alert-success" id="days-allowed-success" style="display: none;"></div>
-                                                    </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="days-allowed-icon">Number of days Allowed</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" placeholder="Input days allowed" id="days-allowed-icon">
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-table"></i>
                                                 </div>
+                                                <div class="error-message" id="days-allowed-error" style="display: none;"></div>
+                                                <div class="error-success" id="days-allowed-success" style="display: none;"></div>
                                             </div>
                                         </div>
-                                        <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                            <div class="spinner" style="display: none;"></div>
-                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <div class="spinner" style="display: none;"></div>
                                     </div>
                                 </div>
                             </form>
@@ -266,8 +281,8 @@
             </div>
         </div>
     </section>
-</div>
-
+    
+    
 
 <script src="assets/js/feather-icons/feather.min.js"></script>
 <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
@@ -275,14 +290,15 @@
 <script src="assets/js/main.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var form = document.getElementById("leave-form");
+        var form = document.querySelector(".form-vertical");
         var submitButton = form.querySelector('.btn-primary');
         var leaveNameInput = document.getElementById("leave-name-icon");
         var descriptionInput = document.getElementById("description-icon");
-        var daysAllowedInput = document.getElementById("days-allowed-icon");
+        var numberofdaysallowedInput = document.getElementById("days-allowed-icon");
         var leaveNameError = document.getElementById("leave-name-error");
         var descriptionError = document.getElementById("description-error");
-        var daysAllowedError = document.getElementById("days-allowed-error");
+        var numberofdaysallowedError = document.getElementById("days-allowed-error");
+        var daysAllowedSuccess = document.getElementById("days-allowed-success");
         var spinner = form.querySelector('.spinner');
 
         form.onsubmit = function (event) {
@@ -290,16 +306,12 @@
 
             var isLeaveNameValid = validateInput(leaveNameInput, leaveNameError);
             var isDescriptionValid = validateInput(descriptionInput, descriptionError);
-            var isDaysAllowedValid = validateInput(daysAllowedInput, daysAllowedError);
+            var isNumberofdaysValid = validateInput(numberofdaysallowedInput, numberofdaysallowedError);
 
-            if (isLeaveNameValid && isDescriptionValid && isDaysAllowedValid) {
+            if (isLeaveNameValid && isDescriptionValid && isNumberofdaysValid) {
                 spinner.style.display = 'inline-block';
                 submitButton.disabled = true;
                 submitButton.innerHTML = 'Submitting...';
-
-                var leaveName = leaveNameInput.value.trim();
-                var description = descriptionInput.value.trim();
-                var daysAllowed = daysAllowedInput.value.trim();
 
                 setTimeout(function () {
                     window.location.href = 'manage_leave_type.html';
@@ -309,24 +321,25 @@
 
         leaveNameInput.addEventListener("input", function () {
             hideError(leaveNameError);
-            leaveNameInput.style.borderColor = "green";
+            leaveNameInput.style.borderColor = "";
         });
 
         descriptionInput.addEventListener("input", function () {
             hideError(descriptionError);
-            descriptionInput.style.borderColor = "green";
+            descriptionInput.style.borderColor = "";
         });
 
-        daysAllowedInput.addEventListener("input", function () {
-            hideError(daysAllowedError);
-            daysAllowedInput.style.borderColor = "green";
+        numberofdaysallowedInput.addEventListener("input", function () {
+            hideError(numberofdaysallowedError);
+            hideSuccess(daysAllowedSuccess);
+            numberofdaysallowedInput.style.borderColor = "";
         });
     });
 
     function validateInput(inputElement, errorElement) {
         var inputValue = inputElement.value.trim();
         if (inputValue === "") {
-            showError(errorElement, "Please enter a value.");
+            showError(errorElement, "Please enter the value.");
             inputElement.style.borderColor = "red";
             return false;
         }
@@ -341,10 +354,13 @@
     }
 
     function hideError(errorElement) {
+        errorElement.textContent = "";
         errorElement.style.display = "none";
+    }
+
+    function hideSuccess(successElement) {
+        successElement.style.display = "none";
     }
 </script>
 </body>
 </html>
-
-   

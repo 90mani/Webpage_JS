@@ -14,6 +14,22 @@
         .notif:hover{
           background-color: rgba(0,0,0,0.1);
                   }
+
+.error-message {
+    color: #d93025;
+    font-size: 14px;
+    margin-top: 5px; 
+    display: none; 
+}
+.form-group.has-icon-left .form-control-icon {
+    position: absolute;
+    top: 45%;
+    bottom:15%;
+    transform: translateY(-50%);
+    right: 0.60rem;
+    pointer-events: none;
+    left:25px;
+}
       </style>
 </head>
 <body>
@@ -220,61 +236,65 @@
                                 <div class="row">
                                     <div class="col-md-12 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">Full Name</label>
+                                            <label for="fullname">Full Name</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="full name" id="first-name-icon">
+                                                <input type="text" class="form-control" id="first-name-icon">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
-                                                </div>
+                                                </div><div class="error-message" id="fullname-error" style="display: none;"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">Contact</label>
+                                            <label for="contact">Contact</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="contact" id="first-name-icon">
+                                                <input type="text" class="form-control" placeholder="contact" id="contact">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
+                                                    <div class=" error-message" id="contact-error"style="display: none;"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">Email</label>
+                                            <label for="email">Email</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="email" id="first-name-icon">
+                                                <input type="text" class="form-control" placeholder="email" id="email">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-envelope"></i>
+                                                    <div class=" error-message" id="email-error"style="display: none;"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">Username</label>
+                                            <label for="username">Username</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="username" id="first-name-icon">
+                                                <input type="text" class="form-control" placeholder="username" id="username">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
+                                                    <div class=" error-message" id="username-error"style="display: none;"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">Password</label>
+                                            <label for="password">Password</label>
                                             <div class="position-relative">
-                                                <input type="password" class="form-control" placeholder="password" id="first-name-icon">
+                                                <input type="password" class="form-control" placeholder="password" id="password">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-key"></i>
+                                                    <div class=" error-message" id="password-error"style="display: none;"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">User Category</label>
+                                            <label for="usercategory">User Category</label>
                                             <div class="position-relative">
                                                 <fieldset class="form-group">
                                                     <select class="form-select" id="basicSelect">
@@ -282,7 +302,8 @@
                                                         <option>Staff</option>
                                                     </select>
                                                 </fieldset>
-                                            </div>
+                                              </div>
+                                              <div class="error-message" id="usercategory-error" style="display: none;"></div>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
@@ -304,7 +325,163 @@
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
-    
     <script src="assets/js/main.js"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+                   var form = document.querySelector(".form");
+                   var submitButton = form.querySelector('.btn-primary');
+                   var spinner = form.querySelector('.spinner');
+       
+                   var fullNameInput = document.getElementById("fullname");
+                   var contactInput = document.getElementById("contact");
+                   var emailInput = document.getElementById("email");
+                   var usernameInput = document.getElementById("username");
+                   var passwordInput = document.getElementById("password");
+                   var userCategoryInput = document.getElementById("userCategory");
+       
+                   var fullNameError = document.getElementById("fullname-error");
+                   var contactError = document.getElementById("contact-error");
+                   var emailError = document.getElementById("email-error");
+                   var usernameError = document.getElementById("username-error");
+                   var passwordError = document.getElementById("password-error");
+                   var userCategoryError = document.getElementById("usercategory-error");
+       
+                   form.addEventListener("submit", (event) => {
+                event.preventDefault();
+       
+                       var isFullNameValid = validateFullName(fullNameInput, fullNameError);
+                       var isContactValid = validateContact(contactInput, contactError);
+                       var isEmailValid = validateEmail(emailInput, emailError);
+                       var isUsernameValid = validateUsername(usernameInput, usernameError);
+                       var isPasswordValid = validatePassword(passwordInput, passwordError);
+                       var isUserCategoryValid = validateUserCategory(userCategoryInput, userCategoryError, "Please select a user category.");
+       
+                       if (isFullNameValid && isContactValid && isEmailValid && isUsernameValid && isPasswordValid && isUserCategoryValid) {
+                           spinner.style.display = 'inline-block';
+                           submitButton.disabled = true;
+                           submitButton.innerHTML = 'Submitting...';
+       
+                           setTimeout(function () {
+                               window.location.href = 'manage_user.html';
+                           }, 1000);
+                       }
+                   });
+       
+                   fullNameInput.addEventListener("input", function () {
+                       hideErrorMessage(fullNameError);
+                       fullNameInput.style.borderColor = "green";
+                   });
+       
+                   contactInput.addEventListener("input", function () {
+                       hideErrorMessage(contactError);
+                       contactInput.style.borderColor = "green";
+                   });
+       
+                   emailInput.addEventListener("input", function () {
+                       hideErrorMessage(emailError);
+                       emailInput.style.borderColor = "green";
+                   });
+       
+                   usernameInput.addEventListener("input", function () {
+                       hideErrorMessage(usernameError);
+                       usernameInput.style.borderColor = "green";
+                   });
+       
+                   passwordInput.addEventListener("input", function () {
+                       hideErrorMessage(passwordError);
+                       passwordInput.style.borderColor = "green";
+                   });
+       
+                   userCategoryInput.addEventListener("input", function () {
+                       hideErrorMessage(userCategoryError);
+                       userCategoryInput.style.borderColor = "green";
+                   });
+       
+                   function validateFullName(fullNameInput, fullNameError) {
+                       var value = fullNameInput.value.trim();
+                       if (value === "") {
+                           showErrorMessage(fullNameError, "Please enter the Full Name.");
+                           fullNameInput.style.borderColor = "red";
+                           return false;
+                       }
+                       hideErrorMessage(fullNameError);
+                       fullNameInput.style.borderColor = "green";
+                       return true;
+                   }
+       
+                   function validateContact(contactInput, contactError) {
+                       var value = contactInput.value.trim();
+                       if (value === "") {
+                           showErrorMessage(contactError, "Please enter your contact.");
+                           contactInput.style.borderColor = "red";
+                           return false;
+                       }
+                       hideErrorMessage(contactError);
+                       contactInput.style.borderColor = "green";
+                       return true;
+                   }
+       
+                   function validateEmail(emailInput, emailError) {
+                       var value = emailInput.value.trim();
+                       if (value === "") {
+                           showErrorMessage(emailError, "Please enter your email.");
+                           emailInput.style.borderColor = "red";
+                           return false;
+                       }
+                       hideErrorMessage(emailError);
+                       emailInput.style.borderColor = "green";
+                       return true;
+                   }
+       
+                   function validateUsername(usernameInput, usernameError) {
+                       var value = usernameInput.value.trim();
+                       if (value === "") {
+                           showErrorMessage(usernameError, "Please enter the user name.");
+                           usernameInput.style.borderColor = "red";
+                           return false;
+                       }
+                       hideErrorMessage(usernameError);
+                       usernameInput.style.borderColor = "green";
+                       return true;
+                   }
+       
+                   function validatePassword(passwordInput, passwordError) {
+                       var value = passwordInput.value.trim();
+                       if (value === "") {
+                           showErrorMessage(passwordError, "Please enter the password.");
+                           passwordInput.style.borderColor = "red";
+                           return false;
+                       }
+                       hideErrorMessage(passwordError);
+                       passwordInput.style.borderColor = "green";
+                       return true;
+                   }
+       
+                   function validateUserCategory(userCategoryInput, userCategoryError,errorMessage) {
+                       var selectedCategory = userCategoryInput.value;
+                       if (selectedCategory === "") {
+                           showErrorMessage(userCategoryError, errorMessage);
+                           userCategoryInput.style.borderColor = "red";
+                           return false;
+                       }
+                       hideErrorMessage(userCategoryError);
+                       userCategoryInput.style.borderColor = "green";
+                       return true;
+                   }
+       
+                   function showErrorMessage(userCategoryError, message) {
+                       errorElement.textContent = message;
+                       errorElement.style.color = "red";
+                       errorElement.style.display = "block";
+                   }
+       
+                   function hideErrorMessage(errorElement) {
+                       errorElement.textContent = "";
+                       errorElement.style.display = "none";
+                   }
+               });
+           </script>
 </body>
 </html>

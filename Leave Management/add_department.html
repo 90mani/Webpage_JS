@@ -14,6 +14,21 @@
         .notif:hover{
           background-color: rgba(0,0,0,0.1);
                   }
+  .error-message {
+    color: #d93025;
+    font-size: 14px;
+    margin-top: 5px; 
+    display: none; 
+}
+.form-group.has-icon-left .form-control-icon {
+    position: absolute;
+    top: 45%;
+    bottom:15%;
+    transform: translateY(-50%);
+    right: 0.60rem;
+    pointer-events: none;
+    left:25px;
+}
       </style>
 </head>
 <body>
@@ -177,7 +192,7 @@
                            <div class="avatar me-1">
                               <img src="assets/images/admin.png" alt="" srcset="">
                            </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi,Kiruthikakumar</div>
+                           <div class="d-none d-md-block d-lg-inline-block">Hi,Kiruthika kumar</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                            <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -209,160 +224,152 @@
         </div>
 
     </div>
-
-
-    <!-- Basic Vertical form layout section start -->
     <section id="basic-vertical-layouts">
-    <div class="row match-height">
-        <div class="col-md-8 col-12">
-        <div class="card">
-            <div class="card-content">
-            <div class="card-body">
-                <form class="form form-vertical" onsubmit="return validateForm();">
-                <div class="form-body">
-                    <div class="row">
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="first-name-icon">Department Short Name</label>
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Department" id="first-name-icon">
-                                <div class="form-control-icon">
-                                    <i class="fa fa-table"></i>
-                                </div>  <div class="alert alert-danger error-message" id="shortname-error"style="display: none;"></div>
- 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="email-id-icon">Department Name</label>
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Department Name" id="email-id-icon">
-                                <div class="form-control-icon">
-                                    <i class="fa fa-table"></i>
+        <div class="row match-height">
+            <div class="col-md-8 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form form-vertical">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="first-name-icon">Department Short Name</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Input Department" id="first-name-icon">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-table"></i>
+                                                    </div>
+                                                    <div class="error-message" id="shortname-error" style="display: none;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="email-id-icon">Department Name</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Input Department Name" id="email-id-icon">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-table"></i>
+                                                    </div>
+                                                    <div class="error-message" id="department-name-error" style="display: none;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                            <div class="spinner" style="display: none;"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="alert alert-danger error-message" id="department-name-error" style="display: none;"></div>
-                                <div class="alert alert-success" id="department-name-success" style="display: none;"></div>
-                            </div>
+                            </form>
                         </div>
-                    </div>
-
-                    <div class="col-12 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                       <div class="spinner" style="display: none;"></div>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-
+        </div>
+    </section>
+    
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
     
-    <script src="assets/js/main.js"></script>
-    
- <script>
+    <script>
        
-       document.addEventListener("DOMContentLoaded", function () {
-            var form = document.querySelector(".form-vertical");
-            var submitButton = form.querySelector('.btn-primary');
-            var shortNameInput = document.getElementById("first-name-icon");
-            var departmentNameInput = document.getElementById("email-id-icon");
-            var shortNameError = document.getElementById("shortname-error");
-            var departmentNameError = document.getElementById("department-name-error");
-           
-            var spinner = form.querySelector('.spinner');
-
-            form.onsubmit = function (event) {
-                event.preventDefault(); 
-
-                var isShortNameValid = validateShortName(shortNameInput, shortNameError);
-                var isDepartmentNameValid = validateDepartmentName(departmentNameInput, departmentNameError);
-
-                if (isShortNameValid && isDepartmentNameValid) {
-                    spinner.style.display = 'inline-block';
-                    submitButton.disabled = true;
-                    submitButton.innerHTML = 'Submitting...';
-
-                    var deptShortName = shortNameInput.value.trim();
-                    var deptName = departmentNameInput.value.trim();
-
-                    var newDepartment = {
-                        departmentName: deptName,
-                        shortName: deptShortName,
-                        creationDate: new Date().toLocaleDateString() 
-                    };
-
-                    var departments = JSON.parse(localStorage.getItem('manage_department')) || [];
-                    departments.push(newDepartment);
-                    localStorage.setItem('manage_department', JSON.stringify(departments));
-
-                    
-
-                    setTimeout(function () {
-                        window.location.href = 'manage_department.html';
-                    }, 1000); 
-                }
-            };
-
-            shortNameInput.addEventListener("input", function () {
-                hideShortNameError(shortNameError);
-                shortNameInput.style.borderColor = "green";
-            });
-
-            departmentNameInput.addEventListener("input", function () {
-                hideDepartmentNameError(departmentNameError);
-                departmentNameInput.style.borderColor = "green";
-            });
-        });
-
-        function validateShortName(shortNameInput, shortNameError) {
-            var shortNameValue = shortNameInput.value.trim();
-            if (shortNameValue === "") {
-                showErrorMessage(shortNameError, "Please enter department short name.");
-                shortNameInput.style.borderColor = "red";
-                return false;
-            }
-            hideErrorMessage(shortNameError);
-            shortNameInput.style.borderColor = "green";
-            return true;
-        }
-        function hideShortNameError(shortNameError) {
-        shortNameError.style.display = "none";
-    }
-        function validateDepartmentName(departmentNameInput, departmentNameError) {
-            var departmentNameValue = departmentNameInput.value.trim();
-            if (departmentNameValue === "") {
-                showErrorMessage(departmentNameError, "Please enter department name.");
-                departmentNameInput.style.borderColor = "red";
-                return false;
-            }
-            hideErrorMessage(departmentNameError);
-            departmentNameInput.style.borderColor = "green";
-            return true;
-        }
-
-        function showErrorMessage(errorElement, message) {
-            errorElement.textContent = message;
-            errorElement.style.display = "block";
-        }
-
-        function hideDepartmentNameError(departmentNameError) {
-        departmentNameError.style.display = "none";
-    }
-    function hideErrorMessage(errorElement) {
-            errorElement.textContent = "none";
-            errorElement.style.display = "none";
-        }
-</script>
-
-    
-</body>
-</html>
+        document.addEventListener("DOMContentLoaded", function () {
+             var form = document.querySelector(".form-vertical");
+             var submitButton = form.querySelector('.btn-primary');
+             var shortNameInput = document.getElementById("first-name-icon");
+             var departmentNameInput = document.getElementById("email-id-icon");
+             var shortNameError = document.getElementById("shortname-error");
+             var departmentNameError = document.getElementById("department-name-error");
+            
+             var spinner = form.querySelector('.spinner');
+ 
+             form.onsubmit = function (event) {
+                 event.preventDefault(); 
+ 
+                 var isShortNameValid = validateShortName(shortNameInput, shortNameError);
+                 var isDepartmentNameValid = validateDepartmentName(departmentNameInput, departmentNameError);
+ 
+                 if (isShortNameValid && isDepartmentNameValid) {
+                     spinner.style.display = 'inline-block';
+                     submitButton.disabled = true;
+                     submitButton.innerHTML = 'Submitting...';
+ 
+                     var deptShortName = shortNameInput.value.trim();
+                     var deptName = departmentNameInput.value.trim();
+ 
+                     var newDepartment = {
+                         departmentName: deptName,
+                         shortName: deptShortName,
+                         creationDate: new Date().toLocaleDateString() 
+                     };
+ 
+                     var departments = JSON.parse(localStorage.getItem('manage_department')) || [];
+                     departments.push(newDepartment);
+                     localStorage.setItem('manage_department', JSON.stringify(departments));
+ 
+                     
+ 
+                     setTimeout(function () {
+                         window.location.href = 'manage_department.html';
+                     }, 1000); 
+                 }
+             };
+ 
+             shortNameInput.addEventListener("input", function () {
+                 hideShortNameError(shortNameError);
+                 shortNameInput.style.borderColor = "green";
+             });
+ 
+             departmentNameInput.addEventListener("input", function () {
+                 hideDepartmentNameError(departmentNameError);
+                 departmentNameInput.style.borderColor = "green";
+             });
+         });
+ 
+         function validateShortName(shortNameInput, shortNameError) {
+             var shortNameValue = shortNameInput.value.trim();
+             if (shortNameValue === "") {
+                 showErrorMessage(shortNameError, "Please enter department short name.");
+                 shortNameInput.style.borderColor = "red";
+                 return false;
+             }
+             hideErrorMessage(shortNameError);
+             shortNameInput.style.borderColor = "green";
+             return true;
+         }
+         function hideShortNameError(shortNameError) {
+         shortNameError.style.display = "none";
+     }
+         function validateDepartmentName(departmentNameInput, departmentNameError) {
+             var departmentNameValue = departmentNameInput.value.trim();
+             if (departmentNameValue === "") {
+                 showErrorMessage(departmentNameError, "Please enter department name.");
+                 departmentNameInput.style.borderColor = "red";
+                 return false;
+             }
+             hideErrorMessage(departmentNameError);
+             departmentNameInput.style.borderColor = "green";
+             return true;
+         }
+ 
+         function showErrorMessage(errorElement, message) {
+             errorElement.textContent = message;
+             errorElement.style.display = "block";
+         }
+ 
+         function hideDepartmentNameError(departmentNameError) {
+         departmentNameError.style.display = "none";
+     }
+     function hideErrorMessage(errorElement) {
+             errorElement.textContent = "none";
+             errorElement.style.display = "none";
+         }
+ </script>
+ 
+     
+ </body>
+ </html>

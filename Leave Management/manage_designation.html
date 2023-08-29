@@ -248,7 +248,7 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                <tbody>
+                               
                                     <tr>
                                         <td>HR</td>
                                         <td>Human Resource</td>
@@ -308,7 +308,7 @@ function updateTable() {
 
         cell1.innerHTML = designations[i].designationName;
         cell2.innerHTML = designations[i].description;
-        cell3.innerHTML = designations[i].creationDate;
+        cell3.innerHTML = designations[i].creationDate; 
         cell4.innerHTML = `
             <i class="fa fa-pen text-success" onclick="editDesignation(this)"></i>
             <i class="fa fa-trash text-danger" onclick="deleteDesignation(this)" style="margin-left:20px"></i>`;

@@ -217,33 +217,32 @@
                             <table class='table' id="table1">
                                 <thead>
                                     <tr>
-                                        <th>Designation Name</th>
-                                        <th>Description</th>
+                                        <th>Department Name</th>
+                                        <th>Department Short Name</th>
                                         <th>Creation Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <tbody>
-                                      <tr>
-                                          <td>HR</td>
-                                          <td>Human Resource</td>
-                                          <td>2021-11-01</td>
-                                          <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                      </tr>
-                                      <tr>
-                                          <td>IT</td>
-                                          <td>Information technology</td>
-                                          <td>2021-11-01</td>
-                                          <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                      </tr>
-                                      <tr>
-                                          <td>ENG'G</td>
-                                          <td>Engineering</td>
-                                          <td>2017-11-01</td>
-                                          <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                      </tr>
-                                  </tbody>
+                                    <tr>
+                                        <td>Human Resource</td>
+                                        <td>HR</td>
+                                        <td>2021-11-01</td>
+                                        <td><a href="editdepartment.php"><i class="fa fa-pen text-success"></i></a>   <a href="editdepartment.php"><i class="fa fa-trash text-danger"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Information technology</td>
+                                        <td>IT</td>
+                                        <td>2021-11-01</td>
+                                        <td><a href="editdepartment.php"><i class="fa fa-pen text-success"></i></a>   <a href="editdepartment.php"><i class="fa fa-trash text-danger"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Engineering</td>
+                                        <td>ENG'G</td>
+                                        <td>2017-11-01</td>
+                                        <td><a href="editdepartment.php"><i class="fa fa-pen text-success"></i></a>   <a href="editdepartment.php"><i class="fa fa-trash text-danger"></i></a></td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -252,6 +251,7 @@
             </div>
         </div>
     </div>
+
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
@@ -262,77 +262,101 @@
     <script src="assets/js/main.js"></script>
     
 <script>
-   var departments = JSON.parse(localStorage.getItem('manage_department')) || [];
+    var departments = JSON.parse(localStorage.getItem('manage_department')) || [];
 
-console.log(departments);
+    function updateTable() {
+        var tableBody = document.getElementById("table1").getElementsByTagName("tbody")[0];
+        tableBody.innerHTML = '';
 
-function updateTable() {
-var tableBody = document.getElementById("table1").getElementsByTagName("tbody")[0];
-tableBody.innerHTML = '';
+        for (var i = 0; i < departments.length; i++) {
+            var newRow = tableBody.insertRow(tableBody.rows.length);
 
-for (var i = 0; i < departments.length; i++) {
-var newRow = tableBody.insertRow(tableBody.rows.length);
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
 
-var cell1 = newRow.insertCell(0);
-var cell2 = newRow.insertCell(1);
-var cell3 = newRow.insertCell(2);
-var cell4 = newRow.insertCell(3);
+            cell1.innerHTML = departments[i].departmentName;
+            cell2.innerHTML = departments[i].shortName;
+            cell3.innerHTML = departments[i].creationDate;
+            cell4.innerHTML = `
+                <i class="fa fa-pen text-primary" onclick="saveDepartment(this)"></i>
+                <i class="fa fa-trash text-danger" onclick="deleteDepartment(this)" style="margin-left:20px"></i>`;
+        }
 
-cell1.innerHTML = departments[i].departmentName;
-cell2.innerHTML = departments[i].shortName;
-cell3.innerHTML = departments[i].creationDate;
-cell4.innerHTML = `
-    <i class="fa fa-pen text-success" onclick="editDepartment(this)"></i>
-    <i class="fa fa-trash text-danger" onclick="deleteDepartment(this)" style="margin-left:20px"></i>`;
-}
-}
-
-function editDepartment(button) {
-    var row = button.parentNode.parentNode;
-    var cells = row.getElementsByTagName("td");
-
-    for (var i = 0; i < cells.length - 1; i++) {
-        var value = cells[i].innerText;
-        cells[i].innerHTML = `<input type="text" value="${value}">`;
+        attachEventListeners();
     }
 
-    var actionsCell = cells[cells.length - 1];
-    actionsCell.innerHTML = `
-        <i class="fa fa-save text-primary" onclick="saveDepartment(this)"></i>
-        <i class="fa fa-trash text-danger" onclick="deleteDepartment(this)" style="margin-left:20px"></i>`;
-}
+    function attachEventListeners() {
+        var editIcons = document.querySelectorAll('.edit-icon');
+        var deleteIcons = document.querySelectorAll('.delete-icon');
 
-function saveDepartment(button) {
-    var row = button.parentNode.parentNode;
-    var cells = row.getElementsByTagName("td");
+        editIcons.forEach(function (icon) {
+            icon.addEventListener('click', function () {
+                editDepartment(this);
+            });
+        });
 
-    for (var i = 0; i < cells.length - 1; i++) {
-        var input = cells[i].getElementsByTagName("input")[0];
-        var value = input.value;
-        cells[i].innerHTML = value;
-        departments[row.rowIndex - 1][Object.keys(departments[row.rowIndex - 1])[i]] = value;
+        deleteIcons.forEach(function (icon) {
+            icon.addEventListener('click', function () {
+                deleteDepartment(this);
+            });
+        });
     }
 
-    var actionsCell = cells[cells.length - 1];
-    actionsCell.innerHTML = `
-        <i class="fa fa-pen text-success" onclick="editDepartment(this)"></i>
-        <i class="fa fa-trash text-danger" onclick="deleteDepartment(this)" style="margin-left:20px"></i>`;
-}
+    function editDepartment(icon) {
+        var row = icon.parentNode.parentNode;
+        var cells = row.getElementsByTagName("td");
 
-function deleteDepartment(button) {
-    var row = button.parentNode.parentNode;
-    var index = row.rowIndex - 1;
-    departments.splice(index, 1);
+        for (var i = 0; i < cells.length - 1; i++) {
+            var value = cells[i].innerText;
+            cells[i].innerHTML = `<input type="text" value="${value}">`;
+        }
+
+        var actionsCell = cells[cells.length - 1];
+        actionsCell.innerHTML = `
+            <i class="fa fa-pen text-success" onclick="saveDepartment(this)"></i>
+            <i class="fa fa-trash text-danger" onclick="cancelEdit(this)" style="margin-left:20px"></i>`;
+    }
+
+    function saveDepartment(button) {
+        var row = button.parentNode.parentNode;
+        var cells = row.getElementsByTagName("td");
+
+        for (var i = 0; i < cells.length - 1; i++) {
+            var input = cells[i].getElementsByTagName("input")[0];
+            var value = input.value;
+            cells[i].innerHTML = value;
+            departments[row.rowIndex - 1][Object.keys(departments[row.rowIndex - 1])[i]] = value;
+        }
+
+        var actionsCell = cells[cells.length - 1];
+        actionsCell.innerHTML = `
+            <i class="fa fa-pen text-success edit-icon"></i>
+            <i class="fa fa-trash text-danger delete-icon" style="margin-left:20px"></i>`;
+    }
+
+    function cancelEdit(button) {
+        var row = button.parentNode.parentNode;
+        var cells = row.getElementsByTagName("td");
+        var originalData = departments[row.rowIndex - 1];
+
+        for (var i = 0; i < cells.length - 1; i++) {
+            cells[i].innerHTML = originalData[Object.keys(originalData)[i]];
+        }
+
+        var actionsCell = cells[cells.length - 1];
+        actionsCell.innerHTML = `
+            <i class="fa fa-pen text-success edit-icon"></i>
+            <i class="fa fa-trash text-danger delete-icon" style="margin-left:20px"></i>`;
+    }
+
+    function deleteDepartment(button) {
+        var row = button.parentNode.parentNode;
+        var index = row.rowIndex - 1;
+        departments.splice(index, 1);
+        updateTable();
+    } 
+
     updateTable();
-}
-
-
-
-
-updateTable();
 </script>
-
-
-</body>
-
-</html>
