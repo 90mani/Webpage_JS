@@ -28,7 +28,21 @@ body{
 background-color:gainsboro;
 border-radius: 5px;
 }
-            
+.form #deptsname_error,
+.form #deptname_error{
+	margin-top: 5px;
+	width: 345px;
+	font-size: 18px;
+	color: #C62828;
+	background: rgba(255,0,0,0.1);
+	text-align: center;
+	padding: 5px 8px;
+	border-radius: 3px;
+	border: 1px solid #EF9A9A;
+	display: none;
+}  
+   
+    
            
       </style>
 </head>
@@ -233,7 +247,7 @@ border-radius: 5px;
         <div class="card">
             <div class="card-content">
             <div class="card-body">
-                <form name="myform"  class="form form-vertical" onsubmit="return validateform()" action="manage_department.html" >
+                <form name="myform"  class="form" onsubmit="return validated()" action="manage_department.html" >
                 <div class="form-body">
                     <div class="row">
                     <div class="col-12">
@@ -241,23 +255,29 @@ border-radius: 5px;
                         <div class="form-group has-icon-left">
                             <label for="first-name-icon">Department Short Name</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Department" id="fdm">
+                                <input type="text" class="form-control" placeholder="Input Department" id="deptsname">
+                               
+                                
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
                             </div>
                         </div>
+                        <div id="deptsname_error">! Please fill up Department short name</div>
                     </div>
                     <div class="col-12">
                         <div class="form-group has-icon-left">
-                            <label for="email-id-icon">Department Name</label>
+                            <label for="deptsname-id-icon">Department Name</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Department Name" id="fdms">
+                                <input type="text" class="form-control" placeholder="Input Department Name" id="deptname">
+                                
+                              
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
                             </div>
                         </div>
+                        <div id="deptname_error">! Please fill up Department name</div>
                     </div>
 
                     <div class="col-12 d-flex justify-content-end">
@@ -273,24 +293,72 @@ border-radius: 5px;
     </div>
     </section>
     </form>
-
-  
-    <!-- // Basic Vertical form layout section end -->
 </div>
         </div>
     </div>
     <script>
-        function validateform(){
-         
-                  let fdm = document.forms["myform"]["fdm"].value;
-                  let fdms= document.forms["myform"]["fdms"].value;
-                  if (fdm == ""||fdms=="") {
-                     alert("please fill the fields!");
-                     document.myform.fdm.focus();
-                      return false;
-                  }
-                }
-             
+ function validated(){     
+let departmentshortname = document.forms['myform']['deptsname'].value;
+let departmentname = document.forms['myform']['deptname'].value;
+
+var departmentshortname_error = document.getElementById("deptsname_error");
+var departmentname_error = document.getElementById("deptname_error");
+
+
+deptsname.addEventListener('textInput', deptsname_Verify);
+deptname.addEventListener('textInput', deptname_Verify);
+
+	if (deptsname.value =="")
+   {
+		deptsname.style.border = "1px solid red";
+		deptsname_error.style.display = "block";
+		document.myform.deptsname.focus();
+		return false; 
+   }
+      if(deptname.value =="")
+      {
+      deptname.style.border = "1px solid red";
+      deptname_error.style.display = "block";
+      document.myform.deptname.focus();
+      return false;
+	}
+
+   
+
+   function deptsname_Verify(){
+	if (deptsname.value.length>0) {
+		deptsname.style.border = "1px solid green";
+		deptsname_error.style.display = "none";
+		return true;
+	}
+}
+
+function deptname_Verify(){
+	if (deptname.value.length >=4) {
+		deptname.style.border = "1px solid green";
+		deptname_error.style.display = "none";
+		return true;
+	}
+}
+
+
+let jsonObj={"departmentname":departmentname,"departmentshortname":departmentshortname,"creationdate":"2023-07-05"}  
+
+let jsonArray=[]    
+
+jsonArray.push(jsonObj);  
+
+if(localStorage.getItem("manage_dept")!=undefined){    
+
+   let existingArray=JSON.parse(localStorage.getItem("manage_dept")); 
+   existingArray.push(jsonObj);
+   localStorage.setItem("manage_dept",JSON.stringify(existingArray))
+}else{
+localStorage.setItem("manage_dept",JSON.stringify(jsonArray))  
+
+}
+}
+
     </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

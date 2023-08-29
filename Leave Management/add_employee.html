@@ -10,6 +10,7 @@
       <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
+    
       <style type="text/css">
         .notif:hover{
           background-color: rgba(0,0,0,0.1);
@@ -213,12 +214,14 @@ border-radius: 5px;
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html" class="text-info">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="index.html" class="text-success">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Add Employee</li>
                     </ol>
                 </nav>
             </div>
         </div>
+
+    </div>
 
     </div>
 
@@ -230,15 +233,17 @@ border-radius: 5px;
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form name="myform" onsubmit="return validate()" action="manage_employee.html" class="form">
+                            <form name="myform" onsubmit="return validation()" action="manage_employee.html">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">ID Number</label>
+                                            <label for="idnumber">ID Number</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="id number" id="idnumber">
+                                                <input type="text" name="idnumber" class="form-control " placeholder="id number" id="idnumber">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-hash"></i>
+                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -338,11 +343,11 @@ border-radius: 5px;
                                             <label for="country-floating">Department</label>
                                                 <fieldset class="form-group">
                                                     <select class="form-select" id="department">
-                                                        <option value="0">select</option>
-                                                        <option value="1">IT</option>
-                                                        <option value="2">ENGINEERING</option>
-                                                        <option value="3">HR</option>
-                                                        <option value="4">FINANCE</option>
+                                                        <option >select</option>
+                                                        <option >IT</option>
+                                                        <option >ENGINEERING</option>
+                                                        <option >HR</option>
+                                                        <option >FINANCE</option>
                                                     </select>
                                                 </fieldset>
                                         </div>
@@ -401,7 +406,7 @@ border-radius: 5px;
     </div>
     <script>
         
-        function validate() {
+         function validation() {
 
 
             var idNumber = document.getElementById('idnumber').value;
@@ -449,7 +454,7 @@ border-radius: 5px;
                 return false;
             }
                  var selection1=document.getElementById("department").value;
-                 if(selection1=="0"){
+                 if(selection1=="select"){
                  alert("Please select any one department");
                  document.myform.department.focus();
                  return false;
@@ -475,8 +480,26 @@ border-radius: 5px;
                 document.myform.password.focus();
                 return false;
             }
+        debugger;
+        let jsonObj={"empid":idNumber,"fullname":firstName,"department":selection1,"status":"active","regdate":"2023-07-05"}  
+        debugger;
+
+let jsonArray=[]    
+
+jsonArray.push(jsonObj);  
+
+if(localStorage.getItem("manage_employee")!=undefined){    
+
+   let existingArray=JSON.parse(localStorage.getItem("manage_employee")); 
+   existingArray.push(jsonObj);
+   localStorage.setItem("manage_employee",JSON.stringify(existingArray))
+}else{
+localStorage.setItem("manage_employee",JSON.stringify(jsonArray))  
+
+}
             
         }
+      
     </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

@@ -100,7 +100,6 @@ a {
    cursor: pointer;
 }
 #message {
-
   display:none;
   float: right;
   bottom: 400px;
@@ -148,11 +147,12 @@ a {
        
       <img src="assets/images/log.png"/>
       <h2>sign in</h2>
-      <form name="myForm" action="employee.html">
-        <input type="text" placeholder="Username" id="username" required/>
-   
+      <form name="myForm"   action="employee.html" >
+      
+        <input type="text"   placeholder="Username"  id="uname" onclick="return validation()" required>
+      
         <input type="password" id="psw" placeholder="password"  required>
-        
+      
 
              <div class='form-check clearfix my-4'>
                                     <div class="checkbox float-start">
@@ -162,12 +162,13 @@ a {
                                         </a>
                                     </div>
                                 </div>
-        <button >Sign In</button>
+        <button>Sign In</button>
       </form>
       <br />
       <a href="#">Forgot Password?</a>
-    
+  
     </div>
+    
     <div id="message">
         <h3>Password must contain the following:</h3>
         <p id="letter" class="invalid">Must contain ateast one <b>lowercase</b> letter</p>
@@ -175,28 +176,37 @@ a {
         <p id="number" class="invalid">Must contain a <b>number</b></p>
         <p id="length" class="invalid">Minimum <b>8 characters</b></p>
       </div>
-                      
+                    
       <script>
-      
+
+        function  validation(){
+          let uname=document.forms['myForm']['uname'].value;
+
+          if(uname==""){
+            alert("username must not be empty")
+            document.myForm.uname.focus();
+            return false;
+          }
+        }
+
       var myInput = document.getElementById("psw");
       var letter = document.getElementById("letter");
       var capital = document.getElementById("capital");
       var number = document.getElementById("number");
       var length = document.getElementById("length");
       
-      // When the user clicks on the password field, show the message box
+      psw.addEventListener('textInput', psw_Verify);
+
+
       myInput.onfocus = function() {
         document.getElementById("message").style.display = "block";
       }
-      
-      // When the user clicks outside of the password field, hide the message box
       myInput.onblur = function() {
         document.getElementById("message").style.display = "none";
       }
-      
-      // When the user starts to type something inside the password field
+     
       myInput.onkeyup = function() {
-        // Validate lowercase letters
+       
         var lowerCaseLetters = /[a-z]/g;
         if(myInput.value.match(lowerCaseLetters)) {  
           letter.classList.remove("invalid");
@@ -206,7 +216,7 @@ a {
           letter.classList.add("invalid");
         }
         
-        // Validate capital letters
+        
         var upperCaseLetters = /[A-Z]/g;
         if(myInput.value.match(upperCaseLetters)) {  
           capital.classList.remove("invalid");
@@ -216,7 +226,7 @@ a {
           capital.classList.add("invalid");
         }
       
-        // Validate numbers
+       
         var numbers = /[0-9]/g;
         if(myInput.value.match(numbers)) {  
           number.classList.remove("invalid");
@@ -226,7 +236,7 @@ a {
           number.classList.add("invalid");
         }
         
-        // Validate length
+       
         if(myInput.value.length >= 8) {
           length.classList.remove("invalid");
           length.classList.add("valid");
@@ -234,11 +244,17 @@ a {
           length.classList.remove("valid");
           length.classList.add("invalid");
         }
-        
-      }
-
-
+   
+    }
+    
+  function psw_Verify(){
+	if (psw.value.length >=7) {
+				document.getElementById("message").style.display = "none";
+    		return true;
+	}
+}
      
+    
     
     </script>
     

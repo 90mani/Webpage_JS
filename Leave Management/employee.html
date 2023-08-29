@@ -30,22 +30,25 @@ border-radius: 5px;
 </style>
 <body>
   <script>
-    var myObj = {};
+  
 
 
-    console.log('entered here');
+     var myObj = {};
 
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {
+
+     console.log('entered here');
+
+     const xhttp = new XMLHttpRequest();
+     xhttp.onload = function () {
       myObj = JSON.parse(this.responseText);
-      console.log(myObj.approved);
-      document.getElementById("leaveCount").innerHTML = myObj.lvcount
-      document.getElementById("approved").innerHTML = myObj.approved;
-      document.getElementById("pending").innerHTML = myObj.pending;
-      document.getElementById("cancelled").innerHTML = myObj.cancelled;
-    }
+   console.log(myObj.approved);
+   document.getElementById("leaveCount").innerHTML = myObj.lvcount
+       document.getElementById("approved").innerHTML = myObj.approved;
+       document.getElementById("pending").innerHTML = myObj.pending;
+       document.getElementById("cancelled").innerHTML = myObj.cancelled;
+     }
     xhttp.open("GET", "http://demo2006041.mockable.io/employee/values");
-    xhttp.send();
+     xhttp.send(); 
 
 
   </script>

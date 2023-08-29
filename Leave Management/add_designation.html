@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Designation</title>
+    <title>Add Desigation</title>
     
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     
@@ -28,6 +28,19 @@ body{
 background-color:gainsboro;
 border-radius: 5px;
 }
+.form #desig_error,
+.form #descrp_error{
+	margin-top: 5px;
+	width: 345px;
+	font-size: 18px;
+	color: #C62828;
+	background: rgba(255,0,0,0.1);
+	text-align: center;
+	padding: 5px 8px;
+	border-radius: 3px;
+	border: 1px solid #EF9A9A;
+	display: none;
+}  
       </style>
 </head>
 <body>
@@ -63,14 +76,14 @@ border-radius: 5px;
                      <li class="sidebar-item active has-sub">
                         <a href="#" class='sidebar-link'>
                         <i class="fa fa-table text-info"></i>
-                        <span>Designation</span>
+                        <span>Desigation</span>
                         </a>
                         <ul class="submenu ">
                            <li>
-                              <a href="add_designation.html">Add Designation</a>
+                              <a href="add_desigation.html">Add Designation</a>
                            </li>
                            <li>
-                              <a href="manage_designation.html">Manage Designation</a>
+                              <a href="manage_desigation.html">Manage Designation</a>
                            </li>
                         </ul>
                      </li>
@@ -208,13 +221,13 @@ border-radius: 5px;
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Add Designation</h3>
+                <h3>Add Desigation</h3>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html" class="text-info">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Add Designation</li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Desigation</li>
                     </ol>
                 </nav>
             </div>
@@ -230,35 +243,46 @@ border-radius: 5px;
         <div class="card">
             <div class="card-content">
             <div class="card-body">
-                <form name="myform" onsubmit="return validateform()" action="manage_designation.html"  class="form form-vertical">
+                <form name="myform"  class="form" onsubmit="return validated()" action="manage_designation.html" >
                 <div class="form-body">
                     <div class="row">
                     <div class="col-12">
                         <div class="form-group has-icon-left">
                             <label for="first-name-icon">Designation Name</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Designation" id="designation">
+                                <input type="text" class="form-control" placeholder="Input Designation" id="desig">
+                                
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
+                                  
                                 </div>
+                                
                             </div>
                         </div>
+                        <div id="desig_error">! Enter designation</div>
                     </div>
                     <div class="col-12">
                         <div class="form-group has-icon-left">
                             <label for="email-id-icon">Description</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Description" id="description">
+                                <input type="text" class="form-control" placeholder="Input Description" id="descrp">
+                               
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
+                                  
+                                    
                                 </div>
+                               
                             </div>
                         </div>
+                        <div id="descrp_error">! Enter description</div>
                     </div>
 
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                       
                     </div>
+                   
                     </div>
                 </div>
                 </form>
@@ -273,16 +297,72 @@ border-radius: 5px;
         </div>
     </div>
     <script>
-      function validateform(){
-       
-                let designation = document.forms["myform"]["designation"].value;
-                let description= document.forms["myform"]["description"].value;
-                if (designation == ""||description=="") {
-                   alert("please fill the fields!");
-                   document.myform.designation.focus();
-                    return false;
-                }
-              }
+        function validated(){
+         let designation = document.forms['myform']['desig'].value;
+let description = document.forms['myform']['descrp'].value;
+
+var designation_error = document.getElementById("desig_error");
+var description_error = document.getElementById("descrp_error");
+
+
+desig.addEventListener('textInput', desig_Verify);
+descrp.addEventListener('textInput', descrp_Verify);
+
+	if (desig.value =="")
+   {
+		desig.style.border = "1px solid red";
+		desig_error.style.display = "block";
+		document.myform.desig.focus();
+		return false; 
+   }
+      if(descrp.value =="")
+      {
+      descrp.style.border = "1px solid red";
+      descrp_error.style.display = "block";
+      document.myform.descrp.focus();
+      return false;
+	}
+
+   
+
+   function desig_Verify(){
+	if (desig.value.length >0) {
+		desig.style.border = "1px solid green";
+		desig_error.style.display = "none";
+    
+		return true;
+	}
+}
+function descrp_Verify(){
+	if (descrp.value.length >=4) {
+		descrp.style.border = "1px solid green";
+		descrp_error.style.display = "none";
+      
+		return true;
+	}
+}
+let jsonObj={"designation":designation,"description":description,"creationdate":"2023-07-05"}
+
+
+let jsonArray=[]
+jsonArray.push(jsonObj);
+
+if(localStorage.getItem("manage_desig")!=undefined){
+  
+   let existingArray=JSON.parse(localStorage.getItem("manage_desig"));
+  
+   existingArray.push(jsonObj);
+  
+   localStorage.setItem("manage_desig",JSON.stringify(existingArray))
+  
+}else{
+localStorage.setItem("manage_desig",JSON.stringify(jsonArray))
+
+}
+        }
+     
+  
+           
            
   </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>

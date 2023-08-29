@@ -28,6 +28,25 @@ body{
 background-color:gainsboro;
 border-radius: 5px;
 }
+.form #fname_error,
+.form #phone_error,
+.form #email_error,
+.form #uname_error,
+.form #password_error,
+.form #selection_error,
+.form #phone1_error
+{
+	margin-top: 5px;
+	width: 345px;
+	font-size: 18px;
+	color: #C62828;
+	background: rgba(255,0,0,0.1);
+	text-align: center;
+	padding: 5px 8px;
+	border-radius: 3px;
+	border: 1px solid #EF9A9A;
+	display: none;
+} 
       </style>
 </head>
 <body>
@@ -242,18 +261,22 @@ border-radius: 5px;
                                                 </div>
                                             </div>
                                         </div>
+                                        <div id="fname_error">! Please enter</div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Contact</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="contact" id="phone" maxlength="10">
+                                                <input type="phone" class="form-control" placeholder="contact" id="phone" maxlength="10">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div><div class="col-md-6 col-12">
+                                        <div id="phone_error">! Please enter contact</div>
+                                        <div id="phone1_error">! digits only</div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Email</label>
                                             <div class="position-relative">
@@ -263,17 +286,19 @@ border-radius: 5px;
                                                 </div>
                                             </div>
                                         </div>
+                                        <div id="email_error">! Please enter email</div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Username</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="username" id="username">
+                                                <input type="text" class="form-control" placeholder="username" id="uname">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div id="uname_error">! Please enter username</div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
@@ -285,13 +310,14 @@ border-radius: 5px;
                                                 </div>
                                             </div>
                                         </div>
+                                        <div id="password_error">! Please enter password</div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">User Category</label>
                                             <div class="position-relative">
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" id="selection">
+                                                    <select class="form-select" id="selection" required>
                                                         <option value="0">--select--</option>
                                                         <option value="1">Admin</option>
                                                         <option value="2">Staff</option>
@@ -317,84 +343,111 @@ border-radius: 5px;
         </div>
     </div>
     <script>
-         function validateform() 
-            {
-                  let fname = document.forms["myform"]["fname"].value;
-                            if (fname == "") {
-                     alert("please enter first name");
-                     document.myform.fname.focus();
-                      return false;
-                  }
-                  if(!isNaN(fname)){
-                      alert("First name must be Alphabets only");
-                      document.myform.fname.focus();
-                      return false;
-                  }
-                  if(fname.length>20){
-                      alert(" First name must be within 20 characters");
-                      document.myform.fname.focus();
-                      return false;
+       function validateform(){     
+let fullname = document.forms['myform']['fname'].value;
+let con = document.forms['myform']['phone'].value;
+let mail = document.forms['myform']['email'].value;
+let username = document.forms['myform']['uname'].value;
+let pass = document.forms['myform']['password'].value;
 
-                      }
-                     
 
-                let phone=document.forms["myform"]["phone"].value;
-                  if(phone==""){                                                 
-                      alert("enter a mobile number");
-                      document.myform.phone.focus();
-                      return false;
-                  }
-                  if(isNaN(phone)){                                               
-                    alert("Mobile Number Must Be In Numbers Only");
-                    document.myform.phone.focus();
-                    return false;
-                  }
+var fname_error = document.getElementById("fname_error");
+var phone_error = document.getElementById("phone_error");
+var phone1_error = document.getElementById("phone1_error");
+var email_error = document.getElementById("email_error");
+var uname_error = document.getElementById("uname_error");
+var password_error = document.getElementById("password_error");
 
-                  var email=document.forms["myform"]["email"].value;
-                  if(email==""){
-                    alert("please enter an email");
-                    document.myform.email.focus();
-                    return false;
-                  }
 
-                  let username = document.forms["myform"]["username"].value;
-                  if (username == "") {
-                     alert("please enter Username");
-                     document.myform.username.focus();
-                      return false;
-                  }
-                  if(!isNaN(username)){
-                      alert("Username must be Alphabets only");
-                     document.myform.username.focus();
-                      return false;
-                  }
-                  if(username.length>20){
-                      alert(" Username must be within 20 characters");
-                      document.myform.username.focus();
-                      return false;
-                      }
 
-                 let password=document.forms["myform"]["password"].value;
-                      if(password==""){
-                        alert("please enter an password");
-                        document.myform.password.focus();
-                        return false;        
-                      }
-                       if(password.length>8){
-                        alert("Password Must Be Within 8 characters");
-                        document.myform.password.focus();
-                        return false;
-                       }
-                      
 
-                let select = document.forms["myform"]["selection"]
-                 var selection1=document.getElementById("selection").value;
-                 if(selection1=="0"){
-                 alert("Please select any one of the user category");
-                 document.myform.selection.focus();
-                 return false;
-                 }
-                }
+fname.addEventListener('textInput', fname_Verify);
+
+phone.addEventListener('textInput', phone_Verify);
+
+email.addEventListener('textInput', email_Verify);
+
+uname.addEventListener('textInput', uname_Verify);
+
+password.addEventListener('textInput', password_Verify);
+
+
+if (fname.value =="")
+   {
+		fname.style.border = "1px solid red";
+		fname_error.style.display = "block";
+		document.myform.fname.focus();
+		return false; 
+   }
+
+   if (phone.value =="")
+   {
+		phone.style.border = "1px solid red";
+		phone_error.style.display = "block";
+		document.myform.phone.focus();
+		return false; 
+   }
+  
+   if (email.value =="")
+   {
+		email.style.border = "1px solid red";
+		email_error.style.display = "block";
+		document.myform.email.focus();
+		return false; 
+   }
+   if (uname.value =="")
+   {
+		uname.style.border = "1px solid red";
+		uname_error.style.display = "block";
+		document.myform.uname.focus();
+		return false; 
+   }
+   if (password.value =="")
+   {
+		password.style.border = "1px solid red";
+		password_error.style.display = "block";
+		document.myform.password.focus();
+		return false; 
+   }
+  
+   
+   function fname_Verify(){
+	if (fname.value.length >1) {
+		fname.style.border = "1px solid green";
+		fname_error.style.display = "none";
+		return true;
+	}
+}
+
+function phone_Verify(){
+	if (phone.value.length >=9) {
+		phone.style.border = "1px solid green";
+		phone_error.style.display = "none";
+		return true;
+	}
+}
+function email_Verify(){
+	if (email.value.length >=5) {
+		email.style.border = "1px solid green";
+		email_error.style.display = "none";
+		return true;
+	}
+}
+function uname_Verify(){
+	if (uname.value.length >=3) {
+uname.style.border = "1px solid green";
+		uname_error.style.display = "none";
+		return true;
+	}
+}
+function password_Verify(){
+	if (password.value.length >=5) {
+		password.style.border = "1px solid green";
+		password_error.style.display = "none";
+		return true;
+	}
+}
+       }
      </script>
     </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>

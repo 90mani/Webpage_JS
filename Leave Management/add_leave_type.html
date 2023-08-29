@@ -10,7 +10,8 @@
       <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
-      <style type="text/css">
+     
+  <style type="text/css">
         .notif:hover{
           background-color: rgba(0,0,0,0.1);
                   }
@@ -28,6 +29,31 @@ body{
 background-color:gainsboro;
 border-radius: 5px;
 }
+.error{
+    color: red;
+
+}
+.form-group.success input{
+    border-color: green;
+}
+
+.form-group.error input{
+    border-color: red;;
+}
+.form #lvname_error,
+.form #descrp_error,
+.form #days_error{
+	margin-top: 5px;
+	width: 345px;
+	font-size: 18px;
+	color: #C62828;
+	background: rgba(255,0,0,0.1);
+	text-align: center;
+	padding: 5px 8px;
+	border-radius: 3px;
+	border: 1px solid #EF9A9A;
+	display: none;
+}  
       </style>
 </head>
 <body>
@@ -63,14 +89,14 @@ border-radius: 5px;
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                         <i class="fa fa-table text-info"></i>
-                        <span>Designation</span>
+                        <span>lvnamenation</span>
                         </a>
                         <ul class="submenu ">
                            <li>
-                              <a href="add_designation.html">Add Designation</a>
+                              <a href="add_lvnamenation.html">Add lvnamenation</a>
                            </li>
                            <li>
-                              <a href="manage_designation.html">Manage Designation</a>
+                              <a href="manage_lvnamenation.html">Manage lvnamenation</a>
                            </li>
                         </ul>
                      </li>
@@ -230,41 +256,47 @@ border-radius: 5px;
         <div class="card">
             <div class="card-content">
             <div class="card-body">
-                <form name="myform" onsubmit="return validateform()" action="manage_leave_type.html" class="form form-vertical">
-                <div class="form-body">
+                <form name="myform" class="form" action="manage_leave_type.html" onsubmit="return validation()">
+                  <div class="form-body">
                     <div class="row">
                     <div class="col-12">
                         <div class="form-group has-icon-left">
-                            <label for="first-name-icon">Leave Name</label>
+                            <label for="leavename">Leave Name</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input leave type" id="lvname">
+                                <input type="text" class="form-control" placeholder="Input leave type" id="lvname" name="leavename">
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
+                               
                             </div>
                         </div>
+                        <div id="lvname_error">!Leave name required</div>
                     </div>
                     <div class="col-12">
                         <div class="form-group has-icon-left">
-                            <label for="email-id-icon">Description</label>
+                            <label for="description">Description</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input Description" id="desc">
+                                <input type="text" class="form-control" placeholder="Input Description" id="descrp" name="description">
+                                
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
                             </div>
                         </div>
+                        <div id="descrp_error">! Description required</div>
                     </div>
                     <div class="col-12">
                         <div class="form-group has-icon-left">
-                            <label for="email-id-icon">Number of days Allowed</label>
+                            <label for="days">Number of days Allowed</label>
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Input days allowed" id="days">
+                                <input type="text" class="form-control" placeholder="Input days allowed" id="days" name="days">
+                                
                                 <div class="form-control-icon">
                                     <i class="fa fa-table"></i>
                                 </div>
                             </div>
                         </div>
+                        <div id="days_error">! Enter no.of.days</div>
                     </div>
 
                     <div class="col-12 d-flex justify-content-end">
@@ -284,17 +316,84 @@ border-radius: 5px;
         </div>
     </div>
     <script>
-        function validateform(){
+        function validation(){
          
-                  let leavename = document.forms["myform"]["lvname"].value;
-                  let description= document.forms["myform"]["desc"].value;
-                  let days= document.forms["myform"]["days"].value;
-                  if (lvname == ""||desc==""||days=="") {
-                     alert("please fill the fields!");
-                     document.myform.lvname.focus();
-                      return false;
-                  }
-                }
+let leavename = document.forms['myform']['lvname'].value;
+let descrption = document.forms['myform']['descrp'].value;
+let daysallowed= document.forms['myform']['days'].value;
+
+var lvname_error = document.getElementById("lvname_error");
+var descrp_error = document.getElementById("descrp_error");
+var days_error = document.getElementById("days_error");
+
+lvname.addEventListener('textInput', lvname_Verify);
+descrp.addEventListener('textInput', descrp_Verify);
+days.addEventListener('textInput', days_Verify);
+
+	if (lvname.value =="")
+   {
+		lvname.style.border = "1px solid red";
+		lvname_error.style.display = "block";
+		document.myform.lvname.focus();
+		return false; 
+   }
+      if(descrp.value =="")
+      {
+      descrp.style.border = "1px solid red";
+      descrp_error.style.display = "block";
+      document.myform.descrp.focus();
+      return false;
+	}
+    if(days.value =="")
+      {
+      days.style.border = "1px solid red";
+      days_error.style.display = "block";
+      document.myform.days.focus();
+      return false;
+	}
+
+   
+
+   function lvname_Verify(){
+	if (lvname.value.length >1) {
+		lvname.style.border = "1px solid green";
+		lvname_error.style.display = "none";
+    
+		return true;
+	}
+}
+function descrp_Verify(){
+	if (descrp.value.length >=3) {
+		descrp.style.border = "1px solid green";
+		descrp_error.style.display = "none";
+      
+		return true;
+	}
+}
+
+function days_Verify(){
+	if(days.value.length >=0){
+		days.style.border = "1px solid green";
+		days_error.style.display = "none";
+      
+		return true;
+	}
+}
+
+    
+
+let jsonObj={"leavename":leavename,"description":descrption,"daysallowed":daysallowed,"creationdate":"2023-09-08"}
+
+let jsonArray=[]
+jsonArray.push(jsonObj);
+if(localStorage.getItem("manage_leave")!=undefined){
+   let existingArray=JSON.parse(localStorage.getItem("manage_leave"));
+   existingArray.push(jsonObj);
+   localStorage.setItem("manage_leave",JSON.stringify(existingArray))
+}else{
+localStorage.setItem("manage_leave",JSON.stringify(jsonArray))
+}
+}            
              
     </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
