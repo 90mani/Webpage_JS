@@ -219,7 +219,7 @@ border-radius: 5px;
                     </div>
                     <div>
                       <h4>Employees</h4>
-                    <h2 class="h1 mb-0">55</h2>
+                    <h2 class="h1 mb-0" id="totalEmployees"></h2>
                     </div>
                   </div>
                 </div>
@@ -236,7 +236,7 @@ border-radius: 5px;
                     </div>
                     <div>
                       <h4>Leave</h4>
-                    <h2 class="h1 mb-0">25</h2>
+                    <h2 class="h1 mb-0" id="leaves"></h2>
                     </div>
                   </div>
                 </div>
@@ -252,7 +252,7 @@ border-radius: 5px;
                     </div>
                     <div>
                       <h4>Approved</h4>
-                    <h2 class="h1 mb-0">34</h2>
+                    <h2 class="h1 mb-0" id="approved"></h2>
                     </div>
                   </div>
                 </div>
@@ -268,7 +268,7 @@ border-radius: 5px;
                     </div>
                     <div>
                       <h4>Pending</h4>
-                    <h2 class="h1 mb-0">12</h2>
+                    <h2 class="h1 mb-0" id="pending"></h2>
                     </div>
                   </div>
                 </div>
@@ -284,7 +284,7 @@ border-radius: 5px;
                     </div>
                     <div>
                       <h4>Canceled</h4>
-                    <h2 class="h1 mb-0">15</h2>
+                    <h2 class="h1 mb-0" id="cancelled"></h2>
                     </div>
                   </div>
                 </div>
@@ -296,6 +296,28 @@ border-radius: 5px;
             </div>
          </div>
       </div>
+      <script>
+          var mockData = {
+         "totalEmployees": 40,
+         "leaves": 20,
+         "approved": 10,
+         "pending": 5,
+         "cancelled": 5
+      };
+      var dashboard = JSON.parse(localStorage.getItem('dashboard'));
+      if (dashboard == undefined) {
+         localStorage.setItem("dashboard", JSON.stringify(mockData))
+      }
+      document.getElementById("totalEmployees").innerHTML = dashboard.totalEmployees;
+      document.getElementById("leaves").innerHTML = dashboard.leaves;
+      document.getElementById("approved").innerHTML = dashboard.approved;
+      document.getElementById("pending").innerHTML = dashboard.pending;
+      document.getElementById("cancelled").innerHTML = dashboard.cancelled;
+      
+     
+      
+      
+      </script>
       <script src="assets/js/feather-icons/feather.min.js"></script>
       <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
       <script src="assets/js/app.js"></script>

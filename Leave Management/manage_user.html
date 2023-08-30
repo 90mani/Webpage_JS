@@ -228,39 +228,69 @@ border-radius: 5px;
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <table class='table' id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Full Name</th>
-                                        <th>Contact</th>
-                                        <th>Category</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Admin Admin</td>
-                                        <td>09123456789</td>
-                                        <td>Admin</td>
-                                        <td><span class="badge bg-success">Active</span></td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-pen text-info"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>John Doe</td>
-                                        <td>09123456789</td>
-                                        <td>Staff</td>
-                                        <td><span class="badge bg-success">Active</span></td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-pen text-info"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jane Doe</td>
-                                        <td>09123456789</td>
-                                        <td>Staff</td>
-                                        <td><span class="badge bg-danger">Deactivated</span></td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-pen text-info"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                    </tr>
-                                </tbody>
+                            <table class='table' id="myTable">
+                              <script>
+                                 var data = JSON.parse(localStorage.getItem("manage_user"));
+                           
+                                 function record() {
+                                    var table = document.getElementById("myTable");
+                                    table.innerHTML = '<tr><th>FULL NAME</th><th>CONTACT</th><th>CATEGORY</th><th>STATUS</th><th>ACTION</th></tr>';
+                                    for (var i = 0; i < data.length; i++) {
+                                       var newRow = table.insertRow(table.rows.length)
+                                       var row = table.insertRow(i + 1);
+                                       var cell1 = row.insertCell(0);
+                                       var cell2 = row.insertCell(1);
+                                       var cell3 = row.insertCell(2);
+                                       var cell4 = row.insertCell(3);
+                                       var cell5 = row.insertCell(4);
+      
+      
+                                       cell1.innerHTML = data[i].fname
+                                       cell2.innerHTML = data[i].contact
+                                       cell3.innerHTML = data[i].category
+                                       cell4.innerHTML = data[i].status
+                                       cell5.innerHTML = '<i class="fa fa-pen text-success" onclick="editdata(this)"></i>' +
+                                          '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
+                                    }
+                                 }
+      
+                                 function editdata(button) {
+                                    var row = button.parentNode.parentNode;
+                                    var cells = row.getElementsByTagName("td");
+      
+                                    for (var i = 0; i < cells.length - 1; i++) {
+                                       var value = cells[i].innerText;
+                                       cells[i].innerHTML = '<input type="text" value="' + value + '">';
+                                    }
+      
+                                    var actionsCell = cells[cells.length - 1];
+                                    actionsCell.innerHTML = '<button type="button" class=btn btn-success onclick="savedata(this)" >SAVE</button>';
+                                 }
+      
+                                 function savedata(button) {
+                                    var row = button.parentNode.parentNode;
+                                    var cells = row.getElementsByTagName("td");
+      
+                                    for (var i = 0; i < cells.length - 1; i++) {
+                                       var input = cells[i].getElementsByTagName("input")[0];
+                                       var value = input.value;
+                                       cells[i].innerHTML = value;
+                                    }
+      
+                                    var actionsCell = cells[cells.length - 1];
+                                    actionsCell.innerHTML = '<i class="fa fa-pen text-success" onclick="editdata(this)"></i>' +
+                                       '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
+                                 }
+                                 function deletedata(button) {
+                                    var row = button.parentNode.parentNode;
+                                    var index = row.rowIndex - 1;
+                                    data.splice(index, 1);
+                                    record();
+                                 }
+                                 record();
+      
+      
+                              </script>
                             </table>
                         </div>
                     </div>
@@ -270,7 +300,7 @@ border-radius: 5px;
         </div>
     </div>
     <script>
-      var data = JSON.parse(localStorage.getItem("manage_user"));
+      
     </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

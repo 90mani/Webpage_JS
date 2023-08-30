@@ -29,29 +29,7 @@ border-radius: 5px;
 }
 </style>
 <body>
-  <script>
   
-
-
-     var myObj = {};
-
-
-     console.log('entered here');
-
-     const xhttp = new XMLHttpRequest();
-     xhttp.onload = function () {
-      myObj = JSON.parse(this.responseText);
-   console.log(myObj.approved);
-   document.getElementById("leaveCount").innerHTML = myObj.lvcount
-       document.getElementById("approved").innerHTML = myObj.approved;
-       document.getElementById("pending").innerHTML = myObj.pending;
-       document.getElementById("cancelled").innerHTML = myObj.cancelled;
-     }
-    xhttp.open("GET", "http://demo2006041.mockable.io/employee/values");
-     xhttp.send(); 
-
-
-  </script>
   <div id="app">
     <div id="sidebar" class='active'>
       <div class="sidebar-wrapper active">
@@ -198,6 +176,23 @@ border-radius: 5px;
       </div>
     </div>
   </div>
+  <script>
+    var Data = {
+         "leaves": 40,
+         "approved": 20,
+         "pending": 10,
+         "cancelled":10
+      };
+      var DashBoard = JSON.parse(localStorage.getItem('DashBoard'));
+      if (DashBoard == undefined) {
+         localStorage.setItem("DashBoard", JSON.stringify(Data))
+      }
+    
+      document.getElementById("leaveCount").innerHTML = DashBoard.leaves;
+      document.getElementById("approved").innerHTML = DashBoard.approved;
+      document.getElementById("pending").innerHTML = DashBoard.pending;
+      document.getElementById("cancelled").innerHTML = DashBoard.cancelled;
+  </script>
   <script src="assets/js/feather-icons/feather.min.js"></script>
   <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
   <script src="assets/js/app.js"></script>

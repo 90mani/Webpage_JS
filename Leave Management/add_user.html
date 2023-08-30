@@ -318,9 +318,9 @@ border-radius: 5px;
                                             <div class="position-relative">
                                                 <fieldset class="form-group">
                                                     <select class="form-select" id="selection" required>
-                                                        <option value="0">--select--</option>
-                                                        <option value="1">Admin</option>
-                                                        <option value="2">Staff</option>
+                                                        <option>select</option>
+                                                        <option >Admin</option>
+                                                        <option >Staff</option>
                                                     </select>
                                                 </fieldset>
                                             </div>
@@ -349,6 +349,7 @@ let con = document.forms['myform']['phone'].value;
 let mail = document.forms['myform']['email'].value;
 let username = document.forms['myform']['uname'].value;
 let pass = document.forms['myform']['password'].value;
+
 
 
 var fname_error = document.getElementById("fname_error");
@@ -409,6 +410,15 @@ if (fname.value =="")
 		document.myform.password.focus();
 		return false; 
    }
+
+  
+let select = document.forms["myform"]["selection"]
+                 var selection1=document.getElementById("selection").value;
+                 if(selection1==select){
+                 alert("Please select any one of the user category");
+                 document.myform.selection.focus();
+                 return false;
+                 }
   
    
    function fname_Verify(){
@@ -427,7 +437,9 @@ function phone_Verify(){
 	}
 }
 function email_Verify(){
-	if (email.value.length >=5) {
+    var x="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]{2,3}$"
+    
+	if (email.value.match(x)) {
 		email.style.border = "1px solid green";
 		email_error.style.display = "none";
 		return true;
@@ -447,7 +459,25 @@ function password_Verify(){
 		return true;
 	}
 }
-       }
+      
+let jsonObj={"fname":fullname,"contact":con,"category":selection1,"status":"active"}  
+
+let jsonArray=[]    
+
+jsonArray.push(jsonObj);  
+
+if(localStorage.getItem("manage_user")!=undefined){    
+
+   let existingArray=JSON.parse(localStorage.getItem("manage_user")); 
+   existingArray.push(jsonObj);
+   localStorage.setItem("manage_user",JSON.stringify(existingArray))
+}else{
+localStorage.setItem("manage_user",JSON.stringify(jsonArray))  
+
+}
+       
+    }
+       
      </script>
     </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
