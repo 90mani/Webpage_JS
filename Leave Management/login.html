@@ -57,149 +57,157 @@
                             </div>
                             
                             <form action="employee.html" method="post">
-                              <div class="imgcontainer text-center">
-                                <img src="C:\Users\Admin\Pictures\sign.png" alt="Avatar" class="avatar" width="120" height="120">
-                              </div>
-                              <div class="form-group position-relative has-icon-left">
-                                <label for="username">Username</label>
-                                <div class="position-relative">
-                                  <input type="text" class="form-control" id="username" name="username">
-                                  <div class="form-control-icon">
-                                    <i class="fa fa-user"></i>
-                                  </div>
-                                  <div class="error-message" id="usernameError" style="display: none;"></div>
+                                <div class="imgcontainer text-center">
+                                  <img src="C:\Users\Admin\Pictures\sign.png" alt="Avatar" class="avatar" width="120" height="120">
                                 </div>
-                              </div>
-                              <div class="form-group position-relative has-icon-left">
-                                <label for="password">Password</label>
-                                <div class="position-relative">
-                                  <input type="password" class="form-control" id="password" name="password">
-                                  <div class="form-control-icon">
-                                    <i class="fa fa-key"></i>
+                                <div class="form-group position-relative has-icon-left">
+                                  <label for="username">Username</label>
+                                  <div class="position-relative">
+                                    <input type="text" class="form-control" id="username" name="username">
+                                    <div class="form-control-icon">
+                                      <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="error-message" id="usernameError" style="display: none;"></div>
                                   </div>
-                                  <div class=" error-message" id="passwordError" style="display: none;"></div>
                                 </div>
-                              </div>
-                              <div class="clearfix">
-                             
-                                <a href="#" class="float-end">
-                                  <small>Forgot password?</small>
-                                </a>
-                              </div>
-                              <div class="form-check clearfix my-4">
-                                <div class="checkbox float-start">
-                                  <a href="index.html" class="float-end">
-                                    <small>admin</small>
+                              
+                                <div class="form-group position-relative has-icon-left">
+                                  <label for="email">Email</label>
+                                  <div class="position-relative">
+                                    <input type="text" class="form-control" id="email" name="email">
+                                    <div class="form-control-icon">
+                                      <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="error-message" id="emailError" style="display: none;"></div>
+                                  </div>
+                                </div>
+                              
+                                <div class="form-group position-relative has-icon-left">
+                                  <label for="password">Password</label>
+                                  <div class="position-relative">
+                                    <input type="password" class="form-control" id="password" name="password">
+                                    <div class="form-control-icon">
+                                      <i class="fa fa-key"></i>
+                                    </div>
+                                    <div class="error-message" id="passwordError" style="display: none;"></div>
+                                  </div>
+                                </div>
+                              
+                                <div class="clearfix">
+                                  <a href="#" class="float-end">
+                                    <small>Forgot password?</small>
                                   </a>
                                 </div>
-                              </div>
-                              <div class="clearfix">
-                               
-                                <button type="reset" class="btn btn-primary float-end">Reset</button>
-                                <button type="submit" class="btn btn-primary float-end">Login</button>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                
-                  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                  <script src="assets/js/feather-icons/feather.min.js"></script>
-                  <script src="assets/js/app.js"></script>
-                  <script src="assets/js/main.js"></script>
-                  <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                      var form = document.querySelector("form");
-                      var usernameInput = document.getElementById("username");
-                      var passwordInput = document.getElementById("password");
-                      var usernameError = document.getElementById("usernameError");
-                      var passwordError = document.getElementById("passwordError");
-                
-                      form.onsubmit = function () {
-                        var isUsernameValid = validateUsername(usernameInput, usernameError);
-                        var isPasswordValid = validatePassword(passwordInput, passwordError);
-                
-                        return isUsernameValid && isPasswordValid;
-                      };
-                
-                      usernameInput.addEventListener("input", function () {
-                        hideUsernameError(usernameError);
-                        usernameInput.style.borderColor = "initial";
-                      });
-                
-                      passwordInput.addEventListener("input", function () {
-                        hidePasswordError(passwordError);
-                        passwordInput.style.borderColor = "initial";
-                      });
-                
-                      function validatePassword(passwordInput, passwordError) {
-                        var passwordValue = passwordInput.value;
-                        var lowercasePattern = /[a-z]/;
-                        var uppercasePattern = /[A-Z]/;
-                        var digitPattern = /\d/;
-                        var symbolPattern = /[@$!%*?&]/;
-                
-                        if (
-                          !lowercasePattern.test(passwordValue) ||
-                          !uppercasePattern.test(passwordValue) ||
-                          !digitPattern.test(passwordValue) ||
-                          !symbolPattern.test(passwordValue) ||
-                          passwordValue.length < 6 ||
-                          passwordValue.length > 10
-                        ) {
-                          showPasswordError(
-                            passwordError,
-                            "Password must be 6-10 characters and contain at least one lowercase, one uppercase, one digit, and one symbol."
-                          );
-                          passwordInput.style.borderColor = "red";
-                        
-                          return false;
-                        }
-                
-                        hidePasswordError(passwordError);
-                        passwordInput.style.borderColor = "green";
-                        return true;
-                      }
-                
-                      function validateUsername(usernameInput, usernameError) {
-                         var usernameValue = usernameInput.value;
-                         var alphanumericPattern = /^[a-zA-Z]+$/;
-
-                                  if (usernameValue.length === 0) {
-                                  showUsernameError(usernameError, "Please enter a username.");
-                                  usernameInput.style.borderColor = "red";
-                                 return false;
-                     }
-
-                                 if (!alphanumericPattern.test(usernameValue)) {
-                                  showUsernameError(usernameError, "Please enter a valid username containing only letters.");
-                               usernameInput.style.borderColor = "red";
-                             return false;
-                               }
-
-                               hideUsernameError(usernameError); 
-                             usernameInput.style.borderColor = "green";
-                              return true;
-                              }
-                      function showPasswordError(passwordError, message) {
-                        passwordError.textContent = message;
-                        passwordError.style.display = "block";
-                      }
-                
-                      function hidePasswordError(passwordError) {
-                        passwordError.style.display = "none";
-                      }
-                
-                      function showUsernameError(usernameError, message) {
-                        usernameError.textContent = message;
-                        usernameError.style.display = "block";
-                      }
-                
-                      function hideUsernameError(usernameError) {
-                        usernameError.style.display = "none";
-                      }
-                    });
-                  </script>
-                </body>
-                </html>
-                
+                              
+                                <div class="form-check clearfix my-4">
+                                  <div class="checkbox float-start">
+                                    <a href="index.html" class="float-end">
+                                      <small>admin</small>
+                                    </a>
+                                  </div>
+                                </div>
+                              
+                                <div class="clearfix">
+                                  <button type="reset" class="btn btn-primary float-end">Reset</button>
+                                  <button type="submit" class="btn btn-primary float-end">Login</button>
+                                </div>
+                              </form>
+                              
+                              <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                              
+                                  var form = document.querySelector("form"); // Get the form element
+                              
+                                  var emailInput = document.getElementById("email");
+                                  var usernameInput = document.getElementById("username");
+                                  var passwordInput = document.getElementById("password");
+                                  var emailError = document.getElementById("emailError");
+                                  var usernameError = document.getElementById("usernameError");
+                                  var passwordError = document.getElementById("passwordError");
+                              
+                                  form.addEventListener("submit", function (event) {
+                                    event.preventDefault(); // Prevent form submission for now
+                              
+                                    var isUsernameValid = validateUsername(usernameInput, usernameError);
+                                    var isEmailValid = validateEmail(emailInput, emailError);
+                                    var isPasswordValid = validatePassword(passwordInput, passwordError);
+                              
+                                    if (isUsernameValid && isEmailValid && isPasswordValid) {
+                                      // Proceed with form submission
+                                      form.submit();
+                                    }
+                                  });
+                              
+                                  usernameInput.addEventListener("input", function () {
+                                    hideUsernameError(usernameError);
+                                  });
+                              
+                                  emailInput.addEventListener("input", function () {
+                                    hideEmailError(emailError);
+                                  });
+                              
+                                  passwordInput.addEventListener("input", function () {
+                                    hidePasswordError(passwordError);
+                                  });
+                              
+                                  function validateUsername(input, errorElement) {
+                                    var usernameValue = input.value;
+                                    if (usernameValue.trim() === "") {
+                                      showUsernameError(errorElement, "Please enter a valid username.");
+                                      return false;
+                                    }
+                                    hideUsernameError(errorElement);
+                                    return true;
+                                  }
+                              
+                                  function validateEmail(input, errorElement) {
+                                    var emailValue = input.value;
+                                    if (!/\S+@\S+\.\S+/.test(emailValue)) {
+                                      showEmailError(errorElement, "Please enter a valid email address.");
+                                      return false;
+                                    }
+                                    hideEmailError(errorElement);
+                                    return true;
+                                  }
+                              
+                                  function validatePassword(input, errorElement) {
+                                    var passwordValue = input.value;
+                                    if (passwordValue.length < 1) {
+                                      showPasswordError(errorElement, "Password enter a valid password.");
+                                      return false;
+                                    }
+                                    hidePasswordError(errorElement);
+                                    return true;
+                                  }
+                              
+                                  function showUsernameError(errorElement, message) {
+                                    errorElement.textContent = message;
+                                    errorElement.style.display = "block";
+                                  }
+                              
+                                  function hideUsernameError(errorElement) {
+                                    errorElement.style.display = "none";
+                                  }
+                              
+                                  function showEmailError(errorElement, message) {
+                                    errorElement.textContent = message;
+                                    errorElement.style.display = "block";
+                                  }
+                              
+                                  function hideEmailError(errorElement) {
+                                    errorElement.style.display = "none";
+                                  }
+                              
+                                  function showPasswordError(errorElement, message) {
+                                    errorElement.textContent = message;
+                                    errorElement.style.display = "block";
+                                  }
+                              
+                                  function hidePasswordError(errorElement) {
+                                    errorElement.style.display = "none";
+                                  }
+                                });
+                              </script>
+                              </body>
+                              </html>
+                              

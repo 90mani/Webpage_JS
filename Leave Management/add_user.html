@@ -23,7 +23,7 @@
 }
 .form-group.has-icon-left .form-control-icon {
     position: absolute;
-    top: 45%;
+    top: 40%;
     bottom:15%;
     transform: translateY(-50%);
     right: 0.60rem;
@@ -205,7 +205,6 @@
                   </ul>
                 </div>
             </nav>
-            
 <div class="main-content container-fluid">
     <div class="page-title">
         <div class="row">
@@ -221,27 +220,24 @@
                 </nav>
             </div>
         </div>
-
     </div>
-
-
-    <!-- // Basic multiple Column Form section start -->
     <section id="multiple-column-form">
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form">
+                            <form class="form" onsubmit="return validateForm()" action="manage_user.html">
                                 <div class="row">
                                     <div class="col-md-12 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="fullname">Full Name</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" id="first-name-icon">
+                                                <input type="text" class="form-control" id="fullname">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
-                                                </div><div class="error-message" id="fullname-error" style="display: none;"></div>
+                                                </div>
+                                                <div class="error-message" id="fullname-error" style="display: none;"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -249,10 +245,10 @@
                                         <div class="form-group has-icon-left">
                                             <label for="contact">Contact</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="contact" id="contact">
+                                                <input type="text" class="form-control"id="contact">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
-                                                    <div class=" error-message" id="contact-error"style="display: none;"></div>
+                                                    <div class="error-message" id="contact-error"style="display: none;"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -260,7 +256,7 @@
                                         <div class="form-group has-icon-left">
                                             <label for="email">Email</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="email" id="email">
+                                                <input type="text" class="form-control" id="email">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-envelope"></i>
                                                     <div class=" error-message" id="email-error"style="display: none;"></div>
@@ -272,7 +268,7 @@
                                         <div class="form-group has-icon-left">
                                             <label for="username">Username</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="username" id="username">
+                                                <input type="text" class="form-control" id="username">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                     <div class=" error-message" id="username-error"style="display: none;"></div>
@@ -284,7 +280,7 @@
                                         <div class="form-group has-icon-left">
                                             <label for="password">Password</label>
                                             <div class="position-relative">
-                                                <input type="password" class="form-control" placeholder="password" id="password">
+                                                <input type="password" class="form-control"  id="password">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-key"></i>
                                                     <div class=" error-message" id="password-error"style="display: none;"></div>
@@ -298,6 +294,7 @@
                                             <div class="position-relative">
                                                 <fieldset class="form-group">
                                                     <select class="form-select" id="basicSelect">
+                                                        <option>Please Select</option>
                                                         <option>Admin</option>
                                                         <option>Staff</option>
                                                     </select>
@@ -317,171 +314,147 @@
             </div>
         </div>
     </section>
-    <!-- // Basic multiple Column Form section end -->
-</div>
 
-        </div>
-    </div>
+    <script>
+
+        function clearErrors() {
+            var errors = document.querySelectorAll('.error-message');
+            for (var i = 0; i < errors.length; i++) {
+                errors[i].textContent = "";
+            }
+        }
+    
+        function setError(errorMsg, errorId) {
+            var errorElement = document.getElementById(errorId);
+            errorElement.style.display = "block";
+            errorElement.textContent = errorMsg;
+        }
+    
+        function hideError(errorId) {
+            var errorElement = document.getElementById(errorId);
+            errorElement.style.display = "none";
+        }
+    
+        function validateUsername(usernameValue, usernameError) {
+            var alphanumericPattern = /^[a-zA-Z]+$/;
+    
+            if (usernameValue.length === 0) {
+                setError("Please enter a username.", usernameError);
+                return false;
+            }
+    
+            if (!alphanumericPattern.test(usernameValue)) {
+                setError("Please enter a valid username containing only letters.", usernameError);
+                return false;
+            }
+    
+            hideError(usernameError);
+            return true;
+        }
+    
+        function validatePassword(passwordValue, passwordError) {
+            var lowercasePattern = /[a-z]/;
+            var uppercasePattern = /[A-Z]/;
+            var digitPattern = /\d/;
+            var symbolPattern = /[@$!%*?&]/;
+    
+            if (
+                !lowercasePattern.test(passwordValue) ||
+                !uppercasePattern.test(passwordValue) ||
+                !digitPattern.test(passwordValue) ||
+                !symbolPattern.test(passwordValue) ||
+                passwordValue.length < 6 ||
+                passwordValue.length > 10
+            ) {
+                setError(
+                    "Password must be 6-10 characters and contain at least a digit, a symbol, one lowercase and an uppercase,.",
+                    passwordError
+                );
+                return false;
+            }
+    
+            hideError(passwordError);
+            return true;
+        }
+    
+        function validateForm() {
+            clearErrors();
+    
+            var fullnameInput = document.getElementById('fullname');
+            var contactInput = document.getElementById('contact');
+            var emailInput = document.getElementById('email');
+            var usernameInput = document.getElementById('username');
+            var passwordInput = document.getElementById('password');
+            var usercategoryInput = document.getElementById('basicSelect');
+    
+            if (fullnameInput.value.trim() === '') {
+                setError('Please enter full name.', 'fullname-error');
+                fullnameInput.focus();
+                return false;
+            }
+            hideError('fullname-error');
+    
+            if (contactInput.value.trim() === '') {
+                setError('Please enter contact.', 'contact-error');
+                contactInput.focus();
+                return false;
+            }
+            hideError('contact-error');
+    
+            if (emailInput.value.trim() === '') {
+                setError('Please enter valid Email address.', 'email-error');
+                emailInput.focus();
+                return false;
+            }
+            hideError('email-error');
+    
+            if (!validateUsername(usernameInput.value.trim(), 'username-error')) {
+                usernameInput.focus();
+                return false;
+            }
+            hideError('username-error');
+    
+            if (!validatePassword(passwordInput.value, 'password-error')) {
+                passwordInput.focus();
+                return false;
+            }
+            hideError('password-error');
+    
+            if (usercategoryInput.value.trim() === '') {
+                setError('Please enter user category.', 'usercategory-error');
+                usercategoryInput.focus();
+                return false;
+            }
+            hideError('usercategory-error');
+    
+            return true;
+        }
+
+        let jsonObj={"fullname":fullnameInput,"contact":contactInput,"basicSelect":usercategoryInput,"status":"active"}  
+
+let jsonArray=[]    
+
+jsonArray.push(jsonObj);  
+
+if(localStorage.getItem("manage_user")!=undefined){    
+
+   let existingArray=JSON.parse(localStorage.getItem("manage_user")); 
+   existingArray.push(jsonObj);
+   localStorage.setItem("manage_user",JSON.stringify(existingArray))
+}else{
+localStorage.setItem("manage_user",JSON.stringify(jsonArray))  
+
+}
+       
+    
+       
+     </script>
+    </script>
+    
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/main.js"></script>
-
-    <script>
-
-        document.addEventListener("DOMContentLoaded", () => {
-                   var form = document.querySelector(".form");
-                   var submitButton = form.querySelector('.btn-primary');
-                   var spinner = form.querySelector('.spinner');
-       
-                   var fullNameInput = document.getElementById("fullname");
-                   var contactInput = document.getElementById("contact");
-                   var emailInput = document.getElementById("email");
-                   var usernameInput = document.getElementById("username");
-                   var passwordInput = document.getElementById("password");
-                   var userCategoryInput = document.getElementById("userCategory");
-       
-                   var fullNameError = document.getElementById("fullname-error");
-                   var contactError = document.getElementById("contact-error");
-                   var emailError = document.getElementById("email-error");
-                   var usernameError = document.getElementById("username-error");
-                   var passwordError = document.getElementById("password-error");
-                   var userCategoryError = document.getElementById("usercategory-error");
-       
-                   form.addEventListener("submit", (event) => {
-                event.preventDefault();
-       
-                       var isFullNameValid = validateFullName(fullNameInput, fullNameError);
-                       var isContactValid = validateContact(contactInput, contactError);
-                       var isEmailValid = validateEmail(emailInput, emailError);
-                       var isUsernameValid = validateUsername(usernameInput, usernameError);
-                       var isPasswordValid = validatePassword(passwordInput, passwordError);
-                       var isUserCategoryValid = validateUserCategory(userCategoryInput, userCategoryError, "Please select a user category.");
-       
-                       if (isFullNameValid && isContactValid && isEmailValid && isUsernameValid && isPasswordValid && isUserCategoryValid) {
-                           spinner.style.display = 'inline-block';
-                           submitButton.disabled = true;
-                           submitButton.innerHTML = 'Submitting...';
-       
-                           setTimeout(function () {
-                               window.location.href = 'manage_user.html';
-                           }, 1000);
-                       }
-                   });
-       
-                   fullNameInput.addEventListener("input", function () {
-                       hideErrorMessage(fullNameError);
-                       fullNameInput.style.borderColor = "green";
-                   });
-       
-                   contactInput.addEventListener("input", function () {
-                       hideErrorMessage(contactError);
-                       contactInput.style.borderColor = "green";
-                   });
-       
-                   emailInput.addEventListener("input", function () {
-                       hideErrorMessage(emailError);
-                       emailInput.style.borderColor = "green";
-                   });
-       
-                   usernameInput.addEventListener("input", function () {
-                       hideErrorMessage(usernameError);
-                       usernameInput.style.borderColor = "green";
-                   });
-       
-                   passwordInput.addEventListener("input", function () {
-                       hideErrorMessage(passwordError);
-                       passwordInput.style.borderColor = "green";
-                   });
-       
-                   userCategoryInput.addEventListener("input", function () {
-                       hideErrorMessage(userCategoryError);
-                       userCategoryInput.style.borderColor = "green";
-                   });
-       
-                   function validateFullName(fullNameInput, fullNameError) {
-                       var value = fullNameInput.value.trim();
-                       if (value === "") {
-                           showErrorMessage(fullNameError, "Please enter the Full Name.");
-                           fullNameInput.style.borderColor = "red";
-                           return false;
-                       }
-                       hideErrorMessage(fullNameError);
-                       fullNameInput.style.borderColor = "green";
-                       return true;
-                   }
-       
-                   function validateContact(contactInput, contactError) {
-                       var value = contactInput.value.trim();
-                       if (value === "") {
-                           showErrorMessage(contactError, "Please enter your contact.");
-                           contactInput.style.borderColor = "red";
-                           return false;
-                       }
-                       hideErrorMessage(contactError);
-                       contactInput.style.borderColor = "green";
-                       return true;
-                   }
-       
-                   function validateEmail(emailInput, emailError) {
-                       var value = emailInput.value.trim();
-                       if (value === "") {
-                           showErrorMessage(emailError, "Please enter your email.");
-                           emailInput.style.borderColor = "red";
-                           return false;
-                       }
-                       hideErrorMessage(emailError);
-                       emailInput.style.borderColor = "green";
-                       return true;
-                   }
-       
-                   function validateUsername(usernameInput, usernameError) {
-                       var value = usernameInput.value.trim();
-                       if (value === "") {
-                           showErrorMessage(usernameError, "Please enter the user name.");
-                           usernameInput.style.borderColor = "red";
-                           return false;
-                       }
-                       hideErrorMessage(usernameError);
-                       usernameInput.style.borderColor = "green";
-                       return true;
-                   }
-       
-                   function validatePassword(passwordInput, passwordError) {
-                       var value = passwordInput.value.trim();
-                       if (value === "") {
-                           showErrorMessage(passwordError, "Please enter the password.");
-                           passwordInput.style.borderColor = "red";
-                           return false;
-                       }
-                       hideErrorMessage(passwordError);
-                       passwordInput.style.borderColor = "green";
-                       return true;
-                   }
-       
-                   function validateUserCategory(userCategoryInput, userCategoryError,errorMessage) {
-                       var selectedCategory = userCategoryInput.value;
-                       if (selectedCategory === "") {
-                           showErrorMessage(userCategoryError, errorMessage);
-                           userCategoryInput.style.borderColor = "red";
-                           return false;
-                       }
-                       hideErrorMessage(userCategoryError);
-                       userCategoryInput.style.borderColor = "green";
-                       return true;
-                   }
-       
-                   function showErrorMessage(userCategoryError, message) {
-                       errorElement.textContent = message;
-                       errorElement.style.color = "red";
-                       errorElement.style.display = "block";
-                   }
-       
-                   function hideErrorMessage(errorElement) {
-                       errorElement.textContent = "";
-                       errorElement.style.display = "none";
-                   }
-               });
-           </script>
-</body>
-</html>
+    </body>
+    </html>
+    
