@@ -313,6 +313,21 @@
                 submitButton.disabled = true;
                 submitButton.innerHTML = 'Submitting...';
 
+                var leaveName = leaveNameInput.value.trim();
+                var descrip = descriptionInput.value.trim();
+                var numDays = numberofdaysallowedInput.value.trim();
+
+                     var newLeave = {
+                         leaveName:leaveName,
+                         des:descrip,
+                         days:numDays,
+                         creationDate: new Date().toLocaleDateString() 
+                     };
+
+                     var leaveType = JSON.parse(localStorage.getItem('manage_leave')) || [];
+                     leaveType.push(newLeave);
+                     localStorage.setItem('manage_leave', JSON.stringify(leaveType));
+
                 setTimeout(function () {
                     window.location.href = 'manage_leave_type.html';
                 }, 1000);

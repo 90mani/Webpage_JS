@@ -305,6 +305,7 @@
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <div class="spinner" style="display: none;"></div>
                                     </div>
                                 </div>
                             </form>
@@ -353,108 +354,90 @@
         }
     
         function validatePassword(passwordValue, passwordError) {
-            var lowercasePattern = /[a-z]/;
-            var uppercasePattern = /[A-Z]/;
-            var digitPattern = /\d/;
-            var symbolPattern = /[@$!%*?&]/;
-    
-            if (
-                !lowercasePattern.test(passwordValue) ||
-                !uppercasePattern.test(passwordValue) ||
-                !digitPattern.test(passwordValue) ||
-                !symbolPattern.test(passwordValue) ||
-                passwordValue.length < 6 ||
-                passwordValue.length > 10
-            ) {
-                setError(
-                    "Password must be 6-10 characters and contain at least a digit, a symbol, one lowercase and an uppercase,.",
-                    passwordError
-                );
-                return false;
-            }
-    
-            hideError(passwordError);
-            return true;
-        }
-    
-        function validateForm() {
-            clearErrors();
-    
-            var fullnameInput = document.getElementById('fullname');
-            var contactInput = document.getElementById('contact');
-            var emailInput = document.getElementById('email');
-            var usernameInput = document.getElementById('username');
-            var passwordInput = document.getElementById('password');
-            var usercategoryInput = document.getElementById('basicSelect');
-    
-            if (fullnameInput.value.trim() === '') {
-                setError('Please enter full name.', 'fullname-error');
-                fullnameInput.focus();
-                return false;
-            }
-            hideError('fullname-error');
-    
-            if (contactInput.value.trim() === '') {
-                setError('Please enter contact.', 'contact-error');
-                contactInput.focus();
-                return false;
-            }
-            hideError('contact-error');
-    
-            if (emailInput.value.trim() === '') {
-                setError('Please enter valid Email address.', 'email-error');
-                emailInput.focus();
-                return false;
-            }
-            hideError('email-error');
-    
-            if (!validateUsername(usernameInput.value.trim(), 'username-error')) {
-                usernameInput.focus();
-                return false;
-            }
-            hideError('username-error');
-    
-            if (!validatePassword(passwordInput.value, 'password-error')) {
-                passwordInput.focus();
-                return false;
-            }
-            hideError('password-error');
-    
-            if (usercategoryInput.value.trim() === '') {
-                setError('Please enter user category.', 'usercategory-error');
-                usercategoryInput.focus();
-                return false;
-            }
-            hideError('usercategory-error');
-    
-            return true;
-        }
+    var lowercasePattern = /[a-z]/;
+    var uppercasePattern = /[A-Z]/;
 
-        let jsonObj={"fullname":fullnameInput,"contact":contactInput,"basicSelect":usercategoryInput,"status":"active"}  
+    if (!lowercasePattern.test(passwordValue) || !uppercasePattern.test(passwordValue)) {
+        setError("Password must contain both lowercase and uppercase characters", passwordError);
+        return false;
+    }
 
-let jsonArray=[]    
-
-jsonArray.push(jsonObj);  
-
-if(localStorage.getItem("manage_user")!=undefined){    
-
-   let existingArray=JSON.parse(localStorage.getItem("manage_user")); 
-   existingArray.push(jsonObj);
-   localStorage.setItem("manage_user",JSON.stringify(existingArray))
-}else{
-localStorage.setItem("manage_user",JSON.stringify(jsonArray))  
-
+    hideError(passwordError);
+    return true;
 }
-       
-    
-       
-     </script>
-    </script>
-    
-    <script src="assets/js/feather-icons/feather.min.js"></script>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/main.js"></script>
-    </body>
-    </html>
-    
+
+function validateForm() {
+    clearErrors();
+
+    var fullnameInput = document.getElementById('fullname');
+    var contactInput = document.getElementById('contact');
+    var emailInput = document.getElementById('email');
+    var usernameInput = document.getElementById('username');
+    var passwordInput = document.getElementById('password');
+    var usercategoryInput = document.getElementById('basicSelect');
+
+    if (fullnameInput.value.trim() === '') {
+        setError('Please enter full name.', 'fullname-error');
+        fullnameInput.focus();
+        return false;
+    }
+    hideError('fullname-error');
+
+    if (contactInput.value.trim() === '') {
+        setError('Please enter contact.', 'contact-error');
+        contactInput.focus();
+        return false;
+    }
+    hideError('contact-error');
+
+    if (emailInput.value.trim() === '') {
+        setError('Please enter valid Email address.', 'email-error');
+        emailInput.focus();
+        return false;
+    }
+    hideError('email-error');
+
+    if (!validateUsername(usernameInput.value.trim(), 'username-error')) {
+        usernameInput.focus();
+        return false;
+    }
+    hideError('username-error');
+
+    if (!validatePassword(passwordInput.value, 'password-error')) {
+        passwordInput.focus();
+        return false;
+    }
+    hideError('password-error');
+
+    if (usercategoryInput.value.trim() === '') {
+        setError('Please enter user category.', 'usercategory-error');
+        usercategoryInput.focus();
+        return false;
+    }
+    hideError('usercategory-error');
+
+    // The following part of your code to store data in local storage is fine.
+    let jsonObj = {
+        "fullname": fullnameInput.value,
+        "contact": contactInput.value,
+        "basicSelect": usercategoryInput.value,
+        "status": "active"
+    };
+
+    let jsonArray = [];
+
+    jsonArray.push(jsonObj);
+
+    if (localStorage.getItem("manage_user") != undefined) {
+        let existingArray = JSON.parse(localStorage.getItem("manage_user"));
+        existingArray.push(jsonObj);
+        localStorage.setItem("manage_user", JSON.stringify(existingArray));
+    } else {
+        localStorage.setItem("manage_user", JSON.stringify(jsonArray));
+    }
+
+    return true;
+}
+</script>
+</body>
+</html>

@@ -10,7 +10,32 @@
       <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/main.js"></script>
+    <style type="text/css">
+         .notif:hover{
+          background-color: rgba(0,0,0,0.1);
+                  }
+  .error-message {
+    color: #d93025;
+    font-size: 14px;
+    margin-top: 5px; 
+    display: none; 
+}
+.form-group.has-icon-left .form-control-icon {
+    position: absolute;
+    top: 40%;
+    bottom:15%;
+    transform: translateY(-50%);
+    right: 0.60rem;
+    pointer-events: none;
+    left:25px;
+}
+      </style>
 </head>
+
 <body>
     <div id="app">
         <div id="sidebar" class='active'>
@@ -99,56 +124,60 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form">
+                            <form class="form" id="leave-request-form">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">Reference Number</label>
+                                            <label for="reference-number-input">Reference Number*</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="id number" id="first-name-icon">
+                                                <input type="text" class="form-control" placeholder="ID number" id="reference-number-input">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-hash"></i>
                                                 </div>
+                                                <div class="error-message" id="reference-number-error" style="display: none;"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">Select Leave Type</label>
+                                            <label for="leave-type-select">Select Leave Type*</label>
                                             <div class="position-relative">
-                                                <fieldset class="form-group">
-                                                    <select class="form-select" id="basicSelect">
-                                                        <option>Casual Leave</option>
-                                                        <option>Sick Leave</option>
-                                                    </select>
-                                                </fieldset>
+                                                <select class="form-select" id="leave-type-select">
+                                                    <option value="">Select Leave Type</option>
+                                                    <option value="casual">Casual Leave</option>
+                                                    <option value="sick">Sick Leave</option>
+                                                </select>
+                                                <div class="error-message" id="select-leave-type-error" style="display: none;"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">From Date</label>
+                                            <label for="from-date-input">From Date</label>
                                             <div class="position-relative">
-                                                <input type="date" class="form-control" placeholder="first name" id="first-name-icon">
+                                                <input type="date" class="form-control" id="from-date-input">
                                                 <div class="form-control-icon">
-                                                    <i class="fa fa-user"></i>
+                                                    <i class="fa fa-calendar"></i>
                                                 </div>
+                                                <div class="error-message" id="from-date-error" style="display: none;"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">To Date</label>
+                                            <label for="to-date-input">To Date</label>
                                             <div class="position-relative">
-                                                <input type="date" class="form-control" placeholder="first name" id="first-name-icon">
+                                                <input type="date" class="form-control" id="to-date-input">
                                                 <div class="form-control-icon">
-                                                    <i class="fa fa-user"></i>
+                                                    <i class="fa fa-calendar"></i>
                                                 </div>
+                                                <div class="error-message" id="to-date-error" style="display: none;"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <div class="spinner" style="display: none;"></div>
                                     </div>
                                 </div>
                             </form>
@@ -158,15 +187,108 @@
             </div>
         </div>
     </section>
-    <!-- // Basic multiple Column Form section end -->
-</div>
-
-        </div>
-    </div>
-    <script src="assets/js/feather-icons/feather.min.js"></script>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/app.js"></script>
     
-    <script src="assets/js/main.js"></script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector('.form');
+        const submitButton = form.querySelector('.btn-primary');
+        const referenceNumberInput = document.getElementById("reference-number-input");
+        const fromDateInput = document.getElementById("from-date-input");
+        const toDateInput = document.getElementById("to-date-input");
+        const leaveTypeSelect = document.getElementById("leave-type-select");
+        const referenceNumberError = document.getElementById("reference-number-error");
+        const fromDateError = document.getElementById("from-date-error");
+        const toDateError = document.getElementById("to-date-error");
+        const leaveTypeError = document.getElementById("leave-type-error");
+
+        const spinner = form.querySelector('.spinner');
+
+        form.onsubmit = function (event) {
+            event.preventDefault();
+
+            const isReferenceNumberValid = validateInput(referenceNumberInput, referenceNumberError, "Please enter a reference number.");
+            const isFromDateValid = validateInput(fromDateInput, fromDateError, "Please enter a from date.");
+            const isToDateValid = validateInput(toDateInput, toDateError, "Please enter a to date.");
+            const isLeaveTypeValid = validateSelect(leaveTypeSelect, leaveTypeError, "Please select a leave type.");
+
+            if (isReferenceNumberValid && isFromDateValid && isToDateValid && isLeaveTypeValid) {
+                const formData = {
+                    referenceNumber: referenceNumberInput.value,
+                    fromDate: fromDateInput.value,
+                    toDate: toDateInput.value,
+                    leaveType: leaveTypeSelect.value
+                };
+
+                localStorage.setItem('formData', JSON.stringify(formData));
+
+                spinner.style.display = 'inline-block';
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Submitting...';
+
+                setTimeout(function () {
+                    // Provide a more descriptive message to the user here
+                    window.location.href = 'leave_status.html';
+                }, 1000);
+            }
+        };
+
+        referenceNumberInput.addEventListener("input", function () {
+            hideErrorMessage(referenceNumberError);
+            referenceNumberInput.style.borderColor = "";
+        });
+
+        fromDateInput.addEventListener("input", function () {
+            hideErrorMessage(fromDateError);
+            fromDateInput.style.borderColor = "";
+        });
+
+        toDateInput.addEventListener("input", function () {
+            hideErrorMessage(toDateError);
+            toDateInput.style.borderColor = "";
+        });
+
+        leaveTypeSelect.addEventListener("change", function () {
+            hideErrorMessage(leaveTypeError);
+            leaveTypeSelect.style.borderColor = "";
+        });
+
+        function validateInput(input, errorElement, errorMessage) {
+            const inputValue = input.value.trim();
+            if (inputValue === "") {
+                showErrorMessage(errorElement, errorMessage);
+                input.style.borderColor = "red";
+                return false;
+            }
+            hideErrorMessage(errorElement);
+            input.style.borderColor = "";
+            return true;
+        }
+
+        function validateSelect(selectInput, errorElement, errorMessage) {
+            const selectedValue = selectInput.value;
+            if (selectedValue === "") {
+                showErrorMessage(errorElement, errorMessage);
+                selectInput.style.borderColor = "red";
+                return false;
+            }
+            hideErrorMessage(errorElement);
+            selectInput.style.borderColor = "";
+            return true;
+        }
+
+        function showErrorMessage(errorElement, message) {
+            errorElement.textContent = message;
+            errorElement.style.color = "red";
+            errorElement.style.display = "block";
+        }
+
+        function hideErrorMessage(errorElement) {
+            errorElement.textContent = "";
+            errorElement.style.display = "none";
+        }
+    });
+</script>
 </body>
 </html>
+
