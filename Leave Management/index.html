@@ -305,9 +305,10 @@ border-radius: 5px;
          "cancelled": 5
       };
       var dashboard = JSON.parse(localStorage.getItem('dashboard'));
-      if (dashboard == undefined) {
+      if (localStorage.getItem('dashboard') == undefined) {
          localStorage.setItem("dashboard", JSON.stringify(mockData))
       }
+      var dashboard = JSON.parse(localStorage.getItem('dashboard'));
       document.getElementById("totalEmployees").innerHTML = dashboard.totalEmployees;
       document.getElementById("leaves").innerHTML = dashboard.leaves;
       document.getElementById("approved").innerHTML = dashboard.approved;

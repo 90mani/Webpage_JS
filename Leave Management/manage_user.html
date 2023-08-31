@@ -31,6 +31,13 @@ body{
 background-color:gainsboro;
 border-radius: 5px;
 }
+.status-badge.active {
+            background-color: green;
+        }
+
+        .status-badge.inactive {
+            background-color: red;
+        }
       </style>
 </head>
 
@@ -228,6 +235,18 @@ border-radius: 5px;
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
+                           <div class="dataTable-dropdown">
+                              <select class="dataTable-selector form-select">
+                                 <option value="5">5</option>
+                                 <option value="10" selected="">10</option>
+                                 <option value="15">15</option>
+                                 <option value="20">20</option>
+                                 <option value="25">25</option>
+                              </select>
+                              <label>entries per page</label>
+                           </div>
+                           <div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"
+                                 id="searchInput" style="float: right;" onclick="searchrecord()"></div>
                             <table class='table' id="myTable">
                               <script>
                                  var data = JSON.parse(localStorage.getItem("manage_user"));
@@ -248,7 +267,7 @@ border-radius: 5px;
                                        cell1.innerHTML = data[i].fname
                                        cell2.innerHTML = data[i].contact
                                        cell3.innerHTML = data[i].category
-                                       cell4.innerHTML = data[i].status
+                                       cell4.innerHTML = `<span class="badge status-badge ${data[i].status.toLowerCase()}">${data[i].status}</span>`;
                                        cell5.innerHTML = '<i class="fa fa-pen text-success" onclick="editdata(this)"></i>' +
                                           '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
                                     }
@@ -285,6 +304,7 @@ border-radius: 5px;
                                     var row = button.parentNode.parentNode;
                                     var index = row.rowIndex - 1;
                                     data.splice(index, 1);
+                                    localStorage.setItem("manage_user",JSON.stringify(data));
                                     record();
                                  }
                                  record();

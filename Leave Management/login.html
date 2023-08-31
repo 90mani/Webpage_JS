@@ -9,152 +9,92 @@
 
       <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
+   .img{
+    width: 150px;
+    height: 150px;
+    margin-left: 190px;
+   } 
+   .card{
+    border-radius: 8px;
+   }
+   .container h3{
+    font-size: 30px;
+    font-weight: 600;
+   }
+   
+   .form #username_error,
+   .form #password_error{
+    margin-top: 5px;
+	font-size: 18px;
+	color: #C62828;
+	padding: 5px 8px;
+	display: none;
+   }
+
+   .form #username_verify,
+   .form #password_verify{
+    margin-top: 5px;
+	font-size: 18px;
+	color: green;
+	padding: 5px 8px;
+	display: none;
+   }
+   
+   .required::after{
+    content: "*";
+    color:red;
+    font-size: 30px;
+   }
   
-   body {
-  background: rgb(214, 214, 214);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-.login-box {
-  width: 400px;
-  height: 440px;
-  background: rgb(214, 214, 214);
-  margin: 150px auto;
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px #b6a9a9, -5px -5px 10px #ffffff;
-}
-
-img {
-  width: 110px;
-  height: 110px;
-  position: relative;
-  top: -50px;
-  margin-left: 130px;
-  border-radius: 5px;
-}
-
-h2 {
-  margin-left: -15px;
-  text-align: center;
-  color: #8f8888;
-}
-
-form {
-  margin-left: 40px;
-}
-
-input {
-  display: block;
-  width: 80%;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: none;
-  outline: none;
-  font-family: sans-serif;
-  background: transparent;
-  font-size: 16px;
-  border-radius: 25px;
-  text-shadow: 1px 1px 0 #fff;
-  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-}
-
-button {
-  width: 87%;
-  border: none;
-  height: 35px;
-  border-radius: 25px;
-  background: rgb(82, 182, 221);
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: -5px -5px 20px rgb(224, 217, 217), 5px 5px 20px #babecc;
-  outline: none;
-}
-
-input:focus {
-  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
-}
-
-button:active {
-  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
-}
-
-a {
-  margin-left: 32%;
-  color: #8f8888;
-  font-size: 16px;
-  text-decoration: none;
-}
-#pass1{
-   margin-left:250px;
-   position: absolute;
-   top:53%;
-   transform: translateY(-50%);
-   cursor: pointer;
-}
-#message {
-  display:none;
-  float: right;
-  bottom: 400px;
-  background: #f1f1f1;
-  color: #000;
-  position: relative;
-  padding: 20px;
-
-}
-
-#message p {
-  padding: 10px 35px;
-  font-size: 18px;
-}
-
-/* Add a green text color and a checkmark when the requirements are right */
-.valid {
-  color: green;
-}
-
-.valid:before {
-  position: relative;
-  left: -35px;
-  content: "✔";
-}
-
-
-/* Add a red text color and an "x" when the requirements are wrong */
-.invalid {
-  color: red;
-}
-
-.invalid:before {
-  position: relative;
-  left: -35px;
-  content: "✖";
-}
-
-
-
+  
 </style>
-  <body>
-    
-    <div class="login-box">
-       
-      <img src="assets/images/log.png"/>
-      <h2>sign in</h2>
-      <form name="myForm"   action="employee.html" >
-      
-        <input type="text"   placeholder="Username"  id="uname" onclick="return validation()" required>
-      
-        <input type="password" id="psw" placeholder="password"  required>
-      
+<body>
+    <div id="auth">
 
-             <div class='form-check clearfix my-4'>
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-md-5 col-sm-12 mx-auto">
+                    <div class="card pt-4">
+                       <img src="assets/images/login.png" class="img">
+                        <div class="card-body">
+                            <div class="text-center mb-5">
+                                <h3>Sign In</h3>
+                            </div>
+                            <form name="myform" class="form" onsubmit="return validation()" action="employee.html">
+                                <div class="form-group position-relative has-icon-left">
+                                    <label for="username" class="required">Username </label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" id="uname" onkeyup="validateForm()">
+                                        <div class="form-control-icon">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="username_error">please enter a valid username!</div>
+                                <div id="username_verify">valid</div>
+                                <div class="form-group position-relative has-icon-left">
+                                    <div class="clearfix">
+                                        <label for="password" class="required">Password</label>
+                                        <a href="#" class='float-end'>
+                                            <small>Forgot password?</small>
+                                        </a>
+                                    </div>
+                                    <div class="position-relative">
+                                        <input type="password" class="form-control" id="pass" onkeyup="validate()">
+                                        <div class="form-control-icon">
+                                            <i class="fa fa-key"></i>
+                                           
+                                        </div>
+                                    </div>
+                                    <div id="password_error">Please enter a valid passowrd!</div>
+                                    <div id="password_verify">valid</div>
+                                </div>
+
+                                <div class='form-check clearfix my-4'>
                                     <div class="checkbox float-start">
                                         <a href="index.html"   class='float-end' >
                                           
@@ -162,106 +102,78 @@ a {
                                         </a>
                                     </div>
                                 </div>
-        <button>Sign In</button>
-      </form>
-      <br />
-      <a href="#">Forgot Password?</a>
-  
+                                <div class="clearfix">
+                                  <button type="submit" class="btn btn-primary me-1 mb-1" style="margin-left: 380px;">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    
-    <div id="message">
-        <h3>Password must contain the following:</h3>
-        <p id="letter" class="invalid">Must contain ateast one <b>lowercase</b> letter</p>
-        <p id="capital" class="invalid">Must contain atleast one<b>capital (uppercase)</b> letter</p>
-        <p id="number" class="invalid">Must contain a <b>number</b></p>
-        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-      </div>
-                    
-      <script>
+    <script>
 
-        function  validation(){
-          let uname=document.forms['myForm']['uname'].value;
+      function validation(){
 
-          if(uname==""){
-            alert("username must not be empty")
-            document.myForm.uname.focus();
-            return false;
-          }
+        let username = document.forms['myform']['uname'].value;
+        if(uname.value==""){
+          alert("Username must not be empty");
+          document.myform.uname.focus();
+          return false;
+        } 
+        
+        let password = document.forms['myform']['pass'].value;
+        if(pass.value==""){
+          alert("Password must not be empty");
+          document.myform.pass.focus();
+          return false;
         }
-
-      var myInput = document.getElementById("psw");
-      var letter = document.getElementById("letter");
-      var capital = document.getElementById("capital");
-      var number = document.getElementById("number");
-      var length = document.getElementById("length");
-      
-      psw.addEventListener('textInput', psw_Verify);
-
-
-      myInput.onfocus = function() {
-        document.getElementById("message").style.display = "block";
       }
-      myInput.onblur = function() {
-        document.getElementById("message").style.display = "none";
-      }
-     
-      myInput.onkeyup = function() {
-       
-        var lowerCaseLetters = /[a-z]/g;
-        if(myInput.value.match(lowerCaseLetters)) {  
-          letter.classList.remove("invalid");
-          letter.classList.add("valid");
-        } else {
-          letter.classList.remove("valid");
-          letter.classList.add("invalid");
-        }
-        
-        
-        var upperCaseLetters = /[A-Z]/g;
-        if(myInput.value.match(upperCaseLetters)) {  
-          capital.classList.remove("invalid");
-          capital.classList.add("valid");
-        } else {
-          capital.classList.remove("valid");
-          capital.classList.add("invalid");
-        }
-      
-       
-        var numbers = /[0-9]/g;
-        if(myInput.value.match(numbers)) {  
-          number.classList.remove("invalid");
-          number.classList.add("valid");
-        } else {
-          number.classList.remove("valid");
-          number.classList.add("invalid");
-        }
-        
-       
-        if(myInput.value.length >= 8) {
-          length.classList.remove("invalid");
-          length.classList.add("valid");
-        } else {
-          length.classList.remove("valid");
-          length.classList.add("invalid");
-        }
-   
-    }
-    
-  function psw_Verify(){
-	if (psw.value.length >=7) {
-				document.getElementById("message").style.display = "none";
-    		return true;
-	}
+ function validateForm(){
+  
+let username = document.forms['myform']['uname'].value;
+var password_error = document.getElementById("password_error");
+var password_verify = document.getElementById("password_verify");
+
+
+if(uname.value!="jeevitha"){
+  username_error.style.display="block";
+  uname.style.border="2px solid red";
+  return false;
 }
-     
-    
-    
+username_error.style.display="none";
+username_verify.style.display="block";
+uname.style.border="2px solid green";
+return true;
+}
+
+
+function validate(){
+let password = document.forms['myform']['pass'].value;
+var username_error = document.getElementById("username_error");
+var username_verify = document.getElementById("username_verify");
+
+if(pass.value!="user123"){
+  password_error.style.display="block";
+  pass.style.border="2px solid red";
+  return false;
+}
+password_error.style.display="none";
+password_verify.style.display="block";
+pass.style.border="2px solid green";
+return true;
+
+}
+
     </script>
-    
-     <script src="assets/js/feather-icons/feather.min.js"></script>
-     <script src="assets/js/app.js"></script>
- 
-     <script src="assets/js/main.js"></script>        
-    
-  </body>
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
 </html>
+
+

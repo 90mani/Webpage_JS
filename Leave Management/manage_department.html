@@ -318,6 +318,7 @@
                               var row = button.parentNode.parentNode;
                               var index = row.rowIndex - 1;
                               data.splice(index, 1);
+                              localStorage.setItem("manage_dept",JSON.stringify(data));
                               record();
                            }
                            record();

@@ -286,6 +286,7 @@ border-radius: 5px;
                                     var row = button.parentNode.parentNode;
                                     var index = row.rowIndex - 1;
                                     data.splice(index, 1);
+                                    localStorage.setItem("manage_desig",JSON.stringify(data));
                                     record();
                                  }
                                  record();
