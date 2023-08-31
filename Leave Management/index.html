@@ -181,11 +181,11 @@
     "pending":20,
     "cancelled": 10
  };
- var employee = JSON.parse(localStorage.getItem('employee'));
- if (employee == undefined) {
-    localStorage.setItem('employee', JSON.stringify(empData))
- }
 
+ if (localStorage.getItem('employee') == undefined) {
+    localStorage.setItem('employee', JSON.stringify(empData))
+	  }
+ var employee = JSON.parse(localStorage.getItem('employee'));
  document.getElementById("leave").innerHTML = employee.leave;
  document.getElementById("approved").innerHTML = employee.approved;
  document.getElementById("pending").innerHTML = employee.pending;
