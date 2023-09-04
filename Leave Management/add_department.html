@@ -42,7 +42,14 @@ border-radius: 5px;
 	display: none;
 }  
    
-    
+#loader{
+        position: absolute;
+        left: 40%;
+        right: 40%;
+        width: 120px;
+        height: 120px;
+
+    }
            
       </style>
 </head>
@@ -247,7 +254,7 @@ border-radius: 5px;
         <div class="card">
             <div class="card-content">
             <div class="card-body">
-                <form name="myform"  class="form" onsubmit="return validated()" action="manage_department.html" >
+                <form name="myform"  class="form" onsubmit="return validated()" action="manage_department.html">
                 <div class="form-body">
                     <div class="row">
                     <div class="col-12">
@@ -282,6 +289,7 @@ border-radius: 5px;
 
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                       
                     </div>
                     </div>
                 </div>
@@ -358,6 +366,7 @@ localStorage.setItem("manage_dept",JSON.stringify(jsonArray))
 
 }
 }
+
 
     </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
