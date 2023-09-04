@@ -254,7 +254,7 @@ border-radius: 5px;
         <div class="card">
             <div class="card-content">
             <div class="card-body">
-                <form name="myform"  class="form" onsubmit="return validated()" action="manage_department.html">
+                <form name="myform"  class="form">
                 <div class="form-body">
                     <div class="row">
                     <div class="col-12">
@@ -270,7 +270,7 @@ border-radius: 5px;
                                 </div>
                             </div>
                         </div>
-                        <div id="deptsname_error">! Please fill up Department short name</div>
+                        <span id="deptsname_error">! Please fill up Department short name</span>
                     </div>
                     <div class="col-12">
                         <div class="form-group has-icon-left">
@@ -284,12 +284,12 @@ border-radius: 5px;
                                 </div>
                             </div>
                         </div>
-                        <div id="deptname_error">! Please fill up Department name</div>
+                        <span id="deptname_error">! Please fill up Department name</span>
                     </div>
 
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                       
+                        <div class="spinner-grow text-primary" id="loader" style="display: none;"></div>
                     </div>
                     </div>
                 </div>
@@ -305,7 +305,8 @@ border-radius: 5px;
         </div>
     </div>
     <script>
- function validated(){     
+  myform.onsubmit = function (event) {
+                event.preventDefault();    
 let departmentshortname = document.forms['myform']['deptsname'].value;
 let departmentname = document.forms['myform']['deptname'].value;
 
@@ -330,9 +331,6 @@ deptname.addEventListener('textInput', deptname_Verify);
       document.myform.deptname.focus();
       return false;
 	}
-
-   
-
    function deptsname_Verify(){
 	if (deptsname.value.length>0) {
 		deptsname.style.border = "1px solid green";
@@ -365,8 +363,13 @@ if(localStorage.getItem("manage_dept")!=undefined){
 localStorage.setItem("manage_dept",JSON.stringify(jsonArray))  
 
 }
-}
-
+var spinner=document.getElementById('loader');
+spinner.style.display = 'inline-block';
+                    
+                    setTimeout(function () {
+                        window.location.href = 'manage_department.html';
+                    }, 3000);
+                  }
 
     </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>

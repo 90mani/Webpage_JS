@@ -40,7 +40,15 @@ border-radius: 5px;
 	border-radius: 3px;
 	border: 1px solid #EF9A9A;
 	display: none;
-}  
+} 
+#loader{
+        position: absolute;
+        left: 40%;
+        right: 40%;
+        width: 120px;
+        height: 120px;
+
+    } 
       </style>
 </head>
 <body>
@@ -243,7 +251,7 @@ border-radius: 5px;
         <div class="card">
             <div class="card-content">
             <div class="card-body">
-                <form name="myform"  class="form" onsubmit="return validated()" action="manage_designation.html" >
+                <form name="myform"  class="form">
                 <div class="form-body">
                     <div class="row">
                     <div class="col-12">
@@ -280,7 +288,7 @@ border-radius: 5px;
 
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                       
+                        <div class="spinner-border text-primary" id="loader" style="display: none;"></div>
                     </div>
                    
                     </div>
@@ -297,7 +305,8 @@ border-radius: 5px;
         </div>
     </div>
     <script>
-        function validated(){
+         myform.onsubmit = function (event) {
+                event.preventDefault(); 
          let designation = document.forms['myform']['desig'].value;
 let description = document.forms['myform']['descrp'].value;
 
@@ -359,6 +368,12 @@ if(localStorage.getItem("manage_desig")!=undefined){
 localStorage.setItem("manage_desig",JSON.stringify(jsonArray))
 
 }
+var spinner=document.getElementById('loader');
+spinner.style.display = 'inline-block';
+                    
+                    setTimeout(function () {
+                        window.location.href = 'manage_designation.html';
+                    }, 3000);
         }
      
   

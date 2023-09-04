@@ -47,6 +47,14 @@ border-radius: 5px;
 	border: 1px solid #EF9A9A;
 	display: none;
 } 
+#loader{
+        position: absolute;
+        left: 40%;
+        right: 40%;
+        width: 120px;
+        height: 120px;
+
+    }
       </style>
 </head>
 <body>
@@ -96,14 +104,14 @@ border-radius: 5px;
                      <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                         <i class="fa fa-users text-info"></i>
-                        <span>Employees</span>
+                        <span>userloyees</span>
                         </a>
                         <ul class="submenu ">
                            <li>
-                              <a href="add_employee.html">Add Employee</a>
+                              <a href="add_userloyee.html">Add userloyee</a>
                            </li>
                            <li>
-                              <a href="manage_employee.html">Manage Employee</a>
+                              <a href="manage_userloyee.html">Manage userloyee</a>
                            </li>
                         </ul>
                      </li>
@@ -249,7 +257,7 @@ border-radius: 5px;
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form name="myform" onsubmit="return validateform()" action="manage_user.html" class="form">
+                            <form class="form">
                                 <div class="row">
                                     <div class="col-md-12 col-12">
                                         <div class="form-group has-icon-left">
@@ -261,7 +269,7 @@ border-radius: 5px;
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="fname_error">! Please enter</div>
+                                        <div class=" error-message-danger" id="fname-error" style="display: none;"></div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
@@ -273,8 +281,8 @@ border-radius: 5px;
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="phone_error">! Please enter contact</div>
-                                        <div id="phone1_error">! digits only</div>
+                                        <div class=" error-message-danger" id="con-error" style="display: none;"></div>
+                                       
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
@@ -286,7 +294,7 @@ border-radius: 5px;
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="email_error">! Please enter email</div>
+                                        <div class=" error-message-danger" id="email-error" style="display: none;"></div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
@@ -298,7 +306,7 @@ border-radius: 5px;
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="uname_error">! Please enter username</div>
+                                        <div class=" error-message-danger" id="uname-error" style="display: none;"></div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
@@ -310,24 +318,41 @@ border-radius: 5px;
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="password_error">! Please enter password</div>
+                                        <div class="error-message-danger" id="password-error" style="display: none;"></div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">User Category</label>
                                             <div class="position-relative">
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" id="selection" required>
-                                                        <option>select</option>
-                                                        <option >Admin</option>
-                                                        <option >Staff</option>
+                                                    <select class="form-select" id="selection">
+                                                        <option value="">select</option>
+                                                        <option>Admin</option>
+                                                        <option>staff</option>
                                                     </select>
+                                                    <div class="error-message-danger" id="selection-error" style="display: none;"></div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Status</label>
+                                            <div class="position-relative">
+                                                <fieldset class="form-group">
+                                                    <select class="form-select" id="status">
+                                                        <option value="">select</option>
+                                                        <option>Active</option>
+                                                        <option>Inactive</option>
+                                                    </select>
+                                                    <div class="error-message-danger" id="status-error" style="display: none;"></div>
                                                 </fieldset>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <div class="spinner-border text-primary" id="loader" style="display: none;"></div>
                                     </div>
                                 </div>
                             </form>
@@ -342,144 +367,156 @@ border-radius: 5px;
 
         </div>
     </div>
+
     <script>
-       function validateform(){     
-let fullname = document.forms['myform']['fname'].value;
-let con = document.forms['myform']['phone'].value;
-let mail = document.forms['myform']['email'].value;
-let username = document.forms['myform']['uname'].value;
-let pass = document.forms['myform']['password'].value;
 
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".form");
+    const submitButton = form.querySelector('.btn-primary');
 
+    const firstNameInput = document.getElementById("fname");
+    const firstNameError = document.getElementById("fname-error");
 
-var fname_error = document.getElementById("fname_error");
-var phone_error = document.getElementById("phone_error");
-var phone1_error = document.getElementById("phone1_error");
-var email_error = document.getElementById("email_error");
-var uname_error = document.getElementById("uname_error");
-var password_error = document.getElementById("password_error");
+    const phoneInput = document.getElementById("phone");
+    const conError = document.getElementById("con-error");
 
+    const emailInput = document.getElementById("email");
+    const emailError = document.getElementById("email-error");
 
+    const unameInput = document.getElementById("uname");
+    const unameError = document.getElementById("uname-error");
 
-
-fname.addEventListener('textInput', fname_Verify);
-
-phone.addEventListener('textInput', phone_Verify);
-
-email.addEventListener('textInput', email_Verify);
-
-uname.addEventListener('textInput', uname_Verify);
-
-password.addEventListener('textInput', password_Verify);
-
-
-if (fname.value =="")
-   {
-		fname.style.border = "1px solid red";
-		fname_error.style.display = "block";
-		document.myform.fname.focus();
-		return false; 
-   }
-
-   if (phone.value =="")
-   {
-		phone.style.border = "1px solid red";
-		phone_error.style.display = "block";
-		document.myform.phone.focus();
-		return false; 
-   }
-  
-   if (email.value =="")
-   {
-		email.style.border = "1px solid red";
-		email_error.style.display = "block";
-		document.myform.email.focus();
-		return false; 
-   }
-   if (uname.value =="")
-   {
-		uname.style.border = "1px solid red";
-		uname_error.style.display = "block";
-		document.myform.uname.focus();
-		return false; 
-   }
-   if (password.value =="")
-   {
-		password.style.border = "1px solid red";
-		password_error.style.display = "block";
-		document.myform.password.focus();
-		return false; 
-   }
+    const passwordInput = document.getElementById("password");
+    const passwordError = document.getElementById("password-error");
 
   
-let select = document.forms["myform"]["selection"]
-                 var selection1=document.getElementById("selection").value;
-                 if(selection1==select){
-                 alert("Please select any one of the user category");
-                 document.myform.selection.focus();
-                 return false;
-                 }
-  
-   
-   function fname_Verify(){
-	if (fname.value.length >1) {
-		fname.style.border = "1px solid green";
-		fname_error.style.display = "none";
-		return true;
-	}
-}
 
-function phone_Verify(){
-	if (phone.value.length >=9) {
-		phone.style.border = "1px solid green";
-		phone_error.style.display = "none";
-		return true;
-	}
-}
-function email_Verify(){
-    var x="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]{2,3}$"
-    
-	if (email.value.match(x)) {
-		email.style.border = "1px solid green";
-		email_error.style.display = "none";
-		return true;
-	}
-}
-function uname_Verify(){
-	if (uname.value.length >=3) {
-uname.style.border = "1px solid green";
-		uname_error.style.display = "none";
-		return true;
-	}
-}
-function password_Verify(){
-	if (password.value.length >=5) {
-		password.style.border = "1px solid green";
-		password_error.style.display = "none";
-		return true;
-	}
-}
-      
-let jsonObj={"fname":fullname,"contact":con,"category":selection1,"status":"active"}  
+    const categoryInput = document.getElementById("selection");
+    const categoryError = document.getElementById("selection-error");
 
-let jsonArray=[]    
+    const statusInput = document.getElementById("status");
+    const statusError = document.getElementById("status-error");
 
-jsonArray.push(jsonObj);  
+    const spinner = form.querySelector('.spinner-border');
 
-if(localStorage.getItem("manage_user")!=undefined){    
+    form.onsubmit = function (event) {
+        event.preventDefault();
 
-   let existingArray=JSON.parse(localStorage.getItem("manage_user")); 
-   existingArray.push(jsonObj);
-   localStorage.setItem("manage_user",JSON.stringify(existingArray))
-}else{
-localStorage.setItem("manage_user",JSON.stringify(jsonArray))  
+        
 
-}
-       
+        const isFirstNameValid = validateInput(firstNameInput, firstNameError, "Please enter firtsname.");
+        const isPhoneValid = validateInput(phoneInput, conError, "Please enter phone no:.");
+        const isEmailValid = validateInput(emailInput, emailError, "Please enter email.");
+        const isUnameValid = validateInput(unameInput, unameError, "Please enter username.");
+        const isPasswordValid = validateInput(passwordInput, passwordError, "Please enter password.");
+        
+        const isCategoryValid = validateInput(categoryInput, categoryError, "Please select.");
+        const isStatusValid = validateInput(statusInput, statusError, "Please select.");
+
+        if (isFirstNameValid && isPhoneValid  && isEmailValid && isUnameValid && isPasswordValid  && isPasswordValid && isCategoryValid && isStatusValid) {
+
+
+            var jsonObj = {
+                        fname:firstNameInput.value,
+                        contact: phoneInput.value,
+                        category: categoryInput.value,
+                        status:statusInput.value  
+                        
+                    };
+                   
+                   
+                    let jsonArray=[];
+                    jsonArray.push(jsonObj);
+
+                    if(localStorage.getItem("manage_user")!=undefined){    
+
+                    let existingArray=JSON.parse(localStorage.getItem("manage_user")); 
+                    existingArray.push(jsonObj);
+                    localStorage.setItem("manage_user",JSON.stringify(existingArray))
+                    }else{
+                    localStorage.setItem('manage_user',JSON.stringify(jsonArray));
+                    }
+
+                    spinner.style.display = 'inline-block';
+            
+            
+
+            setTimeout(function () {
+                window.location.href = 'manage_user.html';
+            }, 3000);
     }
+};
+
+            firstNameInput.addEventListener("input", function () {
+            hideErrorMessage(firstNameError);
+            firstNameInput.style.borderColor = "green";
+        });
+       phoneInput.addEventListener("input", function () {
+            hideErrorMessage(conError);
+            phoneInput.style.borderColor = "green";
+        });
+
+        emailInput.addEventListener("input", function () {
+            hideErrorMessage(emailError);
+            emailInput.style.borderColor = "green";
+        });
+        unameInput.addEventListener("input", function () {
+            hideErrorMessage(unameError);
+            unameInput.style.borderColor = "green";
+        });
        
+        passwordInput.addEventListener("input", function () {
+            hideErrorMessage(passwordError);
+            passwordInput.style.borderColor = "green";
+        });
+        categoryInput.addEventListener("input", function () {
+            hideErrorMessage(categoryError);
+            categoryInput.style.borderColor = "green";
+        });
+        statusInput.addEventListener("input", function () {
+            hideErrorMessage(statusError);
+            statusInput.style.borderColor = "green";
+        });
+
+        const validateInput = (input, errorElement, errorMessage) => {
+            const inputValue = input.value.trim();
+            if (inputValue === "") {
+                showErrorMessage(errorElement, errorMessage);
+                input.style.borderColor = "red";
+                return false;
+            }
+            hideErrorMessage(errorElement);
+            input.style.borderColor = "green";
+            return true;
+        };
+
+        function validateSelect(selectInput, errorElement, errorMessage) {
+        var selectedValue = selectInput.value;
+        if (selectedValue === "") {
+            showErrorMessage(errorElement, errorMessage);
+            selectInput.style.borderColor = "red";
+            return false;
+        }
+        hideErrorMessage(errorElement);
+        selectInput.style.borderColor = "green";
+        return true;
+    }
+   
+
+        const showErrorMessage = (errorElement, message) => {
+            errorElement.textContent = message;
+            errorElement.style.color = "red";
+            errorElement.style.display = "block";
+        };
+
+        const hideErrorMessage = (errorElement) => {
+            errorElement.textContent = "";
+            errorElement.style.display = "none";
+        };
+     });
+
      </script>
-    </script>
+
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>

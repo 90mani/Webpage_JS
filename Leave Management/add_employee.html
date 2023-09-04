@@ -10,16 +10,11 @@
       <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    
       <style type="text/css">
         .notif:hover{
           background-color: rgba(0,0,0,0.1);
                   }
-                  .sidebar-link:hover{
-background-color:grey;
-                  }
-                  
-.active{
+                  .active{
    background-color:aliceblue;
 }
 body{
@@ -29,20 +24,14 @@ body{
 background-color:gainsboro;
 border-radius: 5px;
 }
-.form #id_error
-{
-	margin-top: 5px;
-	width: 345px;
-	font-size: 18px;
-	color: #C62828;
-	background: rgba(255,0,0,0.1);
-	text-align: center;
-	padding: 5px 8px;
-	border-radius: 3px;
-	border: 1px solid #EF9A9A;
-	display: none;
-} 
-   
+#loader{
+        position: absolute;
+        left: 40%;
+        right: 40%;
+        width: 120px;
+        height: 120px;
+
+    }
       </style>
 </head>
 <body>
@@ -204,7 +193,7 @@ border-radius: 5px;
                         <a href="#" data-bs-toggle="dropdown"
                            class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                            <div class="avatar me-1">
-                              <img src="assets/images/icon.png" alt="" srcset="">
+                              <img src="assets/images/admin.png" alt="" srcset="">
                            </div>
                            <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
                         </a>
@@ -228,14 +217,12 @@ border-radius: 5px;
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html" class="text-success">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="index.html" class="text-info">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Add Employee</li>
                     </ol>
                 </nav>
             </div>
         </div>
-
-    </div>
 
     </div>
 
@@ -247,45 +234,49 @@ border-radius: 5px;
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form name="myform" onsubmit="return validation()" action="manage_employee.html" class="form">
+                            <form class="form">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
-                                            <label for="idnumber">ID Number</label>
+                                            <label for="first-name-icon">ID Number</label>
                                             <div class="position-relative">
-                                                <input type="text" name="idnumber" class="form-control " placeholder="id number" id="idnumber">
+                                                <input type="number" class="form-control" placeholder="id number" id="idnum">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-hash"></i>
-                                                    
-
                                                 </div>
+                                                
                                             </div>
+                                            <div class=" error-message-danger" id="id-number-error" style="display: none;"></div>
                                         </div>
-                                        <div id="id_error">please enter</div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Gender</label>
                                             <div class="position-relative">
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" id="gender">
-                                                        <option value="0">--select--</option>
-                                                        <option value="1">Male</option>
-                                                        <option value="2">Female</option>
+                                                    <select class="form-select" id="basicSelect">
+                                                          <option value="">select</option>
+                                                        <option >male</option>
+                                                        <option >female</option>
                                                     </select>
+                                                    <div class=" error-message-danger" id="gender-error" style="display: none;"></div>
                                                 </fieldset>
+
                                             </div>
+                                              
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">First Name</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="first name" id="fname">
+                                                <input type="text" class="form-control" placeholder="first name" id="first-name-icon">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
+                                                   
                                             </div>
+                                            <div class=" error-message-danger" id="first-name-error" style="display: none;"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -296,7 +287,9 @@ border-radius: 5px;
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
+                                                   
                                             </div>
+                                            <div class=" error-message-danger" id="middle-name-error" style="display: none;"></div>
                                         </div>
                                     </div><div class="col-md-4 col-12">
                                         <div class="form-group has-icon-left">
@@ -306,18 +299,22 @@ border-radius: 5px;
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
+                                                   
                                             </div>
+                                            <div class=" error-message-danger" id="last-name-error" style="display: none;"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Age</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="age" id="age">
+                                                <input type="number" class="form-control" placeholder="age" id="age">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
+                                                   
                                             </div>
+                                            <div class=" error-message-danger" id="age-error" style="display: none;"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-12">
@@ -328,7 +325,9 @@ border-radius: 5px;
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-envelope"></i>
                                                 </div>
+                                                   
                                             </div>
+                                            <div class=" error-message-danger" id="email-error" style="display: none;"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-12">
@@ -339,17 +338,20 @@ border-radius: 5px;
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
+                                                   
                                             </div>
+                                            <div class=" error-message-danger" id="contact-error" style="display: none;"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Profile</label>
                                             <div class="position-relative">
-                                                <input type="file" class="form-control" placeholder="" id="profile">
+                                                <input type="file" class="form-control" placeholder="" id="first-name-icon">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
+                                                   <div class=" error-message-danger" id="profile-error" style="display: none;"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -357,8 +359,8 @@ border-radius: 5px;
                                         <div class="form-group">
                                             <label for="country-floating">Department</label>
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" id="department">
-                                                        <option >select</option>
+                                                    <select class="form-select" id="selectdept">
+                                                        <option value="">select</option>
                                                         <option >IT</option>
                                                         <option >ENGINEERING</option>
                                                         <option >HR</option>
@@ -366,45 +368,66 @@ border-radius: 5px;
                                                     </select>
                                                 </fieldset>
                                         </div>
+                                           <div class=" error-message-danger" id="department-error" style="display: none;"></div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="company-column">Designation</label>
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" id="designation">
-                                                        <option value="0">--select--</option>
-                                                        <option value="1">IT</option>
-                                                        <option value="2">MANAGER</option>
-                                                        <option value="3">SUPERVISOR</option>
-                                                        <option value="4">ENGINEER</option>
+                                                    <select class="form-select" id="selectdesig">
+                                                        <option value="">select</option>
+                                                        <option >IT</option>
+                                                        <option>MANAGER</option>
+                                                        <option>SUPERVISOR</option>
+                                                        <option>ENGINEER</option>
                                                     </select>
                                                 </fieldset>
                                         </div>
+                                           <div class=" error-message-danger" id="designation-error" style="display: none;"></div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Username</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="username" id="username">
+                                                <input type="text" class="form-control" placeholder="username" id="uname">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
+                                                   
                                             </div>
+                                            <div class=" error-message-danger" id="user-name-error" style="display: none;"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Password</label>
                                             <div class="position-relative">
-                                                <input type="password" class="form-control" placeholder="passsword" id="password">
+                                                <input type="password" class="form-control" placeholder="passsword" id="pass">
                                                 <div class="form-control-icon">
                                                     <i class="fa fa-key"></i>
                                                 </div>
+                                                   
                                             </div>
+                                            <div class=" error-message-danger" id="password-error" style="display: none;"></div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="company-column">Status</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-select" id="selectstatus">
+                                                        <option value="">select</option>
+                                                        <option >Active</option>
+                                                        <option>Inactive</option>
+                                                        
+                                                    </select>
+                                                </fieldset>
+                                        </div>
+                                           <div class=" error-message-danger" id="status-error" style="display: none;"></div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <div class="spinner-grow text-primary" id="loader" style="display: none;"></div>
                                     </div>
                                 </div>
                             </form>
@@ -419,115 +442,205 @@ border-radius: 5px;
 
         </div>
     </div>
-    <script>
-        
-         function validation() {
-            
-
-            let idNumber = document.getElementById('idnumber').value;
-            if (idNumber === '') {
-                alert('Please enter IDNUMBER');
-                document.myform.idnumber.focus();
-                return false;
-            }
-            let select = document.forms["myform"]["gender"]
-                 var select1=document.getElementById("gender").value;
-                 if(select1=="0"){
-                 alert("Please select gender");
-                 document.myform.gender.focus();
-                 return false; 
-                 }
-                
-          
-            var firstName = document.getElementById('fname').value;
-            if (firstName === '') {
-                alert('Please enter FIRST NAME');
-                document.myform.fname.focus();
-                return false;
-            }
-            var middlename = document.getElementById('mname').value;
-            if (middlename === '') {
-                alert('Please enter MIDDLE NAME');
-                document.myform.mname.focus();
-                return false;
-            }
-
-            var lastName = document.getElementById('lname').value;
-            if (lastName === '') {
-                alert('Please enter LAST NAME');
-                document.myform.lname.focus();
-                return false;
-            }
-            var age = document.getElementById('age').value;
-            if (age === '') {
-                alert('Please enter the AGE');
-                document.myform.age.focus();
-                return false;
-            }
-            var email = document.getElementById('email').value;
-            if (email === '') {
-                alert('Please enter the EMAIL');
-                document.myform.email.focus();
-                return false;
-            }
-            var contact = document.getElementById('contact').value;
-            if (contact === '') {
-                alert('Please enter the CONTACT');
-                document.myform.contact.focus();
-                return false;
-            }
-                 var selection1=document.getElementById("department").value;
-                 if(selection1=="select"){
-                 alert("Please select any one department");
-                 document.myform.department.focus();
-                 return false;
-                 }
-
-                 var selection2=document.getElementById("designation").value;
-                 if(selection2=="0"){
-                 alert("Please select any one designation");
-                 document.myform.designation.focus();
-                 return false;
-                 }
-    
-
-            var username = document.getElementById('username').value;
-            if (username === '') {
-                alert('Please enter the USER NAME');
-                document.myform.username.focus();
-                return false;
-            }
-            var password = document.getElementById('password').value;
-            if (password === '') {
-                alert('Please enter the PASSWORD');
-                document.myform.password.focus();
-                return false;
-            }
-    
-        let jsonObj={"empid":idNumber,"fullname":firstName,"department":selection1,"status":"active","regdate":"2023-07-05"}  
-       
-
-let jsonArray=[]    
-
-jsonArray.push(jsonObj);  
-
-if(localStorage.getItem("manage_employee")!=undefined){    
-
-   let existingArray=JSON.parse(localStorage.getItem("manage_employee")); 
-   existingArray.push(jsonObj);
-   localStorage.setItem("manage_employee",JSON.stringify(existingArray))
-}else{
-localStorage.setItem("manage_employee",JSON.stringify(jsonArray))  
-
-}
-            
-        }
-      
-    </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
     
     <script src="assets/js/main.js"></script>
-</body>
+  <script>
+   document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".form");
+    const submitButton = form.querySelector('.btn-primary');
+    const idnumberInput = document.getElementById("idnum");
+    const idnumberError = document.getElementById("id-number-error");
+
+    const firstNameInput = document.getElementById("first-name-icon");
+    const firstNameError = document.getElementById("first-name-error");
+
+    const middleNameInput = document.getElementById("mname");
+    const middleNameError = document.getElementById("middle-name-error");
+
+    const lastNameInput = document.getElementById("lname");
+    const lastNameError = document.getElementById("last-name-error");
+
+    const ageInput = document.getElementById("age");
+    const ageError = document.getElementById("age-error");
+
+    const emailInput = document.getElementById("email");
+    const emailError = document.getElementById("email-error");
+
+    const contactInput = document.getElementById("contact");
+    const contactError = document.getElementById("contact-error");
+
+    const unameInput = document.getElementById("uname");
+    const usernameerror = document.getElementById("user-name-error");
+
+    const passwordInput = document.getElementById("pass");
+    const passwordError = document.getElementById("password-error");
+
+    const genderInput = document.getElementById("basicSelect");
+    const genderError = document.getElementById("gender-error");
+
+    const deptInput = document.getElementById("selectdept");
+    const deptError = document.getElementById("department-error");
+
+    const desigInput = document.getElementById("selectdesig");
+    const desigError = document.getElementById("designation-error");
+
+    const statusInput = document.getElementById("selectstatus");
+    const statusError = document.getElementById("status-error");
+
+    const spinner = form.querySelector('.spinner-grow');
+
+    form.onsubmit = function (event) {
+        event.preventDefault();
+
+        const isIdNumberValid = validateInput(idnumberInput, idnumberError, "Please enter ID number.");
+        const isFirstNameValid = validateInput(firstNameInput, firstNameError, "Please enter first name.");
+        const isMiddleNameValid = validateInput(middleNameInput, middleNameError, "Please enter middle name.");
+        const isLastNameValid = validateInput(lastNameInput, lastNameError, "Please enter last name.");
+        const isageValid = validateInput(ageInput, ageError, "Please enter age.");
+        const isemailValid = validateInput(emailInput, emailError, "Please enter an email.");
+        const iscontactValid = validateInput(contactInput, contactError, "Please enter an contact.");
+        const isusernameValid = validateInput(unameInput, usernameerror, "Please enter username.");
+        const ispasswordValid = validateInput(passwordInput, passwordError, "Please enter password.");
+        const isGenderValid = validateInput(genderInput, genderError, "Please select gender.");
+        const isdeptValid = validateInput(deptInput, deptError, "Please select a department.");
+        const isdesigValid = validateInput(desigInput, desigError, "Please select a designation.");
+        const isstatusValid = validateInput(statusInput, statusError, "Please select a designation.");
+        
+        
+
+        if (isIdNumberValid && isFirstNameValid && isMiddleNameValid && isLastNameValid && isGenderValid && isageValid 
+        && isemailValid && iscontactValid && isusernameValid && ispasswordValid && isdeptValid && isdesigValid && isstatusValid) {
+
+
+            var jsonObj = {
+                        empid:idnumberInput.value,
+                        fullname: firstNameInput.value,
+                        department: deptInput.value,
+                         status:statusInput.value,   
+                        regdate: new Date().toLocaleDateString()
+                    };
+                   
+
+
+                    let jsonArray=[];
+                    jsonArray.push(jsonObj);
+
+                    if(localStorage.getItem("manage_emp")!=undefined){    
+
+                    let existingArray=JSON.parse(localStorage.getItem("manage_emp")); 
+                    existingArray.push(jsonObj);
+                    localStorage.setItem("manage_emp",JSON.stringify(existingArray))
+                    }else{
+                    localStorage.setItem('manage_emp',JSON.stringify(jsonArray));
+                    }
+
+
+
+            spinner.style.display = 'inline-block';
+           
+
+            setTimeout(function () {
+                window.location.href = 'manage_employee.html';
+            }, 3000);
+        }
+    };
+        firstNameInput.addEventListener("input", function () {
+            hideErrorMessage(firstNameError);
+            firstNameInput.style.borderColor = "green";
+        });
+       middleNameInput.addEventListener("input", function () {
+            hideErrorMessage(middleNameError);
+        middleNameInput.style.borderColor = "green";
+        });
+        lastNameInput.addEventListener("input", function () {
+            hideErrorMessage(lastNameError);
+            lastNameInput.style.borderColor = "green";
+        });
+        idnumberInput.addEventListener("input", function () {
+            hideErrorMessage(idnumberError);
+            idnumberInput.style.borderColor = "green";
+        });
+        genderInput.addEventListener("change", function () {
+            hideErrorMessage(genderError);
+            genderInput.style.borderColor = "green";
+        });
+        ageInput.addEventListener("input", function () {
+            hideErrorMessage(ageError);
+            ageInput.style.borderColor = "green";
+        });
+
+        emailInput.addEventListener("input", function () {
+            hideErrorMessage(emailError);
+            emailInput.style.borderColor = "green";
+        });
+
+        contactInput.addEventListener("input", function () {
+            hideErrorMessage(contactError);
+            contactInput.style.borderColor = "green";
+        });
+        unameInput.addEventListener("input", function () {
+            hideErrorMessage(usernameerror);
+            unameInput.style.borderColor = "green";
+        });
+        passwordInput.addEventListener("input", function () {
+            hideErrorMessage(passwordError);
+            passwordInput.style.borderColor = "green";
+        });
+        deptInput.addEventListener("change", function () {
+            hideErrorMessage(deptError);
+            deptInput.style.borderColor = "green";
+        });
+
+        
+        desigInput.addEventListener("change", function () {
+            hideErrorMessage(desigError);
+            desigInput.style.borderColor = "green";
+        });
+
+        statusInput.addEventListener("change", function () {
+            hideErrorMessage(statusError);
+            statusInput.style.borderColor = "green";
+        });
+        const validateInput = (input, errorElement, errorMessage) => {
+            const inputValue = input.value.trim();
+            if (inputValue === "") {
+                showErrorMessage(errorElement, errorMessage);
+                input.style.borderColor = "red";
+                return false;
+            }
+            hideErrorMessage(errorElement);
+            input.style.borderColor = "green";
+            return true;
+        };
+
+        function validateSelect(selectInput, errorElement, errorMessage) {
+        var selectedValue = selectInput.value;
+        if (selectedValue === "") {
+            showErrorMessage(errorElement, errorMessage);
+            selectInput.style.borderColor = "red";
+            return false;
+        }
+        hideErrorMessage(errorElement);
+        selectInput.style.borderColor = "green";
+        return true;
+    }
+   
+
+        const showErrorMessage = (errorElement, message) => {
+            errorElement.textContent = message;
+            errorElement.style.color = "red";
+            errorElement.style.display = "block";
+        };
+
+        const hideErrorMessage = (errorElement) => {
+            errorElement.textContent = "";
+            errorElement.style.display = "none";
+        };
+    });
+</script>
+
+    </body>
 </html>

@@ -53,7 +53,15 @@ border-radius: 5px;
 	border-radius: 3px;
 	border: 1px solid #EF9A9A;
 	display: none;
-}  
+} 
+#loader{
+        position: absolute;
+        left: 40%;
+        right: 40%;
+        width: 120px;
+        height: 120px;
+
+    } 
       </style>
 </head>
 <body>
@@ -301,6 +309,7 @@ border-radius: 5px;
 
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                        <div class="spinner-grow text-primary" id="loader" style="display: none;"></div>
                     </div>
                     </div>
                 </div>
@@ -316,7 +325,8 @@ border-radius: 5px;
         </div>
     </div>
     <script>
-        function validation(){
+        myform.onsubmit = function (event) {
+                event.preventDefault();   
          
 let leavename = document.forms['myform']['lvname'].value;
 let descrption = document.forms['myform']['descrp'].value;
@@ -379,11 +389,9 @@ function days_Verify(){
 		return true;
 	}
 }
-
-    
-
+debugger;
 let jsonObj={"leavename":leavename,"description":descrption,"daysallowed":daysallowed,"creationdate":"2023-09-08"}
-
+debugger;
 let jsonArray=[]
 jsonArray.push(jsonObj);
 if(localStorage.getItem("manage_leave")!=undefined){
@@ -393,7 +401,14 @@ if(localStorage.getItem("manage_leave")!=undefined){
 }else{
 localStorage.setItem("manage_leave",JSON.stringify(jsonArray))
 }
-}            
+var spinner=document.getElementById('loader');
+spinner.style.display = 'inline-block';
+                    
+                    setTimeout(function () {
+                        window.location.href = 'manage_leave_type.html';
+                    }, 3000);
+                  }
+         
              
     </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
