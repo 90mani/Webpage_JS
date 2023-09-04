@@ -6,11 +6,34 @@
     <title>Application Leave</title>
     
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-    
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"></script>
+
+   
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+      integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+<link
+      href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css"
+      rel="stylesheet"/>
       <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
+<style>
+    #loader{
+        position: absolute;
+        left: 40%;
+        right: 40%;
+        width: 120px;
+        height: 120px;
+
+    }
+</style>
 <body>
     <div id="app">
         <div id="sidebar" class='active'>
@@ -92,73 +115,81 @@
     </div>
 
 
-    <!-- // Basic multiple Column Form section start -->
-    <section id="multiple-column-form">
-        <div class="row match-height">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <form class="form">
-                                <div class="row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">Reference Number</label>
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="id number" id="first-name-icon">
-                                                <div class="form-control-icon">
-                                                    <i class="fa fa-hash"></i>
+   <section id="multiple-column-form">
+            <div class="row match-height">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <form class="form">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="first-name-icon">Reference Number</label>
+                                                <div class="position-relative">
+                                                    <input type="number" class="form-control" placeholder="id number" id="reference-number-input">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-hash"></i>
+                                                    </div>
+                                                    
                                                 </div>
+                                                <div class="error-message-danger" id="reference-number-error" style="display: none;"></div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">Select Leave Type</label>
-                                            <div class="position-relative">
-                                                <fieldset class="form-group">
-                                                    <select class="form-select" id="basicSelect">
-                                                        <option>Casual Leave</option>
-                                                        <option>Sick Leave</option>
-                                                    </select>
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">From Date</label>
-                                            <div class="position-relative">
-                                                <input type="date" class="form-control" placeholder="first name" id="first-name-icon">
-                                                <div class="form-control-icon">
-                                                    <i class="fa fa-user"></i>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="leave-type-select">Select Leave Type</label>
+                                                <div class="position-relative">
+                                                    <fieldset class="form-group">
+                                                        <select class="form-select" id="leave-type-select">
+                                                            <option value="">Select Leave Type</option>
+                                                            <option value="casual">Casual Leave</option>
+                                                            <option value="sick">Sick Leave</option>
+                                                            <option value="personal">Personal Leave</option>
+                                                        </select>
+                                                    </fieldset>
                                                 </div>
+                                                <div class="error-message-danger" id="leave-type-error" style="display: none;"></div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group has-icon-left">
-                                            <label for="first-name-icon">To Date</label>
-                                            <div class="position-relative">
-                                                <input type="date" class="form-control" placeholder="first name" id="first-name-icon">
-                                                <div class="form-control-icon">
-                                                    <i class="fa fa-user"></i>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="from-date-input">From Date</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="from date" id="from-date-input">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    
                                                 </div>
+                                                <div class="error-message-danger" id="from-date-error" style="display: none;"></div>
                                             </div>
                                         </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="to-date-input">To Date</label>
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="to date" id="to-date-input">
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="error-message-danger" id="to-date-error" style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                            <div class="spinner-grow text-primary" id="loader" style="display: none;"></div>
+                                        </div>
                                     </div>
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- // Basic multiple Column Form section end -->
+        </section>
 </div>
 
         </div>
@@ -168,5 +199,136 @@
     <script src="assets/js/app.js"></script>
     
     <script src="assets/js/main.js"></script>
+  <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var form = document.querySelector('.form');
+            var submitButton = form.querySelector('.btn-primary');
+            var referenceNumberInput = document.getElementById("reference-number-input");
+            var fromDateInput = document.getElementById("from-date-input");
+            var toDateInput = document.getElementById("to-date-input");
+            var leaveTypeSelect = document.getElementById("leave-type-select");
+            var referenceNumberError = document.getElementById("reference-number-error");
+            var fromDateError = document.getElementById("from-date-error");
+            var toDateError = document.getElementById("to-date-error");
+            var leaveTypeError = document.getElementById("leave-type-error");
+
+            var spinner = form.querySelector('.spinner-grow');
+
+            form.onsubmit = function (event) {
+                event.preventDefault();
+
+                var isReferenceNumberValid = validateInput(referenceNumberInput, referenceNumberError, "Please enter a reference number.");
+                var isFromDateValid = validateInput(fromDateInput, fromDateError, "Please select a from date.");
+                var isToDateValid = validateInput(toDateInput, toDateError, "Please select a to date.");
+                var isLeaveTypeValid = validateSelect(leaveTypeSelect, leaveTypeError, "Please select a leave type.");
+
+                if (isReferenceNumberValid && isFromDateValid && isToDateValid && isLeaveTypeValid) {
+                    var jsonObj = {
+                        FullName: referenceNumberInput.value,
+                        fromDate: fromDateInput.value,
+                        toDate: toDateInput.value,
+                        LeaveType: leaveTypeSelect.value,
+                        postingDate: new Date().toLocaleDateString()
+                    };
+                   
+
+
+                    let jsonArray=[];
+                    jsonArray.push(jsonObj);
+
+                    if(localStorage.getItem("leavestatusnew")!=undefined){    
+
+                    let existingArray=JSON.parse(localStorage.getItem("leavestatusnew")); 
+                    existingArray.push(jsonObj);
+                    localStorage.setItem("leavestatusnew",JSON.stringify(existingArray))
+                    }else{
+                    localStorage.setItem('leavestatusnew',JSON.stringify(jsonArray));
+                    }
+
+
+                    spinner.style.display = 'inline-block';
+                    
+                    setTimeout(function () {
+                        window.location.href = 'leave_status.html';
+                    }, 3000);
+                }
+            };
+         
+
+
+    referenceNumberInput.addEventListener("input", function () {
+        hideErrorMessage(referenceNumberError);
+        referenceNumberInput.style.borderColor = "green";
+    });
+    fromDateInput.addEventListener("input", function () {
+        hideErrorMessage(fromDateError);
+        fromDateInput.style.borderColor = "green";
+    });
+
+    toDateInput.addEventListener("input", function () {
+        hideErrorMessage(toDateError);
+        toDateInput.style.borderColor = "green";
+    });
+   
+
+    leaveTypeSelect.addEventListener("change", function () {
+        hideErrorMessage(leaveTypeError);
+        leaveTypeSelect.style.borderColor = "green";
+    });
+
+    function validateInput(input, errorElement, errorMessage) {
+        var inputValue = input.value.trim();
+        if (inputValue === "") {
+            showErrorMessage(errorElement, errorMessage);
+            input.style.borderColor = "red";
+            return false;
+        }
+        hideErrorMessage(errorElement);
+        input.style.borderColor = "green";
+        return true;
+    }
+
+    function validateSelect(selectInput, errorElement, errorMessage) {
+        var selectedValue = selectInput.value;
+        if (selectedValue === "") {
+            showErrorMessage(errorElement, errorMessage);
+            selectInput.style.borderColor = "red";
+            return false;
+        }
+        hideErrorMessage(errorElement);
+        selectInput.style.borderColor = "green";
+        return true;
+    }
+
+    function showErrorMessage(errorElement, message) {
+        errorElement.textContent = message;
+        errorElement.style.color = "red";
+        errorElement.style.display = "block";
+    }
+
+    function hideErrorMessage(errorElement) {
+        errorElement.textContent = "";
+        errorElement.style.display = "none";
+    }
+    var dateToday = new Date();
+    var dates = $("#from-date-input, #to-date-input").datepicker({
+    defaultDate: "+1w",
+    changeMonth: true,
+    numberOfMonths: 2,
+    minDate: dateToday,
+    onSelect: function(selectedDate) {
+        var option = this.id == "from-date-input" ? "minDate" : "maxDate",
+            instance = $(this).data("datepicker"),
+            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+        dates.not(this).datepicker("option", option, date);
+    }
+});
+
+
+});
+
+</script>
+
+
 </body>
 </html>

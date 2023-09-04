@@ -227,9 +227,46 @@
                                
                                 
                                     <script>
-                                        var data =  JSON.parse(localStorage.getItem("pending_leave"));
-                                       
-       
+
+                                       var data=[
+            {
+                "FullName": "Jeevithaaa",
+                "LeaveType": "Sick leave",
+                "PostingData": "2023-08-01",
+                "Status": "Pending"
+            },
+            {
+                "FullName": "Sowmiya",
+                "LeaveType": "Medical Leave",
+                "PostingData": "2023-08-02",
+                "Status": "Pending"
+            },
+            {
+               "FullName": "Kiruthiga",
+                "LeaveType": "Sick Leave",
+                "PostingData": "2023-08-03",
+                "Status": "Pending"
+            },
+  {
+               "FullName": "Devi",
+                "LeaveType": "Medical Leave",
+                "PostingData": "2023-08-04",
+                "Status": "Pending"
+            },
+  {
+               "FullName": "Mani",
+                "LeaveType": "Sick Leave",
+                "PostingData": "2023-08-05",
+                "Status": "Pending"
+            }
+        ]
+      
+             localStorage.setItem("pending_leave", JSON.stringify(data))
+                                        
+             var data = JSON.parse(localStorage.getItem("pending_leave"));
+                                      
+
+                                     
                function updateTable() {
                    var tableBody = document.getElementById("myTable");
                    tableBody.innerHTML = '<tr><th>Full Name</th><th>Leave Type</th><th>Posting Data</th><th>Status</th><th>Action</th></tr>';

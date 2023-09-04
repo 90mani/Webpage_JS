@@ -100,7 +100,7 @@
                               <a href="all_leave.html">All Leaves</a>
                            </li>
                            <li>
-                              <a href="pending_leave.html">Pending Leaves</a>
+                              <a href="Approve_leave.html">Approve Leaves</a>
                            </li>
                            <li>
                               <a href="approve_leave.html">Approve Leaves</a>
@@ -214,6 +214,14 @@
                         <div class="card-body">
                             <table class='table' id="table1">
                                 <script>
+
+                                 data=[{"FullName":"Jeevithaaa","LeaveType":"Sick leave","PostingData":"2023-08-01","Status":"Approve"},
+                                 {"FullName":"Sowmiya","LeaveType":"Medical Leave","PostingData":"2023-08-02","Status":"Approve"},
+                                 {"FullName":"Kiruthiga","LeaveType":"Sick Leave","PostingData":"2023-08-03","Status":"Approve"},
+                                 {"FullName":"Devi","LeaveType":"Medical Leave","PostingData":"2023-08-04","Status":"Approve"},
+                                 {"FullName":"Mani","LeaveType":"Sick Leave","PostingData":"2023-08-05","Status":"Approve"}]
+
+                                     localStorage.setItem("approve_leave", JSON.stringify(data))
                                     var data =  JSON.parse(localStorage.getItem("approve_leave"));
                                    
    

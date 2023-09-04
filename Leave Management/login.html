@@ -6,25 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-
-      <script defer src="assets/fontawesome/js/all.min.js"></script>
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
 <style>
-   .img{
-    width: 150px;
-    height: 150px;
-    margin-left: 190px;
-   } 
-   .card{
-    border-radius: 8px;
-   }
-   .container h3{
-    font-size: 30px;
-    font-weight: 600;
-   }
-   
-   .form #username_error,
+    .form #username_error,
    .form #password_error{
     margin-top: 5px;
 	font-size: 18px;
@@ -32,119 +18,110 @@
 	padding: 5px 8px;
 	display: none;
    }
-
-   .form #username_verify,
-   .form #password_verify{
-    margin-top: 5px;
-	font-size: 18px;
-	color: green;
-	padding: 5px 8px;
-	display: none;
-   }
-   
    .required::after{
     content: "*";
     color:red;
-    font-size: 30px;
+    font-size: 20px;
+    font-weight: 400;
+
    }
   
-  
+
 </style>
 <body>
     <div id="auth">
-
         <div class="container">
-            
             <div class="row">
-                
                 <div class="col-md-5 col-sm-12 mx-auto">
                     <div class="card pt-4">
-                       <img src="assets/images/login.png" class="img">
                         <div class="card-body">
                             <div class="text-center mb-5">
+                                <img src="assets/images/login.png" alt="User Image" class="img" width="100" height="100">
                                 <h3>Sign In</h3>
                             </div>
-                            <form name="myform" class="form" onsubmit="return validation()" action="employee.html">
+                            <form  name="myform" class="form" onsubmit="return validation()" action="employee.html" >
                                 <div class="form-group position-relative has-icon-left">
-                                    <label for="username" class="required">Username </label>
+                                    <label for="username" class="required">Username</label>
+                                    
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" id="uname" onkeyup="validateForm()">
+                                        <input type="text" class="form-control" id="uname" name="username" onkeyup="validateForm()">
                                         <div class="form-control-icon">
                                             <i class="fa fa-user"></i>
                                         </div>
+                                       
                                     </div>
                                 </div>
                                 <div id="username_error">please enter a valid username!</div>
-                                <div id="username_verify">valid</div>
                                 <div class="form-group position-relative has-icon-left">
                                     <div class="clearfix">
                                         <label for="password" class="required">Password</label>
                                         <a href="#" class='float-end'>
                                             <small>Forgot password?</small>
                                         </a>
+                                        
                                     </div>
                                     <div class="position-relative">
-                                        <input type="password" class="form-control" id="pass" onkeyup="validate()">
+                                        <input type="password" class="form-control" id="pass" name="password" onkeyup="validate()">
                                         <div class="form-control-icon">
                                             <i class="fa fa-key"></i>
-                                           
                                         </div>
+                                        <div class="alert alert-danger error-message" id="password-error" style="display: none;"></div>
                                     </div>
                                     <div id="password_error">Please enter a valid passowrd!</div>
-                                    <div id="password_verify">valid</div>
                                 </div>
-
                                 <div class='form-check clearfix my-4'>
                                     <div class="checkbox float-start">
-                                        <a href="index.html"   class='float-end' >
-                                          
+                                        <a href="index.html" class='float-end'>
                                             <small>admin</small>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="clearfix">
-                                  <button type="submit" class="btn btn-primary me-1 mb-1" style="margin-left: 380px;">Login</button>
-                                </div>
+                                    <button type="submit" class="btn btn-primary float-end">Login</button>
+                                </div><br>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <script>
 
-      function validation(){
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        let username = document.forms['myform']['uname'].value;
-        if(uname.value==""){
-          alert("Username must not be empty");
-          document.myform.uname.focus();
-          return false;
-        } 
-        
-        let password = document.forms['myform']['pass'].value;
-        if(pass.value==""){
-          alert("Password must not be empty");
-          document.myform.pass.focus();
-          return false;
-        }
-      }
- function validateForm(){
-  
+   <script>
+    function validation(){
+
+let username = document.forms['myform']['uname'].value;
+if(uname.value==""){
+  alert("Username must not be empty");
+  document.myform.uname.focus();
+  return false;
+} 
+
+let password = document.forms['myform']['pass'].value;
+if(pass.value==""){
+  alert("Password must not be empty");
+  document.myform.pass.focus();
+  return false;
+}
+}
+function validateForm(){
+
 let username = document.forms['myform']['uname'].value;
 var password_error = document.getElementById("password_error");
 var password_verify = document.getElementById("password_verify");
 
 
 if(uname.value!="jeevitha"){
-  username_error.style.display="block";
-  uname.style.border="2px solid red";
-  return false;
+username_error.style.display="block";
+uname.style.border="2px solid red";
+return false;
 }
 username_error.style.display="none";
-username_verify.style.display="block";
 uname.style.border="2px solid green";
 return true;
 }
@@ -156,24 +133,16 @@ var username_error = document.getElementById("username_error");
 var username_verify = document.getElementById("username_verify");
 
 if(pass.value!="user123"){
-  password_error.style.display="block";
-  pass.style.border="2px solid red";
-  return false;
+password_error.style.display="block";
+pass.style.border="2px solid red";
+return false;
 }
 password_error.style.display="none";
-password_verify.style.display="block";
 pass.style.border="2px solid green";
 return true;
 
 }
+</script>
 
-    </script>
-    <script src="assets/js/feather-icons/feather.min.js"></script>
-    <script src="assets/js/app.js"></script>
-
-    <script src="assets/js/main.js"></script>
-</body>
-
+    </body>
 </html>
-
-
