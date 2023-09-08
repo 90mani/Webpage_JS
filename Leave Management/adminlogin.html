@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+         
+    <title>Login & Registration Form</title> 
+</head>
+<style>
+   
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:grey;
+}
+
+.container{
+    position: relative;
+    max-width: 700px;
+    width: 200%;
+    height:600px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0 20px;
+}
+
+.container .forms{
+    display: flex;
+    align-items: center;
+    height: 570px;
+    width: 200%;
+    transition: height 0.2s ease;
+}
+
+
+.container .form{
+    width: 50%;
+    padding: 30px;
+    background-color: #fff;
+    transition: margin-left 0.18s ease;
+}
+
+.container.active .forms{
+    height: 600px;
+}
+.container .form .title{
+    position: relative;
+    font-size: 27px;
+    font-weight: 600;
+    margin-left: 270px;
+}
+
+
+
+.form .input-field{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.input-field input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid){
+    border-bottom-color:gray;
+}
+
+.input-field i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) ~ i{
+    color: gray;
+}
+.form .text{
+    color: #333;
+    font-size: 14px;
+}
+
+.form a:hover{
+    text-decoration: underline;
+}
+
+.form #username_error,
+   .form #password_error{
+    margin-top: 5px;
+	font-size: 18px;
+	color: #C62828;
+	padding: 5px 8px;
+	display: none;
+   }
+  
+</style>
+<body>
+    
+    <div class="container">
+        <div class="forms">
+            <div class="form login">
+                <div class="text-center mb-5">
+                    <img src="assets/images/admin1.png" alt="User Image" class="img" width="100" height="100">
+                <h3>Sign Up</h3>
+</div>
+                <form name="myform" action="index.html" onsubmit="return validation()">
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter User Name" id="uname" onkeyup="validateForm()">
+                        <i class="uil uil-user icon"></i>
+                    </div>
+                    <div id="username_error">please enter a valid username!</div>
+                   
+                    <div class="input-field">
+                        <input type="password" class="password" placeholder="Enter your password" id="pass" onkeyup="validate()">
+                        <i class="uil uil-lock icon"></i>
+                       
+                    </div>
+                    <div id="password_error">Please enter a valid passowrd!</div>
+                   <br>
+                    
+                    <div class="clearfix">
+                        <button type="submit" class="btn btn-dark float-end">Login</button>
+                    </div>
+                </form>
+            </div> 
+        </div>
+    </div>
+
+     <script>
+       
+            function validation(){
+
+let username = document.forms['myform']['uname'].value;
+if(uname.value==""){
+  alert("Username must not be empty");
+  document.myform.uname.focus();
+  return false;
+} 
+
+let password = document.forms['myform']['pass'].value;
+if(pass.value==""){
+  alert("Password must not be empty");
+  document.myform.pass.focus();
+  return false;
+}
+}
+function validateForm(){
+
+let username = document.forms['myform']['uname'].value;
+var password_error = document.getElementById("password_error");
+var password_verify = document.getElementById("password_verify");
+
+
+if(uname.value!="admin"){
+username_error.style.display="block";
+uname.style.border="2px solid red";
+return false;
+}
+username_error.style.display="none";
+uname.style.border="2px solid green";
+return true;
+}
+
+
+function validate(){
+let password = document.forms['myform']['pass'].value;
+var username_error = document.getElementById("username_error");
+var username_verify = document.getElementById("username_verify");
+
+if(pass.value!="admin123"){
+password_error.style.display="block";
+pass.style.border="2px solid red";
+return false;
+}
+password_error.style.display="none";
+pass.style.border="2px solid green";
+return true;
+
+} 
+        
+     </script> 
+</body>
+</html>

@@ -63,7 +63,7 @@
                         <a href="#" data-bs-toggle="dropdown"
                            class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                            <div class="avatar me-1">
-                              <img src="assets/images/icon.png" alt="" srcset="">
+                              <img src="assets/images/empicon.png" alt="" srcset="">
                            </div>
                            <div class="d-none d-md-block d-lg-inline-block">Hi,Jeevitha</div>
                         </a>
@@ -106,7 +106,7 @@
                      
              function updateTable() {
                var tableBody = document.getElementById("table1");
-               tableBody.innerHTML = '<tr><th>Full Name</th><th>Leave Type</th><th>fromdate</th><th>todate</th><th>Posting Date</th><th>Action</th></tr>';
+               tableBody.innerHTML = '<tr><th>Leave Type</th><th>Fromdate</th><th>Todate</th><th>Posting Date</th><th>Remark</th><th>Status</th></tr>';
    
                for (var i = 0; i < data.length; i++) {
                    var newRow = tableBody.insertRow(tableBody.rows.length);
@@ -119,13 +119,14 @@
                    var cell6 = newRow.insertCell(5); 
                    
    
-                   cell1.innerHTML = data[i].FullName;
-                   cell2.innerHTML = data[i].LeaveType;
-                   cell3.innerHTML = data[i].fromDate;
-                   cell4.innerHTML = data[i].toDate;
-                   cell5.innerHTML = data[i].postingDate;
-                   cell6.innerHTML = 
-                   `<i class="fa fa-eye text-success"></i>`;
+                  
+                   cell1.innerHTML = data[i].LeaveType;
+                   cell2.innerHTML = data[i].fromDate;
+                   cell3.innerHTML = data[i].toDate;
+                   cell4.innerHTML = data[i].postingDate;
+                   cell5.innerHTML = data[i].remark;
+                   cell6.innerHTML = data[i].Status;;
+                   
                                 
                }
            }
