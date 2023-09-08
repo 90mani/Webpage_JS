@@ -40,6 +40,11 @@
     left:25px;
 }
 
+.required {
+  color: red;
+  font-size: 20px;
+}
+
     </style>
 </head>
 
@@ -56,21 +61,24 @@
                             </div>
                             <form id="loginForm" action="employee.html" method="post">
                               <div class="imgcontainer text-center">
-                                  <img src="C:\Users\Admin\Pictures\sign.png" alt="Avatar" class="avatar" width="120" height="120">
+                                  <img src=".\assets\images\login.png" alt="Avatar" class="avatar" width="130" height="130">
                               </div>
+                              
                               <div class="form-group position-relative has-icon-left">
-                                  <label for="username">Username</label>
+                                
+                                  <label for="username">Username</label><span class="required">*</span>
                                   <div class="position-relative">
-                                      <input type="text" class="form-control" id="username" name="username">
+                                      <input type="text" class="form-control" id="username" name="username" >
                                       <div class="form-control-icon">
                                           <i class="fa fa-user"></i>
                                       </div>
                                       <div class="error-message" id="usernameError" style="display: none;"></div>
                                   </div>
                               </div>
+                            
                           
                               <div class="form-group position-relative has-icon-left">
-                                  <label for="password">Password</label>
+                                  <label for="password">Password</label><span class="required">*</span>
                                   <div class="position-relative">
                                       <input type="password" class="form-control" id="password" name="password">
                                       <div class="form-control-icon">
@@ -79,6 +87,8 @@
                                       <div class="error-message" id="passwordError" style="display: none;"></div>
                                   </div>
                               </div>
+
+                              
                           
                               <div class="clearfix">
                                   <a href="#" class="float-end">
@@ -86,8 +96,8 @@
                                   </a>
                               </div>
                           
-                              <div class="form-check clearfix my-4">
-                                  <div class="checkbox float-start">
+                              <div class="clearfix">
+                                <div class="checkbox float-start">
                                       <a href="index.html" class="float-end">
                                           <small>admin</small>
                                       </a>
@@ -95,7 +105,7 @@
                               </div>
                           
                               <div class="clearfix">
-                                  <button type="reset" class="btn btn-primary float-end">Reset</button>
+                                  <button type="reset" class="btn btn-primary float-end" style="margin-left:10px">Reset</button>
                                   <button type="submit" class="btn btn-primary float-end">Login</button>
                               </div>
                           </form>

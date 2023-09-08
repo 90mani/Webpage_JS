@@ -186,7 +186,7 @@
                            <div class="avatar me-1">
                               <img src="assets/images/admin.png" alt="" srcset="">
                            </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
+                           <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika kumar</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                            <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -216,164 +216,77 @@
                     </div>
                 </div>
                 <section class="section">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class='table' id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Full Name</th>
-                                        <th>Leave Type</th>
-                                        <th>Posting Date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>John Doe</td>
-                                        <td>Sick Leave</td>
-                                        <td>2021-11-01</td>
-                                        <td>
-                                            <span class="badge bg-info">Pending</span>
-                                        </td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Juan Dela Cruz</td>
-                                        <td>Sick Leave</td>
-                                        <td>2021-11-01</td>
-                                        <td>
-                                            <span class="badge bg-info">Pending</span>
-                                        </td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cardo Dalisay</td>
-                                        <td>Medical Leave</td>
-                                        <td>2021-11-01</td>
-                                        <td>
-                                            <span class="badge bg-info">Pending</span>
-                                        </td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>John Doe</td>
-                                        <td>Sick Leave</td>
-                                        <td>2021-11-01</td>
-                                        <td>
-                                            <span class="badge bg-info">Pending</span>
-                                        </td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                  <div class="card">
+                      <div class="card-body">
+                          <table class='table' id="table1">
+                            <script>
+                               var emp = [
+                                          {"FullName": "John", "LeaveType": "casual leave", "PostingData": "2023-09-08", "Status": "pending"},
+                                          {"FullName": "Ramya", "LeaveType": "Medical Leave", "PostingData": "2023-09-02", "Status": "pending"},
+                                          {"FullName": "Siva", "LeaveType": "Sick Leave", "PostingData": "2023-09-03", "Status": "pending"},
+                                          {"FullName": "Mohan", "LeaveType": "Vacation Leave", "PostingData": "2023-09-04", "Status": "pending"},
+                                          {"FullName": "Geetha", "LeaveType": "personal Leave", "PostingData": "2023-09-05", "Status": "pending"}
+                                       ];
+                              
+                                       
+                                       localStorage.setItem("approve_leave", JSON.stringify(emp));
+                              
+                                       
+                                       var emp = JSON.parse(localStorage.getItem("approve_leave"));
+                              function updateTable() {
+                                 var tableBody = document.getElementById("table1");
+                                 tableBody.innerHTML = '<tr><th>Full Name</th><th>Leave Type</th><th>Posting Data</th><th>Status</th><th>Action</th></tr>';
+                              
+                                 for (var i = 0; i < emp.length; i++) {
+                                    var newRow = tableBody.insertRow(tableBody.rows.length);
+                              
+                                    var cell1 = newRow.insertCell(0);
+                                    var cell2 = newRow.insertCell(1);
+                                    var cell3 = newRow.insertCell(2);
+                                    var cell4 = newRow.insertCell(3);
+                                    var cell5 = newRow.insertCell(4);
+                              
+                                    cell1.innerHTML = emp[i].FullName;
+                                    cell2.innerHTML = emp[i].LeaveType;
+                                    cell3.innerHTML =emp[i].PostingData;
+                                    
+                                   
+                                    if (emp[i].Status === "pending") {
+                                       cell4.innerHTML = `<span class="badge status-badge bg-success">${emp[i].Status}</span>`;
+                                    } else if (emp[i].Status === "pending") {
+                                       cell4.innerHTML = `<span class="badge status-badge bg-danger">${emp[i].Status}</span>`;
+                                    } else {
+                                       cell4.innerHTML = `<span class="badge status-badge">${emp[i].Status}</span>`;
+                                    }
+                              
+                                    cell5.innerHTML = `<i class="fa fa-eye text-success" onclick="viewDetails(${i})"></i>`;
+                                 }
+                              }
+                              
+                              function viewDetails(index) {
+                                 var selectedData = emp[index];
+                                 
+                                 window.location.href = `leave_details.html?fullName=${selectedData.FullName}&leaveType=${selectedData.LeaveType}&postingData=${selectedData.PostingData}&status=${selectedData.Status}`;
+                              }
+                              
+                              updateTable();
+                                 </script>
+                          </table>
+                      </div>
+                  </div>
 
-                </section>
-            </div>
-        </div>
-    </div>
+              </section>
+          </div>
+      </div>
+  </div>
+  <script src="assets/js/feather-icons/feather.min.js"></script>
+  <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+  <script src="assets/js/app.js"></script>
 
-    <script>
+  <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/js/vendors.js"></script>
 
-        var pendingLeave = JSON.parse(localStorage.getItem('pending_leave')) || [];
-
-        function updateTable() {
-            var tableBody = document.getElementById("table1").getElementsByTagName("tbody")[0];
-            tableBody.innerHTML = '';
-
-            for (var i = 0; i < pendingLeave.length; i++) {
-                var newRow = tableBody.insertRow(tableBody.rows.length);
-
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
-                var cell4 = newRow.insertCell(3);
-                var cell5 = newRow.insertCell(4);
-
-                cell1.innerHTML = pendingLeave[i].fullName;
-                cell2.innerHTML = pendingLeave[i].leavetype;
-                cell3.innerHTML = pendingLeave[i].postingDate;
-                cell4.innerHTML = pendingLeave[i].status;
-                cell5.innerHTML = '<i class="fa fa-eye text-success"></i>';
-            }
-
-            attachEventListeners();
-        }
-
-        function attachEventListeners() {
-            var eyeIcons = document.querySelectorAll('.fa-eye');
-
-            eyeIcons.forEach(function (icon) {
-                icon.addEventListener('click', function () {
-                    showLeaveDetails(this);
-                });
-            });
-        }
-
-        function editpendingleave(icon) {
-            var row = icon.parentNode.parentNode;
-            var cells = row.getElementsByTagName("td");
-
-            var originalData = {
-                fullName: cells[0].innerText,
-                leavetype: cells[1].innerText,
-                postingDate: cells[2].innerText,
-                status: cells[3].innerText,
-            };
-
-            for (var i = 0; i < cells.length - 1; i++) {
-                var value = originalData[Object.keys(originalData)[i]];
-                cells[i].innerHTML = `<input type="text" value="${value}">`;
-            }
-
-            var actionsCell = cells[cells.length - 1];
-            actionsCell.innerHTML = `
-                <i class="fa fa-floppy-o text-success" onclick="savependingleave(this)"></i>
-                <i class="fa fa-times text-danger" onclick="cancelEdit(this)"></i>`;
-        }
-
-        function savependingleave(button) {
-            var row = button.parentNode.parentNode;
-            var cells = row.getElementsByTagName("td");
-
-            var editedData = {
-                fullName: cells[0].getElementsByTagName("input")[0].value,
-                leavetype: cells[1].getElementsByTagName("input")[0].value,
-                postingDate: cells[2].getElementsByTagName("input")[0].value,
-                status: cells[3].getElementsByTagName("input")[0].value,
-            };
-
-            var index = row.rowIndex - 1;
-            pendingLeave[index] = editedData;
-
-            localStorage.setItem("pending_leave", JSON.stringify(pendingLeave));
-
-            updateTable();
-        }
-
-        function cancelEdit(button) {
-            var row = button.parentNode.parentNode;
-            var cells = row.getElementsByTagName("td");
-            var originalData = pendingLeave[row.rowIndex - 1];
-
-            for (var i = 0; i < cells.length - 1; i++) {
-                cells[i].innerHTML = originalData[Object.keys(originalData)[i]];
-            }
-
-            var actionsCell = cells[cells.length - 1];
-            actionsCell.innerHTML = `<i class="fa fa-eye text-success"></i>`;
-        }
-
-        function deletependingleave(button) {
-            var row = button.parentNode.parentNode;
-            var index = row.rowIndex - 1;
-            pendingLeave.splice(index, 1);
-            localStorage.setItem("pending_leave", JSON.stringify(pendingLeave));
-
-            updateTable();
-        }
-    </script>
+  <script src="assets/js/main.js"></script>
 </body>
+
 </html>

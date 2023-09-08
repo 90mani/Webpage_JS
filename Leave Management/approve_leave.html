@@ -178,7 +178,7 @@
                            <div class="avatar me-1">
                               <img src="assets/images/admin.png" alt="" srcset="">
                            </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
+                           <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika Kumar</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                            <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -208,72 +208,77 @@
                     </div>
                 </div>
                 <section class="section">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class='table' id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Full Name</th>
-                                        <th>Leave Type</th>
-                                        <th>Posting Date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>John Doe</td>
-                                        <td>Sick Leave</td>
-                                        <td>2021-11-01</td>
-                                        <td>
-                                            <span class="badge bg-success">Approved</span>
-                                        </td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Juan Dela Cruz</td>
-                                        <td>Sick Leave</td>
-                                        <td>2021-11-01</td>
-                                        <td>
-                                            <span class="badge bg-success">Approved</span>
-                                        </td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cardo Dalisay</td>
-                                        <td>Medical Leave</td>
-                                        <td>2021-11-01</td>
-                                        <td>
-                                            <span class="badge bg-success">Approved</span>
-                                        </td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>John Doe</td>
-                                        <td>Sick Leave</td>
-                                        <td>2021-11-01</td>
-                                        <td>
-                                            <span class="badge bg-success">Approved</span>
-                                        </td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                  <div class="card">
+                      <div class="card-body">
+                          <table class='table' id="table1">
+                            <script>
+                               var data = [
+                                          {"FullName": "Kavin", "LeaveType": "personal leave", "PostingDate": "2023-09-08", "Status": "Approved"},
+                                          {"FullName": "Siva", "LeaveType": "Medical Leave", "PostingDate": "2023-09-02", "Status": "Approved"},
+                                          {"FullName": "Devi", "LeaveType": "Sick Leave", "PostingDate": "2023-09-03", "Status": "Approved"},
+                                          {"FullName": "Geetha", "LeaveType": "Annual Leave", "PostingDate": "2023-09-01", "Status": "Approved"},
+                                          {"FullName": "Radha", "LeaveType": "Sick Leave", "PostingDate": "2023-09-04", "Status": "Approved"}
+                                       ];
+                              
+                                       
+                                       localStorage.setItem("approve_leave", JSON.stringify(data));
+                              
+                                       
+                                       var data = JSON.parse(localStorage.getItem("approve_leave"));
+                              function updateTable() {
+                                 var tableBody = document.getElementById("table1");
+                                 tableBody.innerHTML = '<tr><th>Full Name</th><th>Leave Type</th><th>Posting Data</th><th>Status</th><th>Action</th></tr>';
+                              
+                                 for (var i = 0; i < data.length; i++) {
+                                    var newRow = tableBody.insertRow(tableBody.rows.length);
+                              
+                                    var cell1 = newRow.insertCell(0);
+                                    var cell2 = newRow.insertCell(1);
+                                    var cell3 = newRow.insertCell(2);
+                                    var cell4 = newRow.insertCell(3);
+                                    var cell5 = newRow.insertCell(4);
+                              
+                                    cell1.innerHTML = data[i].FullName;
+                                    cell2.innerHTML = data[i].LeaveType;
+                                    cell3.innerHTML = data[i].PostingData;
+                                    
+                                   
+                                    if (data[i].Status === "Approved") {
+                                       cell4.innerHTML = `<span class="badge status-badge bg-success">${data[i].Status}</span>`;
+                                    } else if (data[i].Status === "Not Approved") {
+                                       cell4.innerHTML = `<span class="badge status-badge bg-danger">${data[i].Status}</span>`;
+                                    } else {
+                                       cell4.innerHTML = `<span class="badge status-badge">${data[i].Status}</span>`;
+                                    }
+                              
+                                    cell5.innerHTML = `<i class="fa fa-eye text-success" onclick="viewDetails(${i})"></i>`;
+                                 }
+                              }
+                              
+                              function viewDetails(index) {
+                                 var selectedData = data[index];
+                                 
+                                 window.location.href = `leave_details.html?fullName=${selectedData.FullName}&leaveType=${selectedData.LeaveType}&postingData=${selectedData.PostingData}&status=${selectedData.Status}`;
+                              }
+                              
+                              updateTable();
+                                  </script>
+                          </table>
+                      </div>
+                  </div>
 
-                </section>
-            </div>
-        </div>
-    </div>
-    <script src="assets/js/feather-icons/feather.min.js"></script>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/app.js"></script>
+              </section>
+          </div>
+      </div>
+  </div>
+  <script src="assets/js/feather-icons/feather.min.js"></script>
+  <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+  <script src="assets/js/app.js"></script>
 
-    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/js/vendors.js"></script>
+  <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/js/vendors.js"></script>
 
-    <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>

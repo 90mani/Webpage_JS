@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Leave</title>
-    
+
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-    
-      <script defer src="assets/fontawesome/js/all.min.js"></script>
+
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <script src="assets/js/feather-icons/feather.min.js"></script>
@@ -15,280 +16,361 @@
     <script src="assets/js/app.js"></script>
     <script src="assets/js/main.js"></script>
     <style type="text/css">
-         .notif:hover{
-          background-color: rgba(0,0,0,0.1);
-                  }
-  .error-message {
-    color: #d93025;
-    font-size: 14px;
-    margin-top: 5px; 
-    display: none; 
-}
-.form-group.has-icon-left .form-control-icon {
-    position: absolute;
-    top: 40%;
-    bottom:15%;
-    transform: translateY(-50%);
-    right: 0.60rem;
-    pointer-events: none;
-    left:25px;
-}
-      </style>
+        .notif:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .error-message {
+            color: #d93025;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group.has-icon-left .form-control-icon {
+            position: absolute;
+            top: 40%;
+            bottom: 15%;
+            transform: translateY(-50%);
+            right: 0.60rem;
+            pointer-events: none;
+            left: 25px;
+        }
+
+        .required {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
-    <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                      <i class="fa fa-users text-success me-4"></i>
-                        <span>SANKIT</span>
+                <div class="sidebar-header" style="height: 50px;margin-top: -30px">
+                    <i class="fa fa-users text-success me-4"></i>
+                    <span>SANKIT</span>
                 </div>
-               <div class="sidebar-menu">
-                  <ul class="menu">
-                     <li class="sidebar-item ">
-                        <a href="employee.html" class='sidebar-link'>
-                        <i class="fa fa-home text-success"></i>
-                        <span>Dashboard</span>
-                        </a>
-                     </li>
-                     <li class="sidebar-item active">
-                        <a href="apply_leave.html" class='sidebar-link'>
-                        <i class="fa fa-plane text-success"></i>
-                        <span>Apply Leave</span>
-                        </a>
-                     </li>
-                     <li class="sidebar-item ">
-                        <a href="leave_status.html" class='sidebar-link'>
-                        <i class="fa fa-plane text-success"></i>
-                        <span>Leave Status</span>
-                        </a>
-                     </li>
-                  </ul>
-    </div>
-    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
-</div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-item ">
+                            <a href="employee.html" class='sidebar-link'>
+                                <i class="fa fa-home text-success"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item active">
+                            <a href="apply_leave.html" class='sidebar-link'>
+                                <i class="fa fa-plane text-success"></i>
+                                <span>Apply Leave</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item ">
+                            <a href="leave_status.html" class='sidebar-link'>
+                                <i class="fa fa-plane text-success"></i>
+                                <span>Leave Status</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
         </div>
         <div id="main">
             <nav class="navbar navbar-header navbar-expand navbar-light">
                 <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
-                <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav d-flex align-items-center navbar-light ms-auto">
-                      
-                     <li class="dropdown">
-                        <a href="#" data-bs-toggle="dropdown"
-                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                           <div class="avatar me-1">
-                              <img src="assets/images/admin.png" alt="" srcset="">
-                           </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi, Employee</div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                           <a class="dropdown-item" href="update.html"><i data-feather="user"></i> Account</a>
-                           <a class="dropdown-item" href="update_password.html"><i data-feather="settings"></i> Settings</a>
-                           <div class="dropdown-divider"></div>
-                           <a class="dropdown-item" href="login.html"><i data-feather="log-out"></i> Logout</a>
-                        </div>
-                     </li>
-                  </ul>
+
+                        <li class="dropdown">
+                            <a href="#" data-bs-toggle="dropdown"
+                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="avatar me-1">
+                                    <img src="assets/images/admin.png" alt="" srcset="">
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika Kumar</div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="update.html"><i data-feather="user"></i> Account</a>
+                                <a class="dropdown-item" href="update_password.html"><i data-feather="settings"></i>
+                                    Settings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="login.html"><i data-feather="log-out"></i> Logout</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </nav>
-            
-<div class="main-content container-fluid">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Apply for Leave</h3>
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html" class="text-success">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Leave Application</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
 
-    </div>
-
-
-    <!-- // Basic multiple Column Form section start -->
-    <section id="multiple-column-form">
-        <div class="row match-height">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <form class="form" id="leave-request-form">
-                                <div class="row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group has-icon-left">
-                                            <label for="reference-number-input">Reference Number*</label>
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="ID number" id="reference-number-input">
-                                                <div class="form-control-icon">
-                                                    <i class="fa fa-hash"></i>
-                                                </div>
-                                                <div class="error-message" id="reference-number-error" style="display: none;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group has-icon-left">
-                                            <label for="leave-type-select">Select Leave Type*</label>
-                                            <div class="position-relative">
-                                                <select class="form-select" id="leave-type-select">
-                                                    <option value="">Select Leave Type</option>
-                                                    <option value="casual">Casual Leave</option>
-                                                    <option value="sick">Sick Leave</option>
-                                                </select>
-                                                <div class="error-message" id="select-leave-type-error" style="display: none;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group has-icon-left">
-                                            <label for="from-date-input">From Date</label>
-                                            <div class="position-relative">
-                                                <input type="date" class="form-control" id="from-date-input">
-                                                <div class="form-control-icon">
-                                                    <i class="fa fa-calendar"></i>
-                                                </div>
-                                                <div class="error-message" id="from-date-error" style="display: none;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group has-icon-left">
-                                            <label for="to-date-input">To Date</label>
-                                            <div class="position-relative">
-                                                <input type="date" class="form-control" id="to-date-input">
-                                                <div class="form-control-icon">
-                                                    <i class="fa fa-calendar"></i>
-                                                </div>
-                                                <div class="error-message" id="to-date-error" style="display: none;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                        <div class="spinner" style="display: none;"></div>
-                                    </div>
-                                </div>
-                            </form>
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Apply for Leave</h3>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html" class="text-success">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Leave Application</li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
+
                 </div>
+                <section id="multiple-column-form">
+                    <div class="row match-height">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form">
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="first-name-icon">Reference Number</label>
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="id number" id="reference-number-input">
+                                                            <div class="form-control-icon">
+                                                                <i class="fa fa-hash"></i>
+                                                            </div>
+                                                            <div class="error-message-danger"
+                                                                id="reference-number-error" style="display: none;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="leave-type-select">Select Leave Type</label>
+                                                        <div class="position-relative">
+                                                            <fieldset class="form-group">
+                                                                <select class="form-select" id="leave-type-select">
+                                                                    <option value="">Select Leave Type</option>
+                                                                    <option value="casual">Casual Leave</option>
+                                                                    <option value="sick">Sick Leave</option>
+                                                                    <option value="sick">Special Leave</option>
+                                                                    <option value="sick">Annual Leave</option>
+                                                                </select>
+                                                            </fieldset>
+                                                            <div class="error-message-danger" id="leave-type-error"
+                                                                style="display: none;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="from-date-input">From Date</label>
+                                                        <div class="position-relative">
+                                                            <input type="date" class="form-control"
+                                                                placeholder="from date" id="from-date-input">
+                                                            <div class="form-control-icon">
+                                                                <i class="fa fa-user"></i>
+                                                            </div>
+                                                            <div class="error-message-danger" id="from-date-error"
+                                                                style="display: none;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="to-date-input">To Date</label>
+                                                        <div class="position-relative">
+                                                            <input type="date" class="form-control"
+                                                                placeholder="to date" id="to-date-input">
+                                                            <div class="form-control-icon">
+                                                                <i class="fa fa-user"></i>
+                                                            </div>
+                                                            <div class="error-message-danger" id="to-date-error"
+                                                                style="display: none;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="posting-date-input">Posting Date</label>
+                                                        <div class="position-relative">
+                                                            <input type="date" class="form-control"
+                                                                placeholder="posting date" id="posting-date-input">
+                                                            <div class="form-control-icon">
+                                                                <i class="fa fa-user"></i>
+                                                            </div>
+                                                            <div class="error-message-danger" id="posting-date-error"
+                                                                style="display: none;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d-flex justify-content-end">
+                                                    <button type="submit"
+                                                        class="btn btn-primary me-1 mb-1">Submit</button>
+                                                    <div class="spinner" style="display: none;"></div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
+
         </div>
-    </section>
-    
-<script>
+    </div>
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/app.js"></script>
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector('.form');
-        const submitButton = form.querySelector('.btn-primary');
-        const referenceNumberInput = document.getElementById("reference-number-input");
-        const fromDateInput = document.getElementById("from-date-input");
-        const toDateInput = document.getElementById("to-date-input");
-        const leaveTypeSelect = document.getElementById("leave-type-select");
-        const referenceNumberError = document.getElementById("reference-number-error");
-        const fromDateError = document.getElementById("from-date-error");
-        const toDateError = document.getElementById("to-date-error");
-        const leaveTypeError = document.getElementById("leave-type-error");
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var form = document.querySelector('.form');
+            var submitButton = form.querySelector('.btn-primary');
+            var referenceNumberInput = document.getElementById("reference-number-input");
+            var fromDateInput = document.getElementById("from-date-input");
+            var toDateInput = document.getElementById("to-date-input");
+            var postingDateInput = document.getElementById("posting-date-input");
+            var leaveTypeSelect = document.getElementById("leave-type-select");
+            var referenceNumberError = document.getElementById("reference-number-error");
+            var fromDateError = document.getElementById("from-date-error");
+            var toDateError = document.getElementById("to-date-error");
+            var postingDateError = document.getElementById("posting-date-error");
+            var leaveTypeError = document.getElementById("leave-type-error");
 
-        const spinner = form.querySelector('.spinner');
+            var spinner = form.querySelector('.spinner');
 
-        form.onsubmit = function (event) {
-            event.preventDefault();
+            form.onsubmit = function (event) {
+                event.preventDefault();
 
-            const isReferenceNumberValid = validateInput(referenceNumberInput, referenceNumberError, "Please enter a reference number.");
-            const isFromDateValid = validateInput(fromDateInput, fromDateError, "Please enter a from date.");
-            const isToDateValid = validateInput(toDateInput, toDateError, "Please enter a to date.");
-            const isLeaveTypeValid = validateSelect(leaveTypeSelect, leaveTypeError, "Please select a leave type.");
+                var isReferenceNumberValid = validateInput(referenceNumberInput, referenceNumberError, "Please enter a reference number.");
+                var isFromDateValid = validateDate(fromDateInput, fromDateError, " please enter a From date .");
+                var isToDateValid = validateDate(toDateInput, toDateError, "please enter a todate.");
+                var isPostingDateValid = validateCurrentDate(postingDateInput, postingDateError, "please enter a posting date.");
+                var isLeaveTypeValid = validateSelect(leaveTypeSelect, leaveTypeError, "Please select a leave type.");
 
-            if (isReferenceNumberValid && isFromDateValid && isToDateValid && isLeaveTypeValid) {
-                const formData = {
-                    referenceNumber: referenceNumberInput.value,
-                    fromDate: fromDateInput.value,
-                    toDate: toDateInput.value,
-                    leaveType: leaveTypeSelect.value
-                };
+                if (isReferenceNumberValid && isFromDateValid && isToDateValid && isPostingDateValid && isLeaveTypeValid) {
+                    var formData = {
+                        referenceNumber: referenceNumberInput.value,
+                        fromDate: fromDateInput.value,
+                        toDate: toDateInput.value,
+                        postingDate: postingDateInput.value,
+                        leaveType: leaveTypeSelect.value
+                    };
 
-                localStorage.setItem('formData', JSON.stringify(formData));
+                    var leaveRequests = JSON.parse(localStorage.getItem('leaveRequests')) || [];
 
-                spinner.style.display = 'inline-block';
-                submitButton.disabled = true;
-                submitButton.innerHTML = 'Submitting...';
+                    leaveRequests.push(formData);
 
-                setTimeout(function () {
-                    // Provide a more descriptive message to the user here
-                    window.location.href = 'leave_status.html';
-                }, 1000);
+                    localStorage.setItem('leaveRequests', JSON.stringify(leaveRequests));
+
+                    spinner.style.display = 'inline-block';
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = 'Submitting...';
+
+                    setTimeout(function () {
+                        window.location.href = 'pending_leave.html';
+                    }, 1000);
+                }
+            };
+
+            referenceNumberInput.addEventListener("input", function () {
+                validateInput(referenceNumberInput, referenceNumberError, "Please enter a reference number.");
+            });
+
+            fromDateInput.addEventListener("input", function () {
+                validateDate(fromDateInput, fromDateError, "From date cannot be in the past.");
+            });
+
+            toDateInput.addEventListener("input", function () {
+                validateDate(toDateInput, toDateError, "To date cannot be in the past.");
+            });
+
+            postingDateInput.addEventListener("input", function () {
+                validateCurrentDate(postingDateInput, postingDateError, "Posting date must be the current date.");
+            });
+
+            leaveTypeSelect.addEventListener("change", function () {
+                validateSelect(leaveTypeSelect, leaveTypeError, "Please select a leave type.");
+            });
+
+            function validateInput(input, errorElement, errorMessage) {
+                var inputValue = input.value.trim();
+                if (inputValue === "") {
+                    showErrorMessage(errorElement, errorMessage);
+                    input.style.borderColor = "red";
+                    return false;
+                }
+                hideErrorMessage(errorElement);
+                input.style.borderColor = "green";
+                return true;
             }
-        };
 
-        referenceNumberInput.addEventListener("input", function () {
-            hideErrorMessage(referenceNumberError);
-            referenceNumberInput.style.borderColor = "";
-        });
-
-        fromDateInput.addEventListener("input", function () {
-            hideErrorMessage(fromDateError);
-            fromDateInput.style.borderColor = "";
-        });
-
-        toDateInput.addEventListener("input", function () {
-            hideErrorMessage(toDateError);
-            toDateInput.style.borderColor = "";
-        });
-
-        leaveTypeSelect.addEventListener("change", function () {
-            hideErrorMessage(leaveTypeError);
-            leaveTypeSelect.style.borderColor = "";
-        });
-
-        function validateInput(input, errorElement, errorMessage) {
-            const inputValue = input.value.trim();
-            if (inputValue === "") {
-                showErrorMessage(errorElement, errorMessage);
-                input.style.borderColor = "red";
-                return false;
+            function validateSelect(selectInput, errorElement, errorMessage) {
+                var selectedValue = selectInput.value;
+                if (selectedValue === "") {
+                    showErrorMessage(errorElement, errorMessage);
+                    selectInput.style.borderColor = "red";
+                    return false;
+                }
+                hideErrorMessage(errorElement);
+                selectInput.style.borderColor = "green";
+                return true;
             }
-            hideErrorMessage(errorElement);
-            input.style.borderColor = "";
-            return true;
-        }
 
-        function validateSelect(selectInput, errorElement, errorMessage) {
-            const selectedValue = selectInput.value;
-            if (selectedValue === "") {
-                showErrorMessage(errorElement, errorMessage);
-                selectInput.style.borderColor = "red";
-                return false;
+            function showErrorMessage(errorElement, message) {
+                errorElement.textContent = message;
+                errorElement.style.color = "red";
+                errorElement.style.display = "block";
             }
-            hideErrorMessage(errorElement);
-            selectInput.style.borderColor = "";
-            return true;
-        }
 
-        function showErrorMessage(errorElement, message) {
-            errorElement.textContent = message;
-            errorElement.style.color = "red";
-            errorElement.style.display = "block";
-        }
+            function hideErrorMessage(errorElement) {
+                errorElement.textContent = "";
+                errorElement.style.display = "none";
+            }
 
-        function hideErrorMessage(errorElement) {
-            errorElement.textContent = "";
-            errorElement.style.display = "none";
-        }
-    });
-</script>
+            function validateDate(dateInput, errorElement, errorMessage) {
+                var selectedDate = new Date(dateInput.value);
+                var currentDate = new Date();
+
+                if (selectedDate < currentDate) {
+                    showErrorMessage(errorElement, errorMessage);
+                    dateInput.style.borderColor = "red";
+                    return false;
+                } else {
+                    hideErrorMessage(errorElement);
+                    dateInput.style.borderColor = "green";
+                    return true;
+                }
+            }
+
+            function validateCurrentDate(dateInput, errorElement, errorMessage) {
+                var selectedDate = new Date(dateInput.value);
+                var currentDate = new Date();
+
+                if (selectedDate.toDateString() !== currentDate.toDateString()) {
+                    showErrorMessage(errorElement, errorMessage);
+                    dateInput.style.borderColor = "red";
+                    return false;
+                } else {
+                    hideErrorMessage(errorElement);
+                    dateInput.style.borderColor = "green";
+                    return true;
+                }
+            }
+        });
+    </script>
+
+
+
 </body>
-</html>
 
+</html>

@@ -226,24 +226,15 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Casual Leave</td>
-                                        <td>Casual Leave</td>
-                                        <td>3</td>
-                                        <td>2021-11-01</td>
+                                       
                                         <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
                                     </tr>
                                     <tr>
-                                        <td>Restricted Leave</td>
-                                        <td>Restricted Leave</td>
-                                        <td>5</td>
-                                        <td>2021-11-01</td>
+                                       
                                         <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
                                     </tr>
                                     <tr>
-                                        <td>Sick Leave</td>
-                                        <td>Sick Leave</td>
-                                        <td>2</td>
-                                        <td>2021-11-01</td>
+                                        
                                         <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
                                     </tr>
                                 </tbody>
@@ -265,110 +256,90 @@
     <script src="assets/js/main.js"></script>
     
     <script>
-
-      var leaveType = JSON.parse(localStorage.getItem('manage_leave')) || [];
-
-      function updateTable() {
-          var tableBody = document.getElementById("table1").getElementsByTagName("tbody")[0];
-          tableBody.innerHTML = '';
-
-          for (var i = 0; i < leaveType.length; i++) {
-              var newRow = tableBody.insertRow(tableBody.rows.length);
-
-              var cell1 = newRow.insertCell(0);
-              var cell2 = newRow.insertCell(1);
-              var cell3 = newRow.insertCell(2);
-              var cell4 = newRow.insertCell(3);
-              var cell5 = newRow.insertCell(4);
-
-              cell1.innerHTML = leaveType[i].leaveName;
-              cell2.innerHTML = leaveType[i].des;
-              cell3.innerHTML = leaveType[i].days;
-              cell4.innerHTML = leaveType[i].creationDate;
-              cell5.innerHTML = `
-              <i class="fa fa-pen text-primary" onclick="saveLeave(this)"></i>
-              <i class="fa fa-trash text-danger" onclick="deleteLeave(this)" style="margin-left:20px"></i>`;
-          }
-
-          attachEventListeners();
-      }
-
-      function attachEventListeners() {
-          var editIcons = document.querySelectorAll('.edit-icon');
-          var deleteIcons = document.querySelectorAll('.delete-icon');
-
-          editIcons.forEach(function (icon) {
-              icon.addEventListener('click', function () {
-                  editLeave(this);
-              });
-          });
-
-          deleteIcons.forEach(function (icon) {
-              icon.addEventListener('click', function () {
-                  deleteLeave(this);
-              });
-          });
-      }
-
-      function editLeave(icon) {
-          var row = icon.parentNode.parentNode;
-          var cells = row.getElementsByTagName("td");
-
-          for (var i = 0; i < cells.length - 1; i++) {
-              var value = cells[i].innerText;
-              cells[i].innerHTML = `<input type="text" value="${value}">`;
-          }
-
-          var actionsCell = cells[cells.length - 1];
-          actionsCell.innerHTML = `
-          <i class="fa fa-pen text-success" onclick="saveLeave(this)"></i>
-          <i class="fa fa-trash text-danger" onclick="cancelEdit(this)" style="margin-left:20px"></i>`;
-      }
-
-      function saveLeave(button) {
-          var row = button.parentNode.parentNode;
-          var cells = row.getElementsByTagName("td");
-
-          for (var i = 0; i < cells.length - 1; i++) {
-              var input = cells[i].getElementsByTagName("input")[0];
-              var value = input.value;
-              cells[i].innerHTML = value;
-              leaveType[row.rowIndex - 1][Object.keys(leaveType[row.rowIndex - 1])[i]] = value;
-          }
-
-          var actionsCell = cells[cells.length - 1];
-          actionsCell.innerHTML = `
-          <i class="fa fa-pen text-success edit-icon"></i>
-          <i class="fa fa-trash text-danger delete-icon" style="margin-left:20px"></i>`;
-      }
-
-      function cancelEdit(button) {
-          var row = button.parentNode.parentNode;
-          var cells = row.getElementsByTagName("td");
-          var originalData = leaveType[row.rowIndex - 1];
-
-          for (var i = 0; i < cells.length - 1; i++) {
-              cells[i].innerHTML = originalData[Object.keys(originalData)[i]];
-          }
-
-          var actionsCell = cells[cells.length - 1];
-          actionsCell.innerHTML = `
-          <i class="fa fa-pen text-success edit-icon"></i>
-          <i class="fa fa-trash text-danger delete-icon" style="margin-left:20px"></i>`;
-      }
-
-      function deleteleaveType(button) {
-          var row = button.parentNode.parentNode;
-          var index = row.rowIndex - 1;
-          debugger;
-          leaveType.splice(index, 1);
-          localStorage.setItem("manage_leave", JSON.stringify(leaveType))
-          debugger;
-          updateTable();
-      }
-
-      updateTable();
-  </script>
-</body>
-
-</html>
+        var leave = JSON.parse(localStorage.getItem('manage_leave')) || [];
+    
+        function updateTable() {
+            var tableBody = document.getElementById("table1").getElementsByTagName("tbody")[0];
+            tableBody.innerHTML = '';
+    
+            for (var i = 0; i < leave.length; i++) {
+                var newRow = tableBody.insertRow(tableBody.rows.length);
+    
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+                var cell4 = newRow.insertCell(3);
+                var cell5 = newRow.insertCell(4);
+    
+                cell1.innerHTML = leave[i].leaveName;
+                cell2.innerHTML = leave[i].des;
+                cell3.innerHTML = leave[i].days;
+                cell4.innerHTML = leave[i].creationDate;
+                cell5.innerHTML = `
+                <i class="fa fa-edit text-primary edit-icon" onclick="editleave(this)"></i>
+                <i class="fa fa-trash text-danger delete-icon" onclick="deleteleave(this)" style="margin-left:20px"></i>`;
+            }
+    
+            attachEventListeners();
+        }
+    
+        function attachEventListeners() {
+            var editIcons = document.querySelectorAll('.edit-icon');
+            var deleteIcons = document.querySelectorAll('.delete-icon');
+    
+            editIcons.forEach(function (icon) {
+                icon.addEventListener('click', function () {
+                    editleave(this);
+                });
+            });
+    
+            deleteIcons.forEach(function (icon) {
+                icon.addEventListener('click', function () {
+                    deleteleave(this);
+                });
+            });
+        }
+    
+        function editleave(icon) {
+            var row = icon.parentNode.parentNode;
+            var cells = row.getElementsByTagName("td");
+    
+            for (var i = 0; i < cells.length - 1; i++) {
+                var value = cells[i].innerText;
+                cells[i].innerHTML = `<input type="text" value="${value}">`;
+            }
+    
+            var actionsCell = cells[cells.length - 1];
+            actionsCell.innerHTML = `
+            <i class="fa fa-check text-success" onclick="saveleave(this)"></i>
+            <i class="fa fa-times text-danger" onclick="cancelEdit(this)" style="margin-left:20px"></i>`;
+        }
+    
+        function saveleave(button) {
+            var row = button.parentNode.parentNode;
+            var cells = row.getElementsByTagName("td");
+    
+            for (var i = 0; i < cells.length - 1; i++) {
+                var input = cells[i].getElementsByTagName("input")[0];
+                var value = input.value;
+                cells[i].innerHTML = value;
+                leave[row.rowIndex - 1][Object.keys(leave[row.rowIndex - 1])[i]] = value;
+            }
+    
+            var actionsCell = cells[cells.length - 1];
+            actionsCell.innerHTML = `
+            <i class="fa fa-edit text-primary edit-icon" onclick="editleave(this)"></i>
+            <i class="fa fa-trash text-danger delete-icon" style="margin-left:20px" onclick="deleteleave(this)"></i>`;
+        }
+    
+        function deleteleave(button) {
+            var row = button.parentNode.parentNode;
+            var index = row.rowIndex - 1;
+            leave.splice(index, 1);
+            localStorage.setItem("manage_leave", JSON.stringify(leave))
+            updateTable();
+        }
+    
+        updateTable();
+    </script>
+    

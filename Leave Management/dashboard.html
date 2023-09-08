@@ -17,14 +17,8 @@
    <script src="assets/vendors/apexcharts/apexcharts.min.js" defer></script>
    <script src="assets/js/pages/dashboard.js" defer></script>
    <script src="assets/js/main.js" defer></script>
-   <script src="https://unpkg.com/idb/build/iife/index-min.js"></script> 
-
-   <style>
-   .required {
-    color: red;
-    font-size: 20px;
-  }
-  </style>
+   <script src="https://unpkg.com/idb/build/iife/index-min.js"></script> <!-- Include IndexedDB library -->
+</head>
 <body>
    <div id="app">
       <div id="app">
@@ -81,13 +75,12 @@
                      <a class="dropdown-item" href="update.html"><i data-feather="user"></i> Account</a>
                      <a class="dropdown-item" href="update_password.html"><i data-feather="settings"></i> Settings</a>
                      <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="login.html"><i data-feather="log-out"></i>Logout</a>
+                     <a class="dropdown-item" href="login.html"><i data-feather="log-out"></i> Logout</a>
                    </div>
                  </li>
                </ul>
              </div>
            </nav>
-           <table id="array">
            <div class="main-content container-fluid">
              <div class="page-title">
                <h3>Dashboard</h3>
@@ -104,7 +97,7 @@
                            </div>
                            <div>
                              <h4>Leave</h4>
-                             <h2 class="h1 mb-0" id="leave"></h2>
+                             <h2 class="h1 mb-0" id="leaveCount"></h2>
      
                            </div>
                          </div>
@@ -178,29 +171,26 @@
        </div>
      
    </div>
-        
-        
+         </section>
+         
+         
       </div>
    </div>
    <script>
+    var leaveData = [
+    { label: "Leave Count", value:85 },
+    { label: "Approved", value: 40 },
+    { label: "Pending", value: 15 },
+    { label: "Cancelled", value: 25 } 
+  ];
 
-   var empData = {
-    
-    "leave": 46,
-    "approved": 28,
-    "pending":20,
-    "cancelled": 10
- };
- var employee = JSON.parse(localStorage.getItem('employee'));
- if (employee == undefined) {
-    localStorage.setItem('employee', JSON.stringify(empData))
- }
-
- document.getElementById("leave").innerHTML = employee.leave;
- document.getElementById("approved").innerHTML = employee.approved;
- document.getElementById("pending").innerHTML = employee.pending;
- document.getElementById("cancelled").innerHTML = employee.cancelled;
-
-</script>
+  
+  document.getElementById("leaveCount").innerHTML = leaveData[0].value;
+  document.getElementById("approved").innerHTML = leaveData[1].value;
+  document.getElementById("pending").innerHTML = leaveData[2].value;
+  document.getElementById("cancelled").innerHTML = leaveData[3].value;
+  
+   </script>
 </body>
 </html>
+ 
