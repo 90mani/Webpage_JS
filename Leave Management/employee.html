@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Employee Leave Management System</title>
+   <link rel="stylesheet"href="dash1.css">
+   <link rel="stylesheet" href="assets/css/bootstrap.css">
+   <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
+   <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+   <link rel="stylesheet" href="assets/css/app.css">
+   <script src="assets/fontawesome/js/all.min.js" defer></script>
+   <script src="assets/js/feather-icons/feather.min.js" defer></script>
+   <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js" defer></script>
+   <script src="assets/js/app.js" defer></script>
+   <script src="assets/vendors/chartjs/Chart.min.js" defer></script>
+   <script src="assets/vendors/apexcharts/apexcharts.min.js" defer></script>
+   <script src="assets/js/pages/dashboard.js" defer></script>
+   <script src="assets/js/main.js" defer></script>
+    <script src="https://unpkg.com/idb/build/iife/index-min.js"></script> </head>
+<body>
+   <div id="app">
+      <div id="app">
+         <div id="sidebar" class='active'>
+           <div class="sidebar-wrapper active">
+             <div class="sidebar-header" style="height: 50px;margin-top: -30px">
+                 <img src="assets/images/logo.png" alt="logo Image" class="img" width="100" height="100">
+               <span>SANKIT</span>
+             </div>
+             <div class="sidebar-menu"><br><br>
+               <ul class="menu">
+                 <li class="sidebar-item active ">
+                   <a href="employee.html" class='sidebar-link'>
+                     <i class="fa fa-home text-success"></i>
+                     <span>Dashboard</span>
+                   </a>
+                 </li>
+                 <li class="sidebar-item ">
+                   <a href="apply_leave.html" class='sidebar-link'>
+                     <i class="fa fa-plane text-success"></i>
+                     <span>Apply Leave</span>
+                   </a>
+                 </li>
+                 <li class="sidebar-item ">
+                   <a href="leave_status.html" class='sidebar-link'>
+                     <i class="fa fa-plane text-success"></i>
+                     <span>Leave Status</span>
+                   </a>
+                 </li>
+               </ul>
+             </div>
+             <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+           </div>
+         </div>
+         <div id="main">
+           <nav class="navbar navbar-header navbar-expand navbar-light">
+             <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+             <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse"
+               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+               aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav d-flex align-items-center navbar-light ms-auto">
+     
+                 <li class="dropdown">
+                   <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                     <div class="avatar me-1">
+                       <img src="assets/images/employee.png" alt="" srcset="">
+                     </div>
+                     <div class="d-none d-md-block d-lg-inline-block">Hi,Devi Muthukumar</div>
+                   </a>
+                   <div class="dropdown-menu dropdown-menu-end">
+                     <a class="dropdown-item" href="update.html"><i data-feather="user"></i> Account</a>
+                     <a class="dropdown-item" href="update_password.html"><i data-feather="settings"></i> Settings</a>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="loginemployee.html"><i data-feather="log-out"></i>Logout</a>
+                   </div>
+                 </li>
+               </ul>
+             </div>
+           </nav>
+           <table id="array">
+           <div class="main-content container-fluid">
+             <div class="page-title">
+               <h3>Dashboard</h3>
+             </div>
+             <section class="section">
+               <div class="row mb-2">
+                 <div class="col-xl-4 col-md-12 mb-4">
+                   <div class="card">
+                     <div class="card-body">
+                       <div class="d-flex justify-content-between p-md-1">
+                         <div class="d-flex flex-row">
+                           <div class="align-self-center">
+                             <i class="fa fa-plane text-success fa-3x me-4"></i>
+                           </div>
+                           <div>
+                             <h4>Leave</h4>
+                             <h2 class="h1 mb-0" id="leave"></h2>
+     
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-xl-4 col-md-12 mb-4">
+                   <div class="card">
+                     <div class="card-body">
+                       <div class="d-flex justify-content-between p-md-1">
+                         <div class="d-flex flex-row">
+                           <div class="align-self-center">
+                             <i class="fa fa-check text-info fa-3x me-4"></i>
+                           </div>
+                           <div>
+                             <h4>Approved</h4>
+                             <h2 class="h1 mb-0" id="approved"></h2>
+     
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-xl-4 col-md-12 mb-4">
+                   <div class="card">
+                     <div class="card-body">
+                       <div class="d-flex justify-content-between p-md-1">
+                         <div class="d-flex flex-row">
+                           <div class="align-self-center">
+                             <i class="fa fa-info text-warning fa-3x me-4"></i>
+                           </div>
+                           <div>
+                             <h4>Pending</h4>
+                             <h2 class="h1 mb-0" id="pending"></h2>
+     
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                 <div>
+     
+                 </div>
+                 <div class="col-xl-4 col-md-12 mb-4">
+                   <div class="card">
+                     <div class="card-body">
+                       <div class="d-flex justify-content-between p-md-1">
+                         <div class="d-flex flex-row">
+                           <div class="align-self-center">
+                             <i class="fa fa-trash text-danger fa-3x me-4"></i>
+                           </div>
+                           <div>
+                             <h4>Cancelled</h4>
+                             <h2 class="h1 mb-0" id="cancelled"></h2>
+     
+                           </div>
+                           
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </section>
+             
+           </div>
+         
+       
+     
+             </table>
+          </div>
+          
+        
+      </div>
+   </div>
+   <script>
+
+   var empData = {
+    
+    "leave": 40,
+    "approved": 25,
+    "pending":25,
+    "cancelled": 10
+ };
+ var employee = JSON.parse(localStorage.getItem('employee'));
+ if (employee == undefined) {
+    localStorage.setItem('employee', JSON.stringify(empData))
+ }
+
+ document.getElementById("leave").innerHTML = employee.leave;
+ document.getElementById("approved").innerHTML = employee.approved;
+ document.getElementById("pending").innerHTML = employee.pending;
+ document.getElementById("cancelled").innerHTML = employee.cancelled;
+
+</script>
+</body>
+</html>
