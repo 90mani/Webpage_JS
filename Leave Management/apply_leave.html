@@ -125,7 +125,7 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group has-icon-left">
-                                                <label for="first-name-icon">Reference Number</label>
+                                                <label for="first-name-icon">Reference number</label>
                                                 <div class="position-relative">
                                                     <input type="number" class="form-control" placeholder="eg:101" id="reference-number-input">
                                                     <div class="form-control-icon">
@@ -136,6 +136,9 @@
                                                 <div class="error-message-danger" id="reference-number-error" style="display: none;"></div>
                                             </div>
                                         </div>
+                                       
+                                      
+                                     
                                         <div class="col-md-6 col-12">
                                             <div class="form-group has-icon-left">
                                                 <label for="leave-type-select">Select Leave Type</label>
@@ -217,6 +220,7 @@
             var form = document.querySelector('.form');
             var submitButton = form.querySelector('.btn-primary');
             var referenceNumberInput = document.getElementById("reference-number-input");
+            
             var postingDateInput=document.getElementById("post-date-input");
             var fromDateInput = document.getElementById("from-date-input");
             var toDateInput = document.getElementById("to-date-input");
@@ -224,8 +228,10 @@
             var referenceNumberError = document.getElementById("reference-number-error");
             var postDateError = document.getElementById("post-date-error");
             var fromDateError = document.getElementById("from-date-error");
+           
             var toDateError = document.getElementById("to-date-error");
             var leaveTypeError = document.getElementById("leave-type-error");
+           
 
             var spinner = form.querySelector('.spinner-grow');
 
@@ -235,9 +241,10 @@
                 var isReferenceNumberValid = validateInput(referenceNumberInput, referenceNumberError, "Please enter a reference number.");
                 var isPostDateValid = validateInput(postingDateInput, postDateError, "Please select a date.");
                 var isFromDateValid = validateInput(fromDateInput, fromDateError, "Please select a from date.");
-
+                
                 var isToDateValid = validateInput(toDateInput, toDateError, "Please select a to date.");
                 var isLeaveTypeValid = validateSelect(leaveTypeSelect, leaveTypeError, "Please select a leave type.");
+                
 
                 if (isReferenceNumberValid && isPostDateValid && isFromDateValid && isToDateValid && isLeaveTypeValid) {
                     var jsonObj = {
@@ -262,11 +269,14 @@
                     }
 
 
+
+
+
                     spinner.style.display = 'inline-block';
                     
                     setTimeout(function () {
                         window.location.href = 'pending_leave.html';
-                    }, 3000);
+                    }, 2000);
                 }
             };
          
@@ -290,11 +300,13 @@
         toDateInput.style.borderColor = "green";
     });
    
+   
 
     leaveTypeSelect.addEventListener("change", function () {
         hideErrorMessage(leaveTypeError);
         leaveTypeSelect.style.borderColor = "green";
     });
+  
 
     function validateInput(input, errorElement, errorMessage) {
         var inputValue = input.value.trim();
