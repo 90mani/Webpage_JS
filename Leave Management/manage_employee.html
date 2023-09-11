@@ -182,7 +182,7 @@
                            <div class="avatar me-1">
                               <img src="assets/images/admin.png" alt="" srcset="">
                            </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
+                           <div class="d-none d-md-block d-lg-inline-block">Hi, kiruthikakumar</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                            <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
@@ -214,57 +214,100 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <table class='table' id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Emp ID</th>
-                                        <th>Full Name</th>
-                                        <th>Department</th>
-                                        <th>Status</th>
-                                        <th>Reg Date</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>123456</td>
-                                        <td>John Doe</td>
-                                        <td>IT</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                        <td>2021-11-01</td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>153424</td>
-                                        <td>Jane Doe</td>
-                                        <td>HR</td>
-                                        <td>
-                                            <span class="badge bg-danger">Deactivated</span>
-                                        </td>
-                                        <td>2021-11-01</td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>564355</td>
-                                        <td>Juan Dela Cruz</td>
-                                        <td>ENGINEERING</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                        <td>2021-11-01</td>
-                                        <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                           <div class="dataTable-dropdown">
+                              <select class="dataTable-selector form-select">
+                                 <option value="5">5</option>
+                                 <option value="10" selected="">10</option>
+                                 <option value="15">15</option>
+                                 <option value="20">20</option>
+                                 <option value="25">25</option>
+                              </select>
+                              <label>entries per page</label>
+                           </div>
+                           <div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"
+                                 id="searchInput" style="float: right;" onclick="searchemployee()"></div>
+                            <table class='table' id="myTable">
 
-                </section>
-            </div>
-        </div>
-    </div>
+                              <script>
+                                 var data = JSON.parse(localStorage.getItem("manage_employee"));
+                         
+                                 function employee() {
+                                     var table = document.getElementById("myTable");
+                                     table.innerHTML = '<tr><th>EMP ID</th><th>FULLNAME</th><th>DEPARTMENT</th><th>STATUS</th><th>REGDATE</th><th>ACTION</th></tr>';
+                                     for (var i = 0; i < data.length; i++) {
+                                         var newRow = table.insertRow(table.rows.length);
+                                         var row = table.insertRow(i + 1);
+                                         var cell1 = row.insertCell(0);
+                                         var cell2 = row.insertCell(1);
+                                         var cell3 = row.insertCell(2);
+                                         var cell4 = row.insertCell(3);
+                                         var cell5 = row.insertCell(4);
+                                         var cell6 = row.insertCell(5);
+                         
+                                         cell1.innerHTML = data[i].empid;
+                                         cell2.innerHTML = data[i].fullname;
+                                         cell3.innerHTML = data[i].department;
+                                         cell4.innerHTML = data[i].status;
+                                         cell5.innerHTML = data[i].regdate;
+                                         cell6.innerHTML = '<i class="fa fa-pen text-success" onclick="editdata(this)"></i>' +
+                                             '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
+                                     }
+                                 }
+                         
+                                 function editdata(button) {
+                                     var row = button.parentNode.parentNode;
+                                     var cells = row.getElementsByTagName("td");
+                         
+                                     for (var i = 0; i < cells.length - 1; i++) {
+                                         var value = cells[i].innerText;
+                                         cells[i].innerHTML = '<input type="text" value="' + value + '">';
+                                     }
+                         
+                                     var actionsCell = cells[cells.length - 1];
+                                     actionsCell.innerHTML = '<i class="fa fa-check text-success" onclick="savedata(this)"></i>' +
+                                         '<i class="fa fa-times text-danger" onclick="canceledit(this)" style="margin-left:20px"></i>';
+                                 }
+                         
+                                 function savedata(button) {
+                                     var row = button.parentNode.parentNode;
+                                     var cells = row.getElementsByTagName("td");
+                         
+                                     for (var i = 0; i < cells.length - 1; i++) {
+                                         var input = cells[i].getElementsByTagName("input")[0];
+                                         var value = input.value;
+                                         cells[i].innerHTML = value;
+                                     }
+                         
+                                     var actionsCell = cells[cells.length - 1];
+                                     actionsCell.innerHTML = '<i class="fa fa-pen text-success" onclick="editdata(this)"></i>' +
+                                         '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
+                                 }
+                         
+                                 function canceledit(button) {
+                                     var row = button.parentNode.parentNode;
+                                     var cells = row.getElementsByTagName("td");
+                         
+                                     for (var i = 0; i < cells.length - 1; i++) {
+                                         var input = cells[i].getElementsByTagName("input")[0];
+                                         var value = input.value;
+                                         cells[i].innerHTML = value;
+                                     }
+                         
+                                     var actionsCell = cells[cells.length - 1];
+                                     actionsCell.innerHTML = '<i class="fa fa-pen text-success" onclick="editdata(this)"></i>' +
+                                         '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
+                                 }
+                         
+                                 function deletedata(button) {
+                                     var row = button.parentNode.parentNode;
+                                     var index = row.rowIndex - 1;
+                                     data.splice(index, 1);
+                                     localStorage.setItem("manage_employee", JSON.stringify(data));
+                                     employee();
+                                 }
+                         
+                                 employee();
+                             </script>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>

@@ -13,12 +13,13 @@
     <script defer src="assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
-      <style type="text/css">
-        .notif:hover{
-          background-color: rgba(0,0,0,0.1);
-                  }
-                  .delete-button {
-            background-color:white;
+    <style type="text/css">
+        .notif:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .delete-button {
+            background-color: white;
             color: red;
             border: none;
             padding: 5px 10px;
@@ -39,122 +40,122 @@
             padding: 5px 10px;
             cursor: pointer;
         }
-      </style>
+    </style>
 </head>
 
 <body>
     <div id="app">
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
-<div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                      <i class="fa fa-users text-success me-4"></i>
-                        <span>SANKIT</span>
+                <div class="sidebar-header" style="height: 50px;margin-top: -30px">
+                    <i class="fa fa-users text-success me-4"></i>
+                    <span>SANKIT</span>
                 </div>
-               <div class="sidebar-menu">
-                  <ul class="menu">
-                     <li class="sidebar-item ">
-                        <a href="index.html" class='sidebar-link'>
-                        <i class="fa fa-home text-success"></i>
-                        <span>Dashboard</span>
-                        </a>
-                     </li>
-                     <li class="sidebar-item has-sub">
-                        <a href="#" class='sidebar-link'>
-                        <i class="fa fa-building text-success"></i>
-                        <span>Department</span>
-                        </a>
-                        <ul class="submenu ">
-                           <li>
-                              <a href="add_department.html">Add Department</a>
-                           </li>
-                           <li>
-                              <a href="manage_department.html">Manage Department</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="sidebar-item active has-sub">
-                        <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
-                        <span>Designation</span>
-                        </a>
-                        <ul class="submenu ">
-                           <li>
-                              <a href="add_designation.html">Add Designation</a>
-                           </li>
-                           <li>
-                              <a href="manage_designation.html">Manage Designation</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                        <i class="fa fa-users text-success"></i>
-                        <span>Employees</span>
-                        </a>
-                        <ul class="submenu ">
-                           <li>
-                              <a href="add_employee.html">Add Employee</a>
-                           </li>
-                           <li>
-                              <a href="manage_employee.html">Manage Employee</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
-                        <span>Leave Type</span>
-                        </a>
-                        <ul class="submenu ">
-                           <li>
-                              <a href="add_leave_type.html">Add Leave Type</a>
-                           </li>
-                           <li>
-                              <a href="manage_leave_type.html">Manage Leave Type</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                        <i class="fa fa-table text-success"></i>
-                        <span>Leave Management</span>
-                        </a>
-                        <ul class="submenu ">
-                           <li>
-                              <a href="all_leave.html">All Leaves</a>
-                           </li>
-                           <li>
-                              <a href="pending_leave.html">Pending Leaves</a>
-                           </li>
-                           <li>
-                              <a href="approve_leave.html">Approve Leaves</a>
-                           </li>
-                           <li>
-                              <a href="not_approve_leave.html">Not Approve Leaves</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                        <i class="fa fa-user text-success"></i>
-                        <span>Users</span>
-                        </a>
-                        <ul class="submenu ">
-                           <li>
-                              <a href="add_user.html">Add User</a>
-                           </li>
-                           <li>
-                              <a href="manage_user.html">Manage Users</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="sidebar-item ">
-                        <a href="reports.html" class='sidebar-link'>
-                        <i class="fa fa-chart-bar text-success"></i>
-                        <span>Reports</span>
-                        </a>
-                     </li>
-                  </ul>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-item ">
+                            <a href="index.html" class='sidebar-link'>
+                                <i class="fa fa-home text-success"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="fa fa-building text-success"></i>
+                                <span>Department</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="add_department.html">Add Department</a>
+                                </li>
+                                <li>
+                                    <a href="manage_department.html">Manage Department</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item active has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="fa fa-table text-success"></i>
+                                <span>Designation</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="add_designation.html">Add Designation</a>
+                                </li>
+                                <li>
+                                    <a href="manage_designation.html">Manage Designation</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="fa fa-users text-success"></i>
+                                <span>Employees</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="add_employee.html">Add Employee</a>
+                                </li>
+                                <li>
+                                    <a href="manage_employee.html">Manage Employee</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="fa fa-table text-success"></i>
+                                <span>Leave Type</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="add_leave_type.html">Add Leave Type</a>
+                                </li>
+                                <li>
+                                    <a href="manage_leave_type.html">Manage Leave Type</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="fa fa-table text-success"></i>
+                                <span>Leave Management</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="all_leave.html">All Leaves</a>
+                                </li>
+                                <li>
+                                    <a href="pending_leave.html">Pending Leaves</a>
+                                </li>
+                                <li>
+                                    <a href="approve_leave.html">Approve Leaves</a>
+                                </li>
+                                <li>
+                                    <a href="not_approve_leave.html">Not Approve Leaves</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="fa fa-user text-success"></i>
+                                <span>Users</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="add_user.html">Add User</a>
+                                </li>
+                                <li>
+                                    <a href="manage_user.html">Manage Users</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item ">
+                            <a href="reports.html" class='sidebar-link'>
+                                <i class="fa fa-chart-bar text-success"></i>
+                                <span>Reports</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
@@ -169,7 +170,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav d-flex align-items-center navbar-light ms-auto">
-                      <li class="dropdown nav-icon">
+                        <li class="dropdown nav-icon">
                             <a href="#" data-bs-toggle="dropdown"
                                 class="nav-link  dropdown-toggle nav-link-lg nav-link-user">
                                 <div class="d-lg-inline-block">
@@ -180,40 +181,44 @@
                                 <h6 class='py-2 px-4'>Notifications</h6>
                                 <ul class="list-group rounded-none">
                                     <li class="list-group-item border-0 align-items-start">
-                                    <div class="row mb-2">
-                                    <div class="col-md-12 notif">
-                                            <a href="leave_details.html"><h6 class='text-bold'>John Doe</h6>
-                                            <p class='text-xs'>
-                                                applied for leave at 05-21-2021
-                                            </p></a>
+                                        <div class="row mb-2">
+                                            <div class="col-md-12 notif">
+                                                <a href="leave_details.html">
+                                                    <h6 class='text-bold'>John Doe</h6>
+                                                    <p class='text-xs'>
+                                                        applied for leave at 05-21-2021
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-12 notif">
+                                                <a href="leave_details.html">
+                                                    <h6 class='text-bold'>Jane Doe</h6>
+                                                    <p class='text-xs'>
+                                                        applied for leave at 05-21-2021
+                                                    </p>
+                                                </a>
+                                            </div>
                                         </div>
-                                    <div class="col-md-12 notif">
-                                            <a href="leave_details.html"><h6 class='text-bold'>Jane Doe</h6>
-                                            <p class='text-xs'>
-                                                applied for leave at 05-21-2021
-                                            </p></a>
-                                        </div>
-                                      </div>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                     <li class="dropdown">
-                        <a href="#" data-bs-toggle="dropdown"
-                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                           <div class="avatar me-1">
-                              <img src="assets/images/admin.png" alt="" srcset="">
-                           </div>
-                           <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika kumar</div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                           <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
-                           <a class="dropdown-item" href="#"><i data-feather="settings"></i> Settings</a>
-                           <div class="dropdown-divider"></div>
-                           <a class="dropdown-item" href="login.html"><i data-feather="log-out"></i> Logout</a>
-                        </div>
-                     </li>
-                  </ul>
+                        <li class="dropdown">
+                            <a href="#" data-bs-toggle="dropdown"
+                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="avatar me-1">
+                                    <img src="assets/images/admin.png" alt="" srcset="">
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, Kiruthika kumar</div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
+                                <a class="dropdown-item" href="#"><i data-feather="settings"></i> Settings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="login.html"><i data-feather="log-out"></i> Logout</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </nav>
 
@@ -226,7 +231,8 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html" class="text-success">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="index.html" class="text-success">Dashboard</a>
+                                    </li>
                                     <li class="breadcrumb-item active" aria-current="page">Manage Designation</li>
                                 </ol>
                             </nav>
@@ -245,7 +251,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                               
+
 
                 </section>
             </div>
@@ -265,76 +271,77 @@
 
     <script>
         var designation = JSON.parse(localStorage.getItem('manage_designation')) || [];
-    
+
         function updateTable() {
             var tableBody = document.getElementById("table1").getElementsByTagName("tbody")[0];
             tableBody.innerHTML = '';
-    
+
             for (var i = 0; i < designation.length; i++) {
                 var newRow = tableBody.insertRow(tableBody.rows.length);
                 var cell1 = newRow.insertCell(0);
                 var cell2 = newRow.insertCell(1);
                 var cell3 = newRow.insertCell(2);
                 var cell4 = newRow.insertCell(3);
-    
+
                 cell1.innerHTML = designation[i].designation;
                 cell2.innerHTML = designation[i].description;
                 cell3.innerHTML = designation[i].creationDate;
                 cell4.innerHTML = '<i class="fa fa-pen text-success" onclick="editdata(this)"></i>' +
-                '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
+                    '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
             }
         }
-    
+
         function editdata(button) {
             var row = button.parentNode.parentNode;
             var cells = row.getElementsByTagName("td");
-    
+
             for (var i = 0; i < cells.length - 1; i++) {
                 var value = cells[i].innerText;
                 cells[i].innerHTML = `<input type="text" value="${value}">`;
             }
-    
+
             var actionsCell = cells[cells.length - 1];
             actionsCell.innerHTML = '<i class="fa fa-check text-success" onclick="savedata(this)"></i>' +
-                                            '<i class="fa fa-times text-danger" onclick="canceldata(this)" style="margin-left:20px"></i>';
+                '<i class="fa fa-times text-danger" onclick="canceldata(this)" style="margin-left:20px"></i>';
         }
-    
+
         function savedata(button) {
             var row = button.parentNode.parentNode;
             var cells = row.getElementsByTagName("td");
             var index = row.rowIndex - 1;
-    
+
             designation[index].designation = cells[0].querySelector("input").value;
             designation[index].description = cells[1].querySelector("input").value;
-    
+
             localStorage.setItem('manage_designation', JSON.stringify(designation));
             updateTable();
         }
-    
+
         function canceldata(button) {
             var row = button.parentNode.parentNode;
             var cells = row.getElementsByTagName("td");
-    
+
             for (var i = 0; i < cells.length - 1; i++) {
                 var value = cells[i].querySelector("input").value;
                 cells[i].innerHTML = value;
             }
-    
+
             var actionsCell = cells[cells.length - 1];
             actionsCell.innerHTML = '<i class="fa fa-pen text-success" onclick="editdata(this)"></i>' +
-            '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
+                '<i class="fa fa-trash text-danger" onclick="deletedata(this)" style="margin-left:20px"></i>';
         }
-    
+
         function deletedata(button) {
             var row = button.parentNode.parentNode;
             var index = row.rowIndex - 1;
-    
+
             designation.splice(index, 1);
             localStorage.setItem('manage_designation', JSON.stringify(designation));
             updateTable();
         }
-    
+
         updateTable();
     </script>
 </body>
+
 </html>

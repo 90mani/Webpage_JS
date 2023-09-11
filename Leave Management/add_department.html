@@ -271,10 +271,9 @@
                                                     </div>
 
                                                     <div class="col-12 d-flex justify-content-end">
-                                                       
-                                                        <button type="submit" class="btn-primary">Submit</button>
-                                                        <div class="spinner" style="display: none;">
-                                                        </div>
+                                                        <button type="submit"
+                                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                                        <div class="spinner" style="display: none;"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -306,7 +305,6 @@
 
             var spinner = form.querySelector('.spinner');
 
-
             form.onsubmit = function (event) {
                 event.preventDefault();
 
@@ -326,17 +324,16 @@
                         shortName: deptShortName,
                         creationDate: new Date().toLocaleDateString()
                     };
-                    setTimeout(function () {
-                    var departments = JSON.parse(localStorage.getItem('manage_department')) || [];
-                    departments.push(newDepartment);
-                    localStorage.setItem('manage_department', JSON.stringify(departments));
 
-                  
+                    setTimeout(function () {
+                        var departments = JSON.parse(localStorage.getItem('manage_department')) || [];
+                        departments.push(newDepartment);
+                        localStorage.setItem('manage_department', JSON.stringify(departments));
+
                         window.location.href = 'manage_department.html';
                     }, 2000);
                 }
             };
-
 
             shortNameInput.addEventListener("input", function () {
                 hideError(shortNameError, shortNameInput);
@@ -380,11 +377,7 @@
                 errorElement.textContent = "";
                 errorElement.style.display = "none";
             }
-
         });
     </script>
-
-
 </body>
-
 </html>

@@ -236,87 +236,109 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" onsubmit="return validateForm();" action="manage_user.html">
+                                        <form class="form">
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-group has-icon-left">
-                                                        <label for="fullname">Full Name</label>
+                                                        <label for="first-name-icon">Full Name</label>
                                                         <div class="position-relative">
-                                                            <input type="text" class="form-control" id="fullname">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="full name" id="fname">
                                                             <div class="form-control-icon">
                                                                 <i class="fa fa-user"></i>
                                                             </div>
-                                                            <div class="error-message" id="fullname-error"
-                                                                style="display: none;"></div>
                                                         </div>
                                                     </div>
+                                                    <div class=" error-message-danger" id="fname-error"
+                                                        style="display: none;"></div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group has-icon-left">
-                                                        <label for="contact">Contact</label>
+                                                        <label for="first-name-icon">Contact</label>
                                                         <div class="position-relative">
-                                                            <input type="text" class="form-control" id="contact">
+                                                            <input type="number" class="form-control"
+                                                                placeholder="contact" id="phone" maxlength="10">
                                                             <div class="form-control-icon">
                                                                 <i class="fa fa-user"></i>
-                                                                <div class="error-message" id="contact-error"
-                                                                    style="display: none;"></div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class=" error-message-danger" id="con-error"
+                                                        style="display: none;"></div>
+
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group has-icon-left">
-                                                        <label for="email">Email</label>
+                                                        <label for="first-name-icon">Email</label>
                                                         <div class="position-relative">
-                                                            <input type="text" class="form-control" id="email">
+                                                            <input type="email" class="form-control" placeholder="email"
+                                                                id="email">
                                                             <div class="form-control-icon">
                                                                 <i class="fa fa-envelope"></i>
-                                                                <div class=" error-message" id="email-error"
-                                                                    style="display: none;"></div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class=" error-message-danger" id="email-error"
+                                                        style="display: none;"></div>
                                                 </div>
                                                 <div class="col-md-4 col-12">
                                                     <div class="form-group has-icon-left">
-                                                        <label for="username">Username</label>
+                                                        <label for="first-name-icon">Username</label>
                                                         <div class="position-relative">
-                                                            <input type="text" class="form-control" id="username">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="username" id="uname">
                                                             <div class="form-control-icon">
                                                                 <i class="fa fa-user"></i>
-                                                                <div class=" error-message" id="username-error"
-                                                                    style="display: none;"></div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class=" error-message-danger" id="uname-error"
+                                                        style="display: none;"></div>
                                                 </div>
                                                 <div class="col-md-4 col-12">
                                                     <div class="form-group has-icon-left">
-                                                        <label for="password">Password</label>
+                                                        <label for="first-name-icon">Password</label>
                                                         <div class="position-relative">
-                                                            <input type="password" class="form-control" id="password">
+                                                            <input type="password" class="form-control"
+                                                                placeholder="password" id="password">
                                                             <div class="form-control-icon">
                                                                 <i class="fa fa-key"></i>
-                                                                <div class=" error-message" id="password-error"
-                                                                    style="display: none;"></div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="error-message-danger" id="password-error"
+                                                        style="display: none;"></div>
+                                                </div>
+                                                <div class="col-md-4 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="first-name-icon">User Category</label>
+                                                        <div class="position-relative">
+                                                            <fieldset class="form-group">
+                                                                <select class="form-select" id="selection">
+                                                                    <option value="">select</option>
+                                                                    <option>Admin</option>
+                                                                    <option>staff</option>
+                                                                </select>
+                                                                <div class="error-message-danger" id="selection-error"
+                                                                    style="display: none;"></div>
+                                                            </fieldset>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 col-12">
                                                     <div class="form-group has-icon-left">
-                                                        <label for="usercategory">User Category</label>
+                                                        <label for="first-name-icon">Status</label>
                                                         <div class="position-relative">
                                                             <fieldset class="form-group">
-                                                                <select class="form-select" id="basicSelect">
-                                                                    <option>Please Select</option>
-                                                                    <option>Admin</option>
-                                                                    <option>Staff</option>
+                                                                <select class="form-select" id="status">
+                                                                    <option value="">select</option>
+                                                                    <option>Active</option>
+                                                                    <option>Inactive</option>
                                                                 </select>
+                                                                <div class="error-message-danger" id="status-error"
+                                                                    style="display: none;"></div>
                                                             </fieldset>
                                                         </div>
-                                                        <div class="error-message" id="usercategory-error"
-                                                            style="display: none;"></div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 d-flex justify-content-end">
@@ -332,131 +354,146 @@
                         </div>
                     </div>
                 </section>
+                <!-- // Basic multiple Column Form section end -->
+            </div>
 
-                <script>
+        </div>
+    </div>
+    <script>
 
-                    function clearErrors() {
-                        var errors = document.querySelectorAll('.error-message');
-                        for (var i = 0; i < errors.length; i++) {
-                            errors[i].textContent = "";
-                        }
-                    }
+document.addEventListener("DOMContentLoaded", () => {
+        const form = document.querySelector(".form");
+        const submitButton = form.querySelector('.btn-primary');
 
-                    function setError(errorMsg, errorId) {
-                        var errorElement = document.getElementById(errorId);
-                        errorElement.style.display = "block";
-                        errorElement.textContent = errorMsg;
-                    }
+        const firstNameInput = document.getElementById("fname");
+        const firstNameError = document.getElementById("fname-error");
 
-                    function hideError(errorId) {
-                        var errorElement = document.getElementById(errorId);
-                        errorElement.style.display = "none";
-                    }
+        const phoneInput = document.getElementById("phone");
+        const conError = document.getElementById("con-error");
 
-                    function validateUsername(usernameValue, usernameError) {
-                        var alphanumericPattern = /^[a-zA-Z]+$/;
+        const emailInput = document.getElementById("email");
+        const emailError = document.getElementById("email-error");
 
-                        if (usernameValue.length === 0) {
-                            setError("Please enter a username.", usernameError);
-                            return false;
-                        }
+        const unameInput = document.getElementById("uname");
+        const unameError = document.getElementById("uname-error");
 
-                        if (!alphanumericPattern.test(usernameValue)) {
-                            setError("Please enter a valid username containing only letters.", usernameError);
-                            return false;
-                        }
+        const passwordInput = document.getElementById("password");
+        const passwordError = document.getElementById("password-error");
 
-                        hideError(usernameError);
-                        return true;
-                    }
+        const usercategoryInput = document.getElementById("selection");
+        const usercategoryError = document.getElementById("selection-error");
 
-                    function validatePassword(passwordValue, passwordError) {
-                        var lowercasePattern = /[a-z]/;
-                        var uppercasePattern = /[A-Z]/;
+        const statusInput = document.getElementById("status");
+        const statusError = document.getElementById("status-error");
 
-                        if (!lowercasePattern.test(passwordValue) || !uppercasePattern.test(passwordValue)) {
-                            setError("Password must contain both lowercase and uppercase characters", passwordError);
-                            return false;
-                        }
+        const spinner = form.querySelector('.spinner');
 
-                        hideError(passwordError);
-                        return true;
-                    }
+        form.onsubmit = function (event) {
+            event.preventDefault();
 
-                    function validateForm() {
-                        clearErrors();
+            const isFirstNameValid = validateInput(firstNameInput, firstNameError, "Please enter firstname.");
+            const isPhoneValid = validateInput(phoneInput, conError, "Please enter phone no.");
+            const isEmailValid = validateInput(emailInput, emailError, "Please enter email.");
+            const isUnameValid = validateInput(unameInput, unameError, "Please enter username.");
+            const isPasswordValid = validateInput(passwordInput, passwordError, "Please enter password.");
+            const isUserCategoryValid = validateSelect(usercategoryInput, usercategoryError, "Please select category.");
+            const isStatusValid = validateSelect(statusInput, statusError, "Please select status.");
 
-                        var fullnameInput = document.getElementById('fullname');
-                        var contactInput = document.getElementById('contact');
-                        var emailInput = document.getElementById('email');
-                        var usernameInput = document.getElementById('username');
-                        var passwordInput = document.getElementById('password');
-                        var usercategoryInput = document.getElementById('basicSelect');
+            if (isFirstNameValid && isPhoneValid && isEmailValid && isUnameValid && isPasswordValid && isUserCategoryValid && isStatusValid) {
+                spinner.style.display = 'inline-block';
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Submitting...';
 
-                        if (fullnameInput.value.trim() === '') {
-                            setError('Please enter full name.', 'fullname-error');
-                            fullnameInput.focus();
-                            return false;
-                        }
-                        hideError('fullname-error');
+                var newuser = {
+                    fullname: firstNameInput.value,
+                    contact: phoneInput.value,
+                    Category: usercategoryInput.value,
+                    status: statusInput.value
+                }; 
 
-                        if (contactInput.value.trim() === '') {
-                            setError('Please enter contact.', 'contact-error');
-                            contactInput.focus();
-                            return false;
-                        }
-                        hideError('contact-error');
+                var user = JSON.parse(localStorage.getItem('manage_user')) || [];
+                user.push(newuser);
+                localStorage.setItem('manage_user', JSON.stringify(user));
 
-                        if (emailInput.value.trim() === '') {
-                            setError('Please enter valid Email address.', 'email-error');
-                            emailInput.focus();
-                            return false;
-                        }
-                        hideError('email-error');
+                setTimeout(function () {
+                    window.location.href = 'manage_user.html';
+                }, 2000);
+            }
+        };
 
-                        if (!validateUsername(usernameInput.value.trim(), 'username-error')) {
-                            usernameInput.focus();
-                            return false;
-                        }
-                        hideError('username-error');
 
-                        if (!validatePassword(passwordInput.value, 'password-error')) {
-                            passwordInput.focus();
-                            return false;
-                        }
-                        hideError('password-error');
+            firstNameInput.addEventListener("input", function () {
+                validateInput(firstNameInput, firstNameError, "Please enter firstname.");
+            });
 
-                        if (usercategoryInput.value.trim() === '') {
-                            setError('Please enter user category.', 'usercategory-error');
-                            usercategoryInput.focus();
-                            return false;
-                        }
-                        hideError('usercategory-error');
+            phoneInput.addEventListener("input", function () {
+                validateInput(phoneInput, conError, "Please enter phone no.");
+            });
 
-                        // The following part of your code to store data in local storage is fine.
-                        let jsonObj = {
-                            "fullname": fullnameInput.value,
-                            "contact": contactInput.value,
-                            "category": usercategoryInput.value,
-                            "status": "active"
-                        };
+            emailInput.addEventListener("input", function () {
+                validateInput(emailInput, emailError, "Please enter email.");
+            });
 
-                        let jsonArray = [];
+            unameInput.addEventListener("input", function () {
+                validateInput(unameInput, unameError, "Please enter username.");
+            });
 
-                        jsonArray.push(jsonObj);
+            passwordInput.addEventListener("input", function () {
+                validateInput(passwordInput, passwordError, "Please enter password.");
+            });
 
-                        if (localStorage.getItem('manage_user') != undefined) {
-                            let existingArray = JSON.parse(localStorage.getItem('manage_user'));
-                            existingArray.push(jsonObj);
-                            localStorage.setItem('manage_user', JSON.stringify(existingArray));
-                        } else {
-                            localStorage.setItem('manage_user', JSON.stringify(jsonArray));
-                        }
+            usercategoryInput.addEventListener("input", function () {
+                validateSelect(usercategoryInput, usercategoryError, "Please select category.");
+            });
 
-                        return true;
-                    }
-                </script>
+            statusInput.addEventListener("input", function () {
+                validateSelect(statusInput, statusError, "Please select status.");
+            });
+
+            function validateInput(input, errorElement, errorMessage) {
+                const inputValue = input.value.trim();
+                if (inputValue === "") {
+                    showErrorMessage(errorElement, errorMessage);
+                    input.style.borderColor = "red";
+                    return false;
+                } else {
+                    hideErrorMessage(errorElement);
+                    input.style.borderColor = "green";
+                    return true;
+                }
+            }
+
+            function validateSelect(selectInput, errorElement, errorMessage) {
+                var selectedValue = selectInput.value;
+                if (selectedValue === "") {
+                    showErrorMessage(errorElement, errorMessage);
+                    selectInput.style.borderColor = "red";
+                    return false;
+                } else {
+                    hideErrorMessage(errorElement);
+                    selectInput.style.borderColor = "green";
+                    return true;
+                }
+            }
+
+            const showErrorMessage = (errorElement, message) => {
+                errorElement.textContent = message;
+                errorElement.style.color = "red";
+                errorElement.style.display = "block";
+            };
+
+            const hideErrorMessage = (errorElement) => {
+                errorElement.textContent = "";
+                errorElement.style.display = "none";
+            };
+        });
+    </script>
+
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
-

@@ -258,6 +258,7 @@
                 var isLeaveTypeValid = validateSelect(leaveTypeSelect, leaveTypeError, "Please select a leave type.");
 
                 if (isReferenceNumberValid && isFromDateValid && isToDateValid && isPostingDateValid && isLeaveTypeValid) {
+                    
                     var formData = {
                         referenceNumber: referenceNumberInput.value,
                         fromDate: fromDateInput.value,
